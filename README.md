@@ -1,4 +1,4 @@
-# 🌊 AquaCoding Studios
+# AquaCoding Studios
 
 > Building ecosystems through technology, education, and ethical aquatics.
 
@@ -14,19 +14,18 @@ Our mission is to combine aquatics, technology, and education to create a truste
 
 ---
 
-## 🌱 Vision
+## Vision
 
 AquaCoding Studios aims to become a trusted destination for:
 
-- 🦐 Freshwater shrimp breeding
-- 🐠 Ethical fishkeeping
-- 🌿 Planted aquariums
-- 📚 Educational guides
-- 💻 Aquarium technology
-- 🌍 Conservation awareness
+-Freshwater shrimp breeding
+-Ethical fishkeeping
+-Planted aquariums
+-Educational guides
+-Conservation awareness
 
 ---
 
-## 🗺️ Roadmap
+#Roadmap
 
 - [x]
