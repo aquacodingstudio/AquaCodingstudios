@@ -2,290 +2,353 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Learn about Red Cherry Shrimp care, water parameters, feeding, behaviour and future availability from AquaCoding Studios."
+    >
+
+    <meta name="theme-color" content="#04131d">
 
     <title>Red Cherry Shrimp | AquaCoding Studios</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=8">
-
+    <link rel="stylesheet" href="style.css?v=11">
 </head>
 
 <body>
 
-<header class="site-header">
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">AC</span>
 
-    <a class="brand" href="index.html">
+            <span class="brand-text">
+                AquaCoding
+                <small>Studios</small>
+            </span>
+        </a>
 
-        <span class="brand-mark">AC</span>
+        <button
+            class="menu-button"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-        <span class="brand-text">
-            AquaCoding
-            <small>Studios</small>
-        </span>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="collection.html">Collection</a>
+            <a href="index.html#standards">Standards</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
 
-    </a>
+    <main class="species-page">
 
-    <button
-        class="menu-button"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-expanded="false">
+        <a class="back-link" href="collection.html">
+            ← Back to Collection
+        </a>
 
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </button>
-
-    <nav class="main-nav">
-
-        <a href="index.html">Home</a>
-        <a href="collection.html">Collection</a>
-
-    </nav>
-
-</header>
-
-<main class="collection-page">
-
-<section class="collection-hero">
-
-    <p class="eyebrow">
-
-        Species Profile
-
-    </p>
-
-    <h1>
-
-        Red Cherry Shrimp
-
-    </h1>
-
-    <p class="hero-text">
-
-        <em>Neocaridina davidi</em>
-
-    </p>
-
-</section>
-<section class="shop-section" aria-labelledby="purchase-title">
-    <div class="shop-panel">
-
-        <div class="shop-details">
-            <span class="availability-badge">Coming soon</span>
-
-            <h2 id="purchase-title">Red Cherry Shrimp</h2>
-
-            <p class="shop-price">Price not yet available</p>
-            <p class="stock-status">0 currently available</p>
-        </div>
-
-        <div class="purchase-controls">
-            <label for="shrimp-quantity">Quantity</label>
-
-            <div class="quantity-selector">
-                <button
-                    class="quantity-button"
-                    type="button"
-                    data-action="decrease"
-                    aria-label="Decrease quantity"
-                    disabled
-                >
-                    −
-                </button>
-
-                <input
-                    id="shrimp-quantity"
-                    class="quantity-input"
-                    type="number"
-                    value="1"
-                    min="1"
-                    max="1"
-                    readonly
-                    disabled
-                >
-
-                <button
-                    class="quantity-button"
-                    type="button"
-                    data-action="increase"
-                    aria-label="Increase quantity"
-                    disabled
-                >
-                    +
-                </button>
+        <section class="species-hero">
+            <div class="species-hero-image placeholder-image">
+                <span>Photo coming soon</span>
             </div>
 
-            <button class="cart-button" type="button" disabled>
-                Out of stock
-            </button>
+            <div class="species-hero-content">
+                <p class="eyebrow">Species profile</p>
 
-            <p class="shop-note">
-                Purchasing will become available only after a healthy,
-                stable breeding colony has been established.
-            </p>
+                <h1>Red Cherry Shrimp</h1>
+
+                <p class="scientific-name">
+                    <em>Neocaridina davidi</em>
+                </p>
+
+                <span class="availability-badge">
+                    Coming soon
+                </span>
+            </div>
+        </section>
+
+        <section
+            class="shop-section"
+            aria-labelledby="purchase-title"
+        >
+            <div class="shop-panel">
+
+                <div class="shop-details">
+                    <p class="section-label">Future availability</p>
+
+                    <h2 id="purchase-title">
+                        Red Cherry Shrimp
+                    </h2>
+
+                    <p class="shop-price">
+                        Price not yet available
+                    </p>
+
+                    <p class="stock-status">
+                        0 currently available
+                    </p>
+                </div>
+
+                <div class="purchase-controls">
+                    <label for="shrimp-quantity">
+                        Quantity
+                    </label>
+
+                    <div class="quantity-selector">
+                        <button
+                            class="quantity-button"
+                            type="button"
+                            data-action="decrease"
+                            aria-label="Decrease quantity"
+                            disabled
+                        >
+                            −
+                        </button>
+
+                        <input
+                            id="shrimp-quantity"
+                            class="quantity-input"
+                            type="number"
+                            value="1"
+                            min="1"
+                            max="1"
+                            readonly
+                            disabled
+                        >
+
+                        <button
+                            class="quantity-button"
+                            type="button"
+                            data-action="increase"
+                            aria-label="Increase quantity"
+                            disabled
+                        >
+                            +
+                        </button>
+                    </div>
+
+                    <button
+                        class="cart-button"
+                        type="button"
+                        disabled
+                    >
+                        Out of stock
+                    </button>
+
+                    <p class="shop-note">
+                        Purchasing will become available only after a
+                        healthy and stable breeding colony has been
+                        established.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="species-main-grid">
+
+            <article class="species-overview">
+                <p class="section-label">Overview</p>
+
+                <h2>
+                    A colourful freshwater favourite.
+                </h2>
+
+                <p>
+                    Red Cherry Shrimp are one of the most popular freshwater
+                    dwarf shrimp in the aquarium hobby. Their vibrant red
+                    colouration, peaceful nature and manageable care needs
+                    make them especially well suited to planted aquariums.
+                </p>
+
+                <p>
+                    They spend much of the day grazing on biofilm, algae and
+                    tiny food particles found across plants, wood and other
+                    aquarium surfaces.
+                </p>
+
+                <p>
+                    The best results come from mature, stable aquariums with
+                    gentle filtration, natural cover and consistent water
+                    quality.
+                </p>
+            </article>
+
+            <aside class="quick-facts-panel">
+                <p class="section-label">Quick facts</p>
+
+                <dl class="quick-facts-list">
+                    <div>
+                        <dt>Temperature</dt>
+                        <dd>20–26°C</dd>
+                    </div>
+
+                    <div>
+                        <dt>pH</dt>
+                        <dd>6.5–7.8</dd>
+                    </div>
+
+                    <div>
+                        <dt>Adult size</dt>
+                        <dd>Up to 3 cm</dd>
+                    </div>
+
+                    <div>
+                        <dt>Difficulty</dt>
+                        <dd>Beginner</dd>
+                    </div>
+
+                    <div>
+                        <dt>Behaviour</dt>
+                        <dd>Peaceful</dd>
+                    </div>
+
+                    <div>
+                        <dt>Diet</dt>
+                        <dd>Omnivore</dd>
+                    </div>
+
+                    <div>
+                        <dt>Lifespan</dt>
+                        <dd>About 1–2 years</dd>
+                    </div>
+
+                    <div>
+                        <dt>Availability</dt>
+                        <dd>Coming soon</dd>
+                    </div>
+                </dl>
+            </aside>
+
+        </section>
+
+        <section class="species-info-grid">
+
+            <article class="info-card">
+                <p class="info-icon">💧</p>
+
+                <h2>Water Parameters</h2>
+
+                <ul>
+                    <li>Temperature: 20–26°C</li>
+                    <li>pH: 6.5–7.8</li>
+                    <li>GH: Moderate</li>
+                    <li>KH: Low to moderate</li>
+                    <li>Stable conditions are essential</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <p class="info-icon">🌿</p>
+
+                <h2>Aquarium Setup</h2>
+
+                <ul>
+                    <li>Mature planted aquarium</li>
+                    <li>Mosses and natural cover</li>
+                    <li>Driftwood or leaf litter</li>
+                    <li>Gentle sponge filtration</li>
+                    <li>Plenty of grazing surfaces</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <p class="info-icon">🍽️</p>
+
+                <h2>Feeding</h2>
+
+                <p>
+                    Red Cherry Shrimp mainly graze on biofilm and algae.
+                    Their diet can be supplemented with quality shrimp food,
+                    vegetables and occasional protein-based foods.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <p class="info-icon">🦐</p>
+
+                <h2>Behaviour</h2>
+
+                <p>
+                    They are peaceful, social and active throughout the day.
+                    Most of their time is spent exploring surfaces and
+                    grazing.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <p class="info-icon">🥚</p>
+
+                <h2>Breeding</h2>
+
+                <p>
+                    Mature females carry eggs beneath the abdomen until they
+                    hatch as fully formed miniature shrimp. Stable water and
+                    good food availability support successful breeding.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <p class="info-icon">🛡️</p>
+
+                <h2>Our Promise</h2>
+
+                <p>
+                    Red Cherry Shrimp will only become available once a
+                    healthy, stable breeding colony has been established.
+                    Animal welfare will always come before availability.
+                </p>
+            </article>
+
+        </section>
+
+        <section class="availability-panel">
+            <div>
+                <p class="section-label">Availability</p>
+
+                <h2>Coming soon</h2>
+
+                <p>
+                    This species is not currently available for purchase.
+                    The page will be updated once the breeding colony is
+                    healthy, established and ready.
+                </p>
+            </div>
+
+            <a
+                class="button secondary-button"
+                href="collection.html"
+            >
+                Back to Collection
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <div>
+            <strong>AquaCoding Studios</strong>
+            <p>Building aquatic worlds with care.</p>
         </div>
 
-    </div>
-</section>
-
-<section class="section">
-
-    <div class="collection-card">
-
-        <div class="collection-image placeholder-image">
-
-            Photo Coming Soon
-
-        </div>
-
-        <div class="collection-content">
-
-            <span class="availability-badge">
-
-                Coming Soon
-
-            </span>
-
-            <h2>Overview</h2>
-
-            <p>
-
-                The Red Cherry Shrimp is one of the most popular freshwater
-                shrimp in the aquarium hobby. Its vibrant colouration,
-                peaceful nature and ease of care make it an excellent
-                species for planted aquariums.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="section">
-
-<h2>Water Parameters</h2>
-
-<div class="collection-grid">
-
-<div class="collection-card">
-
-<div class="collection-content">
-
-<h3>Temperature</h3>
-
-<p>20–26°C</p>
-
-</div>
-
-</div>
-
-<div class="collection-card">
-
-<div class="collection-content">
-
-<h3>pH</h3>
-
-<p>6.5–7.8</p>
-
-</div>
-
-</div>
-
-<div class="collection-card">
-
-<div class="collection-content">
-
-<h3>Difficulty</h3>
-
-<p>Beginner</p>
-
-</div>
-
-</div>
-
-<div class="collection-card">
-
-<div class="collection-content">
-
-<h3>Diet</h3>
-
-<p>Biofilm, algae, shrimp food and vegetables.</p>
-
-</div>
-
-</div>
-
-<div class="collection-card">
-
-<div class="collection-content">
-
-<h3>Behaviour</h3>
-
-<p>Peaceful and ideal for community shrimp aquariums.</p>
-
-</div>
-
-</div>
-
-<div class="collection-card">
-
-<div class="collection-content">
-
-<h3>Availability</h3>
-
-<p>🟦 Coming Soon</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2>Our Promise</h2>
-
-<p>
-
-Red Cherry Shrimp will only become available once healthy,
-stable breeding colonies have been established. Animal welfare
-will always come before availability.
-
-</p>
-
-</section>
-
-</main>
-
-<footer>
-
-<div>
-
-<strong>AquaCoding Studios</strong>
-
-<p>Building aquatic worlds with care.</p>
-
-</div>
-
-<p>
-
-© 2026 AquaCoding Studios · Malta
-
-</p>
-
-</footer>
-
-<script src="script.js?v=8"></script>
-
+        <p>
+            © 2026 AquaCoding Studios · Malta
+        </p>
+    </footer>
+
+    <script src="script.js?v=11"></script>
 </body>
 
 </html>
