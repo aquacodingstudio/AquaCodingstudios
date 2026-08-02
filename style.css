@@ -176,3 +176,70 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+@media (max-width: 650px) {
+    body {
+        background:
+            radial-gradient(circle at top, #12384a 0%, var(--background) 32%);
+    }
+
+    .site-header {
+        padding: 16px 5%;
+        gap: 12px;
+    }
+
+    .brand {
+        font-size: 1rem;
+    }
+
+    nav {
+        gap: 12px;
+        font-size: 0.9rem;
+    }
+
+    main {
+        width: min(92%, 700px);
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 70px 0 55px;
+    }
+
+    h1 {
+        font-size: clamp(2.7rem, 15vw, 4.3rem);
+        line-height: 1;
+        margin: 14px 0 18px;
+    }
+
+    h2 {
+        font-size: clamp(1.9rem, 9vw, 2.7rem);
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
+        padding: 14px 18px;
+    }
+
+    .section {
+        padding: 64px 0;
+    }
+
+    .journal-card {
+        padding: 22px;
+        border-radius: 14px;
+    }
+
+    .standards-grid p {
+        padding: 18px;
+    }
+
+    footer {
+        padding: 28px 5%;
+        font-size: 0.9rem;
+    }
+}
