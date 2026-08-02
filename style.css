@@ -728,3 +728,157 @@ footer p {
         padding: 32px;
     }
 }
+.species-page {
+    width: min(92%, 1180px);
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-flex;
+    margin: 28px 0 20px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.species-hero {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 34px;
+}
+
+.species-hero-image {
+    min-height: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.species-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.species-hero-content h1 {
+    margin-bottom: 12px;
+}
+
+.scientific-name {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 1.15rem;
+}
+
+.species-main-grid {
+    display: grid;
+    gap: 24px;
+    padding: 74px 0;
+    border-top: 1px solid var(--border);
+}
+
+.species-overview,
+.quick-facts-panel,
+.info-card,
+.availability-panel {
+    padding: 24px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.species-overview h2,
+.quick-facts-panel h2,
+.info-card h2,
+.availability-panel h2 {
+    margin-top: 10px;
+}
+
+.species-overview p,
+.info-card p,
+.availability-panel p {
+    color: var(--muted);
+}
+
+.quick-facts-list {
+    margin: 22px 0 0;
+}
+
+.quick-facts-list div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 13px 0;
+    border-top: 1px solid var(--border);
+}
+
+.quick-facts-list div:first-child {
+    border-top: 0;
+}
+
+.quick-facts-list dt {
+    color: var(--muted);
+}
+
+.quick-facts-list dd {
+    margin: 0;
+    color: var(--text);
+    font-weight: 800;
+    text-align: right;
+}
+
+.species-info-grid {
+    display: grid;
+    gap: 18px;
+    padding-bottom: 74px;
+}
+
+.info-icon {
+    margin: 0;
+    font-size: 1.65rem;
+}
+
+.info-card ul {
+    margin: 14px 0 0;
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+.info-card li + li {
+    margin-top: 8px;
+}
+
+.availability-panel {
+    display: grid;
+    gap: 22px;
+    margin-bottom: 86px;
+}
+
+.availability-panel .button {
+    align-self: end;
+}
+
+@media (min-width: 760px) {
+    .species-hero {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: stretch;
+    }
+
+    .species-main-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .species-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .availability-panel {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1050px) {
+    .species-info-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
