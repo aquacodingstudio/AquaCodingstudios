@@ -1,372 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <meta
+        name="description"
+        content="Java Moss product and care information from AquaCoding Studios."
+    >
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#04131d">
 
-<meta name="description"
-content="Learn about Java Moss care, growth and future availability from AquaCoding Studios.">
+    <title>Java Moss | AquaCoding Studios</title>
 
-<meta name="theme-color"
-content="#04131d">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=16">
 
-<title>Java Moss | AquaCoding Studios</title>
+    <style>
+        .product-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+        .product-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
 
-<link rel="stylesheet" href="style.css?v=11">
+        .product-hero {
+            display: grid;
+            gap: 28px;
+            padding: 20px 0 60px;
+        }
 
+        .product-image {
+            min-height: 360px;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(90, 220, 120, 0.34),
+                    transparent 42%
+                ),
+                linear-gradient(145deg, #184c2c, #081d10);
+            box-shadow: var(--shadow);
+            color: var(--text);
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .product-summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-summary h1 {
+            margin-bottom: 10px;
+        }
+
+        .scientific-name {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .stock-badge {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 12px;
+            border: 1px solid rgba(220, 53, 69, 0.35);
+            border-radius: 999px;
+            background: rgba(220, 53, 69, 0.15);
+            color: #ff7b7b;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .purchase-panel {
+            display: grid;
+            gap: 22px;
+            margin-top: 26px;
+            padding: 24px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .purchase-price {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .purchase-row {
+            display: grid;
+            gap: 12px;
+        }
+
+        .quantity-selector {
+            display: grid;
+            grid-template-columns: 48px 70px 48px;
+            gap: 10px;
+        }
+
+        .quantity-selector button,
+        .quantity-selector input,
+        .add-to-cart-button {
+            min-height: 48px;
+            border-radius: 12px;
+        }
+
+        .quantity-selector button,
+        .quantity-selector input {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            text-align: center;
+        }
+
+        .quantity-selector input {
+            width: 100%;
+            font: inherit;
+            font-weight: 800;
+        }
+
+        .add-to-cart-button {
+            width: 100%;
+            border: 0;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--muted);
+            font: inherit;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .quantity-selector button:disabled,
+        .quantity-selector input:disabled,
+        .add-to-cart-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .product-section {
+            padding: 74px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .product-section h2 {
+            margin-top: 0;
+        }
+
+        .product-copy {
+            max-width: 800px;
+            color: var(--muted);
+        }
+
+        .quick-facts {
+            display: grid;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .quick-facts div {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .quick-facts dt {
+            color: var(--muted);
+        }
+
+        .quick-facts dd {
+            margin: 0;
+            color: var(--text);
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            padding: 24px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+        }
+
+        .info-card p,
+        .info-card li {
+            color: var(--muted);
+        }
+
+        .info-card ul {
+            margin: 14px 0 0;
+            padding-left: 20px;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .faq-list details {
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .faq-list summary {
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .faq-list p {
+            color: var(--muted);
+        }
+
+        .related-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 28px;
+        }
+
+        .related-card {
+            display: block;
+            padding: 22px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition:
+                transform 180ms ease,
+                border-color 180ms ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110, 217, 234, 0.45);
+        }
+
+        .related-card p {
+            color: var(--muted);
+        }
+
+        @media (min-width: 760px) {
+            .product-hero {
+                grid-template-columns: 1.15fr 0.85fr;
+                align-items: stretch;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1050px) {
+            .info-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="site-header">
 
-<a class="brand" href="index.html">
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
 
-<span class="brand-mark">AC</span>
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-<span class="brand-text">
-AquaCoding
-<small>Studios</small>
-</span>
-
-</a>
-
-<button
-class="menu-button"
-type="button"
-aria-label="Open navigation menu"
-aria-expanded="false">
-
-<span></span>
-<span></span>
-<span></span>
-
-</button>
-
-<nav class="main-nav">
-
-<a href="index.html">Home</a>
-<a href="collection.html">Collection</a>
-<a href="index.html#standards">Standards</a>
-<a href="index.html#contact">Contact</a>
-
-</nav>
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
 </header>
 
-<main class="species-page">
+<main class="product-page">
 
-<a class="back-link"
-href="collection.html">
+    <a class="product-breadcrumb" href="shop.html">
+        ← Back to Shop
+    </a>
 
-← Back to Collection
+    <section class="product-hero">
 
-</a>
+        <div class="product-image">
+            Java Moss
+        </div>
 
-<section class="species-hero">
+        <div class="product-summary">
 
-<div class="species-hero-image placeholder-image">
+            <p class="eyebrow">
+                Aquarium plant
+            </p>
 
-Photo Coming Soon
+            <h1>
+                Java Moss
+            </h1>
 
-</div>
+            <p class="scientific-name">
+                <em>Taxiphyllum barbieri</em>
+            </p>
 
-<div class="species-hero-content">
+            <span class="stock-badge">
+                Out of stock
+            </span>
 
-<p class="eyebrow">
+            <div class="purchase-panel">
 
-Plant Profile
+                <div>
+                    <p class="section-label">
+                        Price
+                    </p>
 
-</p>
+                    <p class="purchase-price">
+                        Currently unavailable
+                    </p>
+                </div>
 
-<h1>
+                <div class="purchase-row">
 
-Java Moss
+                    <label for="java-moss-quantity">
+                        Quantity
+                    </label>
 
-</h1>
+                    <div class="quantity-selector">
+
+                        <button
+                            type="button"
+                            aria-label="Decrease quantity"
+                            disabled
+                        >
+                            −
+                        </button>
+
+                        <input
+                            id="java-moss-quantity"
+                            type="number"
+                            value="1"
+                            min="1"
+                            readonly
+                            disabled
+                        >
 
-<p class="scientific-name">
+                        <button
+                            type="button"
+                            aria-label="Increase quantity"
+                            disabled
+                        >
+                            +
+                        </button>
 
-<em>Taxiphyllum barbieri</em>
+                    </div>
 
-</p>
+                    <button
+                        class="add-to-cart-button"
+                        type="button"
+                        disabled
+                    >
+                        Out of stock
+                    </button>
 
-<span class="availability-badge">
+                </div>
 
-Coming Soon
+            </div>
 
-</span>
+        </div>
 
-</div>
+    </section>
 
-</section>
+    <section class="product-section">
 
-<section class="shop-section">
+        <p class="section-label">
+            Overview
+        </p>
 
-<div class="shop-panel">
+        <h2>
+            A versatile plant for freshwater aquariums.
+        </h2>
+
+        <div class="product-copy">
+
+            <p>
+                Java Moss is a hardy freshwater aquarium plant valued for its
+                adaptability, natural appearance and usefulness in shrimp and
+                fish aquariums.
+            </p>
+
+            <p>
+                It can be attached to wood, rocks and decorations, where it
+                gradually spreads and creates dense cover.
+            </p>
+
+            <p>
+                Its fine structure provides grazing surfaces, shelter for
+                shrimplets and a natural place for biofilm to develop.
+            </p>
+
+        </div>
+
+        <dl class="quick-facts">
+
+            <div>
+                <dt>Difficulty</dt>
+                <dd>Beginner</dd>
+            </div>
+
+            <div>
+                <dt>Growth rate</dt>
+                <dd>Slow to moderate</dd>
+            </div>
+
+            <div>
+                <dt>Placement</dt>
+                <dd>Hardscape</dd>
+            </div>
 
-<div class="shop-details">
+            <div>
+                <dt>Lighting</dt>
+                <dd>Low to medium</dd>
+            </div>
 
-<p class="section-label">
+            <div>
+                <dt>CO₂</dt>
+                <dd>Optional</dd>
+            </div>
 
-Future Availability
-
-</p>
-
-<h2>
-
-Java Moss
-
-</h2>
-
-<p class="shop-price">
-
-Price not yet available
-
-</p>
-
-<p class="stock-status">
-
-0 currently available
-
-</p>
-
-</div>
-
-<div class="purchase-controls">
-
-<label>
-
-Quantity
-
-</label>
-
-<div class="quantity-selector">
-
-<button
-class="quantity-button"
-disabled>
-
-−
-
-</button>
-
-<input
-class="quantity-input"
-value="1"
-readonly
-disabled>
-
-<button
-class="quantity-button"
-disabled>
-
-+
-
-</button>
-
-</div>
-
-<button
-class="cart-button"
-disabled>
-
-Out of Stock
-
-</button>
-
-<p class="shop-note">
-
-Java Moss will become available once healthy propagation has been established.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="species-main-grid">
-
-<article class="species-overview">
-
-<p class="section-label">
-
-Overview
-
-</p>
-
-<h2>
-
-A timeless aquarium favourite.
-
-</h2>
-
-<p>
-
-Java Moss is one of the most versatile freshwater aquarium plants,
-providing shelter, grazing surfaces and natural beauty in planted aquariums.
-
-</p>
-
-<p>
-
-It grows attached to wood, rocks and decorations, making it especially
-popular in shrimp aquariums.
-
-</p>
-
-<p>
-
-Its dense growth offers protection for baby shrimp while encouraging
-biofilm development.
-
-</p>
-
-</article>
-
-<aside class="quick-facts-panel">
-
-<p class="section-label">
-
-Quick Facts
-
-</p>
-
-<dl class="quick-facts-list">
-
-<div><dt>Difficulty</dt><dd>Beginner</dd></div>
-
-<div><dt>Growth</dt><dd>Slow–Moderate</dd></div>
-
-<div><dt>Placement</dt><dd>Hardscape</dd></div>
-
-<div><dt>Lighting</dt><dd>Low–Medium</dd></div>
-
-<div><dt>CO₂</dt><dd>Optional</dd></div>
-
-<div><dt>Availability</dt><dd>Coming Soon</dd></div>
-
-</dl>
-
-</aside>
-
-</section>
-
-<section class="species-info-grid">
-
-<article class="info-card">
-
-<p class="info-icon">🌿</p>
-
-<h2>Care</h2>
-
-<p>
-
-Java Moss requires very little maintenance and adapts well to many
-aquarium conditions.
-
-</p>
-
-</article>
-
-<article class="info-card">
-
-<p class="info-icon">🦐</p>
-
-<h2>Perfect for Shrimp</h2>
-
-<p>
-
-Provides grazing surfaces, hiding places and shelter for shrimplets.
-
-</p>
-
-</article>
-
-<article class="info-card">
-
-<p class="info-icon">✂️</p>
-
-<h2>Propagation</h2>
-
-<p>
-
-Simply trim healthy growth and attach it elsewhere.
-
-</p>
-
-</article>
-
-</section>
-
-<section class="availability-panel">
-
-<div>
-
-<p class="section-label">
-
-Availability
-
-</p>
-
-<h2>
-
-Coming Soon
-
-</h2>
-
-<p>
-
-Java Moss is not currently available.
-
-</p>
-
-</div>
-
-<a
-class="button secondary-button"
-href="collection.html">
-
-Back to Collection
-
-</a>
-
-</section>
+            <div>
+                <dt>Temperature</dt>
+                <dd>18–28°C</dd>
+            </div>
+
+            <div>
+                <dt>pH</dt>
+                <dd>5.0–8.0</dd>
+            </div>
+
+        </dl>
+
+    </section>
+
+    <section class="product-section">
+
+        <p class="section-label">
+            Care
+        </p>
+
+        <h2>
+            What it needs.
+        </h2>
+
+        <div class="info-grid">
+
+            <article class="info-card">
+                <h3>Lighting</h3>
+
+                <p>
+                    Java Moss grows under low to medium lighting. Strong light
+                    is not required and may encourage algae if nutrients are
+                    unbalanced.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>Placement</h3>
+
+                <p>
+                    Attach it loosely to driftwood, rock or mesh using thread,
+                    fishing line or a suitable aquarium-safe method.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>Water Conditions</h3>
+
+                <ul>
+                    <li>Temperature: 18–28°C</li>
+                    <li>pH: 5.0–8.0</li>
+                    <li>Stable freshwater conditions</li>
+                    <li>Gentle to moderate flow</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <h3>Maintenance</h3>
+
+                <p>
+                    Trim excess growth to maintain shape and remove trapped
+                    debris. Gentle cleaning can help prevent detritus buildup.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>Propagation</h3>
+
+                <p>
+                    Cut healthy sections and attach them elsewhere. Even small
+                    pieces can establish new growth under suitable conditions.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>Shrimp Benefits</h3>
+
+                <p>
+                    Java Moss offers grazing surfaces, hiding places and cover
+                    for baby shrimp while supporting biofilm growth.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="product-section">
+
+        <p class="section-label">
+            Frequently asked questions
+        </p>
+
+        <h2>
+            Common questions.
+        </h2>
+
+        <div class="faq-list">
+
+            <details>
+                <summary>Does Java Moss need CO₂?</summary>
+                <p>
+                    No. Added CO₂ can improve growth, but Java Moss can grow
+                    successfully without it.
+                </p>
+            </details>
+
+            <details>
+                <summary>Can Java Moss be planted in substrate?</summary>
+                <p>
+                    It is better attached to hardscape than buried. Burying it
+                    may trap debris and cause parts of the moss to deteriorate.
+                </p>
+            </details>
+
+            <details>
+                <summary>Why is my Java Moss turning brown?</summary>
+                <p>
+                    Browning may be caused by debris buildup, poor water
+                    quality, sudden environmental changes or dying older
+                    growth.
+                </p>
+            </details>
+
+            <details>
+                <summary>Is Java Moss good for shrimp?</summary>
+                <p>
+                    Yes. It provides cover, grazing surfaces and protection for
+                    shrimplets.
+                </p>
+            </details>
+
+        </div>
+
+    </section>
+
+    <section class="product-section">
+
+        <p class="section-label">
+            Related products
+        </p>
+
+        <h2>
+            You may also like.
+        </h2>
+
+        <div class="related-grid">
+
+            <a class="related-card" href="red-cherry-shrimp.html">
+                <h3>Red Cherry Shrimp</h3>
+                <p>Freshwater shrimp that benefit from moss cover.</p>
+            </a>
+
+            <a class="related-card" href="blue-dream-shrimp.html">
+                <h3>Blue Dream Shrimp</h3>
+                <p>Deep-blue shrimp for planted aquariums.</p>
+            </a>
+
+            <a class="related-card" href="salvinia.html">
+                <h3>Salvinia</h3>
+                <p>A floating plant for shade and surface cover.</p>
+            </a>
+
+        </div>
+
+    </section>
 
 </main>
 
 <footer>
 
-<div>
+    <div>
+        <strong>AquaCoding Studios</strong>
 
-<strong>AquaCoding Studios</strong>
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+    </div>
 
-<p>
-
-Building aquatic worlds with care.
-
-</p>
-
-</div>
-
-<p>
-
-© 2026 AquaCoding Studios · Malta
-
-</p>
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
 
 </footer>
 
-<script src="script.js?v=11"></script>
+<script src="script.js?v=16"></script>
 
 </body>
-
 </html>
