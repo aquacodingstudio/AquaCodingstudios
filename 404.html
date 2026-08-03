@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Page not found | AquaCoding Studios"
+    >
+
+    <meta name="theme-color" content="#04131d">
+
+    <title>Page Not Found | AquaCoding Studios</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=17">
+
+    <style>
+        .error-page {
+            width: min(92%, 960px);
+            min-height: calc(100vh - 190px);
+            margin: 0 auto;
+            display: grid;
+            place-items: center;
+            padding: 70px 0;
+        }
+
+        .error-card {
+            width: 100%;
+            padding: 42px 28px;
+            text-align: center;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(110, 217, 234, 0.10),
+                    rgba(255, 255, 255, 0.03)
+                );
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .error-code {
+            margin: 0;
+            color: var(--accent);
+            font-size: clamp(4.5rem, 18vw, 9rem);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+        }
+
+        .error-card h1 {
+            margin: 24px 0 14px;
+        }
+
+        .error-copy {
+            max-width: 620px;
+            margin: 0 auto;
+            color: var(--muted);
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .error-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        .error-link {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition:
+                transform 180ms ease,
+                border-color 180ms ease;
+        }
+
+        .error-link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(110, 217, 234, 0.45);
+        }
+
+        .error-link strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .error-link span {
+            color: var(--muted);
+        }
+
+        @media (min-width: 760px) {
+            .error-card {
+                padding: 58px 44px;
+            }
+
+            .error-links {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+<main class="error-page">
+
+    <section class="error-card">
+
+        <p class="error-code">
+            404
+        </p>
+
+        <p class="eyebrow">
+            Page not found
+        </p>
+
+        <h1>
+            Looks like this page
+            <span>swam away.</span>
+        </h1>
+
+        <p class="error-copy">
+            The page may have been moved, renamed or removed.
+            Use one of the links below to get back on track.
+        </p>
+
+        <div class="error-actions">
+
+            <a class="button primary-button" href="index.html">
+                Return Home
+            </a>
+
+            <a class="button secondary-button" href="shop.html">
+                Browse Shop
+            </a>
+
+        </div>
+
+        <div class="error-links">
+
+            <a class="error-link" href="shop.html">
+                <strong>Shop</strong>
+                <span>Browse aquatic livestock and plants.</span>
+            </a>
+
+            <a class="error-link" href="guides.html">
+                <strong>Learn</strong>
+                <span>Read practical aquarium care guides.</span>
+            </a>
+
+            <a class="error-link" href="contact.html">
+                <strong>Contact</strong>
+                <span>Ask us a question.</span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+        <strong>AquaCoding Studios</strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=17"></script>
+
+</body>
+</html>
