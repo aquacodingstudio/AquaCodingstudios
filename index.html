@@ -2,45 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="AquaCoding Studios documents freshwater shrimp, planted aquariums, responsible fishkeeping and aquatic technology."
+        content="AquaCoding Studios is an aquatic pet shop and educational platform in Malta, focused on aquatic livestock, plants, responsible care and future aquarium supplies."
     >
 
     <meta property="og:title" content="AquaCoding Studios">
     <meta
         property="og:description"
-        content="Freshwater shrimp, planted aquariums, responsible fishkeeping and technology."
+        content="Aquatic livestock, plants, care guides and aquarium supplies in Malta."
     >
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aquacodingstudios.com">
 
     <meta name="theme-color" content="#04131d">
 
-    <title>AquaCoding Studios</title>
+    <title>AquaCoding Studios | Aquatic Pet Shop Malta</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 
 <body>
 
     <header class="site-header">
-       <a class="brand" href="index.html">
-
-    <img
-        src="logo.png"
-        alt="AquaCoding Studios"
-        class="site-logo"
-    >
-
-</a>
+        <a class="brand" href="index.html" aria-label="AquaCoding Studios homepage">
+            <img
+                src="logo.png"
+                alt="AquaCoding Studios"
+                class="site-logo"
+            >
+        </a>
 
         <button
             class="menu-button"
@@ -54,147 +48,190 @@
         </button>
 
         <nav class="main-nav" aria-label="Main navigation">
+            <a href="#shop">Shop</a>
+            <a href="collection.html">Species Library</a>
+            <a href="#why-us">Why Us</a>
             <a href="#about">About</a>
-            <a href="#journey">Journey</a>
-            <a
-<a href="collection.html">Collection</a>
- <a href="index.html#standards">Standards</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main id="home">
 
-        <section class="hero">
-            <div class="hero-glow"></div>
-
-            <div class="hero-content">
-                <p class="eyebrow">
-                    Malta · Founded 2026
-                </p>
+        <section class="shop-hero">
+            <div class="shop-hero-content">
+                <p class="eyebrow">Aquatic pet shop · Malta</p>
 
                 <h1>
-                    Building better
-                    <span>aquatic worlds.</span>
+                    Aquatic life,
+                    <span>carefully chosen.</span>
                 </h1>
 
                 <p class="hero-text">
-                    AquaCoding Studios is a growing project focused on
-                    freshwater shrimp, planted aquariums, responsible
-                    fishkeeping and technology.
+                    AquaCoding Studios is growing into a trusted home for
+                    aquatic livestock, plants, aquarium supplies and practical
+                    care information.
                 </p>
 
                 <div class="hero-actions">
-                    <a class="button primary-button" href="#journey">
-                        Follow the journey
+                    <a class="button primary-button" href="#shop">
+                        Browse the shop
                     </a>
 
-                    <a class="button secondary-button" href="#about">
-                        Learn more
+                    <a class="button secondary-button" href="collection.html">
+                        Explore species
                     </a>
+                </div>
+
+                <div class="hero-status">
+                    <span class="status-dot"></span>
+                    Shop currently in development
                 </div>
             </div>
 
-            <div class="hero-card">
-                <p class="card-label">Current chapter</p>
-
-                <h2>The first shrimp aquarium</h2>
-
-                <p>
-                    Learning water chemistry, building a planted ecosystem
-                    and documenting each step honestly.
-                </p>
-
-                <div class="status-row">
-                    <span class="status-dot"></span>
-                    Website and aquariums in development
-                </div>
+            <div class="shop-hero-visual">
+                <img
+                    src="logo.png"
+                    alt="AquaCoding Studios shrimp logo"
+                    class="hero-logo"
+                >
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="shop" class="section">
             <div class="section-heading">
-                <p class="section-label">About</p>
+                <p class="section-label">Shop categories</p>
 
                 <h2>
-                    This project started with curiosity.
+                    Everything aquatic, in one place.
                 </h2>
-            </div>
-
-            <div class="two-column">
-                <p class="large-copy">
-                    AquaCoding Studios began with one planted aquarium,
-                    plenty of questions and a belief that aquatic animals
-                    deserve thoughtful care.
-                </p>
 
                 <p class="muted-copy">
-                    The goal is not to pretend everything is already
-                    perfect. This website documents the learning process,
-                    the mistakes, the improvements and the ecosystems being
-                    built one aquarium at a time.
+                    Stock is still being prepared. Each category will become
+                    available only when suitable care, sourcing and welfare
+                    standards are in place.
                 </p>
+            </div>
+
+            <div class="shop-category-grid">
+
+                <a class="shop-category-card" href="collection.html#shrimp">
+                    <span class="category-icon">🦐</span>
+                    <h3>Shrimp & invertebrates</h3>
+                    <p>
+                        Freshwater shrimp, snails and other carefully selected
+                        aquatic invertebrates.
+                    </p>
+                    <span class="category-link">Explore category →</span>
+                </a>
+
+                <a class="shop-category-card" href="collection.html#fish">
+                    <span class="category-icon">🐠</span>
+                    <h3>Fish</h3>
+                    <p>
+                        Welfare-focused aquatic species with clear care
+                        information and suitable habitat guidance.
+                    </p>
+                    <span class="category-link">Explore category →</span>
+                </a>
+
+                <a class="shop-category-card" href="collection.html#plants">
+                    <span class="category-icon">🌿</span>
+                    <h3>Aquarium plants</h3>
+                    <p>
+                        Plants for cover, grazing, aquascaping and healthier
+                        aquatic environments.
+                    </p>
+                    <span class="category-link">Explore category →</span>
+                </a>
+
+                <article class="shop-category-card unavailable-card">
+                    <span class="category-icon">⚙️</span>
+                    <h3>Equipment & supplies</h3>
+                    <p>
+                        Filters, care products, aquarium essentials and useful
+                        accessories are planned for a later stage.
+                    </p>
+                    <span class="availability-badge">Coming later</span>
+                </article>
+
             </div>
         </section>
 
-        <section id="journey" class="section">
+        <section class="section featured-section">
             <div class="section-heading">
-                <p class="section-label">Journey</p>
+                <p class="section-label">Featured collection</p>
 
                 <h2>
-                    The beginning of AquaCoding Studios.
+                    Species profiles and future stock.
                 </h2>
             </div>
 
-            <div class="timeline">
+            <div class="featured-grid">
 
-                <article class="timeline-item">
-                    <time datetime="2026-07-31">
-                        31 July 2026
-                    </time>
+                <a class="featured-card" href="red-cherry-shrimp.html">
+                    <div class="featured-image red-feature">
+                        <span>Photo coming soon</span>
+                    </div>
 
-                    <h3>The domain was registered</h3>
+                    <div class="featured-content">
+                        <span class="availability-badge">Coming soon</span>
+                        <h3>Red Cherry Shrimp</h3>
+                        <p>
+                            Beginner-friendly freshwater shrimp for mature,
+                            planted aquariums.
+                        </p>
+                        <span class="category-link">View profile →</span>
+                    </div>
+                </a>
 
-                    <p>
-                        AquaCoding Studios officially found its place online.
-                    </p>
-                </article>
+                <a class="featured-card" href="blue-dream-shrimp.html">
+                    <div class="featured-image blue-feature">
+                        <span>Photo coming soon</span>
+                    </div>
 
-                <article class="timeline-item">
-                    <time datetime="2026-08-01">
-                        1 August 2026
-                    </time>
+                    <div class="featured-content">
+                        <span class="availability-badge">Coming soon</span>
+                        <h3>Blue Dream Shrimp</h3>
+                        <p>
+                            A deep-blue Neocaridina line planned for a
+                            dedicated breeding aquarium.
+                        </p>
+                        <span class="category-link">View profile →</span>
+                    </div>
+                </a>
 
-                    <h3>The first website went live</h3>
+                <a class="featured-card" href="betta-splendens.html">
+                    <div class="featured-image betta-feature">
+                        <span>Photo coming soon</span>
+                    </div>
 
-                    <p>
-                        GitHub and Cloudflare Pages were connected and the
-                        first public version was deployed.
-                    </p>
-                </article>
+                    <div class="featured-content">
+                        <span class="availability-badge">Future project</span>
+                        <h3>Betta splendens</h3>
+                        <p>
+                            A welfare-focused fish project centred on proper,
+                            permanent habitats.
+                        </p>
+                        <span class="category-link">View profile →</span>
+                    </div>
+                </a>
 
-                <article class="timeline-item">
-                    <time datetime="2026-08-02">
-                        2 August 2026
-                    </time>
+            </div>
 
-                    <h3>Version 0.2 begins</h3>
-
-                    <p>
-                        The website is being rebuilt with a cleaner,
-                        mobile-first design.
-                    </p>
-                </article>
-
+            <div class="section-action">
+                <a class="button secondary-button" href="collection.html">
+                    View the full collection
+                </a>
             </div>
         </section>
 
-        <section id="standards" class="section">
+        <section id="why-us" class="section">
             <div class="section-heading">
-                <p class="section-label">Our standards</p>
+                <p class="section-label">Why AquaCoding Studios</p>
 
                 <h2>
-                    Animal welfare comes before appearance or sales.
+                    Care first. Sales second.
                 </h2>
             </div>
 
@@ -202,38 +239,77 @@
 
                 <article class="standard-card">
                     <span>01</span>
-                    <h3>Healthy animals first</h3>
+                    <h3>Welfare-led decisions</h3>
                     <p>
-                        Livestock should only be introduced to stable,
-                        suitable and fully prepared aquariums.
+                        Livestock is only considered when suitable habitats,
+                        care procedures and long-term support are ready.
                     </p>
                 </article>
 
                 <article class="standard-card">
                     <span>02</span>
-                    <h3>Education before selling</h3>
+                    <h3>Clear care information</h3>
                     <p>
-                        Responsible advice matters more than making a quick
-                        sale.
+                        Species profiles explain the fundamentals before
+                        visitors decide whether an animal is right for them.
                     </p>
                 </article>
 
                 <article class="standard-card">
                     <span>03</span>
-                    <h3>Honest progress</h3>
+                    <h3>Healthy future stock</h3>
                     <p>
-                        Successes and mistakes are both worth documenting.
+                        Availability will depend on stable breeding colonies,
+                        responsible sourcing and careful observation.
                     </p>
                 </article>
 
                 <article class="standard-card">
                     <span>04</span>
-                    <h3>Continuous learning</h3>
+                    <h3>Built locally in Malta</h3>
                     <p>
-                        Every aquarium teaches something new.
+                        AquaCoding Studios is being developed with Malta's
+                        aquatic community and local conditions in mind.
                     </p>
                 </article>
 
+            </div>
+        </section>
+
+        <section id="about" class="section about-shop-section">
+            <div class="section-heading">
+                <p class="section-label">About</p>
+
+                <h2>
+                    Starting small, building responsibly.
+                </h2>
+            </div>
+
+            <div class="two-column">
+                <p class="large-copy">
+                    AquaCoding Studios began with a planted aquarium, a love
+                    for aquatic life and a determination to give animals
+                    better care.
+                </p>
+
+                <div class="muted-copy">
+                    <p>
+                        The business is still at an early stage. The current
+                        website documents planned livestock, future products
+                        and care information while the necessary aquariums and
+                        systems are established.
+                    </p>
+
+                    <p>
+                        The long-term goal is to serve freshwater, marine and
+                        other aquatic interests rather than focus on only one
+                        type of animal.
+                    </p>
+
+                    <a class="text-link" href="index.html#journey">
+                        Read the journey →
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -241,12 +317,12 @@
             <p class="section-label">Contact</p>
 
             <h2>
-                AquaCoding Studios is still growing.
+                Questions about AquaCoding Studios?
             </h2>
 
             <p>
-                New aquariums, care guides and project updates are coming
-                soon.
+                The shop is still being developed, but enquiries and feedback
+                are welcome.
             </p>
 
             <a
@@ -262,7 +338,7 @@
     <footer>
         <div>
             <strong>AquaCoding Studios</strong>
-            <p>Building aquatic worlds with care.</p>
+            <p>Aquatic life, care and education in Malta.</p>
         </div>
 
         <p>
@@ -270,6 +346,6 @@
         </p>
     </footer>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=12"></script>
 </body>
 </html>
