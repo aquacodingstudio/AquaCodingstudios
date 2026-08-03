@@ -992,3 +992,16 @@ footer p {
         radial-gradient(circle at top right, rgba(76, 210, 120, 0.3), transparent 38%),
         linear-gradient(145deg, #17472a, #071c10);
 }
+.product-status {
+    margin: 8px 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.product-price {
+    margin: 8px 0;
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 700;
+}
