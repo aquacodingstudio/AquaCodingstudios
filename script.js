@@ -44,3 +44,41 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
     revealObserver.observe(element);
 });
+const searchInput = document.querySelector(".shop-search-input");
+const filterButtons = document.querySelectorAll(".filter-button");
+const products = document.querySelectorAll(".shop-product");
+
+let activeFilter = "all";
+
+function updateProducts() {
+    const searchTerm =
+        searchInput?.value.trim().toLowerCase() ?? "";
+
+    products.forEach((product) => {
+        const category = product.dataset.category ?? "";
+        const name = product.dataset.name?.toLowerCase() ?? "";
+
+        const matchesCategory =
+            activeFilter === "all" || category === activeFilter;
+
+        const matchesSearch =
+            searchTerm === "" || name.includes(searchTerm);
+
+        product.hidden = !(matchesCategory && matchesSearch);
+    });
+}
+
+filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        updateProducts();
+    });
+});
+
+searchInput?.addEventListener("input", updateProducts);
