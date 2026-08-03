@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
@@ -20,22 +14,261 @@
     <title>AquaCoding Studios | Aquatic Retailer Malta</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=17">
 
+    <style>
+        .home-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .home-hero {
+            position: relative;
+            display: grid;
+            gap: 28px;
+            padding: 72px 0 76px;
+            overflow: hidden;
+        }
+
+        .home-hero::after {
+            content: "";
+            position: absolute;
+            top: 40px;
+            right: -80px;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(110, 217, 234, 0.15);
+            filter: blur(24px);
+            pointer-events: none;
+        }
+
+        .home-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+        }
+
+        .home-hero h1 {
+            margin-bottom: 20px;
+        }
+
+        .home-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .home-strip {
+            display: grid;
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .home-strip-item {
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .home-strip-item strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .home-strip-item span {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .home-section {
+            padding: 84px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .home-section-heading {
+            max-width: 760px;
+            margin-bottom: 30px;
+        }
+
+        .featured-grid,
+        .guide-grid,
+        .trust-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .featured-card,
+        .guide-card,
+        .trust-card,
+        .about-panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .featured-card {
+            overflow: hidden;
+            transition:
+                transform 180ms ease,
+                border-color 180ms ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(110, 217, 234, 0.45);
+        }
+
+        .featured-image {
+            min-height: 220px;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            color: var(--text);
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .featured-image.red {
+            background:
+                radial-gradient(circle at top right, rgba(255, 85, 85, 0.34), transparent 42%),
+                linear-gradient(145deg, #5b1820, #22090d);
+        }
+
+        .featured-image.blue {
+            background:
+                radial-gradient(circle at top right, rgba(80, 170, 255, 0.34), transparent 42%),
+                linear-gradient(145deg, #153b68, #08192d);
+        }
+
+        .featured-image.green {
+            background:
+                radial-gradient(circle at top right, rgba(90, 220, 120, 0.34), transparent 42%),
+                linear-gradient(145deg, #184c2c, #081d10);
+        }
+
+        .featured-content,
+        .guide-card,
+        .trust-card,
+        .about-panel {
+            padding: 24px;
+        }
+
+        .featured-content p,
+        .guide-card p,
+        .trust-card p,
+        .about-panel p {
+            color: var(--muted);
+        }
+
+        .featured-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: center;
+            margin-top: 18px;
+        }
+
+        .home-link {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .guide-card,
+        .trust-card {
+            transition:
+                transform 180ms ease,
+                border-color 180ms ease;
+        }
+
+        .guide-card:hover,
+        .trust-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110, 217, 234, 0.4);
+        }
+
+        .trust-number {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-panel {
+            display: grid;
+            gap: 20px;
+            align-items: center;
+            padding: 30px;
+            background: linear-gradient(
+                135deg,
+                rgba(110, 217, 234, 0.12),
+                rgba(255, 255, 255, 0.03)
+            );
+            border: 1px solid var(--border);
+            border-radius: 22px;
+        }
+
+        .section-action {
+            margin-top: 30px;
+        }
+
+        @media (min-width: 760px) {
+            .home-hero {
+                padding: 92px 0 96px;
+            }
+
+            .home-strip {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .featured-grid,
+            .guide-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+
+            .contact-panel {
+                grid-template-columns: 1fr auto;
+            }
+        }
+
+        @media (min-width: 1050px) {
+            .trust-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="site-header">
 
-    <a class="brand" href="index.html">
-
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
         <img
             src="logo.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
-
     </a>
 
     <button
@@ -44,452 +277,414 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
-
         <span></span>
         <span></span>
         <span></span>
-
     </button>
 
-    <nav class="main-nav">
-
+    <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="guides.html">Learn</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-
     </nav>
 
 </header>
 
-<main>
+<main class="home-page">
 
-<section class="hero">
+    <section class="home-hero">
 
-    <div class="hero-glow"></div>
+        <div class="home-hero-content">
 
-    <div class="hero-content">
+            <p class="eyebrow">
+                Aquatic retailer · Malta
+            </p>
 
-        <p class="eyebrow">
+            <h1>
+                Aquatic life,
+                <span>carefully chosen.</span>
+            </h1>
 
-            AQUATIC RETAILER • MALTA
+            <p class="hero-text">
+                AquaCoding Studios brings together aquatic livestock,
+                aquarium plants, practical supplies and clear care information
+                in one easy-to-use place.
+            </p>
 
-        </p>
+            <div class="home-hero-actions">
 
-        <h1>
+                <a class="button primary-button" href="shop.html">
+                    Browse Shop
+                </a>
 
-            Everything your aquarium
-            <span>needs.</span>
+                <a class="button secondary-button" href="guides.html">
+                    Explore Care Guides
+                </a>
 
-        </h1>
+            </div>
 
-        <p class="hero-text">
+            <div class="home-strip">
 
-            AquaCoding Studios is your destination for aquatic livestock,
-            aquarium plants, supplies and practical care guides.
-            Whether you're just starting out or already experienced,
-            we're here to help you build healthier aquatic environments.
+                <div class="home-strip-item">
+                    <strong>Livestock</strong>
+                    <span>Shrimp, fish and aquatic invertebrates.</span>
+                </div>
 
-        </p>
+                <div class="home-strip-item">
+                    <strong>Plants</strong>
+                    <span>Useful species for healthy aquatic environments.</span>
+                </div>
 
-        <div class="hero-actions">
+                <div class="home-strip-item">
+                    <strong>Guidance</strong>
+                    <span>Simple care information for everyday fishkeeping.</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="home-section">
+
+        <div class="home-section-heading">
+
+            <p class="section-label">
+                Featured products
+            </p>
+
+            <h2>
+                Start with popular choices.
+            </h2>
+
+            <p class="muted-copy">
+                Explore selected livestock and plants, each with clear care
+                details and current stock information.
+            </p>
+
+        </div>
+
+        <div class="featured-grid">
+
+            <a class="featured-card" href="red-cherry-shrimp.html">
+
+                <div class="featured-image red">
+                    Red Cherry Shrimp
+                </div>
+
+                <div class="featured-content">
+
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
+
+                    <h3>Red Cherry Shrimp</h3>
+
+                    <p>
+                        Hardy freshwater shrimp suited to mature planted
+                        aquariums.
+                    </p>
+
+                    <div class="featured-meta">
+                        <span class="product-status">
+                            Currently unavailable
+                        </span>
+
+                        <span class="home-link">
+                            View Product →
+                        </span>
+                    </div>
+
+                </div>
+
+            </a>
+
+            <a class="featured-card" href="blue-dream-shrimp.html">
+
+                <div class="featured-image blue">
+                    Blue Dream Shrimp
+                </div>
+
+                <div class="featured-content">
+
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
+
+                    <h3>Blue Dream Shrimp</h3>
+
+                    <p>
+                        A deep-blue Neocaridina variety with peaceful
+                        behaviour.
+                    </p>
+
+                    <div class="featured-meta">
+                        <span class="product-status">
+                            Currently unavailable
+                        </span>
+
+                        <span class="home-link">
+                            View Product →
+                        </span>
+                    </div>
+
+                </div>
+
+            </a>
+
+            <a class="featured-card" href="java-moss.html">
+
+                <div class="featured-image green">
+                    Java Moss
+                </div>
+
+                <div class="featured-content">
+
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
+
+                    <h3>Java Moss</h3>
+
+                    <p>
+                        A versatile aquarium plant for cover, grazing and
+                        natural hardscape.
+                    </p>
+
+                    <div class="featured-meta">
+                        <span class="product-status">
+                            Currently unavailable
+                        </span>
+
+                        <span class="home-link">
+                            View Product →
+                        </span>
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+        <div class="section-action">
+            <a class="button secondary-button" href="shop.html">
+                View All Products
+            </a>
+        </div>
+
+    </section>
+
+    <section class="home-section">
+
+        <div class="home-section-heading">
+
+            <p class="section-label">
+                Learn
+            </p>
+
+            <h2>
+                Straightforward care information.
+            </h2>
+
+            <p class="muted-copy">
+                Clear guides help customers understand what aquatic animals
+                and plants need before making a purchase.
+            </p>
+
+        </div>
+
+        <div class="guide-grid">
+
+            <a class="guide-card" href="cycling-an-aquarium.html">
+                <h3>Cycling an Aquarium</h3>
+                <p>
+                    Understand the nitrogen cycle and prepare an aquarium
+                    safely before adding livestock.
+                </p>
+                <span class="home-link">Read Guide →</span>
+            </a>
+
+            <a class="guide-card" href="neocaridina-care-guide.html">
+                <h3>Neocaridina Care Guide</h3>
+                <p>
+                    Learn about setup, feeding and water stability for
+                    freshwater shrimp.
+                </p>
+                <span class="home-link">Read Guide →</span>
+            </a>
+
+            <a class="guide-card" href="betta-care-guide.html">
+                <h3>Betta Care Guide</h3>
+                <p>
+                    Explore suitable habitats, heating, filtration and
+                    everyday care.
+                </p>
+                <span class="home-link">Read Guide →</span>
+            </a>
+
+        </div>
+
+        <div class="section-action">
+            <a class="button secondary-button" href="guides.html">
+                View All Guides
+            </a>
+        </div>
+
+    </section>
+
+    <section class="home-section">
+
+        <div class="home-section-heading">
+
+            <p class="section-label">
+                Why AquaCoding Studios
+            </p>
+
+            <h2>
+                Built around trust and clarity.
+            </h2>
+
+        </div>
+
+        <div class="trust-grid">
+
+            <article class="trust-card">
+                <span class="trust-number">01</span>
+                <h3>Healthy Livestock</h3>
+                <p>
+                    Animal care and long-term welfare always come before sales.
+                </p>
+            </article>
+
+            <article class="trust-card">
+                <span class="trust-number">02</span>
+                <h3>Clear Information</h3>
+                <p>
+                    Product pages explain care needs, water parameters and
+                    compatibility.
+                </p>
+            </article>
+
+            <article class="trust-card">
+                <span class="trust-number">03</span>
+                <h3>Simple Shopping</h3>
+                <p>
+                    Straightforward navigation helps customers find products
+                    without confusion.
+                </p>
+            </article>
+
+            <article class="trust-card">
+                <span class="trust-number">04</span>
+                <h3>Based in Malta</h3>
+                <p>
+                    AquaCoding Studios is being built with Malta's aquatic
+                    community in mind.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="home-section">
+
+        <div class="home-section-heading">
+
+            <p class="section-label">
+                About us
+            </p>
+
+            <h2>
+                Built by hobbyists, for hobbyists.
+            </h2>
+
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-panel">
+
+                <p class="large-copy">
+                    AquaCoding Studios was created to make aquatic keeping
+                    easier, more responsible and more enjoyable.
+                </p>
+
+            </div>
+
+            <div class="about-panel">
+
+                <p>
+                    From aquatic livestock and plants to practical supplies
+                    and educational resources, the goal is to help customers
+                    make informed choices and build healthier aquatic
+                    environments.
+                </p>
+
+                <a class="home-link" href="about.html">
+                    Learn More About Us →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="home-section">
+
+        <div class="contact-panel">
+
+            <div>
+
+                <p class="section-label">
+                    Contact
+                </p>
+
+                <h2>
+                    Have a question?
+                </h2>
+
+                <p>
+                    Get in touch about products, livestock or aquarium care.
+                </p>
+
+            </div>
 
             <a
                 class="button primary-button"
-                href="shop.html"
+                href="contact.html"
             >
-
-                Browse Shop
-
-            </a>
-
-            <a
-                class="button secondary-button"
-                href="care-guides.html"
-            >
-
-                Care Guides
-
+                Contact Us
             </a>
 
         </div>
 
-    </div>
-
-</section>
-<section class="section">
-
-    <div class="section-heading">
-
-        <p class="section-label">
-
-            FEATURED PRODUCTS
-
-        </p>
-
-        <h2>
-
-            Browse our collection.
-
-        </h2>
-
-        <p class="muted-copy">
-
-            Explore livestock, plants and aquarium essentials.
-            Product pages include care information, water parameters,
-            feeding advice and live stock availability.
-
-        </p>
-
-    </div>
-
-    <div class="collection-grid">
-
-        <a class="collection-card card-link" href="red-cherry-shrimp.html">
-
-            <div class="collection-image placeholder-image">
-
-                <span>Photo Coming Soon</span>
-
-            </div>
-
-            <div class="collection-content">
-
-                <span class="availability-badge">
-
-                    Out of Stock
-
-                </span>
-
-                <h3>
-
-                    Red Cherry Shrimp
-
-                </h3>
-
-                <p>
-
-                    Hardy freshwater shrimp suitable for planted aquariums.
-
-                </p>
-
-            </div>
-
-        </a>
-
-        <a class="collection-card card-link" href="blue-dream-shrimp.html">
-
-            <div class="collection-image placeholder-image">
-
-                <span>Photo Coming Soon</span>
-
-            </div>
-
-            <div class="collection-content">
-
-                <span class="availability-badge">
-
-                    Out of Stock
-
-                </span>
-
-                <h3>
-
-                    Blue Dream Shrimp
-
-                </h3>
-
-                <p>
-
-                    Deep blue Neocaridina with peaceful behaviour.
-
-                </p>
-
-            </div>
-
-        </a>
-
-        <a class="collection-card card-link" href="betta-splendens.html">
-
-            <div class="collection-image placeholder-image">
-
-                <span>Photo Coming Soon</span>
-
-            </div>
-
-            <div class="collection-content">
-
-                <span class="availability-badge">
-
-                    Out of Stock
-
-                </span>
-
-                <h3>
-
-                    Betta splendens
-
-                </h3>
-
-                <p>
-
-                    Beautiful freshwater fish with dedicated care guides.
-
-                </p>
-
-            </div>
-
-        </a>
-
-    </div>
-
-    <div
-        style="
-            text-align:center;
-            margin-top:40px;
-        "
-    >
-
-        <a
-            class="button secondary-button"
-            href="shop.html"
-        >
-
-            View All Products
-
-        </a>
-
-    </div>
-
-</section>
-<section class="section">
-
-    <div class="section-heading">
-
-        <p class="section-label">
-
-            WHY AQUACODING STUDIOS
-
-        </p>
-
-        <h2>
-
-            Built around quality.
-
-        </h2>
-
-    </div>
-
-    <div class="standards-grid">
-
-        <article class="standard-card">
-
-            <span>01</span>
-
-            <h3>
-
-                Healthy Livestock
-
-            </h3>
-
-            <p>
-
-                Every animal is cared for with long-term health and welfare in mind.
-
-            </p>
-
-        </article>
-
-        <article class="standard-card">
-
-            <span>02</span>
-
-            <h3>
-
-                Trusted Products
-
-            </h3>
-
-            <p>
-
-                Equipment and supplies are selected for reliability and practicality.
-
-            </p>
-
-        </article>
-
-        <article class="standard-card">
-
-            <span>03</span>
-
-            <h3>
-
-                Practical Advice
-
-            </h3>
-
-            <p>
-
-                Clear care guides help beginners and experienced hobbyists alike.
-
-            </p>
-
-        </article>
-
-        <article class="standard-card">
-
-            <span>04</span>
-
-            <h3>
-
-                Customer First
-
-            </h3>
-
-            <p>
-
-                Easy navigation, honest information and support whenever you need it.
-
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-<section class="section">
-
-    <div class="section-heading">
-
-        <p class="section-label">
-
-            ABOUT US
-
-        </p>
-
-        <h2>
-
-            Passion for aquatic life.
-
-        </h2>
-
-    </div>
-
-    <div class="two-column">
-
-        <p class="large-copy">
-
-            AquaCoding Studios was founded with one goal:
-            to make keeping aquatic life easier, more enjoyable
-            and centred around responsible animal care.
-
-        </p>
-
-        <div class="muted-copy">
-
-            <p>
-
-                From freshwater shrimp and aquarium plants to fish,
-                supplies and educational resources, our aim is to
-                create a place where hobbyists can shop with confidence.
-
-            </p>
-
-            <p>
-
-                Whether you're setting up your first aquarium or
-                expanding an established collection, we're here to
-                support your journey with quality products and clear,
-                practical advice.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-<section
-    id="contact"
-    class="section contact-section"
->
-
-    <p class="section-label">
-
-        CONTACT
-
-    </p>
-
-    <h2>
-
-        We'd love to hear from you.
-
-    </h2>
-
-    <p>
-
-        Have a question about livestock, products or aquarium care?
-        Feel free to get in touch and we'll be happy to help.
-
-    </p>
-
-    <div class="hero-actions">
-
-        <a
-            class="button primary-button"
-            href="mailto:aquacodingstudio@gmail.com"
-        >
-
-            Email Us
-
-        </a>
-
-        <a
-            class="button secondary-button"
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noopener"
-        >
-
-            Facebook
-
-        </a>
-
-    </div>
-
-</section>
+    </section>
 
 </main>
 
 <footer>
 
     <div>
-
-        <strong>
-
-            AquaCoding Studios
-
-        </strong>
+        <strong>AquaCoding Studios</strong>
 
         <p>
-
             Aquatic livestock, plants, supplies and practical care.
-
         </p>
-
     </div>
 
     <p>
-
         © 2026 AquaCoding Studios · Malta
-
     </p>
 
 </footer>
 
-<script src="script.js?v=13"></script>
+<script src="script.js?v=17"></script>
 
 </body>
-
 </html>
