@@ -882,3 +882,19 @@ footer p {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
+.site-logo {
+    height: 72px;
+    width: auto;
+    display: block;
+    transition: transform .25s ease;
+}
+
+.site-logo:hover {
+    transform: scale(1.03);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
