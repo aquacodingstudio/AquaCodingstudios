@@ -1,253 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Learn about AquaCoding Studios, our story, values, animal welfare approach and vision for aquatic retail in Malta."
+    >
 
-    <meta name="description"
-          content="Learn more about AquaCoding Studios.">
+    <meta name="theme-color" content="#04131d">
 
     <title>About | AquaCoding Studios</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=15">
+    <link rel="stylesheet" href="style.css?v=17">
 
+    <style>
+        .about-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .about-hero {
+            position: relative;
+            padding: 82px 0 86px;
+            overflow: hidden;
+        }
+
+        .about-hero::after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            right: -90px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(110, 217, 234, 0.14);
+            filter: blur(26px);
+            pointer-events: none;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+        }
+
+        .about-section {
+            padding: 84px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .story-grid,
+        .mission-grid,
+        .future-grid {
+            display: grid;
+            gap: 22px;
+        }
+
+        .story-panel,
+        .mission-card,
+        .value-card,
+        .future-panel,
+        .about-cta {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .story-panel,
+        .future-panel,
+        .about-cta {
+            padding: 28px;
+        }
+
+        .story-panel p,
+        .mission-card p,
+        .value-card p,
+        .future-panel p,
+        .about-cta p {
+            color: var(--muted);
+        }
+
+        .story-panel .large-copy {
+            color: var(--text);
+        }
+
+        .mission-grid,
+        .values-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .mission-card,
+        .value-card {
+            padding: 24px;
+        }
+
+        .mission-card h3,
+        .value-card h3 {
+            margin-top: 0;
+        }
+
+        .value-number {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+        }
+
+        .future-list {
+            display: grid;
+            gap: 14px;
+            margin: 22px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .future-list li {
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .future-list li:first-child {
+            border-top: 0;
+        }
+
+        .about-cta {
+            display: grid;
+            gap: 20px;
+            align-items: center;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(110, 217, 234, 0.12),
+                    rgba(255, 255, 255, 0.03)
+                );
+        }
+
+        .about-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        @media (min-width: 760px) {
+            .story-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+
+            .mission-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .future-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-cta {
+                grid-template-columns: 1fr auto;
+            }
+        }
+
+        @media (min-width: 1050px) {
+            .values-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="site-header">
 
-    <a class="brand" href="index.html">
-
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
         <img
             src="logo.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
-
     </a>
 
     <button
         class="menu-button"
         type="button"
         aria-label="Open navigation menu"
-        aria-expanded="false">
-
+        aria-expanded="false"
+    >
         <span></span>
         <span></span>
         <span></span>
-
     </button>
 
-    <nav class="main-nav">
-
+    <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="guides.html">Learn</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-
     </nav>
 
 </header>
 
-<main>
+<main class="about-page">
 
-<section class="collection-hero">
+    <section class="about-hero">
 
-    <p class="eyebrow">
+        <div class="about-hero-content">
 
-        ABOUT
-
-    </p>
-
-    <h1>
-
-        Built by hobbyists,
-        for hobbyists.
-
-    </h1>
-
-    <p class="hero-text">
-
-        AquaCoding Studios exists to make aquatic keeping more enjoyable,
-        more responsible and easier for everyone.
-
-    </p>
-
-</section>
-
-<section class="section">
-
-    <div class="two-column">
-
-        <div>
-
-            <h2>
-
-                Our Mission
-
-            </h2>
-
-            <p>
-
-                We aim to provide healthy livestock, quality aquarium
-                supplies and practical educational resources that help
-                hobbyists succeed.
-
+            <p class="eyebrow">
+                About AquaCoding Studios
             </p>
 
-            <p>
+            <h1>
+                Built by hobbyists,
+                <span>for hobbyists.</span>
+            </h1>
 
-                Animal welfare will always come before sales.
-                Every decision is made with long-term health and
-                responsible fishkeeping in mind.
-
+            <p class="hero-text">
+                AquaCoding Studios was created to make aquatic keeping clearer,
+                more responsible and more enjoyable for people at every stage
+                of the hobby.
             </p>
 
         </div>
 
-        <div>
+    </section>
+
+    <section class="about-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                Our story
+            </p>
 
             <h2>
-
-                What We Offer
-
+                Starting small, with a long-term vision.
             </h2>
-
-            <ul>
-
-                <li>Freshwater shrimp</li>
-
-                <li>Fish</li>
-
-                <li>Aquarium plants</li>
-
-                <li>Aquarium supplies</li>
-
-                <li>Educational guides</li>
-
-                <li>Friendly support</li>
-
-            </ul>
 
         </div>
 
-    </div>
+        <div class="story-grid">
 
-</section>
+            <article class="story-panel">
 
-<section class="section">
+                <p class="large-copy">
+                    AquaCoding Studios began with a simple idea: build an
+                    aquatic business where animal welfare, honest information
+                    and customer trust come before quick sales.
+                </p>
 
-    <div class="section-heading">
+            </article>
 
-        <p class="section-label">
+            <article class="story-panel">
 
-            OUR VALUES
+                <p>
+                    What started with freshwater shrimp and planted aquariums is
+                    growing into a broader aquatic brand covering livestock,
+                    plants, practical supplies and educational resources.
+                </p>
 
-        </p>
+                <p>
+                    The goal is not to focus on one animal or one type of
+                    aquarium forever. AquaCoding Studios is being built to
+                    support freshwater, marine and other aquatic interests as
+                    the business develops.
+                </p>
 
-        <h2>
+            </article>
 
-            What matters most.
+        </div>
 
-        </h2>
+    </section>
 
-    </div>
+    <section class="about-section">
 
-    <div class="standards-grid">
+        <div class="section-heading">
 
-        <article class="standard-card">
-
-            <span>01</span>
-
-            <h3>Animal Welfare</h3>
-
-            <p>
-
-                Healthy livestock always comes first.
-
+            <p class="section-label">
+                Our mission
             </p>
 
-        </article>
+            <h2>
+                Make aquatic keeping easier to understand.
+            </h2>
 
-        <article class="standard-card">
+        </div>
 
-            <span>02</span>
+        <div class="mission-grid">
 
-            <h3>Honest Advice</h3>
+            <article class="mission-card">
 
-            <p>
+                <h3>Healthy Livestock</h3>
 
-                Practical guidance without unnecessary complexity.
+                <p>
+                    Animals should be offered with suitable care information,
+                    proper housing guidance and long-term welfare in mind.
+                </p>
 
+            </article>
+
+            <article class="mission-card">
+
+                <h3>Useful Products</h3>
+
+                <p>
+                    Equipment and supplies should be practical, reliable and
+                    genuinely helpful to the people using them.
+                </p>
+
+            </article>
+
+            <article class="mission-card">
+
+                <h3>Clear Guidance</h3>
+
+                <p>
+                    Advice should be understandable, honest and useful without
+                    unnecessary complexity.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="about-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                Our values
             </p>
 
-        </article>
+            <h2>
+                What matters most.
+            </h2>
 
-        <article class="standard-card">
+        </div>
 
-            <span>03</span>
+        <div class="values-grid">
 
-            <h3>Quality</h3>
+            <article class="value-card">
 
-            <p>
+                <span class="value-number">01</span>
 
-                Reliable products selected with care.
+                <h3>Animal Welfare</h3>
 
+                <p>
+                    Healthy animals and appropriate care always come before
+                    availability or sales.
+                </p>
+
+            </article>
+
+            <article class="value-card">
+
+                <span class="value-number">02</span>
+
+                <h3>Honesty</h3>
+
+                <p>
+                    Customers deserve clear stock information, realistic advice
+                    and no unnecessary promises.
+                </p>
+
+            </article>
+
+            <article class="value-card">
+
+                <span class="value-number">03</span>
+
+                <h3>Quality</h3>
+
+                <p>
+                    Livestock, plants and products should meet a consistent
+                    standard before being offered.
+                </p>
+
+            </article>
+
+            <article class="value-card">
+
+                <span class="value-number">04</span>
+
+                <h3>Community</h3>
+
+                <p>
+                    AquaCoding Studios aims to support and strengthen Malta's
+                    aquatic community.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="about-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                Looking ahead
             </p>
 
-        </article>
+            <h2>
+                Built to grow without losing its values.
+            </h2>
 
-        <article class="standard-card">
+        </div>
 
-            <span>04</span>
+        <div class="future-grid">
 
-            <h3>Community</h3>
+            <article class="future-panel">
 
-            <p>
+                <h3>What AquaCoding Studios can offer</h3>
 
-                Helping more people enjoy the aquatic hobby.
+                <ul class="future-list">
+                    <li>Aquatic livestock and invertebrates</li>
+                    <li>Aquarium plants</li>
+                    <li>Equipment and supplies</li>
+                    <li>Care guides and educational resources</li>
+                    <li>Friendly, practical customer support</li>
+                </ul>
 
-            </p>
+            </article>
 
-        </article>
+            <article class="future-panel">
 
-    </div>
+                <h3>The long-term vision</h3>
 
-</section>
+                <p>
+                    The aim is to build a trusted aquatic retailer in Malta
+                    where customers can shop, learn and make informed choices
+                    in one place.
+                </p>
+
+                <p>
+                    As the business grows, the range can expand without changing
+                    the core promise: responsible care, useful information and
+                    a better experience for both customers and animals.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="about-section">
+
+        <div class="about-cta">
+
+            <div>
+
+                <p class="section-label">
+                    Explore AquaCoding Studios
+                </p>
+
+                <h2>
+                    Ready to look around?
+                </h2>
+
+                <p>
+                    Browse the shop or explore practical aquarium care guides.
+                </p>
+
+            </div>
+
+            <div class="about-actions">
+
+                <a class="button primary-button" href="shop.html">
+                    Browse Shop
+                </a>
+
+                <a class="button secondary-button" href="guides.html">
+                    View Guides
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
 
 <footer>
 
     <div>
-
         <strong>AquaCoding Studios</strong>
 
         <p>
-
             Aquatic livestock, plants, supplies and practical care.
-
         </p>
-
     </div>
 
     <p>
-
         © 2026 AquaCoding Studios · Malta
-
     </p>
 
 </footer>
 
-<script src="script.js?v=15"></script>
+<script src="script.js?v=17"></script>
 
 </body>
-
 </html>
