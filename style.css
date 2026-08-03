@@ -1026,3 +1026,16 @@ footer p {
     color: #7CFF9A;
     border: 1px solid rgba(40, 167, 69, 0.35);
 }
+.yellow-product {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(255, 220, 70, 0.35),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #665214,
+            #282006
+        );
+}
