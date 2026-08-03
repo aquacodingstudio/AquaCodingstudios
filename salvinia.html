@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="Learn about Salvinia care, growth and future availability from AquaCoding Studios."
+        content="Salvinia product and care information from AquaCoding Studios."
     >
 
     <meta name="theme-color" content="#04131d">
@@ -19,346 +14,648 @@
     <title>Salvinia | AquaCoding Studios</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=16">
+
+    <style>
+        .product-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .product-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .product-hero {
+            display: grid;
+            gap: 28px;
+            padding: 20px 0 60px;
+        }
+
+        .product-image {
+            min-height: 360px;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(90, 220, 120, 0.34),
+                    transparent 42%
+                ),
+                linear-gradient(145deg, #184c2c, #081d10);
+            box-shadow: var(--shadow);
+            color: var(--text);
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        .product-summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-summary h1 {
+            margin-bottom: 10px;
+        }
+
+        .scientific-name {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .stock-badge {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 12px;
+            border: 1px solid rgba(220, 53, 69, 0.35);
+            border-radius: 999px;
+            background: rgba(220, 53, 69, 0.15);
+            color: #ff7b7b;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .purchase-panel {
+            display: grid;
+            gap: 22px;
+            margin-top: 26px;
+            padding: 24px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .purchase-price {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .purchase-row {
+            display: grid;
+            gap: 12px;
+        }
+
+        .quantity-selector {
+            display: grid;
+            grid-template-columns: 48px 70px 48px;
+            gap: 10px;
+        }
+
+        .quantity-selector button,
+        .quantity-selector input,
+        .add-to-cart-button {
+            min-height: 48px;
+            border-radius: 12px;
+        }
+
+        .quantity-selector button,
+        .quantity-selector input {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            text-align: center;
+        }
+
+        .quantity-selector input {
+            width: 100%;
+            font: inherit;
+            font-weight: 800;
+        }
+
+        .add-to-cart-button {
+            width: 100%;
+            border: 0;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--muted);
+            font: inherit;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .quantity-selector button:disabled,
+        .quantity-selector input:disabled,
+        .add-to-cart-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .product-section {
+            padding: 74px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .product-section h2 {
+            margin-top: 0;
+        }
+
+        .product-copy {
+            max-width: 800px;
+            color: var(--muted);
+        }
+
+        .quick-facts {
+            display: grid;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .quick-facts div {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .quick-facts dt {
+            color: var(--muted);
+        }
+
+        .quick-facts dd {
+            margin: 0;
+            color: var(--text);
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            padding: 24px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+        }
+
+        .info-card p,
+        .info-card li {
+            color: var(--muted);
+        }
+
+        .info-card ul {
+            margin: 14px 0 0;
+            padding-left: 20px;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .faq-list details {
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .faq-list summary {
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .faq-list p {
+            color: var(--muted);
+        }
+
+        .related-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 28px;
+        }
+
+        .related-card {
+            display: block;
+            padding: 22px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition:
+                transform 180ms ease,
+                border-color 180ms ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110, 217, 234, 0.45);
+        }
+
+        .related-card p {
+            color: var(--muted);
+        }
+
+        @media (min-width: 760px) {
+            .product-hero {
+                grid-template-columns: 1.15fr 0.85fr;
+                align-items: stretch;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1050px) {
+            .info-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="site-header">
 
-<a class="brand" href="index.html">
-<span class="brand-mark">AC</span>
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
 
-<span class="brand-text">
-AquaCoding
-<small>Studios</small>
-</span>
-</a>
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-<button
-class="menu-button"
-type="button"
-aria-label="Open navigation menu"
-aria-expanded="false">
-
-<span></span>
-<span></span>
-<span></span>
-
-</button>
-
-<nav class="main-nav" aria-label="Main navigation">
-<a href="index.html">Home</a>
-<a href="collection.html">Collection</a>
-<a href="index.html#standards">Standards</a>
-<a href="index.html#contact">Contact</a>
-</nav>
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
 </header>
 
-<main class="species-page">
+<main class="product-page">
 
-<a class="back-link" href="collection.html">
-← Back to Collection
-</a>
+    <a class="product-breadcrumb" href="shop.html">
+        ← Back to Shop
+    </a>
 
-<section class="species-hero">
+    <section class="product-hero">
 
-<div class="species-hero-image placeholder-image">
-<span>Photo coming soon</span>
-</div>
+        <div class="product-image">
+            Salvinia
+        </div>
 
-<div class="species-hero-content">
+        <div class="product-summary">
 
-<p class="eyebrow">
-Plant Profile
-</p>
+            <p class="eyebrow">
+                Floating aquarium plant
+            </p>
 
-<h1>
-Salvinia
-</h1>
+            <h1>
+                Salvinia
+            </h1>
 
-<p class="scientific-name">
-<em>Salvinia species</em>
-</p>
+            <p class="scientific-name">
+                <em>Salvinia minima</em>
+            </p>
 
-<span class="availability-badge">
-Coming Soon
-</span>
+            <span class="stock-badge">
+                Out of stock
+            </span>
 
-</div>
+            <div class="purchase-panel">
 
-</section>
+                <div>
+                    <p class="section-label">
+                        Price
+                    </p>
 
-<section class="shop-section">
+                    <p class="purchase-price">
+                        Currently unavailable
+                    </p>
+                </div>
 
-<div class="shop-panel">
+                <div class="purchase-row">
 
-<div class="shop-details">
+                    <label for="salvinia-quantity">
+                        Quantity
+                    </label>
 
-<p class="section-label">
-Future Availability
-</p>
+                    <div class="quantity-selector">
 
-<h2>
-Salvinia
-</h2>
+                        <button
+                            type="button"
+                            aria-label="Decrease quantity"
+                            disabled
+                        >
+                            −
+                        </button>
+
+                        <input
+                            id="salvinia-quantity"
+                            type="number"
+                            value="1"
+                            min="1"
+                            readonly
+                            disabled
+                        >
 
-<p class="shop-price">
-Price not yet available
-</p>
+                        <button
+                            type="button"
+                            aria-label="Increase quantity"
+                            disabled
+                        >
+                            +
+                        </button>
 
-<p class="stock-status">
-0 currently available
-</p>
+                    </div>
 
-</div>
+                    <button
+                        class="add-to-cart-button"
+                        type="button"
+                        disabled
+                    >
+                        Out of stock
+                    </button>
 
-<div class="purchase-controls">
+                </div>
 
-<label>
-Quantity
-</label>
+            </div>
 
-<div class="quantity-selector">
+        </div>
 
-<button class="quantity-button" disabled>
-−
-</button>
+    </section>
 
-<input
-class="quantity-input"
-value="1"
-readonly
-disabled>
+    <section class="product-section">
 
-<button class="quantity-button" disabled>
-+
-</button>
+        <p class="section-label">
+            Overview
+        </p>
 
-</div>
+        <h2>
+            A floating plant that provides natural cover.
+        </h2>
+
+        <div class="product-copy">
 
-<button class="cart-button" disabled>
-Out of Stock
-</button>
+            <p>
+                Salvinia is a hardy freshwater aquarium plant valued for its
+                adaptability, natural appearance and usefulness in shrimp and
+                fish aquariums.
+            </p>
+
+            <p>
+                It floats freely on the water surface and spreads naturally under suitable conditions.
+            </p>
 
-<p class="shop-note">
-Salvinia will become available once healthy propagation has been established.
-</p>
+            <p>
+                Its hanging roots provide shelter for fry and shrimp while reducing light and helping create a more natural environment.
+            </p>
+
+        </div>
 
-</div>
+        <dl class="quick-facts">
 
-</div>
+            <div>
+                <dt>Difficulty</dt>
+                <dd>Beginner</dd>
+            </div>
+
+            <div>
+                <dt>Growth rate</dt>
+                <dd>Slow to moderate</dd>
+            </div>
 
-</section>
+            <div>
+                <dt>Placement</dt>
+                <dd>Surface</dd>
+            </div>
 
-<section class="species-main-grid">
+            <div>
+                <dt>Lighting</dt>
+                <dd>Low to medium</dd>
+            </div>
 
-<article class="species-overview">
+            <div>
+                <dt>CO₂</dt>
+                <dd>Optional</dd>
+            </div>
 
-<p class="section-label">
-Overview
-</p>
+            <div>
+                <dt>Temperature</dt>
+                <dd>20–30°C</dd>
+            </div>
 
-<h2>
-A useful floating plant for calm aquariums.
-</h2>
+            <div>
+                <dt>pH</dt>
+                <dd>5.0–8.0</dd>
+            </div>
+
+        </dl>
 
-<p>
-Salvinia is a floating freshwater plant that creates surface cover,
-softens bright lighting and adds a natural appearance to planted aquariums.
-</p>
+    </section>
+
+    <section class="product-section">
+
+        <p class="section-label">
+            Care
+        </p>
+
+        <h2>
+            What it needs.
+        </h2>
+
+        <div class="info-grid">
+
+            <article class="info-card">
+                <h3>Lighting</h3>
+
+                <p>
+                    Salvinia grows under low to medium lighting. Strong light
+                    is not required and may encourage algae if nutrients are
+                    unbalanced.
+                </p>
+            </article>
 
-<p>
-Its hanging roots provide cover for shrimp and young livestock while also
-collecting fine food particles and supporting biofilm.
-</p>
+            <article class="info-card">
+                <h3>Placement</h3>
+
+                <p>
+                    Simply place it on the water surface where it can float freely.
+                </p>
+            </article>
 
-<p>
-Because it grows at the surface, Salvinia can also help absorb excess
-nutrients from the water when maintained carefully.
-</p>
+            <article class="info-card">
+                <h3>Water Conditions</h3>
 
-</article>
+                <ul>
+                    <li>Temperature: 20–30°C</li>
+                    <li>pH: 5.0–8.0</li>
+                    <li>Stable freshwater conditions</li>
+                    <li>Gentle to moderate flow</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <h3>Maintenance</h3>
+
+                <p>
+                    Remove excess plants regularly to prevent the surface becoming overcrowded.
+                </p>
+            </article>
 
-<aside class="quick-facts-panel">
+            <article class="info-card">
+                <h3>Propagation</h3>
 
-<p class="section-label">
-Quick Facts
-</p>
+                <p>
+                    Salvinia reproduces naturally by producing new floating plants.
+                </p>
+            </article>
 
-<dl class="quick-facts-list">
+            <article class="info-card">
+                <h3>Shrimp Benefits</h3>
 
-<div>
-<dt>Difficulty</dt>
-<dd>Beginner</dd>
-</div>
+                <p>
+                    Salvinia offers grazing surfaces, hiding places and cover
+                    for baby shrimp while supporting biofilm growth.
+                </p>
+            </article>
 
-<div>
-<dt>Growth</dt>
-<dd>Moderate to fast</dd>
-</div>
+        </div>
 
-<div>
-<dt>Placement</dt>
-<dd>Floating</dd>
-</div>
+    </section>
 
-<div>
-<dt>Lighting</dt>
-<dd>Medium</dd>
-</div>
+    <section class="product-section">
 
-<div>
-<dt>CO₂</dt>
-<dd>Not required</dd>
-</div>
+        <p class="section-label">
+            Frequently asked questions
+        </p>
 
-<div>
-<dt>Availability</dt>
-<dd>Coming Soon</dd>
-</div>
+        <h2>
+            Common questions.
+        </h2>
 
-</dl>
+        <div class="faq-list">
 
-</aside>
+            <details>
+                <summary>Does Salvinia need CO₂?</summary>
+                <p>
+                    No. Added CO₂ can improve growth, but Salvinia can grow
+                    successfully without it.
+                </p>
+            </details>
 
-</section>
+            <details>
+                <summary>Can Salvinia be planted in substrate?</summary>
+                <p>
+                    Yes. Salvinia is a floating plant and should never be planted in substrate.
+                </p>
+            </details>
 
-<section class="species-info-grid">
+            <details>
+                <summary>Why is my Salvinia turning brown?</summary>
+                <p>
+                    Poor lighting, surface agitation or unsuitable water conditions can slow growth or cause decline.
+                </p>
+            </details>
 
-<article class="info-card">
+            <details>
+                <summary>Is Salvinia good for shrimp?</summary>
+                <p>
+                    Yes. It offers shade, security and hanging roots for grazing.
+                </p>
+            </details>
 
-<p class="info-icon">☀️</p>
+        </div>
 
-<h2>Lighting</h2>
+    </section>
 
-<p>
-Salvinia prefers steady lighting but may struggle if its leaves remain
-constantly wet or are pushed underwater by strong surface movement.
-</p>
+    <section class="product-section">
 
-</article>
+        <p class="section-label">
+            Related products
+        </p>
 
-<article class="info-card">
+        <h2>
+            You may also like.
+        </h2>
 
-<p class="info-icon">🌿</p>
+        <div class="related-grid">
 
-<h2>Growth</h2>
+            <a class="related-card" href="red-cherry-shrimp.html">
+                <h3>Red Cherry Shrimp</h3>
+                <p>Freshwater shrimp that benefit from moss cover.</p>
+            </a>
 
-<p>
-Healthy plants spread across the surface through new connected growth.
-Regular thinning prevents them from blocking too much light below.
-</p>
+            <a class="related-card" href="blue-dream-shrimp.html">
+                <h3>Blue Dream Shrimp</h3>
+                <p>Deep-blue shrimp for planted aquariums.</p>
+            </a>
 
-</article>
+            <a class="related-card" href="salvinia.html">
+                <h3>Salvinia</h3>
+                <p>A floating plant for shade and surface cover.</p>
+            </a>
 
-<article class="info-card">
+        </div>
 
-<p class="info-icon">🦐</p>
-
-<h2>Shrimp Benefits</h2>
-
-<p>
-The roots provide cover and extra grazing surfaces for shrimp, shrimplets
-and other small aquarium inhabitants.
-</p>
-
-</article>
-
-<article class="info-card">
-
-<p class="info-icon">💧</p>
-
-<h2>Water Flow</h2>
-
-<p>
-Gentle surface movement is preferred. Strong splashing can damage the
-floating leaves and push the plants around the aquarium.
-</p>
-
-</article>
-
-<article class="info-card">
-
-<p class="info-icon">✂️</p>
-
-<h2>Propagation</h2>
-
-<p>
-Salvinia reproduces naturally as healthy growth divides and spreads.
-Excess plants can be removed once the surface becomes crowded.
-</p>
-
-</article>
-
-<article class="info-card">
-
-<p class="info-icon">🛡️</p>
-
-<h2>Our Promise</h2>
-
-<p>
-Only healthy, clean excess growth will be considered for future
-availability.
-</p>
-
-</article>
-
-</section>
-
-<section class="availability-panel">
-
-<div>
-
-<p class="section-label">
-Availability
-</p>
-
-<h2>
-Coming Soon
-</h2>
-
-<p>
-Salvinia is not currently available for purchase.
-</p>
-
-</div>
-
-<a
-class="button secondary-button"
-href="collection.html">
-
-Back to Collection
-
-</a>
-
-</section>
+    </section>
 
 </main>
 
 <footer>
 
-<div>
+    <div>
+        <strong>AquaCoding Studios</strong>
 
-<strong>
-AquaCoding Studios
-</strong>
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+    </div>
 
-<p>
-Building aquatic worlds with care.
-</p>
-
-</div>
-
-<p>
-© 2026 AquaCoding Studios · Malta
-</p>
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
 
 </footer>
 
-<script src="script.js?v=11"></script>
+<script src="script.js?v=16"></script>
 
 </body>
-
 </html>
