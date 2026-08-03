@@ -1039,3 +1039,17 @@ footer p {
             #282006
         );
 }
+.footer-links {
+    margin-top: 16px;
+    font-size: 0.95rem;
+}
+
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
