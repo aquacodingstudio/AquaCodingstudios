@@ -969,3 +969,26 @@ footer p {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(110, 217, 234, 0.12);
 }
+.red-product {
+    background:
+        radial-gradient(circle at top right, rgba(255, 95, 95, 0.32), transparent 38%),
+        linear-gradient(145deg, #5b1c24, #1f0a0e);
+}
+
+.blue-product {
+    background:
+        radial-gradient(circle at top right, rgba(67, 150, 255, 0.34), transparent 38%),
+        linear-gradient(145deg, #153b68, #07182d);
+}
+
+.betta-product {
+    background:
+        radial-gradient(circle at top right, rgba(172, 95, 255, 0.32), transparent 38%),
+        linear-gradient(145deg, #43235d, #170b23);
+}
+
+.plant-product {
+    background:
+        radial-gradient(circle at top right, rgba(76, 210, 120, 0.3), transparent 38%),
+        linear-gradient(145deg, #17472a, #071c10);
+}
