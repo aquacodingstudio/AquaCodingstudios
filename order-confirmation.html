@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Order confirmation | AquaCoding Studios"
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Order Confirmation | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .confirmation-page {
+            width: min(92%, 960px);
+            margin: 0 auto;
+        }
+
+        .confirmation-hero {
+            padding: 82px 0 52px;
+            text-align: center;
+        }
+
+        .success-mark {
+            width: 74px;
+            height: 74px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 22px;
+            border: 1px solid rgba(110, 217, 234, 0.4);
+            border-radius: 50%;
+            background: rgba(110, 217, 234, 0.12);
+            color: var(--accent);
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .confirmation-card,
+        .confirmation-summary {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .confirmation-card {
+            padding: 26px;
+            margin-bottom: 22px;
+        }
+
+        .confirmation-card h2,
+        .confirmation-summary h2 {
+            margin-top: 0;
+        }
+
+        .confirmation-card p {
+            color: var(--muted);
+        }
+
+        .confirmation-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .detail-row span:first-child {
+            color: var(--muted);
+        }
+
+        .detail-row strong,
+        .detail-row span:last-child {
+            text-align: right;
+        }
+
+        .confirmation-summary {
+            padding: 26px;
+            margin-bottom: 22px;
+        }
+
+        .confirmation-items {
+            display: grid;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .confirmation-item {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            gap: 12px;
+            align-items: center;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .confirmation-image {
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .confirmation-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .confirmation-item h3 {
+            margin: 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .confirmation-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .summary-line.total strong {
+            font-size: 1.15rem;
+        }
+
+        .confirmation-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 0 84px;
+        }
+
+        .missing-order {
+            padding: 36px 24px;
+            text-align: center;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 84px;
+        }
+
+        .missing-order p {
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (max-width: 620px) {
+
+            .detail-row {
+                display: grid;
+                gap: 6px;
+            }
+
+            .detail-row strong,
+            .detail-row span:last-child {
+                text-align: left;
+            }
+
+            .confirmation-item {
+                grid-template-columns: 52px 1fr;
+            }
+
+            .confirmation-item > strong {
+                grid-column: 2;
+            }
+
+            .confirmation-image {
+                width: 52px;
+                height: 52px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+
+    </a>
+
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">Home</a>
+
+        <a href="shop.html">Shop</a>
+
+        <a href="guides.html">Learn</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="confirmation-page">
+
+
+    <section
+        id="confirmation-content"
+        hidden
+    >
+
+        <section class="confirmation-hero">
+
+            <div class="success-mark">
+                ✓
+            </div>
+
+            <p class="eyebrow">
+                Order received
+            </p>
+
+            <h1>
+                Thank you for your
+                <span>order request.</span>
+            </h1>
+
+            <p class="hero-text">
+                We've saved your order details. AquaCoding Studios
+                will confirm stock, fulfilment and payment before the
+                order is finalised.
+            </p>
+
+        </section>
+
+
+        <section class="confirmation-card">
+
+            <p class="section-label">
+                Order details
+            </p>
+
+            <h2>
+                Your confirmation
+            </h2>
+
+            <div class="confirmation-grid">
+
+                <div class="detail-row">
+                    <span>Order reference</span>
+                    <strong id="order-reference">—</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Name</span>
+                    <span id="order-name">—</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Email</span>
+                    <span id="order-email">—</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Phone</span>
+                    <span id="order-phone">—</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Fulfilment</span>
+                    <span id="order-fulfilment">—</span>
+                </div>
+
+                <div
+                    id="order-address-row"
+                    class="detail-row"
+                    hidden
+                >
+                    <span>Delivery address</span>
+                    <span id="order-address">—</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="confirmation-summary">
+
+            <p class="section-label">
+                Order summary
+            </p>
+
+            <h2>
+                Items requested
+            </h2>
+
+            <div
+                id="confirmation-items"
+                class="confirmation-items"
+            ></div>
+
+            <div class="summary-line">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span id="confirmation-subtotal">
+                    €0.00
+                </span>
+
+            </div>
+
+            <div class="summary-line">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span>
+                    To be confirmed
+                </span>
+
+            </div>
+
+            <div class="summary-line total">
+
+                <strong>
+                    Current total
+                </strong>
+
+                <strong id="confirmation-total">
+                    €0.00
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="confirmation-card">
+
+            <p class="section-label">
+                What happens next?
+            </p>
+
+            <h2>
+                We'll confirm the details.
+            </h2>
+
+            <p>
+                This page currently records an order request rather than
+                taking payment automatically. AquaCoding Studios will confirm
+                livestock availability, collection or delivery arrangements,
+                and the final amount before payment.
+            </p>
+
+            <p>
+                Keep your order reference handy in case you need to contact us.
+            </p>
+
+        </section>
+
+
+        <div class="confirmation-actions">
+
+            <a
+                class="button primary-button"
+                href="shop.html"
+            >
+                Continue Shopping
+            </a>
+
+            <a
+                class="button secondary-button"
+                href="contact.html"
+            >
+                Contact Us
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section
+        id="missing-order"
+        class="missing-order"
+        hidden
+    >
+
+        <h1>
+            No recent order found.
+        </h1>
+
+        <p>
+            We couldn't find a recent order on this device.
+        </p>
+
+        <a
+            class="button primary-button"
+            href="shop.html"
+        >
+            Browse Shop
+        </a>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=20"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const confirmationContent =
+        document.getElementById(
+            "confirmation-content"
+        );
+
+    const missingOrder =
+        document.getElementById(
+            "missing-order"
+        );
+
+
+    let order = null;
+
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "aquacodingLastOrder"
+            );
+
+        order =
+            saved
+                ? JSON.parse(saved)
+                : null;
+
+    } catch (error) {
+
+        console.error(
+            "Could not load order:",
+            error
+        );
+
+    }
+
+
+    if (
+        !order ||
+        !Array.isArray(order.items) ||
+        order.items.length === 0
+    ) {
+
+        missingOrder.hidden = false;
+
+        return;
+
+    }
+
+
+    confirmationContent.hidden = false;
+
+
+    const formatPrice = (value) => {
+
+        return new Intl.NumberFormat(
+            "en-MT",
+            {
+                style: "currency",
+                currency: "EUR"
+            }
+        ).format(value);
+
+    };
+
+
+    document.getElementById(
+        "order-reference"
+    ).textContent =
+        order.id || "—";
+
+
+    document.getElementById(
+        "order-name"
+    ).textContent =
+        [
+            order.customer?.firstName,
+            order.customer?.lastName
+        ]
+            .filter(Boolean)
+            .join(" ") || "—";
+
+
+    document.getElementById(
+        "order-email"
+    ).textContent =
+        order.customer?.email || "—";
+
+
+    document.getElementById(
+        "order-phone"
+    ).textContent =
+        order.customer?.phone || "—";
+
+
+    const fulfilment =
+        order.fulfilment === "delivery"
+            ? "Local delivery"
+            : "Local collection";
+
+
+    document.getElementById(
+        "order-fulfilment"
+    ).textContent =
+        fulfilment;
+
+
+    if (order.fulfilment === "delivery") {
+
+        const addressRow =
+            document.getElementById(
+                "order-address-row"
+            );
+
+        const address =
+            [
+                order.address?.address,
+                order.address?.locality,
+                order.address?.postcode
+            ]
+                .filter(Boolean)
+                .join(", ");
+
+
+        addressRow.hidden = false;
+
+
+        document.getElementById(
+            "order-address"
+        ).textContent =
+            address || "—";
+
+    }
+
+
+    const itemsContainer =
+        document.getElementById(
+            "confirmation-items"
+        );
+
+
+    let subtotal = 0;
+
+
+    order.items.forEach((item) => {
+
+        const lineTotal =
+            Number(item.price) *
+            Number(item.quantity);
+
+
+        subtotal += lineTotal;
+
+
+        const row =
+            document.createElement("div");
+
+
+        row.className =
+            "confirmation-item";
+
+
+        row.innerHTML = `
+
+            <div class="confirmation-image">
+
+                ${
+                    item.image
+                        ? `
+                            <img
+                                src="${item.image}"
+                                alt="${item.name}"
+                            >
+                        `
+                        : ""
+                }
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+                <p>
+                    Qty ${item.quantity}
+                    ·
+                    ${formatPrice(item.price)} each
+                </p>
+
+            </div>
+
+
+            <strong>
+                ${formatPrice(lineTotal)}
+            </strong>
+
+        `;
+
+
+        itemsContainer.appendChild(row);
+
+    });
+
+
+    document.getElementById(
+        "confirmation-subtotal"
+    ).textContent =
+        formatPrice(subtotal);
+
+
+    document.getElementById(
+        "confirmation-total"
+    ).textContent =
+        formatPrice(subtotal);
+
+});
+
+</script>
+
+
+</body>
+
+</html>
