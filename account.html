@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Customer account | AquaCoding Studios"
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Account | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .account-page {
+            width: min(92%, 1040px);
+            margin: 0 auto;
+        }
+
+        .account-hero {
+            padding: 72px 0 48px;
+        }
+
+        .account-layout {
+            display: grid;
+            gap: 22px;
+            padding: 0 0 84px;
+        }
+
+        .account-card {
+            padding: 26px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .account-card h2 {
+            margin-top: 0;
+        }
+
+        .account-card p {
+            color: var(--muted);
+        }
+
+        .account-status {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 12px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 193, 7, 0.35);
+            border-radius: 999px;
+            background: rgba(255, 193, 7, 0.12);
+            color: #ffd166;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .account-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .account-button {
+            min-height: 48px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 18px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            font: inherit;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .account-button.primary {
+            border-color: rgba(110, 217, 234, 0.45);
+            background: rgba(110, 217, 234, 0.12);
+            color: var(--accent);
+        }
+
+        .account-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .order-card {
+            margin-top: 18px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .order-card h3 {
+            margin: 0 0 10px;
+        }
+
+        .order-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+
+        .order-row span:first-child {
+            color: var(--muted);
+        }
+
+        .security-note {
+            margin-top: 18px;
+            padding: 16px;
+            border: 1px solid rgba(110, 217, 234, 0.25);
+            border-radius: 14px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .security-note strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .security-note p {
+            margin: 0;
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 820px) {
+
+            .account-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .account-card.full-width {
+                grid-column: 1 / -1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+
+    </a>
+
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">Home</a>
+
+        <a href="shop.html">Shop</a>
+
+        <a href="guides.html">Learn</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+            aria-current="page"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="account-page">
+
+
+    <section class="account-hero">
+
+        <p class="eyebrow">
+            Customer area
+        </p>
+
+        <h1>
+            Your
+            <span>Account.</span>
+        </h1>
+
+        <p class="hero-text">
+            View recent order information and access account features
+            as they become available.
+        </p>
+
+    </section>
+
+
+    <section class="account-layout">
+
+
+        <article class="account-card">
+
+            <span class="account-status">
+                Guest checkout active
+            </span>
+
+            <h2>
+                Shop without an account.
+            </h2>
+
+            <p>
+                You can currently browse, add products to your cart and
+                submit an order request without creating an account.
+            </p>
+
+            <div class="account-actions">
+
+                <a
+                    class="account-button primary"
+                    href="shop.html"
+                >
+                    Browse Shop
+                </a>
+
+                <a
+                    class="account-button"
+                    href="cart.html"
+                >
+                    View Cart
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <article class="account-card">
+
+            <span class="account-status">
+                Secure accounts coming later
+            </span>
+
+            <h2>
+                Sign in &amp; registration
+            </h2>
+
+            <p>
+                A secure customer login requires a real authentication
+                service and server-side account storage. We are not storing
+                passwords in the browser.
+            </p>
+
+            <div class="account-actions">
+
+                <button
+                    class="account-button"
+                    type="button"
+                    disabled
+                >
+                    Sign In
+                </button>
+
+                <button
+                    class="account-button"
+                    type="button"
+                    disabled
+                >
+                    Create Account
+                </button>
+
+            </div>
+
+            <div class="security-note">
+
+                <strong>
+                    Why is this disabled?
+                </strong>
+
+                <p>
+                    Storing usernames or passwords in localStorage would not
+                    be secure. Account login will be enabled when a proper
+                    authentication backend is connected.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="account-card full-width">
+
+            <p class="section-label">
+                Recent order
+            </p>
+
+            <h2>
+                Last order on this device
+            </h2>
+
+            <div
+                id="recent-order"
+                class="order-card"
+                hidden
+            >
+
+                <h3 id="recent-order-reference">
+                    Order
+                </h3>
+
+                <div class="order-grid">
+
+                    <div class="order-row">
+                        <span>Name</span>
+                        <span id="recent-order-name">—</span>
+                    </div>
+
+                    <div class="order-row">
+                        <span>Fulfilment</span>
+                        <span id="recent-order-fulfilment">—</span>
+                    </div>
+
+                    <div class="order-row">
+                        <span>Items</span>
+                        <span id="recent-order-items">—</span>
+                    </div>
+
+                    <div class="order-row">
+                        <span>Total</span>
+                        <strong id="recent-order-total">€0.00</strong>
+                    </div>
+
+                </div>
+
+                <div class="account-actions">
+
+                    <a
+                        class="account-button primary"
+                        href="order-confirmation.html"
+                    >
+                        View Order
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="no-recent-order"
+                class="order-card"
+            >
+
+                <h3>
+                    No recent order found.
+                </h3>
+
+                <p>
+                    Orders submitted on this device will appear here.
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=20"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const recentOrder =
+        document.getElementById("recent-order");
+
+    const noRecentOrder =
+        document.getElementById("no-recent-order");
+
+
+    let order = null;
+
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "aquacodingLastOrder"
+            );
+
+        order =
+            saved
+                ? JSON.parse(saved)
+                : null;
+
+    } catch (error) {
+
+        console.error(
+            "Could not load recent order:",
+            error
+        );
+
+    }
+
+
+    if (
+        !order ||
+        !Array.isArray(order.items) ||
+        order.items.length === 0
+    ) {
+
+        noRecentOrder.hidden = false;
+
+        return;
+
+    }
+
+
+    noRecentOrder.hidden = true;
+
+    recentOrder.hidden = false;
+
+
+    const formatPrice = (value) => {
+
+        return new Intl.NumberFormat(
+            "en-MT",
+            {
+                style: "currency",
+                currency: "EUR"
+            }
+        ).format(value);
+
+    };
+
+
+    const customerName =
+        [
+            order.customer?.firstName,
+            order.customer?.lastName
+        ]
+            .filter(Boolean)
+            .join(" ") || "—";
+
+
+    const itemCount =
+        order.items.reduce(
+            (total, item) =>
+                total + Number(item.quantity || 0),
+            0
+        );
+
+
+    const total =
+        order.items.reduce(
+            (sum, item) =>
+                sum +
+                (
+                    Number(item.price || 0) *
+                    Number(item.quantity || 0)
+                ),
+            0
+        );
+
+
+    document.getElementById(
+        "recent-order-reference"
+    ).textContent =
+        order.id || "Recent order";
+
+
+    document.getElementById(
+        "recent-order-name"
+    ).textContent =
+        customerName;
+
+
+    document.getElementById(
+        "recent-order-fulfilment"
+    ).textContent =
+        order.fulfilment === "delivery"
+            ? "Local delivery"
+            : "Local collection";
+
+
+    document.getElementById(
+        "recent-order-items"
+    ).textContent =
+        `${itemCount} item${itemCount === 1 ? "" : "s"}`;
+
+
+    document.getElementById(
+        "recent-order-total"
+    ).textContent =
+        formatPrice(total);
+
+});
+
+</script>
+
+
+</body>
+
+</html>
