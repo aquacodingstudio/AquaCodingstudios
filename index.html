@@ -14,7 +14,7 @@
     <title>AquaCoding Studios | Aquatic Retailer Malta</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=20">
 
     <style>
         .home-page {
@@ -198,6 +198,32 @@
             text-transform: uppercase;
         }
 
+        .main-nav .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
         .guide-card,
         .trust-card {
             transition:
@@ -309,6 +335,20 @@
         <a href="guides.html">Learn</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
     </nav>
 
 </header>
@@ -717,7 +757,7 @@
 
 </footer>
 
-<script src="script.js?v=18"></script>
+<script src="script.js?v=20"></script>
 
 </body>
 </html>
