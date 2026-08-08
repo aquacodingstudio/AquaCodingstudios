@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Wishlist | AquaCoding Studios"
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Wishlist | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .wishlist-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .wishlist-hero {
+            padding: 72px 0 48px;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            gap: 18px;
+            padding: 0 0 84px;
+        }
+
+        .wishlist-card {
+            display: grid;
+            gap: 16px;
+            padding: 18px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .wishlist-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .wishlist-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .wishlist-content {
+            display: grid;
+            gap: 10px;
+            align-content: start;
+        }
+
+        .wishlist-content h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        .wishlist-price {
+            margin: 0;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .wishlist-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .wishlist-button {
+            min-height: 44px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            font: inherit;
+            font-weight: 800;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .wishlist-button.primary {
+            border-color: rgba(110, 217, 234, 0.45);
+            background: rgba(110, 217, 234, 0.12);
+            color: var(--accent);
+        }
+
+        .wishlist-button.remove {
+            border-color: rgba(255, 110, 110, 0.3);
+            background: rgba(255, 110, 110, 0.08);
+            color: #ff8c8c;
+        }
+
+        .empty-wishlist {
+            padding: 42px 24px;
+            margin-bottom: 84px;
+            text-align: center;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .empty-wishlist p {
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 700px) {
+
+            .wishlist-card {
+                grid-template-columns: 180px 1fr;
+                align-items: center;
+            }
+
+            .wishlist-image {
+                aspect-ratio: 1 / 1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+
+    </a>
+
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">Home</a>
+
+        <a href="shop.html">Shop</a>
+
+        <a href="guides.html">Learn</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+            aria-current="page"
+        >
+            Wishlist
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="wishlist-page">
+
+    <section class="wishlist-hero">
+
+        <p class="eyebrow">
+            Saved products
+        </p>
+
+        <h1>
+            Your
+            <span>Wishlist.</span>
+        </h1>
+
+        <p class="hero-text">
+            Save products you're interested in and come back to them later.
+        </p>
+
+    </section>
+
+
+    <section
+        id="wishlist-grid"
+        class="wishlist-grid"
+    ></section>
+
+
+    <section
+        id="empty-wishlist"
+        class="empty-wishlist"
+        hidden
+    >
+
+        <h2>
+            Your wishlist is empty.
+        </h2>
+
+        <p>
+            Save products from the shop and they'll appear here.
+        </p>
+
+        <a
+            class="button primary-button"
+            href="shop.html"
+        >
+            Browse Shop
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=20"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const WISHLIST_KEY =
+        "aquacodingWishlist";
+
+    const wishlistGrid =
+        document.getElementById(
+            "wishlist-grid"
+        );
+
+    const emptyWishlist =
+        document.getElementById(
+            "empty-wishlist"
+        );
+
+
+    function getWishlist() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    WISHLIST_KEY
+                );
+
+            return saved
+                ? JSON.parse(saved)
+                : [];
+
+        } catch (error) {
+
+            console.error(
+                "Could not load wishlist:",
+                error
+            );
+
+            return [];
+        }
+
+    }
+
+
+    function saveWishlist(items) {
+
+        localStorage.setItem(
+            WISHLIST_KEY,
+            JSON.stringify(items)
+        );
+
+        updateWishlistCount();
+
+    }
+
+
+    function updateWishlistCount() {
+
+        const count =
+            getWishlist().length;
+
+        document
+            .querySelectorAll(
+                ".wishlist-count"
+            )
+            .forEach((element) => {
+
+                element.textContent =
+                    count;
+
+                element.hidden =
+                    count === 0;
+
+            });
+
+    }
+
+
+    function removeFromWishlist(id) {
+
+        const items =
+            getWishlist().filter(
+                (item) =>
+                    item.id !== id
+            );
+
+        saveWishlist(items);
+
+        renderWishlist();
+
+    }
+
+
+    function addWishlistItemToCart(item) {
+
+        if (
+            !window.AquaCart ||
+            typeof window.AquaCart.addToCart
+                !== "function"
+        ) {
+
+            return;
+        }
+
+
+        window.AquaCart.addToCart({
+
+            id: item.id,
+
+            name: item.name,
+
+            price:
+                Number(item.price || 0),
+
+            image:
+                item.image || "",
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    function renderWishlist() {
+
+        const items =
+            getWishlist();
+
+
+        wishlistGrid.innerHTML = "";
+
+
+        if (items.length === 0) {
+
+            emptyWishlist.hidden =
+                false;
+
+            wishlistGrid.hidden =
+                true;
+
+            updateWishlistCount();
+
+            return;
+
+        }
+
+
+        emptyWishlist.hidden =
+            true;
+
+        wishlistGrid.hidden =
+            false;
+
+
+        items.forEach((item) => {
+
+            const article =
+                document.createElement(
+                    "article"
+                );
+
+            article.className =
+                "wishlist-card";
+
+
+            article.innerHTML = `
+
+                <div class="wishlist-image">
+
+                    ${
+                        item.image
+                            ? `
+                                <img
+                                    src="${item.image}"
+                                    alt="${item.name}"
+                                >
+                            `
+                            : ""
+                    }
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+                    <h2>
+                        ${item.name}
+                    </h2>
+
+                    ${
+                        item.price
+                            ? `
+                                <p class="wishlist-price">
+                                    €${Number(item.price).toFixed(2)}
+                                </p>
+                            `
+                            : ""
+                    }
+
+                    <div class="wishlist-actions">
+
+                        <a
+                            class="wishlist-button primary"
+                            href="${item.url || "shop.html"}"
+                        >
+                            View Product
+                        </a>
+
+                        ${
+                            item.available
+                                ? `
+                                    <button
+                                        class="wishlist-button add-wishlist-cart"
+                                        type="button"
+                                    >
+                                        Add to Cart
+                                    </button>
+                                `
+                                : ""
+                        }
+
+                        <button
+                            class="wishlist-button remove remove-wishlist-item"
+                            type="button"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            const removeButton =
+                article.querySelector(
+                    ".remove-wishlist-item"
+                );
+
+
+            removeButton.addEventListener(
+                "click",
+                () => {
+
+                    removeFromWishlist(
+                        item.id
+                    );
+
+                }
+            );
+
+
+            const addButton =
+                article.querySelector(
+                    ".add-wishlist-cart"
+                );
+
+
+            if (addButton) {
+
+                addButton.addEventListener(
+                    "click",
+                    () => {
+
+                        addWishlistItemToCart(
+                            item
+                        );
+
+                        addButton.textContent =
+                            "Added ✓";
+
+
+                        setTimeout(() => {
+
+                            addButton.textContent =
+                                "Add to Cart";
+
+                        }, 1200);
+
+                    }
+                );
+
+            }
+
+
+            wishlistGrid.appendChild(
+                article
+            );
+
+        });
+
+
+        updateWishlistCount();
+
+    }
+
+
+    window.AquaWishlist = {
+
+        getWishlist,
+
+        saveWishlist,
+
+        removeFromWishlist
+
+    };
+
+
+    renderWishlist();
+
+});
+
+</script>
+
+
+</body>
+
+</html>
