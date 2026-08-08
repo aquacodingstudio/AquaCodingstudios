@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="Bloody Mary Shrimp product and care information from AquaCoding Studios."
+        content="Bloody Mary Shrimp product and care information from AquaCoding Studios. Home bred in Malta."
     >
 
     <meta name="theme-color" content="#04131d">
@@ -14,13 +18,18 @@
     <title>Bloody Mary Shrimp | AquaCoding Studios</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
     <link rel="stylesheet" href="style.css?v=16">
 
     <style>
+
         .product-page {
             width: min(92%, 1180px);
             margin: 0 auto;
         }
+
+
+        /* BACK TO SHOP */
 
         .product-breadcrumb {
             display: inline-flex;
@@ -28,6 +37,9 @@
             color: var(--accent);
             font-weight: 700;
         }
+
+
+        /* PRODUCT HERO */
 
         .product-hero {
             display: grid;
@@ -68,19 +80,28 @@
             font-size: 1.1rem;
         }
 
+
+        /* BREEDING STATUS */
+
         .stock-badge {
             display: inline-flex;
             width: fit-content;
             padding: 8px 12px;
-            border: 1px solid rgba(64, 200, 130, 0.4);
             border-radius: 999px;
-            background: rgba(64, 200, 130, 0.14);
-            color: #78e6ad;
             font-size: 0.78rem;
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
+
+        .breeding-badge {
+            border: 1px solid rgba(255, 193, 7, 0.35);
+            background: rgba(255, 193, 7, 0.12);
+            color: #ffd166;
+        }
+
+
+        /* PURCHASE PANEL */
 
         .purchase-panel {
             display: grid;
@@ -106,36 +127,37 @@
             font-weight: 700;
         }
 
+        .availability-note {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
         .purchase-row {
             display: grid;
             gap: 12px;
         }
 
-        .order-button {
-            min-height: 48px;
+        .add-to-cart-button {
             width: 100%;
-            display: grid;
-            place-items: center;
-            padding: 0 18px;
+            min-height: 48px;
+            border: 1px solid var(--border);
             border-radius: 12px;
-            border: 1px solid rgba(110, 217, 234, 0.45);
-            background: rgba(110, 217, 234, 0.12);
-            color: var(--text);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+            font: inherit;
             font-weight: 800;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            text-decoration: none;
-            transition:
-                transform 180ms ease,
-                border-color 180ms ease,
-                background 180ms ease;
         }
 
-        .order-button:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
-            background: rgba(110, 217, 234, 0.2);
+        .add-to-cart-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.65;
         }
+
+
+        /* PRODUCT SECTIONS */
 
         .product-section {
             padding: 74px 0;
@@ -150,6 +172,9 @@
             max-width: 800px;
             color: var(--muted);
         }
+
+
+        /* QUICK FACTS */
 
         .quick-facts {
             display: grid;
@@ -175,6 +200,9 @@
             font-weight: 800;
             text-align: right;
         }
+
+
+        /* CARE CARDS */
 
         .info-grid {
             display: grid;
@@ -204,6 +232,9 @@
             padding-left: 20px;
         }
 
+
+        /* FAQ */
+
         .faq-list {
             display: grid;
             gap: 14px;
@@ -226,6 +257,9 @@
             color: var(--muted);
         }
 
+
+        /* RELATED PRODUCTS */
+
         .related-grid {
             display: grid;
             gap: 18px;
@@ -238,6 +272,7 @@
             background: var(--panel);
             border: 1px solid var(--border);
             border-radius: 18px;
+
             transition:
                 transform 180ms ease,
                 border-color 180ms ease;
@@ -252,30 +287,47 @@
             color: var(--muted);
         }
 
+
+        /* TABLET / DESKTOP */
+
         @media (min-width: 760px) {
+
             .product-hero {
                 grid-template-columns: 1.15fr 0.85fr;
                 align-items: stretch;
             }
 
             .info-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
             .related-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
+
         }
+
 
         @media (min-width: 1050px) {
+
             .info-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
+
+
+<!-- HEADER -->
 
 <header class="site-header">
 
@@ -284,12 +336,15 @@
         href="index.html"
         aria-label="AquaCoding Studios homepage"
     >
+
         <img
             src="logo.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
+
     </a>
+
 
     <button
         class="menu-button"
@@ -297,398 +352,693 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
+
         <span></span>
         <span></span>
         <span></span>
+
     </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
         <a href="index.html">Home</a>
+
         <a href="shop.html">Shop</a>
+
         <a href="guides.html">Learn</a>
+
         <a href="about.html">About</a>
+
         <a href="contact.html">Contact</a>
+
     </nav>
 
 </header>
 
+
+
+<!-- PRODUCT PAGE -->
+
 <main class="product-page">
 
-    <a class="product-breadcrumb" href="shop.html">
+
+    <a
+        class="product-breadcrumb"
+        href="shop.html"
+    >
+
         ← Back to Shop
+
     </a>
 
+
+
+    <!-- HERO -->
+
     <section class="product-hero">
+
 
         <div class="product-image">
 
             <img
                 src="bloody-mary-shrimp.jpg"
-                alt="Bloody Mary Shrimp bred by AquaCoding Studios"
+                alt="Bloody Mary Shrimp home bred by AquaCoding Studios in Malta"
             >
 
         </div>
 
+
+
         <div class="product-summary">
+
 
             <p class="eyebrow">
                 Freshwater shrimp
             </p>
 
+
             <h1>
                 Bloody Mary Shrimp
             </h1>
 
+
             <p class="scientific-name">
+
                 <em>Neocaridina davidi</em>
+
             </p>
 
-            <span class="stock-badge">
-                Breeding • Available Soon 
+
+            <span class="stock-badge breeding-badge">
+
+                Breeding — Available Soon
+
             </span>
 
+
+
             <div class="purchase-panel">
+
 
                 <div>
 
                     <p class="section-label">
-                        Price
+                        Planned Price
                     </p>
+
 
                     <p class="purchase-price">
+
                         €4.90 each
+
                     </p>
 
+
                     <p class="home-bred">
+
                         Home Bred in Malta 🇲🇹
+
+                    </p>
+
+
+                    <p class="availability-note">
+
+                        Our breeding colony is currently
+                        being established. Sales will begin
+                        once sufficient healthy stock is
+                        available.
+
                     </p>
 
                 </div>
+
+
 
                 <div class="purchase-row">
 
-                   <button
-    class="add-to-cart-button"
-    type="button"
-    disabled
->
-    Currently Breeding
-</button>
+                    <button
+                        class="add-to-cart-button"
+                        type="button"
+                        disabled
+                    >
+
+                        Currently Breeding
+
+                    </button>
 
                 </div>
 
+
             </div>
+
 
         </div>
 
+
     </section>
 
+
+
+    <!-- OVERVIEW -->
+
     <section class="product-section">
+
 
         <p class="section-label">
             Overview
         </p>
 
+
         <h2>
             Deep-red Neocaridina with serious character.
         </h2>
 
+
         <div class="product-copy">
 
-            <p>
-                Bloody Mary Shrimp are a selectively bred colour variety of
-                <em>Neocaridina davidi</em>, prized for their rich,
-                deep-red coloration and peaceful nature.
-            </p>
 
             <p>
-                They spend much of the day grazing across biofilm,
-                algae, plants, driftwood and other aquarium surfaces.
-                Their small size and calm behaviour make them especially
-                well suited to planted freshwater aquariums.
+
+                Bloody Mary Shrimp are a selectively bred
+                colour variety of
+                <em>Neocaridina davidi</em>, prized for
+                their rich, deep-red coloration and
+                peaceful nature.
+
             </p>
 
+
             <p>
-                Our Bloody Mary Shrimp are home bred in Malta and are
-                raised with long-term health, stable water conditions
-                and responsible animal care in mind.
+
+                They spend much of the day grazing across
+                biofilm, algae, plants, driftwood and
+                other aquarium surfaces. Their small size
+                and calm behaviour make them especially
+                well suited to planted freshwater
+                aquariums.
+
             </p>
+
+
+            <p>
+
+                Our Bloody Mary Shrimp are being bred
+                locally in Malta with a focus on healthy
+                animals, stable aquarium conditions and
+                responsible care.
+
+            </p>
+
 
         </div>
 
+
+
         <dl class="quick-facts">
 
+
             <div>
+
                 <dt>Temperature</dt>
+
                 <dd>20–26°C</dd>
+
             </div>
 
+
             <div>
+
                 <dt>pH</dt>
+
                 <dd>6.5–7.8</dd>
+
             </div>
 
+
             <div>
+
                 <dt>Adult size</dt>
+
                 <dd>Up to 3 cm</dd>
+
             </div>
 
+
             <div>
+
                 <dt>Difficulty</dt>
+
                 <dd>Beginner</dd>
+
             </div>
 
+
             <div>
+
                 <dt>Temperament</dt>
+
                 <dd>Peaceful</dd>
+
             </div>
 
+
             <div>
+
                 <dt>Diet</dt>
+
                 <dd>Omnivore</dd>
+
             </div>
 
+
             <div>
+
                 <dt>Lifespan</dt>
+
                 <dd>About 1–2 years</dd>
+
             </div>
+
 
         </dl>
 
+
     </section>
 
+
+
+    <!-- CARE -->
+
     <section class="product-section">
+
 
         <p class="section-label">
             Care
         </p>
 
+
         <h2>
             What they need.
         </h2>
 
+
+
         <div class="info-grid">
 
+
             <article class="info-card">
 
-                <h3>Water Parameters</h3>
+                <h3>
+                    Water Parameters
+                </h3>
 
                 <ul>
-                    <li>Temperature: 20–26°C</li>
-                    <li>pH: 6.5–7.8</li>
-                    <li>Moderate GH</li>
-                    <li>Low to moderate KH</li>
-                    <li>Ammonia and nitrite: 0 ppm</li>
+
+                    <li>
+                        Temperature: 20–26°C
+                    </li>
+
+                    <li>
+                        pH: 6.5–7.8
+                    </li>
+
+                    <li>
+                        Moderate GH
+                    </li>
+
+                    <li>
+                        Low to moderate KH
+                    </li>
+
+                    <li>
+                        Ammonia and nitrite: 0 ppm
+                    </li>
+
                 </ul>
 
             </article>
 
+
+
             <article class="info-card">
 
-                <h3>Aquarium Setup</h3>
+                <h3>
+                    Aquarium Setup
+                </h3>
 
                 <ul>
-                    <li>Mature planted aquarium</li>
-                    <li>Gentle sponge filtration</li>
-                    <li>Mosses and hiding places</li>
-                    <li>Driftwood or leaf litter</li>
-                    <li>Plenty of grazing surfaces</li>
+
+                    <li>
+                        Mature planted aquarium
+                    </li>
+
+                    <li>
+                        Gentle sponge filtration
+                    </li>
+
+                    <li>
+                        Mosses and hiding places
+                    </li>
+
+                    <li>
+                        Driftwood or leaf litter
+                    </li>
+
+                    <li>
+                        Plenty of grazing surfaces
+                    </li>
+
                 </ul>
 
             </article>
 
+
+
             <article class="info-card">
 
-                <h3>Feeding</h3>
+                <h3>
+                    Feeding
+                </h3>
 
                 <p>
-                    Bloody Mary Shrimp spend much of their time grazing
-                    on naturally occurring biofilm and algae.
-                    Their diet can be supplemented with quality shrimp
-                    foods, vegetables and occasional protein-rich foods.
+
+                    Bloody Mary Shrimp spend much of
+                    their time grazing on naturally
+                    occurring biofilm and algae.
+
+                    Their diet can be supplemented with
+                    quality shrimp foods, vegetables
+                    and occasional protein-rich foods.
+
                 </p>
 
             </article>
 
+
+
             <article class="info-card">
 
-                <h3>Behaviour</h3>
+                <h3>
+                    Behaviour
+                </h3>
 
                 <p>
-                    Peaceful and active, Bloody Mary Shrimp spend much
-                    of the day exploring the aquarium and grazing across
-                    available surfaces.
+
+                    Peaceful and active, Bloody Mary
+                    Shrimp spend much of the day
+                    exploring the aquarium and grazing
+                    across available surfaces.
+
                 </p>
 
             </article>
 
+
+
             <article class="info-card">
 
-                <h3>Breeding</h3>
+                <h3>
+                    Breeding
+                </h3>
 
                 <p>
-                    Mature females carry fertilised eggs beneath the
-                    abdomen until they hatch as miniature,
-                    fully formed shrimp.
+
+                    Mature females carry fertilised eggs
+                    beneath the abdomen until they hatch
+                    as miniature, fully formed shrimp.
+
+                    A mature aquarium with moss and
+                    plenty of biofilm gives shrimplets
+                    the best chance to thrive.
+
                 </p>
 
             </article>
 
+
+
             <article class="info-card">
 
-                <h3>Colour Line</h3>
+                <h3>
+                    Colour Line
+                </h3>
 
                 <p>
-                    Bloody Mary Shrimp are best kept separately from
-                    other Neocaridina colour varieties when maintaining
-                    a strong, predictable colour line is important.
+
+                    Bloody Mary Shrimp are best kept
+                    separately from other Neocaridina
+                    colour varieties when maintaining
+                    a strong and predictable colour line
+                    is important.
+
                 </p>
 
             </article>
+
 
         </div>
 
+
     </section>
+
+
+
+    <!-- FAQ -->
 
     <section class="product-section">
 
+
         <p class="section-label">
+
             Frequently asked questions
+
         </p>
 
+
         <h2>
+
             Common questions.
+
         </h2>
+
+
 
         <div class="faq-list">
 
+
             <details>
 
                 <summary>
-                    Are Bloody Mary Shrimp suitable for beginners?
+
+                    Are Bloody Mary Shrimp suitable
+                    for beginners?
+
                 </summary>
 
                 <p>
-                    Yes. They are generally beginner-friendly when kept
-                    in a mature, fully cycled aquarium with stable water
-                    conditions.
+
+                    Yes. They are generally
+                    beginner-friendly when kept in a
+                    mature, fully cycled aquarium with
+                    stable water conditions.
+
                 </p>
 
             </details>
 
+
+
             <details>
 
                 <summary>
-                    Why are they called Bloody Mary Shrimp?
+
+                    Why are they called
+                    Bloody Mary Shrimp?
+
                 </summary>
 
                 <p>
-                    The name refers to their particularly deep and
-                    saturated red coloration compared with many other
-                    red Neocaridina varieties.
+
+                    The name refers to their particularly
+                    deep and saturated red coloration
+                    compared with many other red
+                    Neocaridina varieties.
+
                 </p>
 
             </details>
 
+
+
             <details>
 
                 <summary>
-                    Can they live with other Neocaridina colours?
+
+                    Can they live with other
+                    Neocaridina colours?
+
                 </summary>
 
                 <p>
-                    They can live together peacefully, but different
-                    Neocaridina colour lines may interbreed. Over time,
-                    this can produce less predictable coloration in
-                    their offspring.
+
+                    They can live together peacefully,
+                    but different Neocaridina colour
+                    varieties may interbreed.
+
+                    Over time this can produce less
+                    predictable coloration in their
+                    offspring.
+
                 </p>
 
             </details>
 
+
+
             <details>
 
                 <summary>
+
                     Do Bloody Mary Shrimp eat algae?
+
                 </summary>
 
                 <p>
-                    They graze on soft algae and biofilm throughout the
-                    aquarium, although they should not be considered a
-                    replacement for normal aquarium maintenance.
+
+                    They graze on soft algae and biofilm
+                    throughout the aquarium, although
+                    they should not be considered a
+                    replacement for normal aquarium
+                    maintenance.
+
                 </p>
 
             </details>
+
+
 
             <details>
 
                 <summary>
+
                     Do they need a heater?
+
                 </summary>
 
                 <p>
-                    That depends on the aquarium's room temperature.
-                    The important factor is maintaining a stable
-                    temperature within their suitable range.
+
+                    That depends on the aquarium's room
+                    temperature.
+
+                    The important factor is maintaining
+                    a stable temperature within their
+                    suitable range.
+
                 </p>
 
             </details>
+
 
         </div>
 
+
     </section>
+
+
+
+    <!-- RELATED PRODUCTS -->
 
     <section class="product-section">
 
+
         <p class="section-label">
+
             Related products
+
         </p>
 
+
         <h2>
+
             You may also like.
+
         </h2>
 
+
+
         <div class="related-grid">
+
 
             <a
                 class="related-card"
                 href="blue-dream-shrimp.html"
             >
-                <h3>Blue Dream Shrimp</h3>
+
+                <h3>
+                    Blue Dream Shrimp
+                </h3>
 
                 <p>
                     Deep-blue Neocaridina shrimp.
                 </p>
+
             </a>
+
+
 
             <a
                 class="related-card"
                 href="yellow-goldenback-shrimp.html"
             >
-                <h3>Yellow Goldenback Shrimp</h3>
+
+                <h3>
+                    Yellow Goldenback Shrimp
+                </h3>
 
                 <p>
-                    Bright yellow Neocaridina with a dorsal stripe.
+                    Bright yellow Neocaridina
+                    with a dorsal stripe.
                 </p>
+
             </a>
+
+
 
             <a
                 class="related-card"
                 href="java-moss.html"
             >
-                <h3>Java Moss</h3>
+
+                <h3>
+                    Java Moss
+                </h3>
 
                 <p>
-                    A useful plant for grazing and shrimplet cover.
+                    A useful plant for grazing
+                    and shrimplet cover.
                 </p>
+
             </a>
+
 
         </div>
 
+
     </section>
+
 
 </main>
 
+
+
+<!-- FOOTER -->
+
 <footer>
+
 
     <div>
 
@@ -697,18 +1047,29 @@
         </strong>
 
         <p>
-            Aquatic livestock, plants, supplies and practical care.
+
+            Aquatic livestock, plants, supplies
+            and practical care.
+
         </p>
 
     </div>
 
+
     <p>
+
         © 2026 AquaCoding Studios · Malta
+
     </p>
+
 
 </footer>
 
+
+
 <script src="script.js?v=16"></script>
 
+
 </body>
+
 </html>
