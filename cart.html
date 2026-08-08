@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View and manage your AquaCoding Studios shopping cart.">
+    <meta name="theme-color" content="#04131d">
+    <title>Cart | AquaCoding Studios</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=20">
+    <style>
+        .cart-page { width:min(92%,1180px); margin:0 auto; }
+        .cart-hero { padding:72px 0 48px; }
+        .cart-layout { display:grid; gap:24px; padding:0 0 84px; }
+        .cart-items { display:grid; gap:16px; }
+        .cart-item { display:grid; gap:18px; padding:18px; background:var(--panel); border:1px solid var(--border); border-radius:20px; box-shadow:var(--shadow); }
+        .cart-item-image { width:100%; aspect-ratio:4/3; overflow:hidden; border-radius:16px; background:rgba(255,255,255,.04); }
+        .cart-item-image img { width:100%; height:100%; display:block; object-fit:cover; }
+        .cart-item-content { display:grid; gap:12px; align-content:start; }
+        .cart-item-content h2 { margin:0; font-size:1.25rem; }
+        .cart-item-price { margin:0; color:var(--accent); font-weight:800; }
+        .cart-item-total { margin:0; color:var(--text); font-weight:800; }
+        .cart-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+        .quantity-control { display:grid; grid-template-columns:44px 64px 44px; gap:8px; }
+        .quantity-control button, .quantity-control input { min-height:44px; border:1px solid var(--border); border-radius:12px; background:rgba(255,255,255,.04); color:var(--text); font:inherit; text-align:center; }
+        .quantity-control button { cursor:pointer; font-size:1.2rem; font-weight:800; }
+        .quantity-control input { width:100%; font-weight:800; }
+        .remove-item { min-height:44px; padding:0 16px; border:1px solid rgba(255,110,110,.3); border-radius:12px; background:rgba(255,110,110,.08); color:#ff8c8c; font:inherit; font-weight:800; cursor:pointer; }
+        .cart-summary { height:fit-content; padding:24px; background:var(--panel); border:1px solid var(--border); border-radius:20px; box-shadow:var(--shadow); }
+        .cart-summary h2 { margin-top:0; }
+        .summary-row { display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-top:1px solid var(--border); }
+        .summary-row:first-of-type { border-top:0; }
+        .summary-row strong { font-size:1.15rem; }
+        .checkout-button { width:100%; min-height:50px; display:grid; place-items:center; margin-top:18px; padding:0 18px; border-radius:12px; background:var(--accent); color:#04131d; font-weight:900; text-decoration:none; text-align:center; }
+        .checkout-button[aria-disabled="true"] { pointer-events:none; opacity:.45; }
+        .clear-cart { width:100%; min-height:46px; margin-top:12px; border:1px solid var(--border); border-radius:12px; background:rgba(255,255,255,.04); color:var(--muted); font:inherit; font-weight:800; cursor:pointer; }
+        .empty-cart { padding:42px 24px; text-align:center; background:var(--panel); border:1px solid var(--border); border-radius:20px; box-shadow:var(--shadow); }
+        .empty-cart h2 { margin-top:0; }
+        .empty-cart p { color:var(--muted); }
+        .cart-link, .nav-utility { display:inline-flex; align-items:center; gap:7px; }
+        .cart-count, .wishlist-count { min-width:20px; height:20px; display:inline-grid; place-items:center; padding:0 6px; border-radius:999px; background:var(--accent); color:#04131d; font-size:.72rem; font-weight:900; line-height:1; }
+        .cart-count[hidden], .wishlist-count[hidden] { display:none; }
+        @media (min-width:700px) { .cart-item { grid-template-columns:170px 1fr; align-items:center; } .cart-item-image { aspect-ratio:1/1; } }
+        @media (min-width:920px) { .cart-layout { grid-template-columns:minmax(0,1fr) 340px; align-items:start; } .cart-summary { position:sticky; top:110px; } }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="index.html" aria-label="AquaCoding Studios homepage">
+        <img src="logo-dark.png" alt="AquaCoding Studios" class="site-logo">
+    </a>
+    <button class="menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="wishlist.html" class="nav-utility">Wishlist <span class="wishlist-count" hidden>0</span></a>
+        <a href="account.html" class="nav-utility">Account</a>
+        <a href="cart.html" class="cart-link" aria-current="page">Cart <span class="cart-count" hidden>0</span></a>
+    </nav>
+</header>
+<main class="cart-page">
+    <section class="cart-hero">
+        <p class="eyebrow">Your order</p>
+        <h1>Shopping <span>Cart.</span></h1>
+        <p class="hero-text">Review your products, adjust quantities and continue when you're ready.</p>
+    </section>
+    <section class="cart-layout">
+        <div>
+            <div id="cart-items" class="cart-items"></div>
+            <div id="empty-cart" class="empty-cart" hidden>
+                <h2>Your cart is empty.</h2>
+                <p>Browse the shop and add something when you're ready.</p>
+                <a class="button primary-button" href="shop.html">Browse Shop</a>
+            </div>
+        </div>
+        <aside class="cart-summary">
+            <p class="section-label">Order summary</p>
+            <h2>Summary</h2>
+            <div class="summary-row"><span>Items</span><span id="summary-items">0</span></div>
+            <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">€0.00</span></div>
+            <div class="summary-row"><strong>Total</strong><strong id="summary-total">€0.00</strong></div>
+            <p style="color:var(--muted);font-size:.9rem;">Delivery or collection costs will be calculated during checkout.</p>
+            <a id="checkout-button" class="checkout-button" href="checkout.html" aria-disabled="true">Continue to Checkout</a>
+            <button id="clear-cart" class="clear-cart" type="button">Clear Cart</button>
+        </aside>
+    </section>
+</main>
+<footer>
+    <div>
+        <strong>AquaCoding Studios</strong>
+        <p>Aquatic livestock, plants, supplies and practical care.</p>
+        <p class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a> ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a> ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+        </p>
+    </div>
+    <p>© 2026 AquaCoding Studios · Malta</p>
+</footer>
+<script src="script.js?v=20"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cartItemsContainer = document.getElementById("cart-items");
+    const emptyCart = document.getElementById("empty-cart");
+    const summaryItems = document.getElementById("summary-items");
+    const summarySubtotal = document.getElementById("summary-subtotal");
+    const summaryTotal = document.getElementById("summary-total");
+    const checkoutButton = document.getElementById("checkout-button");
+    const clearCartButton = document.getElementById("clear-cart");
+
+    const formatPrice = (value) => new Intl.NumberFormat("en-MT", { style: "currency", currency: "EUR" }).format(value);
+
+    function renderCart() {
+        if (!window.AquaCart) return;
+        const cart = window.AquaCart.getCart();
+        cartItemsContainer.innerHTML = "";
+
+        if (cart.length === 0) {
+            emptyCart.hidden = false;
+            summaryItems.textContent = "0";
+            summarySubtotal.textContent = formatPrice(0);
+            summaryTotal.textContent = formatPrice(0);
+            checkoutButton.setAttribute("aria-disabled", "true");
+            clearCartButton.disabled = true;
+            return;
+        }
+
+        emptyCart.hidden = true;
+        clearCartButton.disabled = false;
+        checkoutButton.setAttribute("aria-disabled", "false");
+
+        let totalItems = 0;
+        let subtotal = 0;
+
+        cart.forEach((item) => {
+            totalItems += item.quantity;
+            const lineTotal = item.price * item.quantity;
+            subtotal += lineTotal;
+
+            const article = document.createElement("article");
+            article.className = "cart-item";
+
+            const imageMarkup = item.image
+                ? `<div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>`
+                : `<div class="cart-item-image"></div>`;
+
+            article.innerHTML = `
+                ${imageMarkup}
+                <div class="cart-item-content">
+                    <h2>${item.name}</h2>
+                    <p class="cart-item-price">${formatPrice(item.price)} each</p>
+                    <div class="cart-controls">
+                        <div class="quantity-control">
+                            <button type="button" class="decrease-quantity" aria-label="Decrease ${item.name} quantity">−</button>
+                            <input type="number" min="1" value="${item.quantity}" aria-label="${item.name} quantity">
+                            <button type="button" class="increase-quantity" aria-label="Increase ${item.name} quantity">+</button>
+                        </div>
+                        <button type="button" class="remove-item">Remove</button>
+                    </div>
+                    <p class="cart-item-total">Item total: ${formatPrice(lineTotal)}</p>
+                </div>`;
+
+            const quantityInput = article.querySelector(".quantity-control input");
+            article.querySelector(".decrease-quantity").addEventListener("click", () => {
+                window.AquaCart.updateCartQuantity(item.id, Math.max(1, item.quantity - 1));
+                renderCart();
+            });
+            article.querySelector(".increase-quantity").addEventListener("click", () => {
+                window.AquaCart.updateCartQuantity(item.id, item.quantity + 1);
+                renderCart();
+            });
+            quantityInput.addEventListener("change", () => {
+                window.AquaCart.updateCartQuantity(item.id, Math.max(1, Number(quantityInput.value) || 1));
+                renderCart();
+            });
+            article.querySelector(".remove-item").addEventListener("click", () => {
+                window.AquaCart.removeFromCart(item.id);
+                renderCart();
+            });
+
+            cartItemsContainer.appendChild(article);
+        });
+
+        summaryItems.textContent = String(totalItems);
+        summarySubtotal.textContent = formatPrice(subtotal);
+        summaryTotal.textContent = formatPrice(subtotal);
+    }
+
+    clearCartButton.addEventListener("click", () => {
+        if (!window.AquaCart) return;
+        window.AquaCart.saveCart([]);
+        renderCart();
+    });
+
+    renderCart();
+});
+</script>
+</body>
+</html>
