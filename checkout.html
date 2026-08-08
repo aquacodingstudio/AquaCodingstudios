@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Checkout | AquaCoding Studios"
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Checkout | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .checkout-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .checkout-hero {
+            padding: 72px 0 48px;
+        }
+
+        .checkout-layout {
+            display: grid;
+            gap: 24px;
+            padding: 0 0 84px;
+        }
+
+        .checkout-panel,
+        .order-summary {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .checkout-panel {
+            padding: 24px;
+        }
+
+        .checkout-panel + .checkout-panel {
+            margin-top: 18px;
+        }
+
+        .checkout-panel h2,
+        .order-summary h2 {
+            margin-top: 0;
+        }
+
+        .checkout-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-field label {
+            font-weight: 800;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            font: inherit;
+        }
+
+        .form-field textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: 2px solid rgba(110, 217, 234, 0.28);
+            border-color: rgba(110, 217, 234, 0.55);
+        }
+
+        .delivery-options {
+            display: grid;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .delivery-option {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .delivery-option input {
+            margin-top: 4px;
+        }
+
+        .delivery-option strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .delivery-option span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .order-summary {
+            height: fit-content;
+            padding: 24px;
+        }
+
+        .summary-items {
+            display: grid;
+            gap: 14px;
+            margin: 18px 0;
+        }
+
+        .summary-item {
+            display: grid;
+            grid-template-columns: 64px 1fr auto;
+            gap: 12px;
+            align-items: center;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-image {
+            width: 64px;
+            height: 64px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .summary-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .summary-item h3 {
+            margin: 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .summary-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 12px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .summary-line strong {
+            font-size: 1.1rem;
+        }
+
+        .checkout-note {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .place-order-button {
+            width: 100%;
+            min-height: 52px;
+            margin-top: 18px;
+            border: 0;
+            border-radius: 12px;
+            background: var(--accent);
+            color: #04131d;
+            font: inherit;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .place-order-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.45;
+        }
+
+        .empty-checkout {
+            padding: 40px 24px;
+            text-align: center;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .empty-checkout p {
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+
+            .checkout-grid.two-column {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (min-width: 980px) {
+
+            .checkout-layout {
+                grid-template-columns: minmax(0, 1fr) 360px;
+                align-items: start;
+            }
+
+            .order-summary {
+                position: sticky;
+                top: 110px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+
+    </a>
+
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">Home</a>
+
+        <a href="shop.html">Shop</a>
+
+        <a href="guides.html">Learn</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="checkout-page">
+
+    <section class="checkout-hero">
+
+        <p class="eyebrow">
+            Secure checkout
+        </p>
+
+        <h1>
+            Complete your
+            <span>order.</span>
+        </h1>
+
+        <p class="hero-text">
+            Enter your details, choose delivery or collection,
+            and review your order before placing it.
+        </p>
+
+    </section>
+
+
+    <div
+        id="checkout-empty"
+        class="empty-checkout"
+        hidden
+    >
+
+        <h2>
+            Your cart is empty.
+        </h2>
+
+        <p>
+            Add something to your cart before checking out.
+        </p>
+
+        <a
+            class="button primary-button"
+            href="shop.html"
+        >
+            Browse Shop
+        </a>
+
+    </div>
+
+
+    <section
+        id="checkout-layout"
+        class="checkout-layout"
+    >
+
+        <div>
+
+            <form id="checkout-form">
+
+                <section class="checkout-panel">
+
+                    <p class="section-label">
+                        Contact details
+                    </p>
+
+                    <h2>
+                        Your information
+                    </h2>
+
+                    <div class="checkout-grid two-column">
+
+                        <div class="form-field">
+
+                            <label for="first-name">
+                                First name
+                            </label>
+
+                            <input
+                                id="first-name"
+                                name="firstName"
+                                type="text"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="last-name">
+                                Last name
+                            </label>
+
+                            <input
+                                id="last-name"
+                                name="lastName"
+                                type="text"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="email">
+                                Email
+                            </label>
+
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="phone">
+                                Phone
+                            </label>
+
+                            <input
+                                id="phone"
+                                name="phone"
+                                type="tel"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="checkout-panel">
+
+                    <p class="section-label">
+                        Fulfilment
+                    </p>
+
+                    <h2>
+                        Delivery or collection
+                    </h2>
+
+                    <div class="delivery-options">
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="fulfilment"
+                                value="collection"
+                                checked
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Local collection
+                                </strong>
+
+                                <span>
+                                    Arrange a collection time after your order is confirmed.
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="fulfilment"
+                                value="delivery"
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Local delivery
+                                </strong>
+
+                                <span>
+                                    Delivery availability and cost can depend on your location and livestock requirements.
+                                </span>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div
+                        id="delivery-address"
+                        class="checkout-grid two-column"
+                        style="margin-top: 18px;"
+                        hidden
+                    >
+
+                        <div class="form-field">
+
+                            <label for="address-line">
+                                Address
+                            </label>
+
+                            <input
+                                id="address-line"
+                                name="address"
+                                type="text"
+                                autocomplete="street-address"
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="locality">
+                                Locality
+                            </label>
+
+                            <input
+                                id="locality"
+                                name="locality"
+                                type="text"
+                                autocomplete="address-level2"
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="postcode">
+                                Postcode
+                            </label>
+
+                            <input
+                                id="postcode"
+                                name="postcode"
+                                type="text"
+                                autocomplete="postal-code"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="checkout-panel">
+
+                    <p class="section-label">
+                        Order notes
+                    </p>
+
+                    <h2>
+                        Anything we should know?
+                    </h2>
+
+                    <div class="form-field">
+
+                        <label for="order-notes">
+                            Notes
+                        </label>
+
+                        <textarea
+                            id="order-notes"
+                            name="notes"
+                            placeholder="Optional notes about collection, delivery or livestock."
+                        ></textarea>
+
+                    </div>
+
+                </section>
+
+
+                <section class="checkout-panel">
+
+                    <p class="section-label">
+                        Payment
+                    </p>
+
+                    <h2>
+                        Payment method
+                    </h2>
+
+                    <div class="delivery-options">
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="manual"
+                                checked
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Payment arranged after order review
+                                </strong>
+
+                                <span>
+                                    AquaCoding Studios will confirm stock, fulfilment and payment details before finalising your order.
+                                </span>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </section>
+
+            </form>
+
+        </div>
+
+
+        <aside class="order-summary">
+
+            <p class="section-label">
+                Order summary
+            </p>
+
+            <h2>
+                Your order
+            </h2>
+
+            <div
+                id="checkout-summary-items"
+                class="summary-items"
+            ></div>
+
+
+            <div class="summary-line">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span id="checkout-subtotal">
+                    €0.00
+                </span>
+
+            </div>
+
+
+            <div class="summary-line">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span id="checkout-delivery">
+                    To be confirmed
+                </span>
+
+            </div>
+
+
+            <div class="summary-line">
+
+                <strong>
+                    Total
+                </strong>
+
+                <strong id="checkout-total">
+                    €0.00
+                </strong>
+
+            </div>
+
+
+            <p class="checkout-note">
+                Final delivery costs and livestock availability are confirmed before payment.
+            </p>
+
+
+            <button
+                id="place-order-button"
+                class="place-order-button"
+                type="submit"
+                form="checkout-form"
+            >
+                Place Order Request
+            </button>
+
+        </aside>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=20"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const checkoutLayout =
+        document.getElementById("checkout-layout");
+
+    const checkoutEmpty =
+        document.getElementById("checkout-empty");
+
+    const summaryItems =
+        document.getElementById("checkout-summary-items");
+
+    const subtotalElement =
+        document.getElementById("checkout-subtotal");
+
+    const totalElement =
+        document.getElementById("checkout-total");
+
+    const fulfilmentInputs =
+        document.querySelectorAll(
+            'input[name="fulfilment"]'
+        );
+
+    const deliveryAddress =
+        document.getElementById("delivery-address");
+
+    const addressFields =
+        deliveryAddress.querySelectorAll("input");
+
+    const checkoutForm =
+        document.getElementById("checkout-form");
+
+
+    function formatPrice(value) {
+
+        return new Intl.NumberFormat(
+            "en-MT",
+            {
+                style: "currency",
+                currency: "EUR"
+            }
+        ).format(value);
+
+    }
+
+
+    function renderCheckout() {
+
+        if (!window.AquaCart) {
+            return;
+        }
+
+
+        const cart =
+            window.AquaCart.getCart();
+
+
+        if (cart.length === 0) {
+
+            checkoutLayout.hidden = true;
+
+            checkoutEmpty.hidden = false;
+
+            return;
+
+        }
+
+
+        checkoutLayout.hidden = false;
+
+        checkoutEmpty.hidden = t
