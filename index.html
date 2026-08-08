@@ -14,7 +14,7 @@
     <title>AquaCoding Studios | Aquatic Retailer Malta</title>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
 
     <style>
         .home-page {
@@ -126,25 +126,32 @@
             min-height: 220px;
             display: grid;
             place-items: center;
+            overflow: hidden;
+            background: var(--panel);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 220px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .featured-image.blue {
             padding: 24px;
             color: var(--text);
             font-weight: 800;
             text-align: center;
-        }
-
-        .featured-image.red {
-            background:
-                radial-gradient(circle at top right, rgba(255, 85, 85, 0.34), transparent 42%),
-                linear-gradient(145deg, #5b1820, #22090d);
-        }
-
-        .featured-image.blue {
             background:
                 radial-gradient(circle at top right, rgba(80, 170, 255, 0.34), transparent 42%),
                 linear-gradient(145deg, #153b68, #08192d);
         }
 
         .featured-image.green {
+            padding: 24px;
+            color: var(--text);
+            font-weight: 800;
+            text-align: center;
             background:
                 radial-gradient(circle at top right, rgba(90, 220, 120, 0.34), transparent 42%),
                 linear-gradient(145deg, #184c2c, #081d10);
@@ -175,6 +182,20 @@
         .home-link {
             color: var(--accent);
             font-weight: 800;
+        }
+
+        .breeding-badge {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 193, 7, 0.35);
+            border-radius: 999px;
+            background: rgba(255, 193, 7, 0.12);
+            color: #ffd166;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .guide-card,
@@ -369,28 +390,32 @@
 
         <div class="featured-grid">
 
-            <a class="featured-card" href="red-cherry-shrimp.html">
+            <a class="featured-card" href="bloody-mary-shrimp.html">
 
-                <div class="featured-image red">
-                    Red Cherry Shrimp
+                <div class="featured-image">
+                    <img
+                        src="bloody-mary-shrimp.jpg"
+                        alt="Bloody Mary Shrimp home bred by AquaCoding Studios in Malta"
+                        loading="lazy"
+                    >
                 </div>
 
                 <div class="featured-content">
 
-                    <span class="availability-badge out-of-stock">
-                        Out of Stock
+                    <span class="breeding-badge">
+                        Breeding — Available Soon
                     </span>
 
-                    <h3>Red Cherry Shrimp</h3>
+                    <h3>Bloody Mary Shrimp</h3>
 
                     <p>
-                        Hardy freshwater shrimp suited to mature planted
-                        aquariums.
+                        Deep-red <em>Neocaridina davidi</em>, being bred
+                        locally in Malta.
                     </p>
 
                     <div class="featured-meta">
                         <span class="product-status">
-                            Currently unavailable
+                            €4.90 each · Coming Soon
                         </span>
 
                         <span class="home-link">
@@ -671,7 +696,6 @@
 <footer>
 
     <div>
-
         <strong>AquaCoding Studios</strong>
 
         <p>
@@ -679,36 +703,21 @@
         </p>
 
         <p class="footer-links">
-
-            <a href="privacy-policy.html">
-                Privacy Policy
-            </a>
-
+            <a href="privacy-policy.html">Privacy Policy</a>
             ·
-
-            <a href="terms-and-conditions.html">
-                Terms &amp; Conditions
-            </a>
-
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
             ·
-
-            <a href="shipping-and-returns.html">
-                Shipping &amp; Returns
-            </a>
-
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
         </p>
-
     </div>
 
     <p>
-
         © 2026 AquaCoding Studios · Malta
-
     </p>
 
 </footer>
 
-<script src="script.js?v=17"></script>
+<script src="script.js?v=18"></script>
 
 </body>
 </html>
