@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical guide to ammonia, nitrite and nitrate in freshwater aquariums from AquaCoding Studios."
+    >
+
+    <meta name="theme-color" content="#04131d">
+
+    <title>Ammonia, Nitrite &amp; Nitrate | AquaCoding Studios</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=20">
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .cycle-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .cycle-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .cycle-card h3 {
+            margin-top: 0;
+        }
+
+        .cycle-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .cycle-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Water chemistry
+        </p>
+
+        <h1>
+            Ammonia, Nitrite &amp; Nitrate
+        </h1>
+
+        <p class="guide-intro">
+            These three compounds tell you a great deal about what is happening
+            inside an aquarium. Understanding where they come from, how they
+            are processed and what your test results actually mean is one of
+            the most useful skills you can learn as an aquarist.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater</span>
+            <span>Nitrogen cycle</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            The basic idea
+        </p>
+
+        <h2>
+            Waste does not simply disappear.
+        </h2>
+
+        <p>
+            Fish, shrimp, snails and other animals produce waste. Uneaten food,
+            dead plant material and other organic matter also begin to break
+            down inside the aquarium.
+        </p>
+
+        <p>
+            This process introduces nitrogen compounds into the water. In a
+            mature aquarium, communities of microorganisms help process these
+            compounds through what aquarists call the nitrogen cycle.
+        </p>
+
+        <div class="cycle-grid">
+
+            <article class="cycle-card">
+
+                <h3>1. Ammonia</h3>
+
+                <p>
+                    Waste and decomposing organic matter introduce ammonia
+                    into the system.
+                </p>
+
+            </article>
+
+            <article class="cycle-card">
+
+                <h3>2. Nitrite</h3>
+
+                <p>
+                    Ammonia-oxidising microorganisms convert ammonia into
+                    nitrite.
+                </p>
+
+            </article>
+
+            <article class="cycle-card">
+
+                <h3>3. Nitrate</h3>
+
+                <p>
+                    Other microorganisms oxidise nitrite into nitrate, which
+                    can then be managed through maintenance and plant growth.
+                </p>
+
+            </article>
+
+        </div>
+
+        <div class="guide-callout">
+
+            <strong>
+                The filter is more than a machine that catches dirt.
+            </strong>
+
+            Much of its value comes from the enormous surface area it provides
+            for beneficial microbial communities to colonise.
+
+        </div>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            Ammonia
+        </p>
+
+        <h2>
+            Ammonia is where the cycle begins.
+        </h2>
+
+        <p>
+            Ammonia enters the aquarium as livestock produce waste and organic
+            material breaks down. Uneaten food, dead leaves and dead animals
+            can all contribute to the amount being produced.
+        </p>
+
+        <p>
+            In an established aquarium, ammonia should normally be processed
+            quickly by the biological filter rather than accumulating in the
+            water.
+        </p>
+
+        <div class="guide-warning">
+
+            <strong>
+                Detectable ammonia in a stocked aquarium deserves attention.
+            </strong>
+
+            Ammonia can harm aquatic animals. If a test shows an unexpected
+            reading, confirm the result and investigate what may have changed
+            in the aquarium.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Ammonia toxicity
+        </p>
+
+        <h2>
+            Temperature and pH affect how dangerous ammonia can be.
+        </h2>
+
+        <p>
+            In aquarium water, ammonia exists in an equilibrium between
+            un-ionised ammonia and ammonium. The un-ionised form is considerably
+            more toxic to aquatic animals.
+        </p>
+
+        <p>
+            As pH and temperature increase, a greater proportion can exist in
+            the more toxic un-ionised form. This is one reason an ammonia
+            reading should be considered alongside the rest of the water
+            conditions rather than viewed in isolation.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Nitrite
+        </p>
+
+        <h2>
+            Nitrite is the next stage of the process.
+        </h2>
+
+        <p>
+            Once ammonia-oxidising microorganisms become established, they
+            convert ammonia into nitrite.
+        </p>
+
+        <p>
+            Nitrite is still dangerous to aquarium animals and should not be
+            treated as a sign that cycling is finished.
+        </p>
+
+        <p>
+            During the cycling of a new aquarium, it is common to see ammonia
+            begin to fall while nitrite rises. The system still needs time for
+            the microorganisms that process nitrite to become established.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Nitrate
+        </p>
+
+        <h2>
+            Nitrate is the end product most aquarists regularly manage.
+        </h2>
+
+        <p>
+            Nitrite-oxidising microorganisms convert nitrite into nitrate.
+            Nitrate is generally less immediately toxic than ammonia or
+            nitrite, but that does not mean unlimited accumulation is harmless.
+        </p>
+
+        <p>
+            The amount considered suitable depends on the animals being kept,
+            the aquarium and the wider water conditions. Sensitive livestock
+            may require lower concentrations than hardier species.
+        </p>
+
+        <p>
+            Regular water changes, sensible feeding, removal of decomposing
+            material and healthy plant growth can all help control nitrate.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Beneficial bacteria
+        </p>
+
+        <h2>
+            Most of the biological filter lives on surfaces.
+        </h2>
+
+        <p>
+            The microorganisms involved in nitrification colonise surfaces
+            throughout the aquarium. Filter media provides particularly useful
+            habitat because water carrying oxygen and nitrogen compounds passes
+            through it continuously.
+        </p>
+
+        <p>
+            They can also live on substrate, decorations, plants and other
+            surfaces. The important point is that they are not simply floating
+            around in the aquarium water.
+        </p>
+
+        <div class="guide-callout">
+
+            <strong>
+                This is why replacing all your filter media at once can be risky.
+            </strong>
+
+            Throwing away established biological media may also remove a large
+            part of the microbial community supporting the aquarium.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Cleaning the filter
+        </p>
+
+        <h2>
+            Clean it when needed without trying to sterilise it.
+        </h2>
+
+        <p>
+            Filter media eventually collects debris and may need gentle
+            cleaning so water can continue flowing through it properly.
+        </p>
+
+        <p>
+            The goal is to remove excess debris, not make biological media look
+            brand new. Avoid unnecessarily replacing established media simply
+            because it has become discoloured.
+        </p>
+
+        <p>
+            If media genuinely needs replacing, changing part of it while
+            leaving established media in place can help preserve biological
+            filtration.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            What cycling actually means
+        </p>
+
+        <h2>
+            A cycled aquarium can process the waste being produced.
+        </h2>
+
+        <p>
+            Cycling is not simply waiting a fixed number of days. The important
+            part is establishing enough biological filtration to process the
+            nitrogen waste entering the system.
+        </p>
+
+        <p>
+            That is why two aquariums started on the same day may not be ready
+            at exactly the same time.
+        </p>
+
+        <p>
+            Water testing gives you evidence of what is happening instead of
+            relying on the calendar alone.
+        </p>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            Testing the cycle
+        </p>
+
+        <h2>
+            Test results tell you what the aquarium is actually doing.
+        </h2>
+
+        <p>
+            During cycling, testing ammonia, nitrite and nitrate helps you
+            follow the development of biological filtration.
+        </p>
+
+        <p>
+            Rather than looking for one particular reading on one particular
+            day, pay attention to the overall pattern. Ammonia should become
+            increasingly well processed, followed by nitrite.
+        </p>
+
+        <p>
+            Before livestock are added, the aquarium should be capable of
+            processing the expected waste without leaving harmful ammonia or
+            nitrite behind.
+        </p>
+
+        <ul>
+            <li>Follow the instructions supplied with your test kit.</li>
+            <li>Check expiry dates and store testing equipment correctly.</li>
+            <li>Measure samples carefully.</li>
+            <li>Record results so changes are easier to spot.</li>
+            <li>Repeat an unusual result before assuming it is correct.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Plants &amp; the nitrogen cycle
+        </p>
+
+        <h2>
+            Plants can use nitrogen, but they do not make cycling irrelevant.
+        </h2>
+
+        <p>
+            Healthy aquarium plants take up nitrogen compounds as nutrients.
+            Fast-growing plants can make a noticeable contribution to nutrient
+            uptake in a well-planted aquarium.
+        </p>
+
+        <p>
+            However, plants should not be used as an excuse to ignore
+            biological filtration or water testing. Growth rates change,
+            plants can die back and livestock continue producing waste.
+        </p>
+
+        <p>
+            Plants and biological filtration work well together rather than
+            being competing approaches.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Water changes
+        </p>
+
+        <h2>
+            Water changes remove what the aquarium has accumulated.
+        </h2>
+
+        <p>
+            Biological filtration converts nitrogen compounds, but it does not
+            magically remove everything from the aquarium.
+        </p>
+
+        <p>
+            Regular partial water changes physically remove nitrate and other
+            dissolved substances while giving you an opportunity to replenish
+            the aquarium with appropriately prepared fresh water.
+        </p>
+
+        <p>
+            The right schedule depends on stocking, feeding, plant growth,
+            aquarium size and measured water quality rather than one universal
+            rule.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Feeding
+        </p>
+
+        <h2>
+            Every bit of food eventually becomes part of the system.
+        </h2>
+
+        <p>
+            Food that is eaten becomes waste. Food that is not eaten eventually
+            decomposes. Either way, excessive feeding increases the amount of
+            material the aquarium has to process.
+        </p>
+
+        <p>
+            Feeding appropriate portions is therefore not only about preventing
+            obesity. It is also part of maintaining water quality.
+        </p>
+
+        <div class="guide-callout">
+
+            <strong>
+                More food means more waste.
+            </strong>
+
+            A heavily fed aquarium places a greater demand on filtration and
+            maintenance than the same aquarium with sensible feeding.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Stocking
+        </p>
+
+        <h2>
+            Biological filtration has limits.
+        </h2>
+
+        <p>
+            A mature aquarium develops enough biological filtration to handle
+            the amount of waste it normally receives. Adding many animals at
+            once can suddenly increase that demand.
+        </p>
+
+        <p>
+            This is one reason gradual stocking is useful. It gives the
+            biological community time to respond to a growing waste load.
+        </p>
+
+        <p>
+            Stocking should also consider adult animal size, behaviour, swimming
+            space and species requirements — not just whether the filter can
+            process the waste.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Cycle problems
+        </p>
+
+        <h2>
+            An established aquarium can still run into trouble.
+        </h2>
+
+        <p>
+            A mature tank is not permanently protected from ammonia or nitrite.
+            Sudden changes can overwhelm or damage its biological filtration.
+        </p>
+
+        <p>
+            Possible causes include:
+        </p>
+
+        <ul>
+            <li>A dead animal remaining unnoticed in the aquarium.</li>
+            <li>Large amounts of uneaten food or decomposing material.</li>
+            <li>A sudden increase in livestock.</li>
+            <li>Loss or replacement of established filter media.</li>
+            <li>Reduced filter flow or prolonged filter failure.</li>
+            <li>Major disruption to the aquarium's biological surfaces.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Warning signs
+        </p>
+
+        <h2>
+            Livestock behaviour can tell you something is wrong.
+        </h2>
+
+        <p>
+            Poor water quality can cause changes in behaviour, but those signs
+            are not specific enough to diagnose ammonia or nitrite by
+            themselves.
+        </p>
+
+        <p>
+            Fish may breathe rapidly, remain near the surface, become unusually
+            inactive or show other signs of distress. Shrimp may also behave
+            abnormally when water conditions deteriorate.
+        </p>
+
+        <div class="guide-warning">
+
+            <strong>
+                Do not wait for visible symptoms before testing.
+            </strong>
+
+            By the time livestock clearly look unwell, the problem may already
+            be serious. Testing gives you information that appearance alone
+            cannot.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            If ammonia or nitrite appears
+        </p>
+
+        <h2>
+            Protect the livestock first, then find the cause.
+        </h2>
+
+        <p>
+            An unexpected ammonia or nitrite reading in a stocked aquarium
+            should not be ignored.
+        </p>
+
+        <p>
+            Confirm the reading, check the aquarium for obvious causes and use
+            appropriately prepared water changes to reduce harmful
+            concentrations when necessary.
+        </p>
+
+        <p>
+            Check that the filter is operating correctly and look for excess
+            food, dead livestock or decomposing organic matter. Continue
+            monitoring the water while the aquarium recovers.
+        </p>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            Managing nitrate
+        </p>
+
+        <h2>
+            Nitrate still needs to be managed.
+        </h2>
+
+        <p>
+            A functioning nitrogen cycle does not mean nitrate can simply be
+            forgotten. In many aquariums, nitrate gradually accumulates as
+            waste continues to be processed.
+        </p>
+
+        <p>
+            Regular partial water changes are one of the simplest ways to
+            control it. Healthy aquarium plants can also use nitrogen as they
+            grow.
+        </p>
+
+        <p>
+            Good maintenance, sensible stocking and avoiding excessive feeding
+            all reduce the amount of waste entering the system in the first
+            place.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            Cycling is simple in principle, but a few mistakes cause a lot of trouble.
+        </h2>
+
+        <ul>
+            <li>
+                Adding livestock before the aquarium is ready.
+            </li>
+
+            <li>
+                Assuming a tank is cycled simply because it has been running
+                for a certain number of weeks.
+            </li>
+
+            <li>
+                Thinking cloudy water automatically means the nitrogen cycle
+                is complete.
+            </li>
+
+            <li>
+                Replacing all established filter media at the same time.
+            </li>
+
+            <li>
+                Overfeeding and allowing uneaten food to decompose.
+            </li>
+
+            <li>
+                Adding a large amount of livestock to a newly established
+                aquarium at once.
+            </li>
+
+            <li>
+                Assuming nitrate is harmless because it is less immediately
+                dangerous than ammonia or nitrite.
+            </li>
+
+            <li>
+                Relying on livestock behaviour instead of actually testing
+                the water.
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Quick recap
+        </p>
+
+        <h2>
+            Waste → ammonia → nitrite → nitrate.
+        </h2>
+
+        <div class="cycle-grid">
+
+            <article class="cycle-card">
+
+                <h3>Ammonia</h3>
+
+                <p>
+                    Produced as waste and organic material break down.
+                    It should not be allowed to accumulate in a stocked
+                    aquarium.
+                </p>
+
+            </article>
+
+            <article class="cycle-card">
+
+                <h3>Nitrite</h3>
+
+                <p>
+                    Produced as ammonia is oxidised. It is also dangerous
+                    and should normally remain undetectable in an established
+                    aquarium.
+                </p>
+
+            </article>
+
+            <article class="cycle-card">
+
+                <h3>Nitrate</h3>
+
+                <p>
+                    Produced as nitrite is oxidised. It is generally less
+                    immediately toxic but still needs appropriate management.
+                </p>
+
+            </article>
+
+        </div>
+
+        <div class="guide-callout">
+
+            <strong>
+                A cycled aquarium is not a maintenance-free aquarium.
+            </strong>
+
+            Biological filtration processes waste, while good husbandry,
+            water changes, sensible feeding and regular observation keep the
+            whole system healthy over time.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="cycling-an-aquarium.html"
+            >
+                <strong>
+                    Cycling an Aquarium
+                </strong>
+
+                <span>
+                    Follow the process of establishing biological filtration
+                    before adding livestock.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>
+                    Understanding Water Parameters
+                </strong>
+
+                <span>
+                    Learn how ammonia, nitrite and nitrate fit alongside pH,
+                    GH, KH and temperature.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="ph-guide.html"
+            >
+                <strong>
+                    Understanding pH
+                </strong>
+
+                <span>
+                    Understand acidity, alkalinity, stability and buffering
+                    in aquarium water.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+
+</html>
