@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical aquarium pH guide from AquaCoding Studios covering what pH means, stability, KH, source water, testing and safe adjustment."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Understanding pH | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .ph-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .ph-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .ph-card h3 {
+            margin-top: 0;
+        }
+
+        .ph-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .ph-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Water chemistry
+        </p>
+
+        <h1>
+            Understanding pH
+        </h1>
+
+        <p class="guide-intro">
+            pH gets talked about constantly in aquarium keeping, but the number
+            itself is only useful when you understand what affects it and how
+            stable it is. A suitable, steady pH is usually far safer than
+            repeatedly pushing the aquarium toward a “perfect” number.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater</span>
+            <span>Water chemistry</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            What pH means
+        </p>
+
+        <h2>
+            pH tells you how acidic or alkaline the water is.
+        </h2>
+
+        <p>
+            A pH of 7 is neutral. Values below 7 are acidic, while values above
+            7 are alkaline. The scale is logarithmic, which means a change of
+            one full pH unit represents a much larger chemical difference than
+            the numbers make it look.
+        </p>
+
+        <div class="guide-callout">
+            <strong>pH is not a score.</strong>
+            Higher is not better and lower is not better. The right range
+            depends on the species you are keeping.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Stability
+        </p>
+
+        <h2>
+            A stable pH matters more than chasing an exact decimal.
+        </h2>
+
+        <p>
+            Many commonly kept freshwater fish and shrimp can tolerate a range
+            of pH values as long as the water remains stable and suitable for
+            the species.
+        </p>
+
+        <p>
+            Frequent chemical adjustment can cause swings that are more stressful
+            than leaving the aquarium at a slightly different but acceptable pH.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Do not keep adding pH-adjusting chemicals without understanding the cause.</strong>
+            If the water keeps returning to its original pH, something in the
+            system is buffering it there.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            KH &amp; buffering
+        </p>
+
+        <h2>
+            KH helps explain why pH stays put — or does not.
+        </h2>
+
+        <p>
+            Carbonate hardness, or KH, contributes to the buffering capacity of
+            the water. Water with more buffering resists pH change more strongly.
+        </p>
+
+        <p>
+            Very low KH water can be more vulnerable to sudden pH shifts as
+            acids accumulate. Higher KH usually makes the pH more resistant to
+            change.
+        </p>
+
+        <div class="ph-grid">
+
+            <article class="ph-card">
+                <h3>Lower KH</h3>
+                <p>
+                    Less buffering. pH may shift more easily if acids or other
+                    influences enter the aquarium.
+                </p>
+            </article>
+
+            <article class="ph-card">
+                <h3>Higher KH</h3>
+                <p>
+                    More buffering. pH is generally harder to move quickly.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Source water
+        </p>
+
+        <h2>
+            Test the water before it even reaches the tank.
+        </h2>
+
+        <p>
+            Tap water, remineralised reverse-osmosis water and other sources can
+            have very different pH and hardness. Knowing your source water helps
+            explain what the aquarium naturally wants to do.
+        </p>
+
+        <p>
+            Testing source water after it has had time to aerate can also be
+            useful because dissolved gases can influence the initial reading.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            What can change pH?
+        </p>
+
+        <h2>
+            The aquarium itself can influence the number.
+        </h2>
+
+        <div class="ph-grid">
+
+            <article class="ph-card">
+                <h3>Rocks &amp; substrate</h3>
+                <p>
+                    Calcium-rich materials can raise hardness and may push pH
+                    upward over time.
+                </p>
+            </article>
+
+            <article class="ph-card">
+                <h3>Driftwood &amp; botanicals</h3>
+                <p>
+                    Some natural materials release organic acids and tannins
+                    that may lower pH, especially in low-buffered water.
+                </p>
+            </article>
+
+            <article class="ph-card">
+                <h3>CO₂</h3>
+                <p>
+                    Dissolved carbon dioxide forms carbonic acid and can lower
+                    pH while CO₂ levels are elevated.
+                </p>
+            </article>
+
+            <article class="ph-card">
+                <h3>Biological activity</h3>
+                <p>
+                    Normal processes in the aquarium can gradually affect
+                    acidity, especially when KH is low.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Day &amp; night
+        </p>
+
+        <h2>
+            Planted tanks can show small pH movement through the day.
+        </h2>
+
+        <p>
+            Plants consume carbon dioxide while photosynthesising. CO₂ levels
+            can therefore change between the light and dark periods, which can
+            cause pH to move as well.
+        </p>
+
+        <p>
+            In tanks with injected CO₂, this daily movement may be more noticeable.
+            Consistency in the CO₂ routine is important.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Testing pH
+        </p>
+
+        <h2>
+            One reading is useful; a pattern is better.
+        </h2>
+
+        <p>
+            Test when you have a reason: during setup, while troubleshooting,
+            after changing source water, or when keeping livestock with specific
+            requirements.
+        </p>
+
+        <ul>
+            <li>Follow the instructions for the test you use.</li>
+            <li>Test at a similar time of day when comparing trends.</li>
+            <li>Check source water as well as aquarium water.</li>
+            <li>Repeat an unexpected result before reacting dramatically.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Shrimp
+        </p>
+
+        <h2>
+            pH is only one part of shrimp water chemistry.
+        </h2>
+
+        <p>
+            Neocaridina are generally adaptable, but GH, KH, temperature and
+            overall stability matter alongside pH. A tank with acceptable pH
+            but poor mineral balance can still cause problems.
+        </p>
+
+        <p>
+            Avoid large, sudden corrections just to move the pH by a few tenths.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Fish
+        </p>
+
+        <h2>
+            Match the range to the species, not the internet average.
+        </h2>
+
+        <p>
+            Different fish come from different natural water types. Some prefer
+            softer acidic water, while others naturally occur in harder,
+            alkaline conditions.
+        </p>
+
+        <p>
+            Research the species you actually keep and aim for a stable range
+            that suits the whole aquarium.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Adjusting pH
+        </p>
+
+        <h2>
+            Only change it when there is a reason.
+        </h2>
+
+        <p>
+            If the pH genuinely needs to change, work on the chemistry that
+            controls it rather than repeatedly adding temporary “up” or “down”
+            products.
+        </p>
+
+        <p>
+            Changes to hardness, source water or buffering should be made
+            gradually, with testing, and with the needs of the livestock in mind.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Large sudden pH changes can stress or kill livestock.</strong>
+            Move slowly and avoid experimenting directly in a stocked aquarium.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What causes most pH trouble.
+        </h2>
+
+        <ul>
+            <li>Trying to match one exact number from a care sheet.</li>
+            <li>Ignoring KH while trying to change pH.</li>
+            <li>Adding pH-adjusting chemicals every time the reading drifts back.</li>
+            <li>Making large corrections in a stocked tank.</li>
+            <li>Testing once and reacting before confirming the result.</li>
+            <li>Ignoring rocks, substrate or source water that naturally influence pH.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            A sensible approach
+        </p>
+
+        <h2>
+            Ask three questions before changing anything.
+        </h2>
+
+        <ul>
+            <li>Is the current pH actually unsuitable for the livestock?</li>
+            <li>Is it stable?</li>
+            <li>Do I understand what is causing it?</li>
+        </ul>
+
+        <div class="guide-callout">
+            <strong>If the answers are “suitable” and “stable”, you may not need to change it at all.</strong>
+            Aquarium keeping gets easier when you stop treating every acceptable
+            number as a problem to solve.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="gh-kh-guide.html"
+            >
+                <strong>GH &amp; KH Explained</strong>
+                <span>
+                    Understand mineral hardness and buffering in freshwater aquariums.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>Understanding Water Parameters</strong>
+                <span>
+                    See how pH fits alongside ammonia, nitrite, nitrate, GH and KH.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="nitrogen-cycle.html"
+            >
+                <strong>Ammonia, Nitrite &amp; Nitrate</strong>
+                <span>
+                    Learn how biological filtration and water quality connect.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+
+</html>
