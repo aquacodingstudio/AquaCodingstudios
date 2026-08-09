@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical aquarium fertiliser guide from AquaCoding Studios covering macro and micronutrients, root tabs, liquid fertilisers, dosing and algae."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Aquarium Fertilisers | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .fert-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .fert-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .fert-card h3 {
+            margin-top: 0;
+        }
+
+        .fert-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .fert-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Aquarium plants
+        </p>
+
+        <h1>
+            Aquarium Fertilisers
+        </h1>
+
+        <p class="guide-intro">
+            Aquarium plants need nutrients, but that does not mean every tank
+            needs heavy dosing. The useful approach is to understand where
+            nutrients come from, what the plants actually use, and whether your
+            setup needs liquid fertiliser, root tabs, both, or neither.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater plants</span>
+            <span>Plant nutrition</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            The basics
+        </p>
+
+        <h2>
+            Plants need more than light.
+        </h2>
+
+        <p>
+            Light drives growth, but plants also need carbon and a range of
+            nutrients. Some nutrients come from fish food, waste, tap water and
+            substrate. Others may need to be added deliberately.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Fertiliser is not plant medicine.</strong>
+            If lighting, CO₂, substrate or water conditions are unsuitable,
+            adding more nutrients may not fix the real problem.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Macronutrients
+        </p>
+
+        <h2>
+            Plants use some nutrients in relatively large amounts.
+        </h2>
+
+        <div class="fert-grid">
+
+            <article class="fert-card">
+                <h3>Nitrogen</h3>
+                <p>
+                    Commonly available to plants as nitrate in aquariums. Fish
+                    waste and feeding can contribute significantly.
+                </p>
+            </article>
+
+            <article class="fert-card">
+                <h3>Phosphorus</h3>
+                <p>
+                    Usually available as phosphate. It is essential for plant
+                    growth and energy transfer.
+                </p>
+            </article>
+
+            <article class="fert-card">
+                <h3>Potassium</h3>
+                <p>
+                    Important for normal plant function and often added through
+                    comprehensive aquarium fertilisers.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Micronutrients
+        </p>
+
+        <h2>
+            Small amounts still matter.
+        </h2>
+
+        <p>
+            Plants also require trace elements such as iron, manganese, boron
+            and others in much smaller quantities. Comprehensive fertilisers
+            often include a balanced mixture of these micronutrients.
+        </p>
+
+        <p>
+            More trace elements are not automatically better. Excess dosing is
+            unnecessary and can make troubleshooting harder.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Liquid fertiliser
+        </p>
+
+        <h2>
+            Useful for plants that feed from the water column.
+        </h2>
+
+        <p>
+            Mosses, floating plants and many stem plants can access nutrients
+            directly from the water. Liquid fertiliser is therefore a practical
+            way to provide missing nutrients.
+        </p>
+
+        <p>
+            A comprehensive fertiliser can simplify dosing by combining several
+            nutrients into one product.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Do not pour in extra because growth looks slow after two days.</strong>
+            Plants need time to respond. Large dosing changes make it difficult
+            to tell what is actually helping.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Root tabs
+        </p>
+
+        <h2>
+            Root feeders benefit from nutrients where their roots can reach them.
+        </h2>
+
+        <p>
+            Plants such as Cryptocoryne and many heavy root feeders can benefit
+            from fertiliser placed beneath the substrate. Root tabs slowly
+            release nutrients in the root zone.
+        </p>
+
+        <p>
+            Root tabs are especially useful when the substrate itself contains
+            little plant nutrition.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Which method?
+        </p>
+
+        <h2>
+            Match the fertiliser to the plants.
+        </h2>
+
+        <div class="fert-grid">
+
+            <article class="fert-card">
+                <h3>Water-column feeders</h3>
+                <p>
+                    Floating plants, mosses and many stem plants often benefit
+                    most directly from liquid fertiliser.
+                </p>
+            </article>
+
+            <article class="fert-card">
+                <h3>Root feeders</h3>
+                <p>
+                    Cryptocoryne, swords and similar rooted plants may benefit
+                    strongly from root tabs.
+                </p>
+            </article>
+
+            <article class="fert-card">
+                <h3>Mixed planted tanks</h3>
+                <p>
+                    Many aquariums use a moderate liquid fertiliser alongside
+                    occasional root tabs for heavy root feeders.
+                </p>
+            </article>
+
+            <article class="fert-card">
+                <h3>Lightly planted tanks</h3>
+                <p>
+                    A tank with only a few slow-growing plants may need very
+                    little additional fertiliser.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Fish waste
+        </p>
+
+        <h2>
+            Livestock already adds nutrients to the system.
+        </h2>
+
+        <p>
+            Fish food enters the tank and eventually contributes nutrients
+            through waste and decomposition. In a stocked aquarium, nitrate and
+            phosphate may already be present in useful amounts.
+        </p>
+
+        <p>
+            This is why two visually similar planted tanks can need very
+            different fertiliser routines.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Shrimp tanks
+        </p>
+
+        <h2>
+            Dose conservatively and use products suitable for invertebrates.
+        </h2>
+
+        <p>
+            Planted shrimp tanks can still be fertilised, but avoid unnecessary
+            overdosing and always follow the manufacturer's instructions for the
+            specific product.
+        </p>
+
+        <p>
+            Trace amounts of some metals are plant nutrients, but concentrated
+            exposure can be harmful. The word “contains copper” on its own does
+            not tell you whether a correctly dosed fertiliser is unsafe; dose
+            and chemical form matter.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Deficiencies
+        </p>
+
+        <h2>
+            A damaged leaf does not diagnose one specific nutrient.
+        </h2>
+
+        <p>
+            Yellowing, holes, pale new growth and stunted plants can be linked
+            to nutrient problems, but similar symptoms can also result from
+            lighting, CO₂, damaged roots, transition melt or poor conditions.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Look for patterns, not one leaf.</strong>
+            New growth versus old growth, multiple affected plants and recent
+            changes to the tank can all help narrow down the issue.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Algae
+        </p>
+
+        <h2>
+            Fertiliser does not automatically cause algae.
+        </h2>
+
+        <p>
+            Algae problems are usually about imbalance. Excessive lighting,
+            unstable CO₂, weak plant growth, overfeeding and poor maintenance
+            can all contribute.
+        </p>
+
+        <p>
+            Completely starving plants of nutrients can make the situation
+            worse by weakening the plants that would otherwise compete for
+            resources.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Dosing
+        </p>
+
+        <h2>
+            Start with the instructions, then adjust based on the tank.
+        </h2>
+
+        <p>
+            Use the manufacturer's recommended dose as a sensible starting
+            point. A heavily planted, high-light aquarium may eventually need a
+            different routine from a lightly planted low-tech tank.
+        </p>
+
+        <ul>
+            <li>Measure doses rather than guessing.</li>
+            <li>Keep the routine consistent.</li>
+            <li>Watch new plant growth.</li>
+            <li>Change one part of the routine at a time.</li>
+            <li>Continue normal water changes and maintenance.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Water changes
+        </p>
+
+        <h2>
+            Fertiliser does not replace maintenance.
+        </h2>
+
+        <p>
+            Regular water changes help manage dissolved waste and prevent the
+            aquarium from becoming an uncontrolled accumulation of everything
+            being added.
+        </p>
+
+        <p>
+            A good fertiliser routine works alongside maintenance, not instead
+            of it.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What makes plant nutrition harder than it needs to be.
+        </h2>
+
+        <ul>
+            <li>Adding extra fertiliser every time a plant looks imperfect.</li>
+            <li>Using root tabs for plants that mainly feed from the water column.</li>
+            <li>Assuming all algae means nutrients are too high.</li>
+            <li>Ignoring strong lighting while reducing fertiliser to almost nothing.</li>
+            <li>Changing several products and doses at once.</li>
+            <li>Expecting fertiliser to compensate for unsuitable light or damaged plants.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            A simple beginner approach
+        </p>
+
+        <h2>
+            Keep the routine boring at first.
+        </h2>
+
+        <p>
+            For a basic planted aquarium, start with hardy plants, moderate
+            lighting and normal fish or shrimp care. If growth suggests more
+            nutrition is needed, add a suitable comprehensive liquid fertiliser
+            at the recommended rate.
+        </p>
+
+        <p>
+            Use root tabs for established root feeders where appropriate. Then
+            watch the aquarium for several weeks before making major changes.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="beginner-plants.html"
+            >
+                <strong>Beginner Aquarium Plants</strong>
+                <span>
+                    Choose hardy plants that work well in simpler planted setups.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="aquarium-lighting.html"
+            >
+                <strong>Aquarium Lighting</strong>
+                <span>
+                    See how light intensity and duration affect nutrient demand and algae.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>Understanding Water Parameters</strong>
+                <span>
+                    Learn how nitrate and other water readings fit into overall aquarium care.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+
+</html>
