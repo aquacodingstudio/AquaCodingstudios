@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical GH and KH aquarium guide from AquaCoding Studios covering general hardness, carbonate hardness, minerals, buffering, shrimp care and testing."
+    >
+
+    <meta name="theme-color" content="#04131d">
+
+    <title>GH &amp; KH Explained | AquaCoding Studios</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=20">
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .hardness-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .hardness-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .hardness-card h3 {
+            margin-top: 0;
+        }
+
+        .hardness-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .hardness-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Water chemistry
+        </p>
+
+        <h1>
+            GH &amp; KH Explained
+        </h1>
+
+        <p class="guide-intro">
+            GH and KH sound like two more numbers to worry about, but they
+            describe different parts of your aquarium water. GH is mainly about
+            dissolved calcium and magnesium. KH is about carbonate buffering
+            and how strongly the water resists changes in pH.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater</span>
+            <span>Water chemistry</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            The difference
+        </p>
+
+        <h2>
+            GH and KH are not the same thing.
+        </h2>
+
+        <div class="hardness-grid">
+
+            <article class="hardness-card">
+                <h3>GH — General Hardness</h3>
+
+                <p>
+                    GH measures mainly dissolved calcium and magnesium ions.
+                    These minerals matter to fish, shrimp, snails and plants.
+                </p>
+            </article>
+
+            <article class="hardness-card">
+                <h3>KH — Carbonate Hardness</h3>
+
+                <p>
+                    KH measures carbonate and bicarbonate buffering capacity.
+                    It helps the water resist sudden changes in pH.
+                </p>
+            </article>
+
+        </div>
+
+        <div class="guide-callout">
+            <strong>An easy way to remember it:</strong>
+            GH is mostly about minerals. KH is mostly about buffering.
+        </div>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            General hardness
+        </p>
+
+        <h2>
+            GH tells you about the mineral content of the water.
+        </h2>
+
+        <p>
+            General hardness mainly reflects the amount of dissolved calcium
+            and magnesium in freshwater. These minerals play important roles
+            in the health of aquarium animals and plants.
+        </p>
+
+        <p>
+            Water containing relatively little calcium and magnesium is
+            described as soft. Water containing more of these minerals is
+            described as hard.
+        </p>
+
+        <p>
+            Neither soft nor hard water is automatically better. What matters
+            is whether the water suits the species you are keeping.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Why GH matters
+        </p>
+
+        <h2>
+            Different species are adapted to different mineral levels.
+        </h2>
+
+        <p>
+            Some freshwater fish naturally occur in very soft water, while
+            others are better suited to harder, mineral-rich conditions.
+            Keeping animals far outside their preferred conditions can cause
+            problems over time.
+        </p>
+
+        <p>
+            GH is particularly important when keeping freshwater shrimp and
+            snails because calcium and magnesium are involved in normal
+            moulting, shell development and other biological processes.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Carbonate hardness
+        </p>
+
+        <h2>
+            KH helps keep pH stable.
+        </h2>
+
+        <p>
+            KH describes the carbonate and bicarbonate buffering capacity of
+            the water. In simple terms, it helps the aquarium resist sudden
+            changes in pH.
+        </p>
+
+        <p>
+            Acids are naturally produced in an aquarium through biological
+            processes. Carbonate buffering can neutralise some of that acidity,
+            helping prevent the pH from changing too quickly.
+        </p>
+
+        <div class="hardness-grid">
+
+            <article class="hardness-card">
+
+                <h3>Lower KH</h3>
+
+                <p>
+                    Less buffering means the pH may change more easily,
+                    particularly as acids accumulate.
+                </p>
+
+            </article>
+
+            <article class="hardness-card">
+
+                <h3>Higher KH</h3>
+
+                <p>
+                    More buffering generally makes the pH more resistant to
+                    sudden change.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            GH, KH &amp; pH
+        </p>
+
+        <h2>
+            The three measurements are connected, but they are not interchangeable.
+        </h2>
+
+        <p>
+            It is easy to assume that hard water must have a high pH or that
+            soft water must be acidic. Real aquarium water is more complicated
+            than that.
+        </p>
+
+        <p>
+            GH tells you mainly about calcium and magnesium. KH tells you about
+            carbonate buffering. pH tells you how acidic or alkaline the water
+            is at that moment.
+        </p>
+
+        <p>
+            Because KH contributes to buffering, it has an especially important
+            relationship with pH stability.
+        </p>
+
+        <div class="guide-warning">
+
+            <strong>
+                Do not use pH to guess GH or KH.
+            </strong>
+
+            If you need to know the hardness of your water, test the hardness
+            directly.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Measuring hardness
+        </p>
+
+        <h2>
+            Check the units before comparing results.
+        </h2>
+
+        <p>
+            Aquarium hardness is commonly reported as degrees of general
+            hardness and carbonate hardness, written as dGH and dKH.
+            Water reports and some tests may instead use parts per million.
+        </p>
+
+        <p>
+            One degree of German hardness is approximately 17.9 ppm when
+            expressed as calcium carbonate equivalent.
+        </p>
+
+        <p>
+            This means two numbers can look completely different while
+            describing roughly the same hardness, simply because different
+            units are being used.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Testing your water
+        </p>
+
+        <h2>
+            Start with the water coming out of the tap.
+        </h2>
+
+        <p>
+            Testing both your source water and aquarium water gives you much
+            more useful information than testing the aquarium alone.
+        </p>
+
+        <p>
+            If the readings are noticeably different, something inside the
+            aquarium may be affecting the mineral content or buffering capacity.
+            Rocks, substrates and remineralising products are common examples.
+        </p>
+
+        <ul>
+            <li>Follow the instructions supplied with your test kit.</li>
+            <li>Count drops carefully when using liquid titration tests.</li>
+            <li>Write down results so you can compare them over time.</li>
+            <li>Retest an unexpected result before making major changes.</li>
+        </ul>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            Neocaridina shrimp
+        </p>
+
+        <h2>
+            Mineral balance matters when shrimp moult.
+        </h2>
+
+        <p>
+            Neocaridina shrimp generally do well in moderately mineralised
+            freshwater, but GH should never be considered on its own.
+            Temperature, KH, pH and overall stability all matter as well.
+        </p>
+
+        <p>
+            Calcium and magnesium are important during normal moulting and
+            exoskeleton development. Water that is extremely soft or poorly
+            balanced can therefore cause problems even when the pH appears
+            suitable.
+        </p>
+
+        <div class="guide-callout">
+
+            <strong>
+                GH is not simply a calcium reading.
+            </strong>
+
+            A GH test measures the combined contribution of certain dissolved
+            minerals. It does not tell you the exact calcium-to-magnesium ratio
+            in the aquarium.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Snails
+        </p>
+
+        <h2>
+            Shell-building animals also depend on suitable minerals.
+        </h2>
+
+        <p>
+            Calcium is particularly important for shell growth and maintenance.
+            Very soft or acidic conditions can make shell erosion more likely
+            in some commonly kept freshwater snails.
+        </p>
+
+        <p>
+            This does not mean every snail should automatically be kept in very
+            hard water. Always consider the requirements of the particular
+            species you are keeping.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Aquarium plants
+        </p>
+
+        <h2>
+            Calcium and magnesium are plant nutrients too.
+        </h2>
+
+        <p>
+            Aquarium plants require both calcium and magnesium for healthy
+            growth. In many aquariums these minerals are already supplied by
+            the source water.
+        </p>
+
+        <p>
+            Very soft water or reverse-osmosis water may contain much less,
+            which is one reason remineralisation can be important.
+        </p>
+
+        <p>
+            GH is only one part of plant nutrition, however. Nitrogen,
+            phosphorus, potassium, trace elements, lighting and carbon
+            availability also influence growth.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Reverse-osmosis water
+        </p>
+
+        <h2>
+            RO water gives you control, but usually needs minerals added back.
+        </h2>
+
+        <p>
+            Reverse-osmosis filtration removes a large proportion of dissolved
+            minerals and other substances from source water.
+        </p>
+
+        <p>
+            This can be useful when the local tap water is unsuitable or when
+            an aquarist wants greater control over the final water chemistry.
+            However, very low-mineral RO water should not simply be treated as
+            ideal aquarium water.
+        </p>
+
+        <p>
+            It is commonly remineralised before use so the final GH and, where
+            appropriate, KH suit the livestock being kept.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Raising GH
+        </p>
+
+        <h2>
+            Add minerals deliberately, not by guesswork.
+        </h2>
+
+        <p>
+            GH can be increased using suitable remineralising products that
+            supply calcium, magnesium or both.
+        </p>
+
+        <p>
+            Some rocks and substrates can also release minerals into the water.
+            This may be useful in certain setups, but it can make precise
+            control more difficult if you do not know how strongly the material
+            affects your water.
+        </p>
+
+        <ul>
+            <li>Test before adding anything.</li>
+            <li>Know what the product contains.</li>
+            <li>Prepare replacement water consistently.</li>
+            <li>Make changes gradually.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Raising KH
+        </p>
+
+        <h2>
+            Increasing KH also changes the aquarium's buffering.
+        </h2>
+
+        <p>
+            Carbonate- and bicarbonate-based materials can increase KH.
+            Calcareous rocks and substrates may also increase carbonate
+            hardness as they dissolve.
+        </p>
+
+        <p>
+            Because KH is closely connected with pH stability, changing it can
+            affect more than one water parameter at the same time.
+        </p>
+
+        <div class="guide-warning">
+
+            <strong>
+                Avoid making sudden adjustments in a stocked aquarium.
+            </strong>
+
+            Changing hardness quickly also changes the dissolved conditions
+            surrounding your livestock. Slow, measured adjustments are much
+            safer.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Lowering hardness
+        </p>
+
+        <h2>
+            Sometimes the easiest solution is to start with softer water.
+        </h2>
+
+        <p>
+            If your source water is significantly harder than the animals you
+            intend to keep require, it can be mixed with lower-mineral water
+            such as reverse-osmosis water.
+        </p>
+
+        <p>
+            The final mixture should be tested rather than assumed. Once you
+            find a suitable mixture, consistency between water changes becomes
+            important.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Evaporation
+        </p>
+
+        <h2>
+            Water evaporates. Most dissolved minerals stay behind.
+        </h2>
+
+        <p>
+            When water leaves the aquarium through evaporation, the minerals
+            dissolved in it generally remain in the tank.
+        </p>
+
+        <p>
+            If evaporation is repeatedly replaced with hard tap water, more
+            minerals are being added each time and hardness can gradually
+            increase.
+        </p>
+
+        <p>
+            This is different from a water change. During a water change, some
+            aquarium water and its dissolved minerals are removed before fresh
+            water is added.
+        </p>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            TDS
+        </p>
+
+        <h2>
+            TDS is useful, but it does not replace GH and KH testing.
+        </h2>
+
+        <p>
+            TDS stands for total dissolved solids. A TDS meter gives a broad
+            indication of how much dissolved material is present in the water,
+            but it does not tell you what that material actually is.
+        </p>
+
+        <p>
+            Two aquariums can have similar TDS readings while having very
+            different GH, KH and overall water chemistry.
+        </p>
+
+        <p>
+            This makes TDS useful for spotting changes and maintaining
+            consistency, especially when preparing remineralised water, but it
+            should not be treated as a replacement for proper hardness tests.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            Most hardness problems come from changing things without
+            understanding the water first.
+        </h2>
+
+        <ul>
+            <li>
+                Treating GH and KH as though they measure the same thing.
+            </li>
+
+            <li>
+                Assuming pH tells you whether the water is soft or hard.
+            </li>
+
+            <li>
+                Adding minerals without testing the source water first.
+            </li>
+
+            <li>
+                Using very low-mineral RO water without appropriate
+                remineralisation.
+            </li>
+
+            <li>
+                Making large hardness changes while livestock are still in
+                the aquarium.
+            </li>
+
+            <li>
+                Using TDS as though it identifies individual minerals.
+            </li>
+
+            <li>
+                Trying to hit one exact number instead of maintaining a
+                suitable and stable range.
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            A sensible approach
+        </p>
+
+        <h2>
+            Learn what your water is already doing before trying to change it.
+        </h2>
+
+        <p>
+            Start by testing the GH, KH and pH of your source water. Then test
+            the aquarium and compare the results.
+        </p>
+
+        <p>
+            If the aquarium readings are different, look at what could be
+            responsible. Rocks, substrate, remineralisers and other materials
+            can all influence water chemistry.
+        </p>
+
+        <p>
+            Next, compare those conditions with the actual requirements of the
+            animals you keep. A number should only be changed when there is a
+            good reason to change it.
+        </p>
+
+        <div class="guide-callout">
+
+            <strong>
+                Stable and suitable beats artificially perfect.
+            </strong>
+
+            The goal is not to collect perfect numbers on a test sheet.
+            The goal is to provide consistent water that suits the animals
+            and plants living in it.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Quick recap
+        </p>
+
+        <h2>
+            GH = minerals. KH = buffering.
+        </h2>
+
+        <div class="hardness-grid">
+
+            <article class="hardness-card">
+
+                <h3>GH</h3>
+
+                <p>
+                    Mainly reflects dissolved calcium and magnesium and is
+                    important for livestock, moulting, shells and plant growth.
+                </p>
+
+            </article>
+
+            <article class="hardness-card">
+
+                <h3>KH</h3>
+
+                <p>
+                    Reflects carbonate buffering and helps the aquarium resist
+                    sudden changes in pH.
+                </p>
+
+            </article>
+
+            <article class="hardness-card">
+
+                <h3>pH</h3>
+
+                <p>
+                    Describes how acidic or alkaline the water is. KH helps
+                    influence how resistant that pH is to change.
+                </p>
+
+            </article>
+
+            <article class="hardness-card">
+
+                <h3>TDS</h3>
+
+                <p>
+                    Gives a broad reading of dissolved material but does not
+                    tell you which minerals or substances are present.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="ph-guide.html"
+            >
+                <strong>
+                    Understanding pH
+                </strong>
+
+                <span>
+                    Learn how acidity, alkalinity and buffering affect
+                    aquarium water.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>
+                    Understanding Water Parameters
+                </strong>
+
+                <span>
+                    Put GH and KH alongside temperature, pH, ammonia,
+                    nitrite and nitrate.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="neocaridina-care-guide.html"
+            >
+                <strong>
+                    Neocaridina Care Guide
+                </strong>
+
+                <span>
+                    See how mineral balance fits into everyday freshwater
+                    shrimp care.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+
+</html>
