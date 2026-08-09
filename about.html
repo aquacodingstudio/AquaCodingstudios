@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
         content="Learn about AquaCoding Studios, our story, values, animal welfare approach and vision for aquatic retail in Malta."
     >
 
-    <meta name="theme-color" content="#04131d">
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
 
     <title>About | AquaCoding Studios</title>
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=17">
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
 
     <style>
+
         .about-page {
             width: min(92%, 1180px);
             margin: 0 auto;
@@ -150,7 +168,34 @@
             gap: 12px;
         }
 
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
         @media (min-width: 760px) {
+
             .story-grid {
                 grid-template-columns: 1.1fr 0.9fr;
             }
@@ -170,14 +215,19 @@
             .about-cta {
                 grid-template-columns: 1fr auto;
             }
+
         }
 
         @media (min-width: 1050px) {
+
             .values-grid {
                 grid-template-columns: repeat(4, minmax(0, 1fr));
             }
+
         }
+
     </style>
+
 </head>
 
 <body>
@@ -189,11 +239,13 @@
         href="index.html"
         aria-label="AquaCoding Studios homepage"
     >
+
         <img
             src="logo-dark.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
+
     </a>
 
     <button
@@ -202,17 +254,80 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
+
         <span></span>
         <span></span>
         <span></span>
+
     </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="guides.html">Learn</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="guides.html">
+            Learn
+        </a>
+
+        <a
+            href="about.html"
+            aria-current="page"
+        >
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+
+        </a>
+
     </nav>
 
 </header>
@@ -307,7 +422,9 @@
 
             <article class="mission-card">
 
-                <h3>Healthy Livestock</h3>
+                <h3>
+                    Healthy Livestock
+                </h3>
 
                 <p>
                     Animals should be offered with suitable care information,
@@ -318,7 +435,9 @@
 
             <article class="mission-card">
 
-                <h3>Useful Products</h3>
+                <h3>
+                    Useful Products
+                </h3>
 
                 <p>
                     Equipment and supplies should be practical, reliable and
@@ -329,7 +448,9 @@
 
             <article class="mission-card">
 
-                <h3>Clear Guidance</h3>
+                <h3>
+                    Clear Guidance
+                </h3>
 
                 <p>
                     Advice should be understandable, honest and useful without
@@ -360,9 +481,13 @@
 
             <article class="value-card">
 
-                <span class="value-number">01</span>
+                <span class="value-number">
+                    01
+                </span>
 
-                <h3>Animal Welfare</h3>
+                <h3>
+                    Animal Welfare
+                </h3>
 
                 <p>
                     Healthy animals and appropriate care always come before
@@ -373,9 +498,13 @@
 
             <article class="value-card">
 
-                <span class="value-number">02</span>
+                <span class="value-number">
+                    02
+                </span>
 
-                <h3>Honesty</h3>
+                <h3>
+                    Honesty
+                </h3>
 
                 <p>
                     Customers deserve clear stock information, realistic advice
@@ -386,9 +515,13 @@
 
             <article class="value-card">
 
-                <span class="value-number">03</span>
+                <span class="value-number">
+                    03
+                </span>
 
-                <h3>Quality</h3>
+                <h3>
+                    Quality
+                </h3>
 
                 <p>
                     Livestock, plants and products should meet a consistent
@@ -399,9 +532,13 @@
 
             <article class="value-card">
 
-                <span class="value-number">04</span>
+                <span class="value-number">
+                    04
+                </span>
 
-                <h3>Community</h3>
+                <h3>
+                    Community
+                </h3>
 
                 <p>
                     AquaCoding Studios aims to support and strengthen Malta's
@@ -432,21 +569,41 @@
 
             <article class="future-panel">
 
-                <h3>What AquaCoding Studios can offer</h3>
+                <h3>
+                    What AquaCoding Studios can offer
+                </h3>
 
                 <ul class="future-list">
-                    <li>Aquatic livestock and invertebrates</li>
-                    <li>Aquarium plants</li>
-                    <li>Equipment and supplies</li>
-                    <li>Care guides and educational resources</li>
-                    <li>Friendly, practical customer support</li>
+
+                    <li>
+                        Aquatic livestock and invertebrates
+                    </li>
+
+                    <li>
+                        Aquarium plants
+                    </li>
+
+                    <li>
+                        Equipment and supplies
+                    </li>
+
+                    <li>
+                        Care guides and educational resources
+                    </li>
+
+                    <li>
+                        Friendly, practical customer support
+                    </li>
+
                 </ul>
 
             </article>
 
             <article class="future-panel">
 
-                <h3>The long-term vision</h3>
+                <h3>
+                    The long-term vision
+                </h3>
 
                 <p>
                     The aim is to build a trusted aquatic retailer in Malta
@@ -488,11 +645,17 @@
 
             <div class="about-actions">
 
-                <a class="button primary-button" href="shop.html">
+                <a
+                    class="button primary-button"
+                    href="shop.html"
+                >
                     Browse Shop
                 </a>
 
-                <a class="button secondary-button" href="guides.html">
+                <a
+                    class="button secondary-button"
+                    href="guides.html"
+                >
                     View Guides
                 </a>
 
@@ -508,7 +671,9 @@
 
     <div>
 
-        <strong>AquaCoding Studios</strong>
+        <strong>
+            AquaCoding Studios
+        </strong>
 
         <p>
             Aquatic livestock, plants, supplies and practical care.
@@ -537,14 +702,13 @@
     </div>
 
     <p>
-
         © 2026 AquaCoding Studios · Malta
-
     </p>
 
 </footer>
 
-<script src="script.js?v=17"></script>
+<script src="script.js?v=20"></script>
 
 </body>
+
 </html>
