@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -11,12 +17,23 @@
 
     <meta name="theme-color" content="#04131d">
 
-    <title>Betta splendens | AquaCoding Studios</title>
+    <title>
+        Betta splendens | AquaCoding Studios
+    </title>
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=16">
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
 
     <style>
+
         .product-page {
             width: min(92%, 1180px);
             margin: 0 auto;
@@ -48,7 +65,11 @@
                     rgba(180, 120, 255, 0.34),
                     transparent 42%
                 ),
-                linear-gradient(145deg, #4b2668, #1a0d25);
+                linear-gradient(
+                    145deg,
+                    #4b2668,
+                    #1a0d25
+                );
             box-shadow: var(--shadow);
             color: var(--text);
             font-weight: 800;
@@ -76,19 +97,22 @@
             display: inline-flex;
             width: fit-content;
             padding: 8px 12px;
-            border: 1px solid rgba(220, 53, 69, 0.35);
             border-radius: 999px;
-            background: rgba(220, 53, 69, 0.15);
-            color: #ff7b7b;
             font-size: 0.78rem;
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
+        .out-stock-badge {
+            border: 1px solid rgba(220, 53, 69, 0.35);
+            background: rgba(220, 53, 69, 0.15);
+            color: #ff7b7b;
+        }
+
         .purchase-panel {
             display: grid;
-            gap: 22px;
+            gap: 18px;
             margin-top: 26px;
             padding: 24px;
             background: var(--panel);
@@ -109,49 +133,39 @@
             gap: 12px;
         }
 
-        .quantity-selector {
-            display: grid;
-            grid-template-columns: 48px 70px 48px;
-            gap: 10px;
-        }
-
-        .quantity-selector button,
-        .quantity-selector input,
+        .wishlist-button,
         .add-to-cart-button {
+            width: 100%;
             min-height: 48px;
             border-radius: 12px;
-        }
-
-        .quantity-selector button,
-        .quantity-selector input {
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text);
-            text-align: center;
-        }
-
-        .quantity-selector input {
-            width: 100%;
             font: inherit;
             font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .wishlist-button {
+            border: 1px solid rgba(110, 217, 234, 0.4);
+            background: rgba(110, 217, 234, 0.1);
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .wishlist-button.saved {
+            border-color: rgba(255, 193, 7, 0.4);
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffd166;
         }
 
         .add-to-cart-button {
-            width: 100%;
-            border: 0;
-            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.06);
             color: var(--muted);
-            font: inherit;
-            font-weight: 800;
-            letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
-        .quantity-selector button:disabled,
-        .quantity-selector input:disabled,
         .add-to-cart-button:disabled {
             cursor: not-allowed;
-            opacity: 0.6;
+            opacity: 0.65;
         }
 
         .product-section {
@@ -220,7 +234,6 @@
             margin: 14px 0 0;
             padding-left: 20px;
         }
-
         .faq-list {
             display: grid;
             gap: 14px;
@@ -269,30 +282,66 @@
             color: var(--muted);
         }
 
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
         @media (min-width: 760px) {
+
             .product-hero {
-                grid-template-columns: 1.15fr 0.85fr;
+                grid-template-columns:
+                    1.15fr 0.85fr;
                 align-items: stretch;
             }
 
             .info-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
             .related-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
 
         @media (min-width: 1050px) {
+
             .info-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
 <header class="site-header">
 
@@ -301,12 +350,15 @@
         href="index.html"
         aria-label="AquaCoding Studios homepage"
     >
+
         <img
             src="logo-dark.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
+
     </a>
+
 
     <button
         class="menu-button"
@@ -314,54 +366,119 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
+
         <span></span>
         <span></span>
         <span></span>
+
     </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
         <a href="index.html">Home</a>
+
         <a href="shop.html">Shop</a>
+
         <a href="guides.html">Learn</a>
+
         <a href="about.html">About</a>
+
         <a href="contact.html">Contact</a>
+
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
     </nav>
 
 </header>
 
+
 <main class="product-page">
 
-    <a class="product-breadcrumb" href="shop.html">
+
+    <a
+        class="product-breadcrumb"
+        href="shop.html"
+    >
         ← Back to Shop
     </a>
 
+
     <section class="product-hero">
+
 
         <div class="product-image">
             Betta splendens
         </div>
 
+
         <div class="product-summary">
+
 
             <p class="eyebrow">
                 Freshwater fish
             </p>
 
+
             <h1>
                 Betta splendens
             </h1>
+
 
             <p class="scientific-name">
                 <em>Betta splendens</em>
             </p>
 
-            <span class="stock-badge">
-                Out of stock
+
+            <span class="stock-badge out-stock-badge">
+                Out of Stock
             </span>
+
 
             <div class="purchase-panel">
 
+
                 <div>
+
                     <p class="section-label">
                         Price
                     </p>
@@ -369,91 +486,92 @@
                     <p class="purchase-price">
                         Currently unavailable
                     </p>
+
                 </div>
+
 
                 <div class="purchase-row">
 
-                    <label for="betta-quantity">
-                        Quantity
-                    </label>
 
-                    <div class="quantity-selector">
+                    <button
+                        class="wishlist-button"
+                        type="button"
+                        data-add-to-wishlist
+                        data-product-id="betta-splendens"
+                        data-product-name="Betta splendens"
+                        data-product-price="0"
+                        data-product-image=""
+                        data-product-url="betta-splendens.html"
+                        data-product-available="false"
+                        aria-pressed="false"
+                    >
+                        Add to Wishlist
+                    </button>
 
-                        <button
-                            type="button"
-                            aria-label="Decrease quantity"
-                            disabled
-                        >
-                            −
-                        </button>
-
-                        <input
-                            id="betta-quantity"
-                            type="number"
-                            value="1"
-                            min="1"
-                            readonly
-                            disabled
-                        >
-
-                        <button
-                            type="button"
-                            aria-label="Increase quantity"
-                            disabled
-                        >
-                            +
-                        </button>
-
-                    </div>
 
                     <button
                         class="add-to-cart-button"
                         type="button"
                         disabled
                     >
-                        Out of stock
+                        Out of Stock
                     </button>
+
 
                 </div>
 
+
             </div>
+
 
         </div>
 
+
     </section>
 
+
     <section class="product-section">
+
 
         <p class="section-label">
             Overview
         </p>
 
+
         <h2>
             A striking fish with a strong personality.
         </h2>
 
+
         <div class="product-copy">
 
-            <p>
-                Betta splendens are freshwater labyrinth fish known for their
-                vivid colours, flowing fins and highly individual behaviour.
-            </p>
 
             <p>
-                They can breathe atmospheric air using a specialised labyrinth
-                organ, but they still require clean, heated and properly
-                maintained water.
+                Betta splendens are freshwater labyrinth fish known for
+                their vivid colours, flowing fins and highly individual
+                behaviour.
             </p>
 
+
             <p>
-                A well-designed habitat should provide gentle flow, warm stable
-                water, plants, cover, open surface access and comfortable
-                resting places.
+                They can breathe atmospheric air using a specialised
+                labyrinth organ, but they still require clean, heated and
+                properly maintained water.
             </p>
+
+
+            <p>
+                A well-designed habitat should provide gentle flow, warm
+                stable water, plants, cover, open surface access and
+                comfortable resting places.
+            </p>
+
 
         </div>
 
+
         <dl class="quick-facts">
+
 
             <div>
                 <dt>Temperature</dt>
@@ -490,9 +608,12 @@
                 <dd>About 3–5 years</dd>
             </div>
 
+
         </dl>
 
+
     </section>
+    <!-- CARE -->
 
     <section class="product-section">
 
@@ -506,8 +627,12 @@
 
         <div class="info-grid">
 
+
             <article class="info-card">
-                <h3>Water Parameters</h3>
+
+                <h3>
+                    Water Parameters
+                </h3>
 
                 <ul>
                     <li>Temperature: 24–28°C</li>
@@ -516,61 +641,96 @@
                     <li>Ammonia and nitrite: 0 ppm</li>
                     <li>Regular partial water changes</li>
                 </ul>
+
             </article>
 
+
             <article class="info-card">
-                <h3>Aquarium Setup</h3>
+
+                <h3>
+                    Aquarium Setup
+                </h3>
 
                 <ul>
                     <li>Heated planted aquarium</li>
                     <li>Gentle filtration</li>
-                    <li>Easy surface access</li>
+                    <li>Easy access to the surface</li>
                     <li>Broad leaves and resting places</li>
-                    <li>Secure lid</li>
+                    <li>A secure lid</li>
                 </ul>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Feeding</h3>
+
+                <h3>
+                    Feeding
+                </h3>
 
                 <p>
-                    Bettas benefit from a varied carnivorous diet including
-                    quality pellets and suitable frozen or live foods in
-                    controlled portions.
+                    Bettas benefit from a varied carnivorous diet
+                    including quality betta pellets and suitable frozen
+                    or live foods. Feed controlled portions and avoid
+                    chronic overfeeding.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Behaviour</h3>
+
+                <h3>
+                    Behaviour
+                </h3>
 
                 <p>
-                    Bettas are curious and often interact with their
-                    surroundings. Temperament varies greatly between
-                    individuals.
+                    Bettas are curious fish and often interact with their
+                    surroundings. Temperament can vary considerably
+                    between individual fish.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Housing</h3>
+
+                <h3>
+                    Housing
+                </h3>
 
                 <p>
-                    A betta should have a dedicated, appropriately sized
-                    aquarium rather than a cup or unheated bowl.
+                    Bettas should be kept in a properly sized, heated and
+                    filtered aquarium rather than a small cup or
+                    unheated bowl. Plants and resting areas help create
+                    a more suitable environment.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Tank Mates</h3>
+
+                <h3>
+                    Tank Mates
+                </h3>
 
                 <p>
-                    Compatibility depends on the individual fish, aquarium
-                    size and the behaviour of any proposed tank mates.
+                    Compatibility depends on the individual betta,
+                    aquarium size and the behaviour of proposed tank
+                    mates. Any community setup should be planned
+                    carefully and monitored.
                 </p>
+
             </article>
+
 
         </div>
 
     </section>
+
+
+    <!-- FAQ -->
 
     <section class="product-section">
 
@@ -584,41 +744,86 @@
 
         <div class="faq-list">
 
-            <details>
-                <summary>Can a betta live in a bowl?</summary>
-                <p>
-                    No. Bettas need a proper heated and filtered aquarium with
-                    stable water quality and enough space to move naturally.
-                </p>
-            </details>
 
             <details>
-                <summary>Do bettas need a heater?</summary>
+
+                <summary>
+                    Can a betta live in a bowl?
+                </summary>
+
                 <p>
-                    In most homes, yes. They are tropical fish and need a
-                    stable warm temperature.
+                    Bettas should be provided with a proper heated and
+                    filtered aquarium with stable water quality and
+                    enough room to swim, explore and behave naturally.
                 </p>
+
             </details>
 
-            <details>
-                <summary>Can two male bettas live together?</summary>
-                <p>
-                    No. Adult males are territorial and should not be housed
-                    together.
-                </p>
-            </details>
 
             <details>
-                <summary>Can bettas live with other fish?</summary>
+
+                <summary>
+                    Do bettas need a heater?
+                </summary>
+
                 <p>
-                    Sometimes, but it depends on the individual betta,
-                    aquarium size and carefully chosen tank mates.
+                    In most homes, yes. Bettas are tropical fish and
+                    should be kept at a stable temperature within their
+                    suitable range.
                 </p>
+
             </details>
+
+
+            <details>
+
+                <summary>
+                    Can two male bettas live together?
+                </summary>
+
+                <p>
+                    No. Adult male Betta splendens are territorial and
+                    should not normally be housed together in the same
+                    aquarium.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can bettas live with other fish?
+                </summary>
+
+                <p>
+                    Sometimes. Compatibility depends on the individual
+                    betta, aquarium size, layout and the species being
+                    considered as tank mates.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Why do bettas go to the surface?
+                </summary>
+
+                <p>
+                    Bettas possess a labyrinth organ that allows them to
+                    breathe atmospheric air. It is therefore normal for
+                    them to regularly visit the water's surface.
+                </p>
+
+            </details>
+
 
         </div>
 
     </section>
+    <!-- RELATED PRODUCTS -->
 
     <section class="product-section">
 
@@ -632,36 +837,105 @@
 
         <div class="related-grid">
 
-            <a class="related-card" href="java-moss.html">
-                <h3>Java Moss</h3>
-                <p>A versatile aquarium plant for cover and enrichment.</p>
+
+            <a
+                class="related-card"
+                href="java-moss.html"
+            >
+
+                <h3>
+                    Java Moss
+                </h3>
+
+                <p>
+                    A versatile aquarium plant for
+                    cover, enrichment and natural
+                    hardscape.
+                </p>
+
             </a>
 
-            <a class="related-card" href="salvinia.html">
-                <h3>Salvinia</h3>
-                <p>A floating plant that provides shade and surface cover.</p>
+
+            <a
+                class="related-card"
+                href="salvinia.html"
+            >
+
+                <h3>
+                    Salvinia
+                </h3>
+
+                <p>
+                    A floating aquarium plant that
+                    provides shade and surface cover.
+                </p>
+
             </a>
 
-            <a class="related-card" href="guides.html">
-                <h3>Betta Care Guide</h3>
-                <p>Read practical guidance before choosing a betta.</p>
+
+            <a
+                class="related-card"
+                href="betta-care-guide.html"
+            >
+
+                <h3>
+                    Betta Care Guide
+                </h3>
+
+                <p>
+                    Learn more about proper housing,
+                    feeding, water quality and everyday
+                    betta care.
+                </p>
+
             </a>
+
 
         </div>
 
     </section>
 
+
 </main>
+
+
+<!-- FOOTER -->
 
 <footer>
 
     <div>
-        <strong>AquaCoding Studios</strong>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
 
         <p>
-            Aquatic livestock, plants, supplies and practical care.
+            Aquatic livestock, plants, supplies
+            and practical care.
         </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
     </div>
+
 
     <p>
         © 2026 AquaCoding Studios · Malta
@@ -669,7 +943,10 @@
 
 </footer>
 
-<script src="script.js?v=16"></script>
+
+<script src="script.js?v=20"></script>
+
 
 </body>
+
 </html>
