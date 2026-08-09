@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical freshwater aquarium water parameters guide from AquaCoding Studios covering temperature, pH, GH, KH, ammonia, nitrite and nitrate.">
+    <meta name="theme-color" content="#04131d">
+
+    <title>Understanding Water Parameters | AquaCoding Studios</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=20">
+
+    <style>
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .parameter-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 26px;
+        }
+
+        .parameter-card {
+            padding: 22px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .parameter-card h3 {
+            margin-top: 0;
+        }
+
+        .parameter-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .reading-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .reading-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .reading-row span {
+            color: var(--muted);
+        }
+
+        .reading-row strong {
+            text-align: right;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .parameter-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a class="brand" href="index.html" aria-label="AquaCoding Studios homepage">
+        <img src="logo-dark.png" alt="AquaCoding Studios" class="site-logo">
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Water chemistry
+        </p>
+
+        <h1>
+            Understanding Water Parameters
+        </h1>
+
+        <p class="guide-intro">
+            Aquarium test results can look like a wall of numbers when you
+            first start. The useful part is understanding what each number
+            tells you, which changes are dangerous, and when the best response
+            is simply to stop adjusting things and let the aquarium remain
+            stable.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater</span>
+            <span>Water chemistry</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Start here
+        </p>
+
+        <h2>
+            A test result only matters when you know what it means.
+        </h2>
+
+        <p>
+            Different fish, shrimp and plants have different requirements, so
+            there is no single perfect set of aquarium parameters. The goal is
+            to provide water that suits the animals you keep and to keep those
+            conditions reasonably stable.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Stability is important, but it is not an excuse for unsafe water.</strong>
+            A stable ammonia reading above zero is still a problem. Stability
+            matters most when people are tempted to constantly alter otherwise
+            acceptable pH, hardness or temperature readings.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Temperature
+        </p>
+
+        <h2>
+            More than just “warm” or “cold”.
+        </h2>
+
+        <p>
+            Temperature affects metabolism, oxygen demand, feeding and the
+            general activity of aquatic animals. Choose a temperature range
+            based on the species in the aquarium rather than setting every
+            freshwater tank to the same number.
+        </p>
+
+        <p>
+            Sudden changes can be more stressful than small day-to-day
+            variation. When doing water changes, avoid adding replacement water
+            that is dramatically warmer or colder than the aquarium.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            pH
+        </p>
+
+        <h2>
+            pH tells you how acidic or alkaline the water is.
+        </h2>
+
+        <p>
+            A pH of 7 is neutral. Values below 7 are acidic and values above 7
+            are alkaline. The pH scale is logarithmic, so a change of one whole
+            pH unit is much larger than the numbers make it look.
+        </p>
+
+        <p>
+            Many commonly kept aquarium species tolerate a range of pH values.
+            Problems often begin when aquarists repeatedly add chemicals to
+            force the water towards a target number, causing the pH to swing
+            back and forth.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Do not chase pH without understanding why it is changing.</strong>
+            If pH is unstable, investigate hardness, substrate, rocks,
+            driftwood, source water and other factors before repeatedly adding
+            pH-adjusting products.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            GH
+        </p>
+
+        <h2>
+            General hardness measures dissolved minerals.
+        </h2>
+
+        <p>
+            GH mainly reflects dissolved calcium and magnesium in freshwater.
+            These minerals are biologically important and can be especially
+            relevant for shrimp, snails and other animals that rely on adequate
+            mineral availability.
+        </p>
+
+        <p>
+            Water with a low GH is often described as soft, while water with a
+            higher GH is described as hard. The correct range depends on the
+            species being kept.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            KH
+        </p>
+
+        <h2>
+            Carbonate hardness helps resist sudden pH changes.
+        </h2>
+
+        <p>
+            KH describes the water's carbonate and bicarbonate buffering
+            capacity. In practical aquarium keeping, a higher KH generally
+            means the water can resist changes in pH more strongly.
+        </p>
+
+        <p>
+            Very low KH water may experience larger pH shifts if acids build up.
+            That does not mean every aquarium should have high KH; some species
+            naturally prefer softer, less buffered water.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Ammonia
+        </p>
+
+        <h2>
+            In an established aquarium, the target is zero.
+        </h2>
+
+        <p>
+            Ammonia enters the aquarium through animal waste, decomposing food
+            and other organic material. In a functioning biological filter,
+            beneficial microorganisms process it as part of the nitrogen cycle.
+        </p>
+
+        <p>
+            Detectable ammonia in an established aquarium deserves attention.
+            Possible causes include an uncycled tank, sudden overstocking,
+            excessive feeding, a dead animal, damaged biological filtration or
+            another source of decay.
+        </p>
+
+        <div class="reading-list">
+            <div class="reading-row">
+                <span>Established aquarium target</span>
+                <strong>0 ppm</strong>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Nitrite
+        </p>
+
+        <h2>
+            Nitrite should also be zero.
+        </h2>
+
+        <p>
+            During the nitrogen cycle, ammonia is converted into nitrite before
+            nitrite is converted into nitrate. Nitrite is toxic to aquarium
+            animals and should not remain detectable in a mature, properly
+            functioning aquarium.
+        </p>
+
+        <div class="reading-list">
+            <div class="reading-row">
+                <span>Established aquarium target</span>
+                <strong>0 ppm</strong>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Nitrate
+        </p>
+
+        <h2>
+            Nitrate is the part you normally manage rather than eliminate completely.
+        </h2>
+
+        <p>
+            Nitrate is produced later in the nitrogen cycle and is generally
+            less immediately toxic than ammonia or nitrite. It can accumulate
+            over time and is commonly controlled through sensible stocking,
+            feeding, plant growth and regular water changes.
+        </p>
+
+        <p>
+            There is no single nitrate number that applies perfectly to every
+            freshwater aquarium. Sensitive livestock may benefit from lower
+            levels, and the important point is to avoid allowing nitrate and
+            general waste to accumulate unchecked.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            How the numbers connect
+        </p>
+
+        <h2>
+            Aquarium parameters do not exist independently.
+        </h2>
+
+        <div class="parameter-grid">
+
+            <article class="parameter-card">
+                <h3>pH &amp; KH</h3>
+                <p>
+                    KH contributes to buffering, so very low KH can make pH
+                    easier to shift.
+                </p>
+            </article>
+
+            <article class="parameter-card">
+                <h3>GH &amp; livestock</h3>
+                <p>
+                    Mineral content can affect animals such as shrimp and
+                    snails, particularly around growth and moulting.
+                </p>
+            </article>
+
+            <article class="parameter-card">
+                <h3>Temperature &amp; oxygen</h3>
+                <p>
+                    Warmer water generally holds less dissolved oxygen while
+                    many animals simultaneously become more metabolically active.
+                </p>
+            </article>
+
+            <article class="parameter-card">
+                <h3>Waste &amp; stocking</h3>
+                <p>
+                    More animals and more food increase the amount of waste the
+                    biological filter and maintenance routine must handle.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Testing
+        </p>
+
+        <h2>
+            Test with a reason, not just because you own a test kit.
+        </h2>
+
+        <p>
+            Testing is especially useful during cycling, after adding livestock,
+            when animals behave unusually, after a suspected filtration problem
+            or whenever something in the aquarium has changed significantly.
+        </p>
+
+        <p>
+            Keep a simple record if you are troubleshooting. A sequence of
+            results over several days is often more useful than one isolated
+            reading.
+        </p>
+
+        <ul>
+            <li>Follow the instructions for your particular test carefully.</li>
+            <li>Check expiry dates and storage instructions.</li>
+            <li>Rinse test equipment after use.</li>
+            <li>Repeat a result if it looks completely unexpected.</li>
+            <li>Compare aquarium water with your source water when useful.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            Numbers can cause problems when they are treated like a scoreboard.
+        </h2>
+
+        <ul>
+            <li>Trying to achieve an exact pH because a care sheet lists one number.</li>
+            <li>Changing several parameters at once and then not knowing what caused the result.</li>
+            <li>Ignoring ammonia or nitrite because the fish still appear normal.</li>
+            <li>Assuming clear water automatically means good water quality.</li>
+            <li>Making large corrections instead of understanding the source water first.</li>
+            <li>Testing inconsistently and comparing results produced with different methods.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a class="guide-link-card" href="cycling-an-aquarium.html">
+                <strong>Cycling an Aquarium</strong>
+                <span>
+                    See how ammonia, nitrite and nitrate change while biological filtration develops.
+                </span>
+            </a>
+
+            <a class="guide-link-card" href="ph-guide.html">
+                <strong>Understanding pH</strong>
+                <span>
+                    A closer look at pH, stability and why chasing numbers can cause trouble.
+                </span>
+            </a>
+
+            <a class="guide-link-card" href="gh-kh-guide.html">
+                <strong>GH &amp; KH Explained</strong>
+                <span>
+                    Understand mineral hardness and buffering in freshwater aquariums.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+</html>
