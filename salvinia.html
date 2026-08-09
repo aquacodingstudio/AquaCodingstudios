@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -11,12 +17,23 @@
 
     <meta name="theme-color" content="#04131d">
 
-    <title>Salvinia | AquaCoding Studios</title>
+    <title>
+        Salvinia | AquaCoding Studios
+    </title>
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=16">
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
 
     <style>
+
         .product-page {
             width: min(92%, 1180px);
             margin: 0 auto;
@@ -48,7 +65,11 @@
                     rgba(90, 220, 120, 0.34),
                     transparent 42%
                 ),
-                linear-gradient(145deg, #184c2c, #081d10);
+                linear-gradient(
+                    145deg,
+                    #184c2c,
+                    #081d10
+                );
             box-shadow: var(--shadow);
             color: var(--text);
             font-weight: 800;
@@ -76,19 +97,22 @@
             display: inline-flex;
             width: fit-content;
             padding: 8px 12px;
-            border: 1px solid rgba(220, 53, 69, 0.35);
             border-radius: 999px;
-            background: rgba(220, 53, 69, 0.15);
-            color: #ff7b7b;
             font-size: 0.78rem;
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
+        .out-stock-badge {
+            border: 1px solid rgba(220, 53, 69, 0.35);
+            background: rgba(220, 53, 69, 0.15);
+            color: #ff7b7b;
+        }
+
         .purchase-panel {
             display: grid;
-            gap: 22px;
+            gap: 18px;
             margin-top: 26px;
             padding: 24px;
             background: var(--panel);
@@ -109,49 +133,39 @@
             gap: 12px;
         }
 
-        .quantity-selector {
-            display: grid;
-            grid-template-columns: 48px 70px 48px;
-            gap: 10px;
-        }
-
-        .quantity-selector button,
-        .quantity-selector input,
+        .wishlist-button,
         .add-to-cart-button {
+            width: 100%;
             min-height: 48px;
             border-radius: 12px;
-        }
-
-        .quantity-selector button,
-        .quantity-selector input {
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text);
-            text-align: center;
-        }
-
-        .quantity-selector input {
-            width: 100%;
             font: inherit;
             font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .wishlist-button {
+            border: 1px solid rgba(110, 217, 234, 0.4);
+            background: rgba(110, 217, 234, 0.1);
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .wishlist-button.saved {
+            border-color: rgba(255, 193, 7, 0.4);
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffd166;
         }
 
         .add-to-cart-button {
-            width: 100%;
-            border: 0;
-            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.06);
             color: var(--muted);
-            font: inherit;
-            font-weight: 800;
-            letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
-        .quantity-selector button:disabled,
-        .quantity-selector input:disabled,
         .add-to-cart-button:disabled {
             cursor: not-allowed;
-            opacity: 0.6;
+            opacity: 0.65;
         }
 
         .product-section {
@@ -220,7 +234,6 @@
             margin: 14px 0 0;
             padding-left: 20px;
         }
-
         .faq-list {
             display: grid;
             gap: 14px;
@@ -269,30 +282,66 @@
             color: var(--muted);
         }
 
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
         @media (min-width: 760px) {
+
             .product-hero {
-                grid-template-columns: 1.15fr 0.85fr;
+                grid-template-columns:
+                    1.15fr 0.85fr;
                 align-items: stretch;
             }
 
             .info-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
             .related-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
 
         @media (min-width: 1050px) {
+
             .info-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
 <header class="site-header">
 
@@ -308,6 +357,7 @@
         >
     </a>
 
+
     <button
         class="menu-button"
         type="button"
@@ -319,49 +369,112 @@
         <span></span>
     </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
         <a href="index.html">Home</a>
+
         <a href="shop.html">Shop</a>
+
         <a href="guides.html">Learn</a>
+
         <a href="about.html">About</a>
+
         <a href="contact.html">Contact</a>
+
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
     </nav>
 
 </header>
 
+
 <main class="product-page">
 
-    <a class="product-breadcrumb" href="shop.html">
+
+    <a
+        class="product-breadcrumb"
+        href="shop.html"
+    >
         ← Back to Shop
     </a>
 
+
     <section class="product-hero">
+
 
         <div class="product-image">
             Salvinia
         </div>
 
+
         <div class="product-summary">
+
 
             <p class="eyebrow">
                 Floating aquarium plant
             </p>
 
+
             <h1>
                 Salvinia
             </h1>
+
 
             <p class="scientific-name">
                 <em>Salvinia minima</em>
             </p>
 
-            <span class="stock-badge">
-                Out of stock
+
+            <span class="stock-badge out-stock-badge">
+                Out of Stock
             </span>
+
 
             <div class="purchase-panel">
 
+
                 <div>
+
                     <p class="section-label">
                         Price
                     </p>
@@ -369,88 +482,90 @@
                     <p class="purchase-price">
                         Currently unavailable
                     </p>
+
                 </div>
+
 
                 <div class="purchase-row">
 
-                    <label for="salvinia-quantity">
-                        Quantity
-                    </label>
 
-                    <div class="quantity-selector">
+                    <button
+                        class="wishlist-button"
+                        type="button"
+                        data-add-to-wishlist
+                        data-product-id="salvinia"
+                        data-product-name="Salvinia"
+                        data-product-price="0"
+                        data-product-image=""
+                        data-product-url="salvinia.html"
+                        data-product-available="false"
+                        aria-pressed="false"
+                    >
+                        Add to Wishlist
+                    </button>
 
-                        <button
-                            type="button"
-                            aria-label="Decrease quantity"
-                            disabled
-                        >
-                            −
-                        </button>
-
-                        <input
-                            id="salvinia-quantity"
-                            type="number"
-                            value="1"
-                            min="1"
-                            readonly
-                            disabled
-                        >
-
-                        <button
-                            type="button"
-                            aria-label="Increase quantity"
-                            disabled
-                        >
-                            +
-                        </button>
-
-                    </div>
 
                     <button
                         class="add-to-cart-button"
                         type="button"
                         disabled
                     >
-                        Out of stock
+                        Out of Stock
                     </button>
+
 
                 </div>
 
+
             </div>
+
 
         </div>
 
+
     </section>
 
+
     <section class="product-section">
+
 
         <p class="section-label">
             Overview
         </p>
 
+
         <h2>
             A floating plant that provides natural cover.
         </h2>
 
+
         <div class="product-copy">
 
-            <p>
-                Salvinia is a hardy freshwater aquarium plant valued for its
-                adaptability, natural appearance and usefulness in shrimp and
-                fish aquariums.
-            </p>
 
             <p>
-                It floats freely on the water surface and spreads naturally under suitable conditions.
+                Salvinia is a hardy freshwater floating plant valued for
+                its adaptability, natural appearance and usefulness in
+                shrimp and fish aquariums.
             </p>
 
+
             <p>
-                Its hanging roots provide shelter for fry and shrimp while reducing light and helping create a more natural environment.
+                It floats freely on the water surface and spreads naturally
+                under suitable conditions.
             </p>
+
+
+            <p>
+                Its hanging roots provide shelter for fry and shrimp while
+                reducing light and helping create a more natural environment.
+            </p>
+
 
         </div>
 
+
         <dl class="quick-facts">
+
 
             <div>
                 <dt>Difficulty</dt>
@@ -459,7 +574,7 @@
 
             <div>
                 <dt>Growth rate</dt>
-                <dd>Slow to moderate</dd>
+                <dd>Moderate to fast</dd>
             </div>
 
             <div>
@@ -474,7 +589,7 @@
 
             <div>
                 <dt>CO₂</dt>
-                <dd>Optional</dd>
+                <dd>Not required</dd>
             </div>
 
             <div>
@@ -487,9 +602,12 @@
                 <dd>5.0–8.0</dd>
             </div>
 
+
         </dl>
 
+
     </section>
+    <!-- CARE -->
 
     <section class="product-section">
 
@@ -503,63 +621,108 @@
 
         <div class="info-grid">
 
+
             <article class="info-card">
-                <h3>Lighting</h3>
+
+                <h3>
+                    Lighting
+                </h3>
 
                 <p>
-                    Salvinia grows under low to medium lighting. Strong light
-                    is not required and may encourage algae if nutrients are
-                    unbalanced.
+                    Salvinia grows well under low to medium lighting.
+                    Consistent light supports healthy growth, while
+                    excessively strong lighting is generally unnecessary.
                 </p>
+
             </article>
 
+
             <article class="info-card">
-                <h3>Placement</h3>
+
+                <h3>
+                    Placement
+                </h3>
 
                 <p>
-                    Simply place it on the water surface where it can float freely.
+                    Salvinia should float freely on the water surface.
+                    Keep the upper leaves above water and avoid placing
+                    the plant beneath the substrate.
                 </p>
+
             </article>
 
+
             <article class="info-card">
-                <h3>Water Conditions</h3>
+
+                <h3>
+                    Water Conditions
+                </h3>
 
                 <ul>
                     <li>Temperature: 20–30°C</li>
                     <li>pH: 5.0–8.0</li>
                     <li>Stable freshwater conditions</li>
-                    <li>Gentle to moderate flow</li>
+                    <li>Gentle surface movement</li>
+                    <li>CO₂ supplementation is not required</li>
                 </ul>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Maintenance</h3>
+
+                <h3>
+                    Maintenance
+                </h3>
 
                 <p>
-                    Remove excess plants regularly to prevent the surface becoming overcrowded.
+                    Remove excess growth regularly so Salvinia does not
+                    completely cover the aquarium surface. This helps
+                    maintain light penetration and open areas for fish
+                    to access the surface.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Propagation</h3>
+
+                <h3>
+                    Propagation
+                </h3>
 
                 <p>
-                    Salvinia reproduces naturally by producing new floating plants.
+                    Salvinia reproduces naturally as healthy plants
+                    produce new growth. Under suitable conditions,
+                    colonies can spread across the aquarium surface
+                    relatively quickly.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Shrimp Benefits</h3>
+
+                <h3>
+                    Shrimp &amp; Fish Benefits
+                </h3>
 
                 <p>
-                    Salvinia offers grazing surfaces, hiding places and cover
-                    for baby shrimp while supporting biofilm growth.
+                    The hanging roots provide cover and grazing areas
+                    for shrimp and fry. Floating growth can also create
+                    shaded areas that help some aquarium inhabitants
+                    feel more secure.
                 </p>
+
             </article>
+
 
         </div>
 
     </section>
+
+
+    <!-- FAQ -->
 
     <section class="product-section">
 
@@ -573,38 +736,87 @@
 
         <div class="faq-list">
 
-            <details>
-                <summary>Does Salvinia need CO₂?</summary>
-                <p>
-                    No. Added CO₂ can improve growth, but Salvinia can grow
-                    successfully without it.
-                </p>
-            </details>
 
             <details>
-                <summary>Can Salvinia be planted in substrate?</summary>
+
+                <summary>
+                    Does Salvinia need CO₂?
+                </summary>
+
                 <p>
-                    No. Salvinia is a floating plant and should never be planted in substrate.
+                    No. Because Salvinia floats at the surface and has
+                    direct access to atmospheric carbon dioxide, injected
+                    CO₂ is not required for normal growth.
                 </p>
+
             </details>
 
-            <details>
-                <summary>Why is my Salvinia turning brown?</summary>
-                <p>
-                    Poor lighting, surface agitation or unsuitable water conditions can slow growth or cause decline.
-                </p>
-            </details>
 
             <details>
-                <summary>Is Salvinia good for shrimp?</summary>
+
+                <summary>
+                    Can Salvinia be planted in substrate?
+                </summary>
+
                 <p>
-                    Yes. It offers shade, security and hanging roots for grazing.
+                    No. Salvinia is a floating plant and should remain
+                    on the water surface rather than being planted in
+                    aquarium substrate.
                 </p>
+
             </details>
+
+
+            <details>
+
+                <summary>
+                    Why is my Salvinia turning brown?
+                </summary>
+
+                <p>
+                    Browning or declining growth can be associated with
+                    unsuitable lighting, nutrient deficiencies, changing
+                    water conditions or excessive surface agitation.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Is Salvinia good for shrimp?
+                </summary>
+
+                <p>
+                    Yes. Its submerged roots provide additional grazing
+                    surfaces and cover, while the floating leaves create
+                    shaded areas within the aquarium.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can Salvinia cover the whole aquarium?
+                </summary>
+
+                <p>
+                    It can spread across a large part of the surface when
+                    conditions are favourable. Regular thinning helps
+                    prevent overcrowding and keeps areas of open water
+                    available.
+                </p>
+
+            </details>
+
 
         </div>
 
     </section>
+    <!-- RELATED PRODUCTS -->
 
     <section class="product-section">
 
@@ -618,36 +830,103 @@
 
         <div class="related-grid">
 
-            <a class="related-card" href="red-cherry-shrimp.html">
-                <h3>Red Cherry Shrimp</h3>
-                <p>Freshwater shrimp that benefit from moss cover.</p>
+
+            <a
+                class="related-card"
+                href="java-moss.html"
+            >
+
+                <h3>
+                    Java Moss
+                </h3>
+
+                <p>
+                    A versatile aquarium plant for
+                    grazing, cover and natural hardscape.
+                </p>
+
             </a>
 
-            <a class="related-card" href="blue-dream-shrimp.html">
-                <h3>Blue Dream Shrimp</h3>
-                <p>Deep-blue shrimp for planted aquariums.</p>
+
+            <a
+                class="related-card"
+                href="betta-splendens.html"
+            >
+
+                <h3>
+                    Betta splendens
+                </h3>
+
+                <p>
+                    A colourful freshwater fish that can
+                    benefit from floating cover.
+                </p>
+
             </a>
 
-            <a class="related-card" href="salvinia.html">
-                <h3>Salvinia</h3>
-                <p>A floating plant for shade and surface cover.</p>
+
+            <a
+                class="related-card"
+                href="bloody-mary-shrimp.html"
+            >
+
+                <h3>
+                    Bloody Mary Shrimp
+                </h3>
+
+                <p>
+                    Deep-red Neocaridina being
+                    home bred in Malta.
+                </p>
+
             </a>
+
 
         </div>
 
     </section>
 
+
 </main>
+
+
+<!-- FOOTER -->
 
 <footer>
 
     <div>
-        <strong>AquaCoding Studios</strong>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
 
         <p>
-            Aquatic livestock, plants, supplies and practical care.
+            Aquatic livestock, plants, supplies
+            and practical care.
         </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
     </div>
+
 
     <p>
         © 2026 AquaCoding Studios · Malta
@@ -655,7 +934,10 @@
 
 </footer>
 
-<script src="script.js?v=16"></script>
+
+<script src="script.js?v=20"></script>
+
 
 </body>
+
 </html>
