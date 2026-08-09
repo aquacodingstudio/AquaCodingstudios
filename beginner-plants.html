@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical guide to beginner aquarium plants from AquaCoding Studios, covering hardy species, lighting, planting, fertiliser and common mistakes."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Beginner Aquarium Plants | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .plant-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .plant-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .plant-card h3 {
+            margin-top: 0;
+        }
+
+        .plant-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .plant-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Aquarium plants
+        </p>
+
+        <h1>
+            Beginner Aquarium Plants
+        </h1>
+
+        <p class="guide-intro">
+            You do not need injected CO₂, expensive lighting or a shelf full of
+            bottles to grow a good planted aquarium. Starting with hardy species
+            and giving them consistent light, suitable nutrients and a bit of
+            patience is usually the better route.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater plants</span>
+            <span>Low-tech friendly</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Start simple
+        </p>
+
+        <h2>
+            Hardy plants give you room to learn.
+        </h2>
+
+        <p>
+            Some aquarium plants are much more forgiving than others. Beginner
+            species usually tolerate moderate lighting, small mistakes and a
+            wider range of water conditions without immediately falling apart.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Low-tech does not mean no care.</strong>
+            Easy plants still need light, nutrients and stable conditions. They
+            are simply less demanding than high-light, CO₂-heavy setups.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Good beginner choices
+        </p>
+
+        <h2>
+            A few reliable species go a long way.
+        </h2>
+
+        <div class="plant-grid">
+
+            <article class="plant-card">
+                <h3>Java Moss</h3>
+                <p>
+                    Hardy, adaptable and useful for shrimp tanks. Attach it to
+                    wood, rock or mesh rather than burying it.
+                </p>
+            </article>
+
+            <article class="plant-card">
+                <h3>Anubias</h3>
+                <p>
+                    Slow-growing and tolerant of lower light. Keep the rhizome
+                    above the substrate and attach it to hardscape.
+                </p>
+            </article>
+
+            <article class="plant-card">
+                <h3>Java Fern</h3>
+                <p>
+                    Another hardy rhizome plant that does well attached to wood
+                    or rock under moderate lighting.
+                </p>
+            </article>
+
+            <article class="plant-card">
+                <h3>Cryptocoryne</h3>
+                <p>
+                    Good rooted plants for low to moderate light. They may melt
+                    after being moved but can recover once established.
+                </p>
+            </article>
+
+            <article class="plant-card">
+                <h3>Vallisneria</h3>
+                <p>
+                    A grassy background plant that can spread by runners and
+                    fill larger areas once settled.
+                </p>
+            </article>
+
+            <article class="plant-card">
+                <h3>Salvinia</h3>
+                <p>
+                    A floating plant that provides shade and hanging roots.
+                    Keep some surface area open for gas exchange and fish access.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Lighting
+        </p>
+
+        <h2>
+            More light is not automatically better.
+        </h2>
+
+        <p>
+            Plants need enough light to photosynthesise, but excessive light can
+            encourage algae if nutrients and plant growth are not keeping up.
+        </p>
+
+        <p>
+            For many beginner tanks, a moderate light period is a sensible place
+            to start. Adjust based on plant growth and algae rather than trying to
+            copy a fixed number from someone else's aquarium.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Do not solve weak growth by blasting the tank with light.</strong>
+            If nutrients are missing or the plant is unsuitable for the setup,
+            more light can simply make the imbalance worse.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Substrate
+        </p>
+
+        <h2>
+            Rooted plants and rhizome plants are not planted the same way.
+        </h2>
+
+        <p>
+            Root feeders such as Cryptocoryne and Vallisneria can be planted into
+            substrate. Rhizome plants such as Anubias and Java Fern should not
+            have the rhizome buried, because it can rot.
+        </p>
+
+        <ul>
+            <li>Bury roots, not rhizomes.</li>
+            <li>Attach mosses and rhizome plants to wood or rock.</li>
+            <li>Use root tabs if heavy root feeders need more nutrients.</li>
+            <li>Do not compact the substrate so aggressively that roots struggle to spread.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Fertiliser
+        </p>
+
+        <h2>
+            Plants need nutrients, but not every tank needs heavy dosing.
+        </h2>
+
+        <p>
+            Fish waste provides some nutrients, while fertilisers can supply
+            nutrients that are missing. Water-column feeders benefit from liquid
+            fertiliser, while strong root feeders may benefit more from root tabs.
+        </p>
+
+        <p>
+            Start conservatively and adjust based on actual plant response. More
+            fertiliser is not automatically better.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            CO₂
+        </p>
+
+        <h2>
+            Useful, but not required for many beginner plants.
+        </h2>
+
+        <p>
+            Injected CO₂ can increase plant growth and expand the range of species
+            you can keep successfully, but it adds cost and complexity.
+        </p>
+
+        <p>
+            Java Moss, Anubias, Java Fern, many Cryptocoryne species and several
+            other easy plants can grow without injected CO₂ when the rest of the
+            setup is suitable.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Plant melt
+        </p>
+
+        <h2>
+            A plant losing leaves after planting is not always dead.
+        </h2>
+
+        <p>
+            Some aquarium plants are grown above water before sale. When they are
+            submerged, older leaves may die back while the plant produces new
+            underwater growth.
+        </p>
+
+        <p>
+            Cryptocoryne are especially well known for melting after major changes.
+            If the roots and crown remain healthy, the plant may recover.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Algae
+        </p>
+
+        <h2>
+            Algae usually tells you the system is out of balance somewhere.
+        </h2>
+
+        <p>
+            New tanks commonly develop some algae. Problems become more persistent
+            when light, nutrients, plant growth and maintenance are badly out of
+            balance.
+        </p>
+
+        <ul>
+            <li>Reduce excessive light duration if needed.</li>
+            <li>Remove badly affected leaves.</li>
+            <li>Keep up with sensible water changes.</li>
+            <li>Avoid overfeeding fish.</li>
+            <li>Give healthy plants time to establish and compete.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Floating plants
+        </p>
+
+        <h2>
+            Useful shade, but they can take over the surface.
+        </h2>
+
+        <p>
+            Floating plants such as Salvinia can reduce light, provide cover and
+            create hanging roots for shrimp and fry.
+        </p>
+
+        <p>
+            Thin them regularly so they do not block all light from the plants
+            below or prevent fish from reaching the surface.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Shrimp tanks
+        </p>
+
+        <h2>
+            Plants are especially useful around shrimp.
+        </h2>
+
+        <p>
+            Mosses and fine-leaved plants provide grazing area, shelter and
+            surfaces for biofilm. Floating roots and dense planting can also help
+            shrimplets avoid predators.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Maintenance
+        </p>
+
+        <h2>
+            Trim before the tank turns into a hedge.
+        </h2>
+
+        <p>
+            Remove damaged leaves, thin overcrowded growth and trim plants before
+            they block flow or shade everything underneath.
+        </p>
+
+        <p>
+            Healthy trimmings from suitable species can often be replanted or
+            attached elsewhere.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What trips beginners up most often.
+        </h2>
+
+        <ul>
+            <li>Buying high-demand plants for a low-light tank.</li>
+            <li>Burying the rhizome of Anubias or Java Fern.</li>
+            <li>Running the light for very long periods to “help” plants grow.</li>
+            <li>Adding lots of fertiliser without knowing what is missing.</li>
+            <li>Throwing away plants immediately after normal transition melt.</li>
+            <li>Letting floating plants completely cover the surface.</li>
+            <li>Expecting every species to grow quickly in a low-tech setup.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            A simple first planted tank
+        </p>
+
+        <h2>
+            You do not need twenty species.
+        </h2>
+
+        <p>
+            A very workable beginner setup might use Java Moss on wood, Anubias
+            or Java Fern on rock, a few rooted Cryptocoryne plants, and a small
+            amount of Salvinia at the surface.
+        </p>
+
+        <p>
+            That gives you several growth styles without immediately turning the
+            aquarium into a high-maintenance planted tank.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="aquarium-lighting.html"
+            >
+                <strong>Aquarium Lighting</strong>
+                <span>
+                    Understand photoperiod, intensity and how light affects plant growth and algae.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="fertilisers.html"
+            >
+                <strong>Aquarium Fertilisers</strong>
+                <span>
+                    Learn when water-column fertiliser and root feeding are actually useful.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="java-moss.html"
+            >
+                <strong>Java Moss</strong>
+                <span>
+                    See care information for one of the easiest and most useful shrimp-friendly plants.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+
+</html>
