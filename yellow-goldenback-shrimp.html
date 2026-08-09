@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -11,12 +17,23 @@
 
     <meta name="theme-color" content="#04131d">
 
-    <title>Yellow Goldenback Shrimp | AquaCoding Studios</title>
+    <title>
+        Yellow Goldenback Shrimp | AquaCoding Studios
+    </title>
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=16">
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
 
     <style>
+
         .product-page {
             width: min(92%, 1180px);
             margin: 0 auto;
@@ -48,7 +65,11 @@
                     rgba(255, 220, 70, 0.34),
                     transparent 42%
                 ),
-                linear-gradient(145deg, #665214, #282006);
+                linear-gradient(
+                    145deg,
+                    #665214,
+                    #282006
+                );
             box-shadow: var(--shadow);
             color: var(--text);
             font-weight: 800;
@@ -76,19 +97,22 @@
             display: inline-flex;
             width: fit-content;
             padding: 8px 12px;
-            border: 1px solid rgba(220, 53, 69, 0.35);
             border-radius: 999px;
-            background: rgba(220, 53, 69, 0.15);
-            color: #ff7b7b;
             font-size: 0.78rem;
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
+        .out-stock-badge {
+            border: 1px solid rgba(220, 53, 69, 0.35);
+            background: rgba(220, 53, 69, 0.15);
+            color: #ff7b7b;
+        }
+
         .purchase-panel {
             display: grid;
-            gap: 22px;
+            gap: 18px;
             margin-top: 26px;
             padding: 24px;
             background: var(--panel);
@@ -109,49 +133,39 @@
             gap: 12px;
         }
 
-        .quantity-selector {
-            display: grid;
-            grid-template-columns: 48px 70px 48px;
-            gap: 10px;
-        }
-
-        .quantity-selector button,
-        .quantity-selector input,
+        .wishlist-button,
         .add-to-cart-button {
+            width: 100%;
             min-height: 48px;
             border-radius: 12px;
-        }
-
-        .quantity-selector button,
-        .quantity-selector input {
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text);
-            text-align: center;
-        }
-
-        .quantity-selector input {
-            width: 100%;
             font: inherit;
             font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .wishlist-button {
+            border: 1px solid rgba(110, 217, 234, 0.4);
+            background: rgba(110, 217, 234, 0.1);
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .wishlist-button.saved {
+            border-color: rgba(255, 193, 7, 0.4);
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffd166;
         }
 
         .add-to-cart-button {
-            width: 100%;
-            border: 0;
-            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.06);
             color: var(--muted);
-            font: inherit;
-            font-weight: 800;
-            letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
-        .quantity-selector button:disabled,
-        .quantity-selector input:disabled,
         .add-to-cart-button:disabled {
             cursor: not-allowed;
-            opacity: 0.6;
+            opacity: 0.65;
         }
 
         .product-section {
@@ -220,7 +234,6 @@
             margin: 14px 0 0;
             padding-left: 20px;
         }
-
         .faq-list {
             display: grid;
             gap: 14px;
@@ -269,30 +282,66 @@
             color: var(--muted);
         }
 
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
         @media (min-width: 760px) {
+
             .product-hero {
-                grid-template-columns: 1.15fr 0.85fr;
+                grid-template-columns:
+                    1.15fr 0.85fr;
                 align-items: stretch;
             }
 
             .info-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
             .related-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
 
         @media (min-width: 1050px) {
+
             .info-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
 <header class="site-header">
 
@@ -301,12 +350,15 @@
         href="index.html"
         aria-label="AquaCoding Studios homepage"
     >
+
         <img
             src="logo-dark.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
+
     </a>
+
 
     <button
         class="menu-button"
@@ -314,54 +366,119 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
+
         <span></span>
         <span></span>
         <span></span>
+
     </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
         <a href="index.html">Home</a>
+
         <a href="shop.html">Shop</a>
+
         <a href="guides.html">Learn</a>
+
         <a href="about.html">About</a>
+
         <a href="contact.html">Contact</a>
+
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
     </nav>
 
 </header>
 
+
 <main class="product-page">
 
-    <a class="product-breadcrumb" href="shop.html">
+
+    <a
+        class="product-breadcrumb"
+        href="shop.html"
+    >
         ← Back to Shop
     </a>
 
+
     <section class="product-hero">
+
 
         <div class="product-image">
             Yellow Goldenback Shrimp
         </div>
 
+
         <div class="product-summary">
+
 
             <p class="eyebrow">
                 Freshwater shrimp
             </p>
 
+
             <h1>
                 Yellow Goldenback Shrimp
             </h1>
+
 
             <p class="scientific-name">
                 <em>Neocaridina davidi</em>
             </p>
 
-            <span class="stock-badge">
-                Out of stock
+
+            <span class="stock-badge out-stock-badge">
+                Out of Stock
             </span>
+
 
             <div class="purchase-panel">
 
+
                 <div>
+
                     <p class="section-label">
                         Price
                     </p>
@@ -369,70 +486,65 @@
                     <p class="purchase-price">
                         Currently unavailable
                     </p>
+
                 </div>
+
 
                 <div class="purchase-row">
 
-                    <label for="yellow-goldenback-quantity">
-                        Quantity
-                    </label>
 
-                    <div class="quantity-selector">
+                    <button
+                        class="wishlist-button"
+                        type="button"
+                        data-add-to-wishlist
+                        data-product-id="yellow-goldenback-shrimp"
+                        data-product-name="Yellow Goldenback Shrimp"
+                        data-product-price="0"
+                        data-product-image=""
+                        data-product-url="yellow-goldenback-shrimp.html"
+                        data-product-available="false"
+                        aria-pressed="false"
+                    >
+                        Add to Wishlist
+                    </button>
 
-                        <button
-                            type="button"
-                            aria-label="Decrease quantity"
-                            disabled
-                        >
-                            −
-                        </button>
-
-                        <input
-                            id="yellow-goldenback-quantity"
-                            type="number"
-                            value="1"
-                            min="1"
-                            readonly
-                            disabled
-                        >
-
-                        <button
-                            type="button"
-                            aria-label="Increase quantity"
-                            disabled
-                        >
-                            +
-                        </button>
-
-                    </div>
 
                     <button
                         class="add-to-cart-button"
                         type="button"
                         disabled
                     >
-                        Out of stock
+                        Out of Stock
                     </button>
+
 
                 </div>
 
+
             </div>
+
 
         </div>
 
+
     </section>
 
+
     <section class="product-section">
+
 
         <p class="section-label">
             Overview
         </p>
 
+
         <h2>
             A bright yellow freshwater standout.
         </h2>
 
+
         <div class="product-copy">
+
 
             <p>
                 Yellow Goldenback Shrimp are a selectively bred colour variety
@@ -440,11 +552,13 @@
                 yellow colour and pale stripe running along the back.
             </p>
 
+
             <p>
                 Their colour contrasts especially well with dark substrate,
                 green plants and natural hardscape, making them a striking
                 choice for planted aquariums.
             </p>
+
 
             <p>
                 Like other Neocaridina shrimp, they thrive best in mature,
@@ -452,9 +566,12 @@
                 surfaces.
             </p>
 
+
         </div>
 
+
         <dl class="quick-facts">
+
 
             <div>
                 <dt>Temperature</dt>
@@ -491,9 +608,12 @@
                 <dd>About 1–2 years</dd>
             </div>
 
+
         </dl>
 
+
     </section>
+    <!-- CARE -->
 
     <section class="product-section">
 
@@ -507,8 +627,12 @@
 
         <div class="info-grid">
 
+
             <article class="info-card">
-                <h3>Water Parameters</h3>
+
+                <h3>
+                    Water Parameters
+                </h3>
 
                 <ul>
                     <li>Temperature: 20–26°C</li>
@@ -517,10 +641,15 @@
                     <li>Low to moderate KH</li>
                     <li>Ammonia and nitrite: 0 ppm</li>
                 </ul>
+
             </article>
 
+
             <article class="info-card">
-                <h3>Aquarium Setup</h3>
+
+                <h3>
+                    Aquarium Setup
+                </h3>
 
                 <ul>
                     <li>Mature planted aquarium</li>
@@ -529,48 +658,78 @@
                     <li>Driftwood or leaf litter</li>
                     <li>Plenty of grazing surfaces</li>
                 </ul>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Feeding</h3>
+
+                <h3>
+                    Feeding
+                </h3>
 
                 <p>
-                    Yellow Goldenback Shrimp graze on biofilm and algae.
-                    Their diet can be supplemented with quality shrimp food,
-                    vegetables and occasional protein-based foods.
+                    Yellow Goldenback Shrimp spend much of their time grazing
+                    on naturally occurring biofilm and algae. Their diet can
+                    be supplemented with quality shrimp foods, vegetables and
+                    occasional protein-rich foods.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Behaviour</h3>
+
+                <h3>
+                    Behaviour
+                </h3>
 
                 <p>
-                    They are peaceful, social and active throughout the day,
-                    spending most of their time grazing and exploring.
+                    Peaceful and active, Yellow Goldenback Shrimp spend much
+                    of the day exploring the aquarium and grazing across
+                    available surfaces.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Breeding</h3>
+
+                <h3>
+                    Breeding
+                </h3>
 
                 <p>
-                    Mature females carry eggs beneath the abdomen until they
-                    hatch as fully formed miniature shrimp.
+                    Mature females carry fertilised eggs beneath the abdomen
+                    until they hatch as miniature, fully formed shrimp.
+                    A mature aquarium with moss and plenty of biofilm gives
+                    shrimplets the best chance to thrive.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Colour Line</h3>
+
+                <h3>
+                    Colour Line
+                </h3>
 
                 <p>
-                    Keeping them separately from other Neocaridina colour
-                    varieties helps preserve the goldenback line.
+                    Yellow Goldenback Shrimp are best kept separately from
+                    other Neocaridina colour varieties when maintaining the
+                    yellow colour and goldenback stripe is important.
                 </p>
+
             </article>
+
 
         </div>
 
     </section>
+
+
+    <!-- FAQ -->
 
     <section class="product-section">
 
@@ -584,41 +743,87 @@
 
         <div class="faq-list">
 
+
             <details>
-                <summary>Are Yellow Goldenback Shrimp suitable for beginners?</summary>
+
+                <summary>
+                    Are Yellow Goldenback Shrimp suitable for beginners?
+                </summary>
+
                 <p>
                     Yes. They are generally beginner-friendly when kept in a
-                    mature and stable aquarium.
+                    mature, fully cycled aquarium with stable water
+                    conditions.
                 </p>
+
             </details>
 
-            <details>
-                <summary>Will the golden stripe stay visible?</summary>
-                <p>
-                    Stripe intensity varies between individuals and depends on
-                    genetics, age, stress and overall aquarium conditions.
-                </p>
-            </details>
 
             <details>
-                <summary>Can they live with other Neocaridina colours?</summary>
+
+                <summary>
+                    Will the golden stripe stay visible?
+                </summary>
+
                 <p>
-                    They can, but mixing colour lines may result in less
-                    predictable offspring over time.
+                    Stripe intensity can vary between individuals and may
+                    change depending on genetics, age, stress and overall
+                    aquarium conditions.
                 </p>
+
             </details>
 
+
             <details>
-                <summary>Do they need a heater?</summary>
+
+                <summary>
+                    Can they live with other Neocaridina colours?
+                </summary>
+
                 <p>
-                    That depends on room temperature. The aquarium should stay
-                    stable within their suitable temperature range.
+                    They can live together peacefully, but different
+                    Neocaridina colour varieties may interbreed. Over time,
+                    this can produce less predictable coloration in their
+                    offspring.
                 </p>
+
             </details>
+
+
+            <details>
+
+                <summary>
+                    Do Yellow Goldenback Shrimp eat algae?
+                </summary>
+
+                <p>
+                    They graze on soft algae and biofilm throughout the
+                    aquarium, although they should not be considered a
+                    replacement for normal aquarium maintenance.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Do they need a heater?
+                </summary>
+
+                <p>
+                    That depends on the aquarium's room temperature. The
+                    important factor is maintaining a stable temperature
+                    within their suitable range.
+                </p>
+
+            </details>
+
 
         </div>
 
     </section>
+    <!-- RELATED PRODUCTS -->
 
     <section class="product-section">
 
@@ -632,36 +837,102 @@
 
         <div class="related-grid">
 
-            <a class="related-card" href="red-cherry-shrimp.html">
-                <h3>Red Cherry Shrimp</h3>
-                <p>Bright red Neocaridina shrimp.</p>
+
+            <a
+                class="related-card"
+                href="bloody-mary-shrimp.html"
+            >
+
+                <h3>
+                    Bloody Mary Shrimp
+                </h3>
+
+                <p>
+                    Deep-red Neocaridina being
+                    home bred in Malta.
+                </p>
+
             </a>
 
-            <a class="related-card" href="blue-dream-shrimp.html">
-                <h3>Blue Dream Shrimp</h3>
-                <p>Deep-blue Neocaridina shrimp.</p>
+
+            <a
+                class="related-card"
+                href="blue-dream-shrimp.html"
+            >
+
+                <h3>
+                    Blue Dream Shrimp
+                </h3>
+
+                <p>
+                    Deep-blue Neocaridina shrimp.
+                </p>
+
             </a>
 
-            <a class="related-card" href="java-moss.html">
-                <h3>Java Moss</h3>
-                <p>A useful plant for grazing and shrimplet cover.</p>
+
+            <a
+                class="related-card"
+                href="java-moss.html"
+            >
+
+                <h3>
+                    Java Moss
+                </h3>
+
+                <p>
+                    A useful plant for grazing
+                    and shrimplet cover.
+                </p>
+
             </a>
+
 
         </div>
 
     </section>
 
+
 </main>
+
+
+<!-- FOOTER -->
 
 <footer>
 
     <div>
-        <strong>AquaCoding Studios</strong>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
 
         <p>
-            Aquatic livestock, plants, supplies and practical care.
+            Aquatic livestock, plants, supplies
+            and practical care.
         </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
     </div>
+
 
     <p>
         © 2026 AquaCoding Studios · Malta
@@ -669,7 +940,10 @@
 
 </footer>
 
-<script src="script.js?v=16"></script>
+
+<script src="script.js?v=20"></script>
+
 
 </body>
+
 </html>
