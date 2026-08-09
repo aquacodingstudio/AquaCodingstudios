@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical Neocaridina shrimp care guide from AquaCoding Studios covering setup, water stability, feeding, moulting and breeding."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Neocaridina Care Guide | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .care-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .care-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .care-card h3 {
+            margin-top: 0;
+        }
+
+        .care-card p {
+            margin-bottom: 0;
+        }
+
+        .parameter-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .parameter-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .parameter-row span:first-child {
+            color: var(--muted);
+        }
+
+        .parameter-row strong {
+            text-align: right;
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+
+            .care-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+
+    </a>
+
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">Home</a>
+
+        <a href="shop.html">Shop</a>
+
+        <a href="guides.html">Learn</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="guide-page">
+
+
+    <a
+        class="guide-breadcrumb"
+        href="guides.html"
+    >
+        ← Back to Learn
+    </a>
+
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Shrimp care
+        </p>
+
+        <h1>
+            Neocaridina Care Guide
+        </h1>
+
+        <p class="guide-intro">
+            Neocaridina shrimp are often described as easy to keep, and they
+            can be — once the aquarium is mature and stable. Most problems
+            come from sudden changes, poor acclimation, unstable water or
+            trying to correct parameters too aggressively.
+        </p>
+
+        <div class="guide-meta">
+
+            <span>Beginner</span>
+
+            <span>Freshwater shrimp</span>
+
+            <span>Neocaridina davidi</span>
+
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            The basics
+        </p>
+
+        <h2>
+            Stability matters more than chasing perfect numbers.
+        </h2>
+
+        <p>
+            Neocaridina can live in a reasonably wide range of water
+            conditions, but they do poorly when those conditions swing
+            suddenly. A stable aquarium that is slightly outside an “ideal”
+            number is often safer than constantly adjusting pH, GH or KH.
+        </p>
+
+        <div class="parameter-list">
+
+            <div class="parameter-row">
+                <span>Temperature</span>
+                <strong>20–26°C</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>pH</span>
+                <strong>About 6.5–7.8</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>Ammonia</span>
+                <strong>0 ppm</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>Nitrite</span>
+                <strong>0 ppm</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>Nitrate</span>
+                <strong>Keep low</strong>
+            </div>
+
+        </div>
+
+        <div class="guide-callout">
+            <strong>Do not obsess over one number.</strong>
+            GH, KH, pH and temperature all matter, but shrimp care is about
+            the whole environment. Consistency, clean water and a mature tank
+            usually matter more than forcing the aquarium towards a specific
+            value every week.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Aquarium setup
+        </p>
+
+        <h2>
+            Give them surfaces to graze on.
+        </h2>
+
+        <p>
+            Shrimp spend much of the day picking at surfaces rather than
+            swimming in open water. A planted tank with wood, rocks, mosses
+            and leaf litter gives biofilm somewhere to develop and gives
+            shrimplets places to hide.
+        </p>
+
+        <div class="care-grid">
+
+            <article class="care-card">
+
+                <h3>
+                    Filtration
+                </h3>
+
+                <p>
+                    Sponge filters are particularly useful in shrimp tanks
+                    because they provide gentle flow and cannot easily suck
+                    up tiny shrimplets.
+                </p>
+
+            </article>
+
+
+            <article class="care-card">
+
+                <h3>
+                    Plants &amp; moss
+                </h3>
+
+                <p>
+                    Mosses, fine-leaved plants and floating roots create
+                    shelter and collect biofilm. Java Moss is especially
+                    useful in breeding tanks.
+                </p>
+
+            </article>
+
+
+            <article class="care-card">
+
+                <h3>
+                    Hardscape
+                </h3>
+
+                <p>
+                    Driftwood and porous rock increase grazing area and give
+                    the aquarium more structure without needing to fill every
+                    centimetre with plants.
+                </p>
+
+            </article>
+
+
+            <article class="care-card">
+
+                <h3>
+                    A mature tank
+                </h3>
+
+                <p>
+                    A newly cycled aquarium may technically process ammonia
+                    but still have very little established biofilm. Shrimp
+                    generally settle better into a tank that has had time to
+                    mature.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Feeding
+        </p>
+
+        <h2>
+            Most shrimp tanks are overfed, not underfed.
+        </h2>
+
+        <p>
+            Neocaridina constantly graze on algae, biofilm and tiny organic
+            material in the aquarium. Prepared shrimp food should supplement
+            that natural grazing rather than replace it.
+        </p>
+
+        <ul>
+            <li>
+                Feed small portions that the colony can finish without food
+                sitting in the tank for hours.
+            </li>
+
+            <li>
+                Use a varied diet rather than relying on one food every day.
+            </li>
+
+            <li>
+                Blanched vegetables can be offered occasionally.
+            </li>
+
+            <li>
+                Protein-rich foods can be useful in moderation, especially
+                for breeding colonies.
+            </li>
+
+            <li>
+                Remove uneaten food if it begins to break down.
+            </li>
+        </ul>
+
+        <div class="guide-warning">
+            <strong>More food does not mean faster breeding.</strong>
+            Overfeeding can raise waste levels, encourage pests and damage
+            water quality. A healthy mature tank already contains a surprising
+            amount of food for shrimp.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Moulting
+        </p>
+
+        <h2>
+            A shed shell is usually a good sign.
+        </h2>
+
+        <p>
+            Shrimp must moult as they grow. The empty exoskeleton can look
+            alarmingly like a dead shrimp at first glance, but it is often
+            transparent and split along the back.
+        </p>
+
+        <p>
+            Leave normal moults in the aquarium. Shrimp often eat them and
+            reclaim some of the minerals.
+        </p>
+
+        <p>
+            Repeated failed moults can point to stress, unsuitable mineral
+            balance, sudden parameter changes or poor overall condition.
+            Avoid trying to fix a suspected mineral issue by making large,
+            sudden changes.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Water changes
+        </p>
+
+        <h2>
+            Keep them regular and sensible.
+        </h2>
+
+        <p>
+            Neocaridina do not require dirty water, and “shrimp hate water
+            changes” is a poor rule to follow. What they dislike is a sudden
+            change in temperature or chemistry.
+        </p>
+
+        <p>
+            Regular partial water changes are useful for controlling nitrate
+            and dissolved waste. Try to keep replacement water reasonably
+            close to the tank in temperature and general chemistry.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Acclimation
+        </p>
+
+        <h2>
+            Transport water and tank water can be very different.
+        </h2>
+
+        <p>
+            New shrimp may arrive in water with a different temperature,
+            hardness or pH. Sudden transfer can stress them badly even when
+            both sets of numbers look acceptable on their own.
+        </p>
+
+        <p>
+            Gradual acclimation gives the shrimp time to adjust. Drip
+            acclimation is commonly used for this reason, particularly when
+            there is a noticeable difference between transport water and the
+            aquarium.
+        </p>
+
+        <p>
+            Once acclimated, avoid adding the transport water to the aquarium
+            if you do not need to.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Tank mates
+        </p>
+
+        <h2>
+            “Peaceful fish” can still eat baby shrimp.
+        </h2>
+
+        <p>
+            Adult Neocaridina can coexist with some small peaceful fish, but
+            almost any fish capable of fitting a shrimplet into its mouth may
+            eat one. If your goal is to grow a large breeding colony, a
+            shrimp-only aquarium is the safest option.
+        </p>
+
+        <p>
+            Snails are generally easier companions because they do not hunt
+            shrimp and often occupy a similar cleanup role.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Breeding
+        </p>
+
+        <h2>
+            Healthy colonies usually do most of the work themselves.
+        </h2>
+
+        <p>
+            Mature females carry fertilised eggs beneath the abdomen. These
+            “berried” females fan and clean the eggs until they hatch.
+            Neocaridina do not have a free-swimming larval stage — the young
+            emerge as tiny versions of the adults.
+        </p>
+
+        <p>
+            Dense moss, mature biofilm, gentle filtration and a lack of
+            predators give shrimplets the best chance of surviving.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Colour lines
+        </p>
+
+        <h2>
+            Mixing colours changes what you get later.
+        </h2>
+
+        <p>
+            Bloody Mary, Blue Dream, Yellow Goldenback and other Neocaridina
+            colours are selectively bred lines of the same species. They can
+            interbreed.
+        </p>
+
+        <p>
+            If maintaining a predictable colour line matters, keep different
+            colour varieties in separate aquariums. Mixed colonies can produce
+            offspring with increasingly variable or wild-type coloration over
+            generations.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What causes trouble most often.
+        </h2>
+
+        <ul>
+            <li>
+                Adding shrimp to a newly established aquarium with little
+                biofilm.
+            </li>
+
+            <li>
+                Making large pH, GH or KH corrections in one go.
+            </li>
+
+            <li>
+                Overfeeding because shrimp appear to be constantly looking
+                for food.
+            </li>
+
+            <li>
+                Using medication or aquarium products without checking whether
+                they are safe for invertebrates.
+            </li>
+
+            <li>
+                Keeping shrimp with fish and expecting every shrimplet to
+                survive.
+            </li>
+
+            <li>
+                Assuming every clear shell in the tank is a dead shrimp rather
+                than checking whether it is simply a moult.
+            </li>
+        </ul>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="cycling-an-aquarium.html"
+            >
+                <strong>Cycling an Aquarium</strong>
+                <span>
+                    Build a stable biological filter before livestock is added.
+                </span>
+            </a>
+
+
+            <a
+                class="guide-link-card"
+                href="breeding-shrimp.html"
+            >
+                <strong>Breeding Neocaridina Shrimp</strong>
+                <span>
+                    Berried females, shrimplets and growing a healthy colony.
+                </span>
+            </a>
+
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>Understanding Water Parameters</strong>
+                <span>
+                    A practical look at pH, GH, KH, ammonia, nitrite and nitrate.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=20"></script>
+
+
+</body>
+
+</html>
