@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical guide to breeding Neocaridina shrimp, covering berried females, shrimplets, colony growth, feeding and colour-line management."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Breeding Neocaridina Shrimp | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul,
+        .guide-section ol {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .breeding-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .breeding-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .breeding-card h3 {
+            margin-top: 0;
+        }
+
+        .breeding-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .breeding-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Shrimp care
+        </p>
+
+        <h1>
+            Breeding Neocaridina Shrimp
+        </h1>
+
+        <p class="guide-intro">
+            Neocaridina usually do not need much encouragement to breed.
+            If the colony is healthy, mature and well fed, reproduction often
+            happens naturally. The real work is giving berried females and
+            shrimplets a stable environment where they can survive and grow.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner to intermediate</span>
+            <span>Freshwater shrimp</span>
+            <span>Breeding</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Before breeding
+        </p>
+
+        <h2>
+            Start with a healthy colony, not a breeding target.
+        </h2>
+
+        <p>
+            Shrimp breed best when basic care is already working. Stable water,
+            mature biofilm, suitable minerals, regular feeding and low stress
+            matter more than trying to force reproduction.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Breeding is usually a sign that the colony is comfortable.</strong>
+            If adults are constantly dying, moulting poorly or hiding
+            unusually, solve the husbandry problem before worrying about
+            increasing numbers.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Males &amp; females
+        </p>
+
+        <h2>
+            Females are usually larger and more heavily built.
+        </h2>
+
+        <p>
+            Mature females often have a broader abdomen than males because the
+            underside of the body needs space for carrying eggs. In many colour
+            lines, females may also show stronger coloration.
+        </p>
+
+        <p>
+            A visible “saddle” behind the head can indicate developing eggs
+            inside a mature female. After mating, those eggs move beneath the
+            abdomen, where the female carries them on her swimmerets.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Berried females
+        </p>
+
+        <h2>
+            Once the eggs are underneath her, leave her alone.
+        </h2>
+
+        <p>
+            A female carrying eggs beneath the abdomen is commonly described as
+            berried. She will regularly fan and move the eggs, helping keep them
+            oxygenated and clean.
+        </p>
+
+        <p>
+            Avoid unnecessary catching, major rescapes or sudden water changes
+            while females are carrying eggs. Stress can cause a female to drop
+            eggs prematurely.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Do not isolate a berried female unless there is a real reason.</strong>
+            Moving her to a separate container can create more stress than
+            simply leaving her in a stable breeding tank.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Hatching
+        </p>
+
+        <h2>
+            Neocaridina hatch as tiny shrimp, not larvae.
+        </h2>
+
+        <p>
+            Unlike some other freshwater shrimp, Neocaridina do not require a
+            separate brackish larval stage. The young hatch as miniature
+            versions of the adults and immediately begin grazing.
+        </p>
+
+        <p>
+            Newly hatched shrimplets are extremely small and easy to miss.
+            In a planted aquarium, you may not notice them until they have grown
+            for several days or weeks.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Shrimplet survival
+        </p>
+
+        <h2>
+            Biofilm and cover matter more than special baby food.
+        </h2>
+
+        <div class="breeding-grid">
+
+            <article class="breeding-card">
+                <h3>Moss</h3>
+                <p>
+                    Java Moss and similar plants provide dense cover and a huge
+                    amount of fine grazing surface.
+                </p>
+            </article>
+
+            <article class="breeding-card">
+                <h3>Leaf litter</h3>
+                <p>
+                    Suitable dried leaves can support microorganisms and create
+                    additional shelter.
+                </p>
+            </article>
+
+            <article class="breeding-card">
+                <h3>Mature surfaces</h3>
+                <p>
+                    Wood, rocks and plant leaves coated in biofilm give tiny
+                    shrimp food without forcing them into the open.
+                </p>
+            </article>
+
+            <article class="breeding-card">
+                <h3>Safe filtration</h3>
+                <p>
+                    Sponge filters are useful because shrimplets cannot easily
+                    be pulled into an exposed intake.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Feeding a breeding colony
+        </p>
+
+        <h2>
+            Feed enough to support growth, but not enough to wreck the water.
+        </h2>
+
+        <p>
+            Breeding colonies have more mouths to feed, but that does not mean
+            the tank should constantly contain visible food. Shrimp will still
+            graze on biofilm throughout the day.
+        </p>
+
+        <ul>
+            <li>Offer small, varied portions.</li>
+            <li>Use quality shrimp food as the main supplement.</li>
+            <li>Add protein-rich food occasionally rather than excessively.</li>
+            <li>Remove leftovers if they begin to break down.</li>
+            <li>Allow natural grazing surfaces to do part of the feeding.</li>
+        </ul>
+
+        <div class="guide-warning">
+            <strong>Overfeeding can wipe out the advantage of a mature tank.</strong>
+            Excess food breaks down, raises waste levels and can encourage
+            pest populations or bacterial problems.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Water changes
+        </p>
+
+        <h2>
+            Keep them consistent rather than dramatic.
+        </h2>
+
+        <p>
+            Regular partial water changes are still useful in breeding tanks.
+            The goal is to control nitrate and dissolved waste without creating
+            a sudden shift in temperature or chemistry.
+        </p>
+
+        <p>
+            Match replacement water reasonably closely to the aquarium and
+            avoid large emergency-style changes unless there is an actual water
+            quality problem.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Colony growth
+        </p>
+
+        <h2>
+            Shrimp populations can grow faster than expected.
+        </h2>
+
+        <p>
+            Once several females begin reproducing, colony size can increase
+            quickly. More shrimp means more feeding, more waste and more demand
+            on the biological filter.
+        </p>
+
+        <p>
+            Watch the tank rather than assuming the original setup will handle
+            unlimited growth. At some point you may need to reduce feeding,
+            increase maintenance, separate animals or move part of the colony.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Colour lines
+        </p>
+
+        <h2>
+            Breeding for colour is different from simply breeding shrimp.
+        </h2>
+
+        <p>
+            Bloody Mary, Blue Dream, Yellow Goldenback and other Neocaridina
+            varieties are selectively bred colour lines. If different lines
+            are mixed, they can interbreed and produce less predictable
+            coloration over later generations.
+        </p>
+
+        <p>
+            If preserving a specific line matters, keep that variety separate
+            and select breeding animals based on the traits you want to retain.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Health comes before colour.</strong>
+            Do not keep weak animals simply because they have strong colour.
+            A robust breeding line should prioritise healthy shrimp first.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Culling &amp; selection
+        </p>
+
+        <h2>
+            Selection does not have to mean killing healthy shrimp.
+        </h2>
+
+        <p>
+            In breeding, “culling” often means removing animals from the main
+            breeding group because their colour or pattern does not match the
+            line being maintained.
+        </p>
+
+        <p>
+            Healthy off-colour shrimp can be moved to a separate colony, sold
+            clearly as lower grade, or kept as pets rather than destroyed.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Tank mates
+        </p>
+
+        <h2>
+            A breeding tank works best without predators.
+        </h2>
+
+        <p>
+            Many fish sold as peaceful will still eat newly hatched shrimp if
+            given the opportunity. Adults may coexist perfectly while the
+            shrimplet survival rate quietly drops.
+        </p>
+
+        <p>
+            If growing the colony is the goal, a shrimp-only tank with snails
+            as optional companions is usually the simplest route.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What gets in the way most often.
+        </h2>
+
+        <ul>
+            <li>Trying to breed shrimp in a newly established tank with little biofilm.</li>
+            <li>Overfeeding because there are shrimplets present.</li>
+            <li>Moving berried females unnecessarily.</li>
+            <li>Using an unprotected filter intake.</li>
+            <li>Mixing colour lines and expecting offspring to stay consistent.</li>
+            <li>Keeping fish in the breeding tank and wondering where the babies went.</li>
+            <li>Focusing on colour while ignoring health and genetic diversity.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="neocaridina-care-guide.html"
+            >
+                <strong>Neocaridina Care Guide</strong>
+                <span>
+                    Tank setup, feeding, moulting and stable everyday care.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="shrimp-health.html"
+            >
+                <strong>Shrimp Health &amp; Warning Signs</strong>
+                <span>
+                    Learn what stress, failed moults and unusual behaviour can indicate.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>Understanding Water Parameters</strong>
+                <span>
+                    A practical guide to pH, GH, KH, ammonia, nitrite and nitrate.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+</html>
