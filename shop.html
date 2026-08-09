@@ -5,16 +5,103 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Browse aquatic livestock, aquarium plants and supplies from AquaCoding Studios."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
 
     <title>Shop | AquaCoding Studios</title>
 
-    <meta name="description"
-          content="Browse aquatic livestock, aquarium plants and supplies from AquaCoding Studios.">
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=13">
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        .shop-search {
+            width: min(92%, 1180px);
+            margin: 0 auto 20px;
+        }
+
+        .shop-search-input {
+            width: 100%;
+            min-height: 48px;
+            padding: 0 16px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--panel);
+            color: var(--text);
+            font: inherit;
+        }
+
+        .shop-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-button {
+            min-height: 42px;
+            padding: 0 16px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--panel);
+            color: var(--muted);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .filter-button.active {
+            background: var(--accent);
+            color: #04131d;
+            border-color: var(--accent);
+        }
+
+    </style>
 
 </head>
 
@@ -22,18 +109,26 @@
 
 <header class="site-header">
 
-    <a class="brand" href="index.html">
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
 
-        <img src="logo-dark.png"
-             alt="AquaCoding Studios"
-             class="site-logo">
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
 
     </a>
 
-    <button class="menu-button"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false">
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
 
         <span></span>
         <span></span>
@@ -41,13 +136,68 @@
 
     </button>
 
-    <nav class="main-nav">
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
 
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="guides.html">Learn</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="shop.html"
+            aria-current="page"
+        >
+            Shop
+        </a>
+
+        <a href="guides.html">
+            Learn
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
 
     </nav>
 
@@ -55,401 +205,463 @@
 
 <main>
 
-<section class="collection-hero">
+    <section class="collection-hero">
 
-    <p class="eyebrow">
+        <p class="eyebrow">
+            AquaCoding Shop
+        </p>
 
-        AQUACODING SHOP
+        <h1>
+            Browse Products
+        </h1>
 
-    </p>
+        <p class="hero-text">
+            Explore livestock, aquarium plants, equipment and more.
+            Product pages include practical care information and
+            current availability.
+        </p>
 
-    <h1>
+    </section>
 
-        Browse Products
+    <div class="shop-search">
 
-    </h1>
-
-    <p class="hero-text">
-
-        Explore livestock, aquarium plants, equipment and more.
-        Every product includes care information, water parameters
-        and live stock availability.
-
-    </p>
-
-</section>
-<div class="shop-search">
-
-    <input
-        type="search"
-        placeholder="Search products..."
-        class="shop-search-input"
-    >
-
-</div>
-<section class="section">
-
-    <div class="shop-filters">
-
-    <button class="filter-button active" data-filter="all">
-        All
-    </button>
-
-    <button class="filter-button" data-filter="shrimp">
-        Shrimp
-    </button>
-
-    <button class="filter-button" data-filter="fish">
-        Fish
-    </button>
-
-    <button class="filter-button" data-filter="plants">
-        Plants
-    </button>
-
-    <button class="filter-button" data-filter="equipment">
-        Equipment
-    </button>
-
-</div>
-
-</section>
-<section class="section">
-
-    <div class="collection-grid">
-
-<!-- Bloody Mary Shrimp -->
-
-<a
-    class="collection-card card-link shop-product"
-    href="bloody-mary-shrimp.html"
-    data-category="shrimp"
-    data-name="bloody mary shrimp neocaridina davidi"
->
-
-    <div class="collection-image">
-
-        <img
-            src="bloody-mary-shrimp.jpg"
-            alt="Bloody Mary Shrimp (Neocaridina davidi)"
-            loading="lazy"
+        <input
+            type="search"
+            placeholder="Search products..."
+            class="shop-search-input"
+            aria-label="Search products"
         >
 
     </div>
 
-    <div class="collection-content">
+    <section class="section">
 
-        <span class="availability-badge">
-            Breeding - Available Soon
-        </span>
+        <div class="shop-filters">
 
-        <h3>Bloody Mary Shrimp</h3>
+            <button
+                class="filter-button active"
+                type="button"
+                data-filter="all"
+            >
+                All
+            </button>
 
-        <p class="product-price">
-            €4.90 • Coming Soon 
-        </p>
+            <button
+                class="filter-button"
+                type="button"
+                data-filter="shrimp"
+            >
+                Shrimp
+            </button>
 
-        <p>
-            <em>Neocaridina davidi</em>
-        </p>
+            <button
+                class="filter-button"
+                type="button"
+                data-filter="fish"
+            >
+                Fish
+            </button>
 
-        <div class="product-footer">
+            <button
+                class="filter-button"
+                type="button"
+                data-filter="plants"
+            >
+                Plants
+            </button>
 
-            <span class="view-product">
-                View Product →
-            </span>
+            <button
+                class="filter-button"
+                type="button"
+                data-filter="equipment"
+            >
+                Equipment
+            </button>
 
         </div>
 
-    </div>
+    </section>
+    <section class="section">
 
-</a>
+        <div class="collection-grid">
 
-        <!-- Blue Dream Shrimp -->
+            <!-- Bloody Mary Shrimp -->
 
-        <a
-    class="collection-card card-link shop-product"
-    href="blue-dream-shrimp.html"
-    data-category="shrimp"
-    data-name="blue dream shrimp neocaridina davidi"
->
+            <a
+                class="collection-card card-link shop-product"
+                href="bloody-mary-shrimp.html"
+                data-category="shrimp"
+                data-name="bloody mary shrimp neocaridina davidi"
+            >
 
-  <div class="collection-image placeholder-image blue-product">
+                <div class="collection-image">
 
-    <span>Blue Dream Shrimp</span>
+                    <img
+                        src="bloody-mary-shrimp.jpg"
+                        alt="Bloody Mary Shrimp"
+                        loading="lazy"
+                    >
 
-</div>
+                </div>
 
-            <div class="collection-content">
+                <div class="collection-content">
 
- <span class="availability-badge out-of-stock">
-    Out of Stock
-</span>
+                    <span class="availability-badge">
+                        Breeding - Available Soon
+                    </span>
 
-<h3>Blue Dream Shrimp</h3>
+                    <h3>
+                        Bloody Mary Shrimp
+                    </h3>
 
-<p class="product-price">
-   
- Currently unavailable
+                    <p class="product-price">
+                        €4.90 • Coming Soon
+                    </p>
 
-</p>
+                    <p>
+                        <em>Neocaridina davidi</em>
+                    </p>
 
-<p>
-    <em>Neocaridina davidi</em>
-</p>
+                    <div class="product-footer">
 
-<div class="product-footer">
-    <span class="view-product">
-        View Product →
-    </span>
-</div>
+                        <span class="view-product">
+                            View Product →
+                        </span>
 
-            </div>
+                    </div>
 
-        </a>
-<!-- Yellow Goldenback Shrimp -->
+                </div>
 
-<a
-    class="collection-card card-link shop-product"
-    href="yellow-goldenback-shrimp.html"
-    data-category="shrimp"
-    data-name="yellow goldenback shrimp neocaridina davidi"
->
+            </a>
 
-    <div class="collection-image placeholder-image yellow-product">
-        <span>Yellow Goldenback Shrimp</span>
-    </div>
 
-    <div class="collection-content">
+            <!-- Blue Dream Shrimp -->
 
-        <span class="availability-badge out-of-stock">
-            Out of Stock
-        </span>
+            <a
+                class="collection-card card-link shop-product"
+                href="blue-dream-shrimp.html"
+                data-category="shrimp"
+                data-name="blue dream shrimp neocaridina davidi"
+            >
 
-        <h3>Yellow Goldenback Shrimp</h3>
+                <div
+                    class="collection-image placeholder-image blue-product"
+                >
+                    <span>
+                        Blue Dream Shrimp
+                    </span>
+                </div>
 
-        <p class="product-status">
-            Currently unavailable
-        </p>
+                <div class="collection-content">
 
-        <p>
-            <em>Neocaridina davidi</em>
-        </p>
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
 
-        <div class="product-footer">
-            <span class="view-product">
-                View Product →
-            </span>
+                    <h3>
+                        Blue Dream Shrimp
+                    </h3>
+
+                    <p class="product-price">
+                        Currently unavailable
+                    </p>
+
+                    <p>
+                        <em>Neocaridina davidi</em>
+                    </p>
+
+                    <div class="product-footer">
+
+                        <span class="view-product">
+                            View Product →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- Yellow Goldenback Shrimp -->
+
+            <a
+                class="collection-card card-link shop-product"
+                href="yellow-goldenback-shrimp.html"
+                data-category="shrimp"
+                data-name="yellow goldenback shrimp neocaridina davidi"
+            >
+
+                <div
+                    class="collection-image placeholder-image yellow-product"
+                >
+                    <span>
+                        Yellow Goldenback Shrimp
+                    </span>
+                </div>
+
+                <div class="collection-content">
+
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
+
+                    <h3>
+                        Yellow Goldenback Shrimp
+                    </h3>
+
+                    <p class="product-price">
+                        Currently unavailable
+                    </p>
+
+                    <p>
+                        <em>Neocaridina davidi</em>
+                    </p>
+
+                    <div class="product-footer">
+
+                        <span class="view-product">
+                            View Product →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+            <!-- Betta splendens -->
+
+            <a
+                class="collection-card card-link shop-product"
+                href="betta-splendens.html"
+                data-category="fish"
+                data-name="betta splendens siamese fighting fish"
+            >
+
+                <div
+                    class="collection-image placeholder-image betta-product"
+                >
+                    <span>
+                        Betta splendens
+                    </span>
+                </div>
+
+                <div class="collection-content">
+
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
+
+                    <h3>
+                        Betta splendens
+                    </h3>
+
+                    <p class="product-price">
+                        Currently unavailable
+                    </p>
+
+                    <p>
+                        Siamese Fighting Fish
+                    </p>
+
+                    <div class="product-footer">
+
+                        <span class="view-product">
+                            View Product →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- Java Moss -->
+
+            <a
+                class="collection-card card-link shop-product"
+                href="java-moss.html"
+                data-category="plants"
+                data-name="java moss taxiphyllum barbieri aquarium plant"
+            >
+
+                <div
+                    class="collection-image placeholder-image plant-product"
+                >
+                    <span>
+                        Java Moss
+                    </span>
+                </div>
+
+                <div class="collection-content">
+
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
+
+                    <h3>
+                        Java Moss
+                    </h3>
+
+                    <p class="product-price">
+                        Currently unavailable
+                    </p>
+
+                    <p>
+                        <em>Taxiphyllum barbieri</em>
+                    </p>
+
+                    <div class="product-footer">
+
+                        <span class="view-product">
+                            View Product →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- Salvinia -->
+
+            <a
+                class="collection-card card-link shop-product"
+                href="salvinia.html"
+                data-category="plants"
+                data-name="salvinia minima floating aquarium plant"
+            >
+
+                <div
+                    class="collection-image placeholder-image plant-product"
+                >
+                    <span>
+                        Salvinia
+                    </span>
+                </div>
+
+                <div class="collection-content">
+
+                    <span class="availability-badge out-of-stock">
+                        Out of Stock
+                    </span>
+
+                    <h3>
+                        Salvinia
+                    </h3>
+
+                    <p class="product-price">
+                        Currently unavailable
+                    </p>
+
+                    <p>
+                        <em>Salvinia minima</em>
+                    </p>
+
+                    <div class="product-footer">
+
+                        <span class="view-product">
+                            View Product →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
         </div>
 
-    </div>
+    </section>
+    <section class="section">
 
-</a>
+        <div class="section-heading">
 
-        <!-- Betta -->
+            <p class="section-label">
+                Shopping with confidence
+            </p>
 
-       <a
-    class="collection-card card-link shop-product"
-    href="betta-splendens.html"
-    data-category="fish"
-    data-name="betta splendens siamese fighting fish"
->
+            <h2>
+                Every product includes more than a price.
+            </h2>
 
-<div class="collection-image placeholder-image betta-product">
+        </div>
 
-    <span>Betta splendens</span>
+        <div class="standards-grid">
 
-</div>
+            <article class="standard-card">
 
-            <div class="collection-content">
+                <span>
+                    01
+                </span>
 
-                <span class="availability-badge out-of-stock">
-    Out of Stock
-</span>
+                <h3>
+                    Care Information
+                </h3>
 
-<h3>Betta splendens</h3>
-
-<p class="product-price">
-    
-         Currently unavailable 
- 
-</p>
-
-<p>
-    Siamese Fighting Fish
-</p>
-
-<div class="product-footer">
-    <span class="view-product">
-        View Product →
-    </span>
-</div>
-
-                    Siamese Fighting Fish
-
+                <p>
+                    Livestock listings include practical information to help
+                    you understand an animal's needs before bringing it home.
                 </p>
 
-            </div>
+            </article>
 
-        </a>
+            <article class="standard-card">
 
-        <!-- Java Moss -->
+                <span>
+                    02
+                </span>
 
-        <a
-    class="collection-card card-link shop-product"
-    href="java-moss.html"
-    data-category="plants"
-    data-name="java moss aquarium plant"
->
+                <h3>
+                    Water Parameters
+                </h3>
 
-            <div class="collection-image placeholder-image plant-product">
-
-    <span>Java Moss</span>
-
-</div>
-
-            <div class="collection-content">
-
-                <span class="availability-badge out-of-stock">
-    Out of Stock
-</span>
-
-<h3>Java Moss</h3>
-
-<p class="product-price">
-    Currently unavailable 
-</p>
-
-<p>
-    Easy freshwater moss
-</p>
-
-<div class="product-footer">
-    <span class="view-product">
-        View Product →
-    </span>
-</div>
-
-                    Easy freshwater moss
-
+                <p>
+                    Suitable temperature, pH and other important care
+                    requirements are provided where relevant.
                 </p>
 
-            </div>
+            </article>
 
-        </a>
-<!-- Salvinia -->
+            <article class="standard-card">
 
-<a
-    class="collection-card card-link shop-product"
-    href="salvinia.html"
-    data-category="plants"
-    data-name="salvinia floating aquarium plant"
->
+                <span>
+                    03
+                </span>
 
-    <div class="collection-image placeholder-image plant-product">
-        <span>Salvinia</span>
-    </div>
+                <h3>
+                    Live Stock Status
+                </h3>
 
-    <div class="collection-content">
+                <p>
+                    Availability is shown clearly so you can see what is
+                    currently available, coming soon or out of stock.
+                </p>
 
-        <span class="availability-badge out-of-stock">
-            Out of Stock
-        </span>
+            </article>
 
-        <h3>Salvinia</h3>
+            <article class="standard-card">
 
-        <p class="product-status">
-            Currently unavailable
-        </p>
+                <span>
+                    04
+                </span>
 
-        <p>
-            <em>Salvinia minima</em>
-        </p>
+                <h3>
+                    Responsible Animal Care
+                </h3>
 
-        <div class="product-footer">
-            <span class="view-product">
-                View Product →
-            </span>
+                <p>
+                    Animal welfare comes before making a sale. Suitable care
+                    and responsible purchasing matter.
+                </p>
+
+            </article>
+
         </div>
 
-    </div>
-
-</a>
-
-    </div>
-
-</section>
-<section class="section">
-
-    <div class="section-heading">
-
-        <p class="section-label">
-
-            SHOPPING WITH CONFIDENCE
-
-        </p>
-
-        <h2>
-
-            Every product includes more than a price.
-
-        </h2>
-
-    </div>
-
-    <div class="standards-grid">
-
-        <article class="standard-card">
-
-            <span>01</span>
-
-            <h3>Care Information</h3>
-
-            <p>
-                Every livestock listing includes practical care advice.
-            </p>
-
-        </article>
-
-        <article class="standard-card">
-
-            <span>02</span>
-
-            <h3>Water Parameters</h3>
-
-            <p>
-                Recommended temperature, pH and care requirements.
-            </p>
-
-        </article>
-
-        <article class="standard-card">
-
-            <span>03</span>
-
-            <h3>Live Stock Status</h3>
-
-            <p>
-                Product availability is updated as stock changes.
-            </p>
-
-        </article>
-
-        <article class="standard-card">
-
-            <span>04</span>
-
-            <h3>Responsible Animal Care</h3>
-
-            <p>
-                Animal welfare always comes before sales.
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
+    </section>
 
 </main>
 
@@ -457,7 +669,9 @@
 
     <div>
 
-        <strong>AquaCoding Studios</strong>
+        <strong>
+            AquaCoding Studios
+        </strong>
 
         <p>
             Aquatic livestock, plants, supplies and practical care.
@@ -486,14 +700,12 @@
     </div>
 
     <p>
-
         © 2026 AquaCoding Studios · Malta
-
     </p>
 
 </footer>
 
-<script src="script.js?v=15"></script>
+<script src="script.js?v=20"></script>
 
 </body>
 
