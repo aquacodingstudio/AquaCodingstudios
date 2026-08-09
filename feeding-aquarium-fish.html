@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical aquarium fish feeding guide from AquaCoding Studios covering portion size, diet variety, feeding frequency, live and frozen foods, and overfeeding."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Feeding Aquarium Fish | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .feeding-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .feeding-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .feeding-card h3 {
+            margin-top: 0;
+        }
+
+        .feeding-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .feeding-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Fish care
+        </p>
+
+        <h1>
+            Feeding Aquarium Fish
+        </h1>
+
+        <p class="guide-intro">
+            Feeding looks simple until you realise different fish eat in
+            different ways, at different levels of the tank, and with very
+            different nutritional needs. Good feeding is less about pouring in
+            food and more about giving the right food, in the right amount,
+            often enough to support health without damaging water quality.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater fish</span>
+            <span>Feeding</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Start with the species
+        </p>
+
+        <h2>
+            “Fish food” is not one single diet.
+        </h2>
+
+        <p>
+            Some fish are primarily carnivorous, some are omnivorous, and some
+            rely more heavily on plant matter, algae or specialised foods.
+            Feeding works best when it matches the natural diet and feeding
+            behaviour of the species you keep.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Read the fish, not just the packet.</strong>
+            A food labelled “tropical fish” may be perfectly usable, but that
+            label alone does not tell you whether it suits every species in the
+            aquarium.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Food types
+        </p>
+
+        <h2>
+            Different foods have different jobs.
+        </h2>
+
+        <div class="feeding-grid">
+
+            <article class="feeding-card">
+                <h3>Pellets</h3>
+                <p>
+                    Easy to portion and available in many sizes. Choose a pellet
+                    that matches the mouth size and diet of the fish.
+                </p>
+            </article>
+
+            <article class="feeding-card">
+                <h3>Flakes</h3>
+                <p>
+                    Useful for many community fish, especially surface and
+                    mid-water feeders. Crush them when feeding smaller fish.
+                </p>
+            </article>
+
+            <article class="feeding-card">
+                <h3>Frozen foods</h3>
+                <p>
+                    Foods such as brine shrimp, daphnia and bloodworms can add
+                    variety and are useful for many carnivorous and omnivorous
+                    species.
+                </p>
+            </article>
+
+            <article class="feeding-card">
+                <h3>Live foods</h3>
+                <p>
+                    Live foods can encourage natural hunting behaviour, but they
+                    should come from a reliable source to reduce the chance of
+                    introducing unwanted organisms.
+                </p>
+            </article>
+
+            <article class="feeding-card">
+                <h3>Vegetable-based foods</h3>
+                <p>
+                    Algae wafers, spirulina-rich foods and suitable vegetables
+                    can be useful for fish that naturally consume more plant
+                    material.
+                </p>
+            </article>
+
+            <article class="feeding-card">
+                <h3>Sinking foods</h3>
+                <p>
+                    Bottom-dwelling fish need food that actually reaches them.
+                    Surface flakes alone may leave them underfed in a busy tank.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Portion size
+        </p>
+
+        <h2>
+            Most aquarium fish need less food than people expect.
+        </h2>
+
+        <p>
+            There is no perfect “number of flakes” rule because fish size,
+            species, food type and stocking all vary. Start with a small portion
+            and watch what is actually eaten.
+        </p>
+
+        <p>
+            Food that sinks into corners, sits untouched or breaks down before
+            being eaten is not feeding the fish — it is feeding the waste cycle.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Overfeeding hurts water quality quickly.</strong>
+            Uneaten food decomposes, adds organic waste and can contribute to
+            rising ammonia, nitrate and general tank instability.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Feeding frequency
+        </p>
+
+        <h2>
+            More often is not automatically better.
+        </h2>
+
+        <p>
+            Many adult community fish do well with one or two small meals per
+            day, while juveniles, fry and some specialised species may benefit
+            from more frequent feeding.
+        </p>
+
+        <p>
+            The important part is total intake across the day. Four tiny meals
+            can be sensible for growing fry; four full adult-sized meals is
+            simply overfeeding.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Feeding by level
+        </p>
+
+        <h2>
+            Make sure every fish can actually reach food.
+        </h2>
+
+        <p>
+            Community tanks often contain fish that feed at different levels.
+            Surface feeders may grab most of the food before bottom dwellers see
+            any of it.
+        </p>
+
+        <ul>
+            <li>Use floating or slow-sinking foods for surface and mid-water feeders.</li>
+            <li>Use sinking pellets or wafers for bottom-dwelling species.</li>
+            <li>Spread food across more than one area in larger tanks.</li>
+            <li>Watch timid fish to make sure dominant fish are not taking everything.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Variety
+        </p>
+
+        <h2>
+            A sensible rotation is usually better than one food forever.
+        </h2>
+
+        <p>
+            A high-quality staple food can form the base of the diet, with
+            frozen, live or vegetable-based foods added where appropriate.
+            Variety can improve enrichment and help cover a broader range of
+            nutritional needs.
+        </p>
+
+        <p>
+            Variety does not mean feeding five different foods at every meal.
+            It simply means the diet is not needlessly repetitive.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Bettas
+        </p>
+
+        <h2>
+            Bettas are carnivorous and extremely good at begging.
+        </h2>
+
+        <p>
+            A quality betta pellet can be used as a staple, with suitable
+            frozen or live foods added for variety. Long-finned bettas can be
+            especially convincing when asking for more food, so portion control
+            matters.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Begging is behaviour, not proof of hunger.</strong>
+            Fish can quickly associate you with food and may appear desperate
+            for another meal minutes after finishing the first one.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Fry &amp; juveniles
+        </p>
+
+        <h2>
+            Growing fish often need smaller food more frequently.
+        </h2>
+
+        <p>
+            Fry have small stomachs and high growth demands. They may need
+            appropriately sized foods offered in small amounts several times
+            per day.
+        </p>
+
+        <p>
+            Water quality becomes especially important because frequent feeding
+            produces frequent waste. Grow-out tanks often need more careful
+            maintenance than adult display tanks.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Fasting
+        </p>
+
+        <h2>
+            Healthy adult fish can usually cope with an occasional missed meal.
+        </h2>
+
+        <p>
+            Missing a feeding is generally less dangerous than repeatedly
+            overfeeding healthy adult fish. Some aquarists deliberately include
+            an occasional fasting day, although this is not necessary for every
+            species or setup.
+        </p>
+
+        <p>
+            Fry, very young fish, sick fish and species with specialised feeding
+            needs should not automatically be treated the same way.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Going away
+        </p>
+
+        <h2>
+            Do not turn a weekend trip into an emergency feeding experiment.
+        </h2>
+
+        <p>
+            Healthy adult fish can often manage short periods without feeding
+            better than they can manage a neighbour pouring half a tub of food
+            into the aquarium.
+        </p>
+
+        <p>
+            For longer absences, use a reliable plan based on the species and
+            length of time away. Pre-portioned food for a trusted person is
+            often safer than giving vague instructions.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Uneaten food
+        </p>
+
+        <h2>
+            Remove what the fish clearly are not eating.
+        </h2>
+
+        <p>
+            A small crumb disappearing into the substrate is not a disaster, but
+            obvious piles of food should not be left to rot. Use a net, siphon
+            or turkey baster to remove excess where practical.
+        </p>
+
+        <p>
+            If leftovers happen repeatedly, reduce the portion or switch to a
+            food that suits the fish better.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Warning signs
+        </p>
+
+        <h2>
+            Changes in feeding behaviour can tell you something.
+        </h2>
+
+        <p>
+            A single missed meal is not always serious, but a fish that suddenly
+            stops eating for several days may be stressed or unwell. Check the
+            environment before assuming the problem is simply the food.
+        </p>
+
+        <ul>
+            <li>Check temperature.</li>
+            <li>Check ammonia and nitrite.</li>
+            <li>Look for bullying or competition.</li>
+            <li>Look for breathing changes, clamped fins or unusual swimming.</li>
+            <li>Consider whether the food size or type is appropriate.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            Most feeding problems are simple ones.
+        </h2>
+
+        <ul>
+            <li>Feeding every time fish beg.</li>
+            <li>Using portions that are too large.</li>
+            <li>Assuming one generic food suits every species.</li>
+            <li>Forgetting bottom dwellers in community tanks.</li>
+            <li>Leaving uneaten food to decay.</li>
+            <li>Feeding heavily before leaving the tank unattended for several days.</li>
+            <li>Trying to solve poor growth with more food while ignoring water quality.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="betta-care-guide.html"
+            >
+                <strong>Betta Care Guide</strong>
+                <span>
+                    Heating, filtration, feeding and suitable housing for Betta splendens.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="choosing-tank-mates.html"
+            >
+                <strong>Choosing Tank Mates</strong>
+                <span>
+                    Compare behaviour, adult size and feeding competition before mixing species.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>Understanding Water Parameters</strong>
+                <span>
+                    See how feeding and waste connect to ammonia, nitrite and nitrate.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+</html>
