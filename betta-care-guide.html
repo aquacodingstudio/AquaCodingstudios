@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical Betta splendens care guide from AquaCoding Studios covering housing, heating, filtration, feeding, enrichment and tank mates."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Betta Care Guide | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .care-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .care-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .care-card h3 {
+            margin-top: 0;
+        }
+
+        .care-card p {
+            margin-bottom: 0;
+        }
+
+        .parameter-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .parameter-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .parameter-row span:first-child {
+            color: var(--muted);
+        }
+
+        .parameter-row strong {
+            text-align: right;
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+
+            .care-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+    </nav>
+
+</header>
+
+
+<main class="guide-page">
+
+
+    <a
+        class="guide-breadcrumb"
+        href="guides.html"
+    >
+        ← Back to Learn
+    </a>
+
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Fish care
+        </p>
+
+        <h1>
+            Betta Care Guide
+        </h1>
+
+        <p class="guide-intro">
+            Bettas are hardy fish, but that does not mean they thrive in tiny
+            containers. A healthy <em>Betta splendens</em> needs warm, stable
+            water, gentle filtration, room to explore and an environment that
+            lets it behave like a fish rather than simply survive.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner to intermediate</span>
+            <span>Freshwater fish</span>
+            <span>Betta splendens</span>
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            The basics
+        </p>
+
+        <h2>
+            Warm, clean and calm beats small and decorative.
+        </h2>
+
+        <p>
+            Bettas come from tropical environments and need warm water. They
+            also prefer relatively gentle flow because many domestic varieties
+            have long fins that make swimming against strong current tiring.
+        </p>
+
+        <div class="parameter-list">
+
+            <div class="parameter-row">
+                <span>Temperature</span>
+                <strong>24–28°C</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>pH</span>
+                <strong>About 6.5–7.8</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>Ammonia</span>
+                <strong>0 ppm</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>Nitrite</span>
+                <strong>0 ppm</strong>
+            </div>
+
+            <div class="parameter-row">
+                <span>Flow</span>
+                <strong>Gentle</strong>
+            </div>
+
+        </div>
+
+        <div class="guide-callout">
+            <strong>A labyrinth organ is not an excuse for poor water.</strong>
+            Bettas can breathe atmospheric air, but they still depend on clean,
+            heated aquarium water and proper biological filtration.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Aquarium size
+        </p>
+
+        <h2>
+            Give the fish enough room to use the tank.
+        </h2>
+
+        <p>
+            Very small containers are difficult to keep stable and give the
+            fish little room for natural movement. A larger aquarium is easier
+            to heat, filter and maintain, and it gives you space for plants,
+            resting areas and enrichment.
+        </p>
+
+        <p>
+            Shape matters as well. Bettas regularly visit the surface, so an
+            aquarium with reasonable horizontal swimming space and easy surface
+            access is more useful than a very tall, narrow container.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Cups and unheated bowls are not suitable permanent homes.</strong>
+            They are difficult to keep stable and do not provide the space,
+            heating or filtration needed for long-term care.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Heating &amp; filtration
+        </p>
+
+        <h2>
+            Stable temperature and gentle water movement.
+        </h2>
+
+        <div class="care-grid">
+
+            <article class="care-card">
+                <h3>Heating</h3>
+                <p>
+                    Use a reliable aquarium heater if room temperature cannot
+                    keep the tank consistently within the suitable range.
+                    Sudden temperature swings are best avoided.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <h3>Filtration</h3>
+                <p>
+                    Sponge filters and adjustable low-flow filters work well.
+                    Strong current can exhaust long-finned fish and make the
+                    aquarium less comfortable to use.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <h3>Surface access</h3>
+                <p>
+                    Bettas regularly take air from the surface. Make sure the
+                    fish can reach it easily and that floating plants do not
+                    completely block access.
+                </p>
+            </article>
+
+            <article class="care-card">
+                <h3>Lid</h3>
+                <p>
+                    Bettas can jump. A secure lid reduces the risk while also
+                    helping maintain warm, humid air above the water surface.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Plants &amp; enrichment
+        </p>
+
+        <h2>
+            A bare tank wastes half the opportunity.
+        </h2>
+
+        <p>
+            Bettas are curious fish. Plants, wood, broad leaves and gentle
+            shaded areas give them places to explore and rest. Live plants can
+            also improve the feel of the aquarium and give the fish more visual
+            cover.
+        </p>
+
+        <ul>
+            <li>Broad leaves can act as resting spots near the surface.</li>
+            <li>Floating plants can create shade, but leave open surface access.</li>
+            <li>Avoid sharp plastic decorations that can tear delicate fins.</li>
+            <li>Change or rearrange small parts of the environment occasionally for enrichment.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Feeding
+        </p>
+
+        <h2>
+            Bettas are carnivorous and easy to overfeed.
+        </h2>
+
+        <p>
+            A good diet can include quality betta pellets along with suitable
+            frozen or live foods. Variety is useful, but portion control matters
+            just as much as food quality.
+        </p>
+
+        <ul>
+            <li>Feed small portions rather than one oversized meal.</li>
+            <li>Remove uneaten food if it begins to break down.</li>
+            <li>Use frozen or live foods as part of a varied diet, not as an excuse to overfeed.</li>
+            <li>Do not rely on generic flakes alone if better species-appropriate options are available.</li>
+        </ul>
+
+        <div class="guide-warning">
+            <strong>A constantly begging betta is not necessarily hungry.</strong>
+            Many bettas quickly learn that people near the tank can mean food.
+            Feeding every time the fish asks is a very efficient way to create
+            digestive and water-quality problems.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Behaviour
+        </p>
+
+        <h2>
+            Individual temperament matters.
+        </h2>
+
+        <p>
+            Some bettas are bold and interactive. Others are calmer or more
+            territorial. Behaviour can change with age, environment and the
+            presence of other animals.
+        </p>
+
+        <p>
+            Watch the fish rather than assuming every betta will behave the
+            same way. Persistent glass surfing, clamped fins, lethargy or
+            refusing food can be signs that something in the environment needs
+            attention.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Tank mates
+        </p>
+
+        <h2>
+            Compatibility is never guaranteed.
+        </h2>
+
+        <p>
+            Bettas can sometimes live with suitable community fish or
+            invertebrates, but temperament varies. The tank must be large
+            enough, heavily structured and stocked with species that do not
+            harass, nip or outcompete the betta.
+        </p>
+
+        <p>
+            Long-finned, brightly coloured or fin-nipping fish are generally
+            poor choices. Shrimp may be ignored by one betta and hunted by
+            another.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Have a backup plan.</strong>
+            If you try a community setup, be prepared to separate animals if
+            chasing, fin damage or constant stress appears.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Male &amp; female bettas
+        </p>
+
+        <h2>
+            Do not treat them as automatic tank mates.
+        </h2>
+
+        <p>
+            Adult males are territorial and should not be housed together.
+            Males and females should also not simply be placed together as a
+            permanent pair. Breeding introductions are deliberate, supervised
+            setups and are not the same thing as normal community housing.
+        </p>
+
+        <p>
+            Female groups are sometimes attempted, but so-called sororities
+            can be unstable and are not a beginner setup.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Water changes
+        </p>
+
+        <h2>
+            Routine maintenance keeps problems boring.
+        </h2>
+
+        <p>
+            Regular partial water changes help control nitrate and dissolved
+            waste. Clean the aquarium sensibly without sterilising the filter
+            or replacing all biological media at once.
+        </p>
+
+        <p>
+            Match replacement water reasonably closely in temperature and
+            always use a suitable dechlorinator when treating tap water.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            The usual ways betta setups go wrong.
+        </h2>
+
+        <ul>
+            <li>Keeping the fish in an unheated bowl or tiny container.</li>
+            <li>Using a filter with current strong enough to push the fish around.</li>
+            <li>Overfeeding because the betta always appears interested in food.</li>
+            <li>Using sharp decorations that damage fins.</li>
+            <li>Adding tank mates without enough space or a separation plan.</li>
+            <li>Assuming surface breathing means filtration or oxygenation does not matter.</li>
+            <li>Ignoring a secure lid because the fish “has never jumped before”.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="cycling-an-aquarium.html"
+            >
+                <strong>Cycling an Aquarium</strong>
+                <span>
+                    Establish biological filtration before adding fish.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="feeding-aquarium-fish.html"
+            >
+                <strong>Feeding Aquarium Fish</strong>
+                <span>
+                    Portion size, diet variety and avoiding overfeeding.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="choosing-tank-mates.html"
+            >
+                <strong>Choosing Tank Mates</strong>
+                <span>
+                    Compare behaviour, size and water requirements before mixing species.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=20"></script>
+
+
+</body>
+
+</html>
