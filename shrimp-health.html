@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical guide to Neocaridina shrimp health, covering moulting problems, stress signs, disease warning signs, water quality and quarantine."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Shrimp Health & Warning Signs | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .health-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .health-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .health-card h3 {
+            margin-top: 0;
+        }
+
+        .health-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .health-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Shrimp care
+        </p>
+
+        <h1>
+            Shrimp Health &amp; Warning Signs
+        </h1>
+
+        <p class="guide-intro">
+            Shrimp are small, so health problems can be easy to miss until they
+            become serious. The best defence is not a medicine cabinet — it is
+            stable water, careful observation and noticing when normal behaviour
+            starts to change.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner to intermediate</span>
+            <span>Neocaridina</span>
+            <span>Health</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Normal behaviour
+        </p>
+
+        <h2>
+            Know what healthy shrimp look like first.
+        </h2>
+
+        <p>
+            Healthy Neocaridina spend much of their time grazing, walking over
+            plants and hardscape, picking at surfaces and occasionally swimming.
+            They may hide more around moulting, after transport or when something
+            in the environment changes.
+        </p>
+
+        <p>
+            One quiet shrimp is not automatically a problem. What matters more is
+            whether several animals change behaviour at the same time or whether
+            the change is paired with poor water readings, deaths or visible
+            abnormalities.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Stress signs
+        </p>
+
+        <h2>
+            Behaviour often changes before anything else is obvious.
+        </h2>
+
+        <div class="health-grid">
+
+            <article class="health-card">
+                <h3>Unusual inactivity</h3>
+                <p>
+                    Several shrimp sitting still for long periods, especially
+                    when they would normally be grazing, can be worth checking.
+                </p>
+            </article>
+
+            <article class="health-card">
+                <h3>Frantic swimming</h3>
+                <p>
+                    Sudden restless swimming around the tank can occur during
+                    normal mating activity, but it can also appear after a water
+                    change or parameter shift.
+                </p>
+            </article>
+
+            <article class="health-card">
+                <h3>Constant surface gathering</h3>
+                <p>
+                    Shrimp repeatedly clustering near the surface may indicate a
+                    problem with oxygen, water quality or something irritating
+                    the tank.
+                </p>
+            </article>
+
+            <article class="health-card">
+                <h3>Loss of appetite</h3>
+                <p>
+                    A whole colony suddenly ignoring food is more concerning than
+                    one individual choosing to keep grazing elsewhere.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Moulting
+        </p>
+
+        <h2>
+            A clear shell is not a dead shrimp.
+        </h2>
+
+        <p>
+            Shrimp must shed their exoskeleton to grow. A normal moult is often
+            transparent, hollow and split behind the head. It may look exactly
+            like a dead shrimp until you look closely.
+        </p>
+
+        <p>
+            Leave normal moults in the aquarium unless there is a specific reason
+            to remove them. Shrimp often eat the old exoskeleton and recover some
+            of its minerals.
+        </p>
+
+        <div class="guide-callout">
+            <strong>A moult by itself is normal.</strong>
+            Repeated failed moults, multiple deaths around moulting or obvious
+            difficulty escaping the old shell are the things that deserve
+            investigation.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Failed moults
+        </p>
+
+        <h2>
+            Do not reach for mineral products before checking the whole tank.
+        </h2>
+
+        <p>
+            Moulting problems can be associated with mineral balance, poor diet,
+            sudden changes in GH or KH, stress, poor water quality or simply an
+            individual animal already in poor condition.
+        </p>
+
+        <p>
+            The so-called “white ring” around the body is sometimes discussed as
+            a moulting warning sign, but a pale separation line before a moult is
+            not automatically fatal. Context matters.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Avoid aggressive parameter correction.</strong>
+            If hardness appears unsuitable, change it slowly and deliberately.
+            Large mineral or pH swings can create exactly the kind of stress you
+            are trying to solve.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Colour changes
+        </p>
+
+        <h2>
+            Fading does not always mean disease.
+        </h2>
+
+        <p>
+            Shrimp colour can vary with genetics, age, stress, substrate,
+            lighting and general condition. A recently transported shrimp may
+            look paler than it did before moving.
+        </p>
+
+        <p>
+            What matters is whether fading appears alongside lethargy, poor
+            feeding, abnormal posture, repeated deaths or visible lesions.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Visible abnormalities
+        </p>
+
+        <h2>
+            Look closely before deciding what you are seeing.
+        </h2>
+
+        <p>
+            External growths, unusual fuzzy material, damaged limbs, discoloured
+            tissue or abnormal material around the head and underside of the body
+            deserve attention. However, identification from appearance alone can
+            be difficult.
+        </p>
+
+        <p>
+            Do not assume every unusual mark is the same parasite or infection.
+            Lighting, eggs, food in the digestive tract and normal anatomy can all
+            look strange if you have not seen them before.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Water quality first
+        </p>
+
+        <h2>
+            When several shrimp look wrong, test the tank before treating the shrimp.
+        </h2>
+
+        <p>
+            A colony-wide problem is often environmental. Check ammonia, nitrite,
+            temperature and any other parameters relevant to your setup. Think
+            about what changed recently.
+        </p>
+
+        <ul>
+            <li>Was there a large water change?</li>
+            <li>Was new livestock added?</li>
+            <li>Was the filter cleaned or replaced?</li>
+            <li>Was a medication, fertiliser or chemical added?</li>
+            <li>Could soap, aerosol spray or another contaminant have entered?</li>
+            <li>Was the tank overfed?</li>
+        </ul>
+
+        <div class="guide-callout">
+            <strong>The timing of a problem is useful evidence.</strong>
+            If shrimp become distressed immediately after a water change or new
+            product is added, that recent change deserves attention.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Sudden deaths
+        </p>
+
+        <h2>
+            One death and ten deaths are different problems.
+        </h2>
+
+        <p>
+            Individual shrimp can die from age, failed moults or problems that
+            never affect the rest of the colony. Several deaths close together
+            are much more likely to justify a full water-quality and contamination
+            check.
+        </p>
+
+        <p>
+            Remove dead shrimp if they are not being consumed quickly, especially
+            in a small aquarium, because decomposition adds more waste.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Quarantine
+        </p>
+
+        <h2>
+            New shrimp can bring more than new genetics.
+        </h2>
+
+        <p>
+            Quarantine gives you time to observe new animals before they join an
+            established colony. It can help reduce the chance of introducing
+            parasites, disease or unwanted hitchhikers.
+        </p>
+
+        <p>
+            A quarantine setup should still provide stable water, filtration and
+            basic cover. A tiny unfiltered container is not useful quarantine if
+            the conditions themselves make the shrimp sick.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Treatments
+        </p>
+
+        <h2>
+            Shrimp are not fish with extra legs.
+        </h2>
+
+        <p>
+            Many aquarium medications are not designed with shrimp and other
+            invertebrates in mind. Some ingredients that are tolerated by fish
+            can be dangerous to shrimp.
+        </p>
+
+        <p>
+            Only treat when you have a reasonable idea what the problem is, and
+            always check whether the product is safe for the species and other
+            invertebrates in the tank.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Do not medicate a whole colony “just in case”.</strong>
+            Unnecessary treatment can create additional stress and may damage
+            animals that were never sick in the first place.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Prevention
+        </p>
+
+        <h2>
+            Boring husbandry prevents a lot of dramatic problems.
+        </h2>
+
+        <ul>
+            <li>Use a fully cycled, mature aquarium.</li>
+            <li>Keep ammonia and nitrite at zero.</li>
+            <li>Avoid sudden changes in temperature, pH, GH and KH.</li>
+            <li>Feed sensibly and remove excess food.</li>
+            <li>Use shrimp-safe equipment and treatments.</li>
+            <li>Quarantine new livestock when practical.</li>
+            <li>Observe the colony regularly so changes are noticed early.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What makes troubleshooting harder.
+        </h2>
+
+        <ul>
+            <li>Assuming every moult is a dead shrimp.</li>
+            <li>Changing several water parameters at once.</li>
+            <li>Treating before testing the water.</li>
+            <li>Using fish medication without checking invertebrate safety.</li>
+            <li>Ignoring a colony-wide behaviour change because the water looks clear.</li>
+            <li>Adding new shrimp straight into an established breeding colony without observation.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="neocaridina-care-guide.html"
+            >
+                <strong>Neocaridina Care Guide</strong>
+                <span>
+                    Stable everyday care, feeding, moulting and suitable setup.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="breeding-shrimp.html"
+            >
+                <strong>Breeding Neocaridina Shrimp</strong>
+                <span>
+                    Berried females, shrimplets and healthy colony growth.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>Understanding Water Parameters</strong>
+                <span>
+                    pH, GH, KH, ammonia, nitrite and nitrate explained practically.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+</html>
