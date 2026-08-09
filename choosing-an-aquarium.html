@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical guide to choosing a freshwater aquarium, including tank size, placement, filtration, heating and livestock planning."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Choosing an Aquarium | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .choice-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .choice-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .choice-card h3 {
+            margin-top: 0;
+        }
+
+        .choice-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+
+            .choice-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+    </nav>
+
+</header>
+
+
+<main class="guide-page">
+
+    <a
+        class="guide-breadcrumb"
+        href="guides.html"
+    >
+        ← Back to Learn
+    </a>
+
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Aquarium basics
+        </p>
+
+        <h1>
+            Choosing an Aquarium
+        </h1>
+
+        <p class="guide-intro">
+            The best aquarium is not necessarily the biggest one you can buy,
+            and it is definitely not always the smallest one you can fit on a
+            shelf. A good choice starts with the animals you want to keep, the
+            space available, and how much maintenance you can realistically do.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater</span>
+            <span>Setup planning</span>
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Start with livestock
+        </p>
+
+        <h2>
+            Choose the animals before choosing the tank.
+        </h2>
+
+        <p>
+            It is much easier to choose a suitable aquarium once you know what
+            will live in it. Adult size, behaviour, swimming style, group size,
+            waste production and water requirements all affect the amount of
+            space and equipment needed.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Plan for adult animals, not the size they are in the shop.</strong>
+            A juvenile fish that looks tiny today may need far more swimming
+            room later. The tank should suit the animal's long-term needs.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Tank size
+        </p>
+
+        <h2>
+            Small tanks are usually less forgiving.
+        </h2>
+
+        <p>
+            Smaller aquariums contain less water, which means temperature and
+            water chemistry can change more quickly. A small amount of excess
+            food or waste also has a larger effect in a small volume of water.
+        </p>
+
+        <p>
+            Larger aquariums are not automatically easy, but they usually give
+            you more room for stable water conditions, proper filtration and
+            natural behaviour.
+        </p>
+
+        <div class="guide-warning">
+            <strong>“Small tank = beginner tank” is a bad shortcut.</strong>
+            Tiny aquariums often require more careful maintenance, not less.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Shape
+        </p>
+
+        <h2>
+            Litres do not tell the whole story.
+        </h2>
+
+        <p>
+            Two aquariums can hold a similar volume of water but provide very
+            different usable space. Long tanks provide more horizontal
+            swimming room. Tall tanks provide more vertical space but can be
+            awkward for surface-breathing fish or maintenance.
+        </p>
+
+        <div class="choice-grid">
+
+            <article class="choice-card">
+                <h3>Long tanks</h3>
+                <p>
+                    Often better for active swimmers and species that use
+                    horizontal space.
+                </p>
+            </article>
+
+            <article class="choice-card">
+                <h3>Tall tanks</h3>
+                <p>
+                    Can work well for certain displays, but height does not
+                    replace swimming length.
+                </p>
+            </article>
+
+            <article class="choice-card">
+                <h3>Wide tanks</h3>
+                <p>
+                    Useful for aquascaping, bottom-dwelling species and giving
+                    territorial animals more floor space.
+                </p>
+            </article>
+
+            <article class="choice-card">
+                <h3>Bowls &amp; unusual shapes</h3>
+                <p>
+                    Often look attractive but may be awkward to filter, heat,
+                    cover and maintain properly.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Placement
+        </p>
+
+        <h2>
+            Think about where the aquarium will actually live.
+        </h2>
+
+        <p>
+            An aquarium is heavy once filled. Water, glass, substrate,
+            hardscape and equipment add up quickly, so the stand must be
+            suitable and level.
+        </p>
+
+        <ul>
+            <li>Avoid unstable furniture.</li>
+            <li>Keep the aquarium away from places where it can be knocked.</li>
+            <li>Leave enough space behind and above the tank for cables and maintenance.</li>
+            <li>Avoid strong direct sunlight if possible, as it can contribute to overheating and algae.</li>
+            <li>Make sure there is convenient access to power and water.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Filtration
+        </p>
+
+        <h2>
+            Pick a filter that suits the livestock, not just the tank volume.
+        </h2>
+
+        <p>
+            Filtration provides mechanical cleaning and, more importantly,
+            space for beneficial microorganisms to live. Flow rate should suit
+            the animals being kept.
+        </p>
+
+        <p>
+            A strong filter is not automatically a better filter. Bettas and
+            some shrimp setups benefit from gentle flow, while larger or more
+            active fish may need more circulation.
+        </p>
+
+        <div class="choice-grid">
+
+            <article class="choice-card">
+                <h3>Sponge filters</h3>
+                <p>
+                    Gentle, simple and excellent for shrimp, fry and breeding
+                    tanks.
+                </p>
+            </article>
+
+            <article class="choice-card">
+                <h3>Internal filters</h3>
+                <p>
+                    Compact and easy to install, though they take up space
+                    inside the aquarium.
+                </p>
+            </article>
+
+            <article class="choice-card">
+                <h3>Hang-on-back filters</h3>
+                <p>
+                    Useful for many small and medium tanks while keeping most
+                    filter media outside the display.
+                </p>
+            </article>
+
+            <article class="choice-card">
+                <h3>Canister filters</h3>
+                <p>
+                    Offer large media capacity and are common on bigger or more
+                    heavily stocked aquariums.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Heating
+        </p>
+
+        <h2>
+            Temperature should match the species.
+        </h2>
+
+        <p>
+            Tropical species often need a heater unless the room itself stays
+            consistently warm enough. Choose a reliable heater appropriate for
+            the aquarium volume and always check the actual water temperature
+            with a thermometer.
+        </p>
+
+        <p>
+            Shrimp, plants and some fish can tolerate cooler conditions, while
+            species such as <em>Betta splendens</em> require consistently warm
+            water.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Lid &amp; surface access
+        </p>
+
+        <h2>
+            A lid solves more problems than people expect.
+        </h2>
+
+        <p>
+            Fish can jump, shrimp can climb, and evaporation can be surprisingly
+            high. A lid can reduce water loss and keep animals inside the tank.
+        </p>
+
+        <p>
+            Species that breathe atmospheric air still need easy surface
+            access, so floating plants should not completely cover the surface.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Maintenance access
+        </p>
+
+        <h2>
+            If maintenance is annoying, it will probably happen less often.
+        </h2>
+
+        <p>
+            Make sure you can comfortably remove the lid, reach the filter,
+            clean the glass and siphon the substrate. A beautiful setup becomes
+            frustrating quickly if every water change requires moving half the
+            room.
+        </p>
+
+        <p>
+            Think about where buckets, hoses, nets and test kits will be used
+            before the tank is filled.
+        </p>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Equipment
+        </p>
+
+        <h2>
+            Buy what solves a real need.
+        </h2>
+
+        <ul>
+            <li>A suitable filter.</li>
+            <li>A heater if the livestock needs one.</li>
+            <li>A thermometer.</li>
+            <li>Water conditioner for chlorinated tap water.</li>
+            <li>A reliable water test method.</li>
+            <li>A light suitable for the plants you intend to grow.</li>
+            <li>A lid if the species or room conditions make one useful.</li>
+        </ul>
+
+        <div class="guide-callout">
+            <strong>You do not need every aquarium gadget on day one.</strong>
+            Spend money on the equipment that affects animal welfare and water
+            stability first.
+        </div>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            Things worth avoiding from the start.
+        </h2>
+
+        <ul>
+            <li>Buying a tank first and choosing livestock afterwards.</li>
+            <li>Assuming a small aquarium will be cheaper and easier to maintain.</li>
+            <li>Using furniture that was never designed to hold an aquarium's weight.</li>
+            <li>Choosing a filter that creates excessive current for the species.</li>
+            <li>Leaving no room around the aquarium for maintenance.</li>
+            <li>Stocking based on juvenile fish size.</li>
+            <li>Adding livestock before the aquarium is cycled.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            A simple order
+        </p>
+
+        <h2>
+            Plan the tank in this sequence.
+        </h2>
+
+        <ol style="padding-left: 22px;">
+
+            <li>
+                Decide which animal or group of animals you genuinely want to keep.
+            </li>
+
+            <li>
+                Research their adult size, social needs, temperature and behaviour.
+            </li>
+
+            <li>
+                Choose an aquarium that gives them suitable long-term space.
+            </li>
+
+            <li>
+                Select filtration, heating and lighting based on that setup.
+            </li>
+
+            <li>
+                Choose a safe location and stand.
+            </li>
+
+            <li>
+                Set the aquarium up and cycle it before adding livestock.
+            </li>
+
+        </ol>
+
+    </section>
+
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="cycling-an-aquarium.html"
+            >
+                <strong>Cycling an Aquarium</strong>
+                <span>
+                    Establish biological filtration before adding livestock.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="water-parameters.html"
+            >
+                <strong>Understanding Water Parameters</strong>
+                <span>
+                    Learn what the main aquarium test results actually mean.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="choosing-tank-mates.html"
+            >
+                <strong>Choosing Tank Mates</strong>
+                <span>
+                    Plan compatibility before mixing different species.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=20"></script>
+
+
+</body>
+
+</html>
