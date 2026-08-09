@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical aquarium lighting guide from AquaCoding Studios covering photoperiod, light intensity, plant growth, algae and low-tech planted tanks."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Aquarium Lighting | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .lighting-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .lighting-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .lighting-card h3 {
+            margin-top: 0;
+        }
+
+        .lighting-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .lighting-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Aquarium plants
+        </p>
+
+        <h1>
+            Aquarium Lighting
+        </h1>
+
+        <p class="guide-intro">
+            Aquarium lighting is less about making the tank as bright as
+            possible and more about giving plants enough usable light for long
+            enough each day. Too little light can limit growth. Too much can
+            make algae problems much easier to create.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater plants</span>
+            <span>Lighting</span>
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            The basics
+        </p>
+
+        <h2>
+            Light is one part of the plant-growth equation.
+        </h2>
+
+        <p>
+            Plants also need carbon, nutrients and suitable conditions. Increasing
+            light without improving the other limiting factors does not
+            automatically produce better growth.
+        </p>
+
+        <div class="guide-callout">
+            <strong>More light creates more demand.</strong>
+            A brighter tank can push plants to grow faster, which means they also
+            need enough nutrients and carbon to keep up.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Photoperiod
+        </p>
+
+        <h2>
+            The light does not need to be on all day.
+        </h2>
+
+        <p>
+            A photoperiod is simply the amount of time the aquarium light stays
+            on each day. For many planted aquariums, a moderate and consistent
+            schedule is a better starting point than an extremely long one.
+        </p>
+
+        <p>
+            If algae is becoming a problem, reducing an excessively long light
+            period is often one of the first sensible adjustments.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Leaving the light on longer is not free plant growth.</strong>
+            Plants can only use additional light if the rest of the system can
+            support the increased demand.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Intensity
+        </p>
+
+        <h2>
+            Brightness should match the plants you keep.
+        </h2>
+
+        <div class="lighting-grid">
+
+            <article class="lighting-card">
+                <h3>Low light</h3>
+                <p>
+                    Suitable for many hardy plants such as Anubias, Java Fern
+                    and Java Moss.
+                </p>
+            </article>
+
+            <article class="lighting-card">
+                <h3>Moderate light</h3>
+                <p>
+                    Gives more plant options while still working well in many
+                    low-tech planted aquariums.
+                </p>
+            </article>
+
+            <article class="lighting-card">
+                <h3>High light</h3>
+                <p>
+                    Can support demanding growth but often works best with
+                    stronger nutrient management and injected CO₂.
+                </p>
+            </article>
+
+            <article class="lighting-card">
+                <h3>Too much light</h3>
+                <p>
+                    Often shows up as persistent algae when plant growth,
+                    nutrients and carbon cannot keep pace.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Tank depth
+        </p>
+
+        <h2>
+            Light has farther to travel in deeper tanks.
+        </h2>
+
+        <p>
+            A light that performs well over a shallow aquarium may not provide
+            the same intensity at the substrate of a much deeper tank. Tank
+            height, light spread and mounting height all affect what actually
+            reaches the plants.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Spectrum
+        </p>
+
+        <h2>
+            Plants need usable wavelengths, but appearance matters too.
+        </h2>
+
+        <p>
+            Modern aquarium LEDs are usually designed to provide a usable range
+            of light for plants while making fish and plants look natural.
+            Extremely unusual colour settings are not automatically better for
+            growth.
+        </p>
+
+        <p>
+            For most beginners, choosing a reputable planted-aquarium light and
+            adjusting intensity and duration is more useful than obsessing over
+            individual spectrum graphs.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Floating plants
+        </p>
+
+        <h2>
+            Surface plants can shade everything underneath.
+        </h2>
+
+        <p>
+            Salvinia and other floating plants can be useful, but dense surface
+            coverage can reduce the amount of light reaching submerged plants.
+        </p>
+
+        <p>
+            Thin floating growth regularly if plants below begin stretching,
+            slowing down or losing lower leaves.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Low-tech tanks
+        </p>
+
+        <h2>
+            Moderate light is often your friend.
+        </h2>
+
+        <p>
+            A low-tech tank without injected CO₂ generally benefits from a more
+            restrained lighting approach. Plants grow more slowly, but the
+            system can be easier to balance.
+        </p>
+
+        <ul>
+            <li>Choose hardy, lower-demand plants.</li>
+            <li>Use a consistent timer.</li>
+            <li>Avoid very long photoperiods.</li>
+            <li>Increase intensity only when there is a reason.</li>
+            <li>Watch plant growth and algae together.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            CO₂ &amp; high light
+        </p>
+
+        <h2>
+            Stronger light makes carbon limitation more obvious.
+        </h2>
+
+        <p>
+            In high-light planted aquariums, injected CO₂ is commonly used
+            because plant demand for carbon becomes much higher. Without enough
+            available carbon, growth may stall while algae benefits from the
+            imbalance.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Algae
+        </p>
+
+        <h2>
+            Algae is often a symptom, not the root problem.
+        </h2>
+
+        <p>
+            Excess light duration, high intensity, nutrient imbalance, poor
+            maintenance and weak plant growth can all contribute to algae.
+        </p>
+
+        <p>
+            Reducing light can help, but it works best when combined with
+            sensible feeding, maintenance and plant care rather than treating
+            lighting as the only cause.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Timers
+        </p>
+
+        <h2>
+            Consistency is easier when the light controls itself.
+        </h2>
+
+        <p>
+            A simple timer keeps the photoperiod consistent even when your own
+            schedule changes. This is one of the cheapest and most useful
+            upgrades for a planted aquarium.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Signs of too little light
+        </p>
+
+        <h2>
+            Plants may tell you when they are not getting enough.
+        </h2>
+
+        <ul>
+            <li>Very slow or stalled growth.</li>
+            <li>Plants stretching toward the light.</li>
+            <li>Lower leaves declining in dense growth.</li>
+            <li>Light-demanding plants losing colour or form.</li>
+        </ul>
+
+        <p>
+            These signs can also have other causes, so check nutrients and
+            overall plant health before changing the light dramatically.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Signs of too much light
+        </p>
+
+        <h2>
+            The tank may look bright while the system falls out of balance.
+        </h2>
+
+        <ul>
+            <li>Persistent algae despite healthy maintenance.</li>
+            <li>Plants showing stress in areas directly under intense light.</li>
+            <li>Fast nutrient depletion in heavily planted setups.</li>
+            <li>Shaded plants doing better than exposed ones.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What causes lighting problems most often.
+        </h2>
+
+        <ul>
+            <li>Leaving the light on for extremely long periods.</li>
+            <li>Buying a very powerful light for low-demand plants.</li>
+            <li>Changing intensity and duration at the same time.</li>
+            <li>Ignoring heavy shade from floating plants.</li>
+            <li>Trying to fix nutrient problems with more light.</li>
+            <li>Expecting high-light plants to thrive in a low-tech setup.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            A sensible starting point
+        </p>
+
+        <h2>
+            Start moderate, then adjust slowly.
+        </h2>
+
+        <p>
+            Use a timer, choose a moderate photoperiod, and keep the intensity
+            suitable for the plants you actually own. Watch how the aquarium
+            responds for a while before changing several settings.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Change one thing at a time.</strong>
+            If you change intensity, photoperiod, fertiliser and CO₂ together,
+            you will not know which change helped or caused the problem.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="beginner-plants.html"
+            >
+                <strong>Beginner Aquarium Plants</strong>
+                <span>
+                    Start with hardy species that suit lower-demand setups.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="fertilisers.html"
+            >
+                <strong>Aquarium Fertilisers</strong>
+                <span>
+                    Learn how nutrient availability connects with plant growth and lighting.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="salvinia.html"
+            >
+                <strong>Salvinia</strong>
+                <span>
+                    Care information for a floating plant that can strongly affect light below.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+</html>
