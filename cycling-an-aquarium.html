@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical guide to cycling a freshwater aquarium safely before adding livestock.">
+    <meta name="theme-color" content="#04131d">
+    <title>Cycling an Aquarium | AquaCoding Studios</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=20">
+
+    <style>
+        .guide-page { width: min(92%, 980px); margin: 0 auto; }
+        .guide-breadcrumb { display: inline-flex; margin: 28px 0 20px; color: var(--accent); font-weight: 700; }
+        .guide-hero { padding: 26px 0 54px; }
+        .guide-hero h1 { max-width: 800px; }
+        .guide-intro { max-width: 760px; color: var(--muted); font-size: 1.08rem; line-height: 1.75; }
+        .guide-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+        .guide-meta span { padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,0.03); color: var(--muted); font-size: 0.8rem; font-weight: 800; }
+        .guide-section { padding: 54px 0; border-top: 1px solid var(--border); }
+        .guide-section h2 { margin-top: 0; }
+        .guide-section p, .guide-section li { color: var(--muted); line-height: 1.75; }
+        .guide-section ul, .guide-section ol { padding-left: 22px; }
+        .guide-callout { margin: 24px 0; padding: 20px; border: 1px solid rgba(110, 217, 234, 0.3); border-radius: 16px; background: rgba(110, 217, 234, 0.07); }
+        .guide-callout strong { display: block; margin-bottom: 8px; color: var(--text); }
+        .cycle-grid { display: grid; gap: 16px; margin-top: 24px; }
+        .cycle-card { padding: 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow); }
+        .cycle-card h3 { margin-top: 0; }
+        .cycle-card p { margin-bottom: 0; }
+        .test-table { display: grid; gap: 10px; margin-top: 20px; }
+        .test-row { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 14px 0; border-top: 1px solid var(--border); }
+        .test-row span:first-child { color: var(--muted); }
+        .test-row strong { text-align: right; }
+        .guide-warning { margin: 24px 0; padding: 20px; border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 16px; background: rgba(255, 193, 7, 0.08); }
+        .guide-warning strong { display: block; margin-bottom: 8px; color: #ffd166; }
+        .guide-links { display: grid; gap: 14px; margin-top: 24px; }
+        .guide-link-card { display: block; padding: 18px 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; }
+        .guide-link-card strong { color: var(--text); }
+        .guide-link-card span { display: block; margin-top: 6px; color: var(--muted); }
+        .nav-utility { display: inline-flex; align-items: center; gap: 7px; }
+        .cart-count, .wishlist-count { min-width: 20px; height: 20px; display: inline-grid; place-items: center; padding: 0 6px; border-radius: 999px; background: var(--accent); color: #04131d; font-size: 0.72rem; font-weight: 900; line-height: 1; }
+        .cart-count[hidden], .wishlist-count[hidden] { display: none; }
+
+        @media (min-width: 760px) {
+            .cycle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <a class="brand" href="index.html" aria-label="AquaCoding Studios homepage">
+        <img src="logo-dark.png" alt="AquaCoding Studios" class="site-logo">
+    </a>
+
+    <button class="menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">Account</a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+    </nav>
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">← Back to Learn</a>
+
+    <section class="guide-hero">
+        <p class="eyebrow">Aquarium basics</p>
+        <h1>Cycling an Aquarium</h1>
+        <p class="guide-intro">
+            A new aquarium can look clean long before it is biologically ready.
+            Cycling gives beneficial bacteria time to establish so waste can be
+            processed safely before fish, shrimp or other livestock are added.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner</span>
+            <span>Freshwater</span>
+            <span>Nitrogen cycle</span>
+        </div>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">The short version</p>
+        <h2>What cycling actually means.</h2>
+        <p>
+            Fish waste, uneaten food and other organic material eventually
+            produce ammonia. Ammonia is toxic. In a cycled aquarium, colonies
+            of beneficial bacteria convert ammonia into nitrite, and then
+            another group converts nitrite into nitrate.
+        </p>
+
+        <div class="cycle-grid">
+            <article class="cycle-card">
+                <h3>1. Ammonia</h3>
+                <p>Produced from waste and decaying organic matter. It should not remain detectable in an established aquarium.</p>
+            </article>
+
+            <article class="cycle-card">
+                <h3>2. Nitrite</h3>
+                <p>Produced as ammonia is processed. Nitrite is also toxic and should read zero once the aquarium is fully cycled.</p>
+            </article>
+
+            <article class="cycle-card">
+                <h3>3. Nitrate</h3>
+                <p>The end product of the basic aquarium nitrogen cycle. Nitrate is managed through plants, maintenance and water changes.</p>
+            </article>
+        </div>
+
+        <div class="guide-callout">
+            <strong>The useful way to think about it:</strong>
+            cycling is not “waiting a few weeks”. It is establishing a working
+            biological filter and confirming that it can process waste.
+        </div>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">Before you start</p>
+        <h2>Set the aquarium up properly first.</h2>
+        <p>
+            Install the filter, fill the aquarium with dechlorinated water and
+            run the system normally. If the aquarium will be heated, run the
+            heater too. Beneficial bacteria mainly colonise surfaces, especially
+            filter media, rather than simply floating around in the water.
+        </p>
+
+        <ul>
+            <li>Use dechlorinated water.</li>
+            <li>Keep the filter running continuously.</li>
+            <li>Run the aquarium at the temperature you plan to keep it.</li>
+            <li>Add plants and hardscape if they are part of the final setup.</li>
+            <li>Have a reliable ammonia, nitrite and nitrate test available.</li>
+        </ul>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">Fishless cycling</p>
+        <h2>Give the bacteria a controlled ammonia source.</h2>
+        <p>
+            A fishless cycle is preferable because livestock are not exposed to
+            rising ammonia or nitrite while the bacterial colonies develop.
+            The aquarium needs a source of ammonia so the bacteria have
+            something to process.
+        </p>
+
+        <p>
+            This can be done with a measured aquarium-safe ammonia source or,
+            less precisely, with a small amount of decomposing food. The exact
+            method matters less than being able to monitor the water and avoid
+            adding so much organic matter that the aquarium becomes a mess.
+        </p>
+
+        <div class="guide-warning">
+            <strong>Avoid cycling with livestock on purpose.</strong>
+            A fish-in cycle can expose animals to toxic ammonia and nitrite.
+            If animals are already in an uncycled aquarium, the priority becomes
+            keeping those compounds as close to zero as possible through
+            testing, water changes and careful feeding.
+        </div>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">What you should see</p>
+        <h2>The readings change as the cycle develops.</h2>
+        <p>
+            Early on, ammonia may be present while nitrite remains at zero.
+            As the first bacterial population develops, ammonia begins to fall
+            and nitrite appears. Later, nitrite also begins to fall as nitrate
+            accumulates.
+        </p>
+
+        <p>
+            Real aquariums do not always follow a perfectly neat graph. Plants,
+            seeded filter media, temperature, pH and the amount of ammonia being
+            added can all change how quickly the process appears to move.
+        </p>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">When is it ready?</p>
+        <h2>Do not judge it by the calendar.</h2>
+        <p>
+            A cycle is considered established when the aquarium can process the
+            ammonia being added without leaving measurable ammonia or nitrite
+            behind. Nitrate is usually present unless plants are consuming a
+            substantial amount of it.
+        </p>
+
+        <div class="test-table">
+            <div class="test-row">
+                <span>Ammonia</span>
+                <strong>0 ppm</strong>
+            </div>
+            <div class="test-row">
+                <span>Nitrite</span>
+                <strong>0 ppm</strong>
+            </div>
+            <div class="test-row">
+                <span>Nitrate</span>
+                <strong>Usually detectable</strong>
+            </div>
+        </div>
+
+        <p>
+            Before adding livestock, perform any needed water change to bring
+            nitrate down to a sensible level and make sure temperature and
+            other parameters suit the animals you plan to keep.
+        </p>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">Common mistakes</p>
+        <h2>Things that slow people down.</h2>
+
+        <ul>
+            <li>Adding animals simply because the tank has been running for a certain number of days.</li>
+            <li>Replacing all filter media and accidentally removing a large part of the bacterial colony.</li>
+            <li>Washing biological filter media under chlorinated tap water.</li>
+            <li>Adding too much food during a fishless cycle and creating unnecessary decay.</li>
+            <li>Testing once, seeing zero ammonia, and assuming the cycle is complete without checking nitrite.</li>
+            <li>Adding a full stock of fish immediately instead of increasing the biological load gradually.</li>
+        </ul>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">After cycling</p>
+        <h2>The bacteria still depend on the way you maintain the tank.</h2>
+        <p>
+            Cycling is not something the aquarium finishes and then forgets.
+            The bacterial population responds to the amount of waste being
+            produced. Sudden overstocking, heavy feeding, medication, filter
+            failure or aggressive cleaning can all affect biological filtration.
+        </p>
+
+        <p>
+            Add livestock sensibly, feed appropriately, keep the filter running
+            and continue testing whenever something seems wrong.
+        </p>
+    </section>
+
+    <section class="guide-section">
+        <p class="section-label">Keep reading</p>
+        <h2>Useful next guides.</h2>
+
+        <div class="guide-links">
+            <a class="guide-link-card" href="water-parameters.html">
+                <strong>Understanding Water Parameters</strong>
+                <span>pH, GH, KH, ammonia, nitrite and nitrate without the unnecessary chemistry headache.</span>
+            </a>
+
+            <a class="guide-link-card" href="neocaridina-care-guide.html">
+                <strong>Neocaridina Care Guide</strong>
+                <span>Setting up a stable aquarium for freshwater shrimp.</span>
+            </a>
+
+            <a class="guide-link-card" href="betta-care-guide.html">
+                <strong>Betta Care Guide</strong>
+                <span>Heating, filtration, feeding and suitable housing for Betta splendens.</span>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div>
+        <strong>AquaCoding Studios</strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+            ·
+            <a href="shipping-and-returns.html">Shipping &amp; Returns</a>
+        </p>
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+</html>
