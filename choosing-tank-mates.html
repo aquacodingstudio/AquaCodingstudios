@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A practical freshwater aquarium guide to choosing compatible tank mates, covering temperament, adult size, water requirements, feeding competition and stocking."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <title>Choosing Tank Mates | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guide-page {
+            width: min(92%, 980px);
+            margin: 0 auto;
+        }
+
+        .guide-breadcrumb {
+            display: inline-flex;
+            margin: 28px 0 20px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .guide-hero {
+            padding: 26px 0 54px;
+        }
+
+        .guide-intro {
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .guide-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .guide-meta span {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .guide-section {
+            padding: 54px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guide-section h2 {
+            margin-top: 0;
+        }
+
+        .guide-section p,
+        .guide-section li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .guide-section ul {
+            padding-left: 22px;
+        }
+
+        .guide-callout {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 16px;
+            background: rgba(110, 217, 234, 0.07);
+        }
+
+        .guide-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .guide-warning {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 193, 7, 0.08);
+        }
+
+        .guide-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+
+        .compatibility-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .compatibility-card {
+            padding: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .compatibility-card h3 {
+            margin-top: 0;
+        }
+
+        .compatibility-card p {
+            margin-bottom: 0;
+        }
+
+        .guide-links {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .guide-link-card {
+            display: block;
+            padding: 18px 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .guide-link-card strong {
+            color: var(--text);
+        }
+
+        .guide-link-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+            .compatibility-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+    </a>
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="wishlist.html" class="nav-utility">
+            Wishlist
+            <span class="wishlist-count" hidden>0</span>
+        </a>
+
+        <a href="account.html" class="nav-utility">
+            Account
+        </a>
+
+        <a href="cart.html" class="nav-utility">
+            Cart
+            <span class="cart-count" hidden>0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="guide-page">
+
+    <a class="guide-breadcrumb" href="guides.html">
+        ← Back to Learn
+    </a>
+
+    <section class="guide-hero">
+
+        <p class="eyebrow">
+            Fish care
+        </p>
+
+        <h1>
+            Choosing Tank Mates
+        </h1>
+
+        <p class="guide-intro">
+            Two species can survive in the same temperature range and still be
+            terrible tank mates. Good compatibility comes from looking at the
+            whole picture: adult size, behaviour, swimming space, social needs,
+            feeding, water chemistry and what each animal is likely to do when
+            the lights go out.
+        </p>
+
+        <div class="guide-meta">
+            <span>Beginner to intermediate</span>
+            <span>Freshwater</span>
+            <span>Compatibility</span>
+        </div>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            Compatibility basics
+        </p>
+
+        <h2>
+            “Peaceful” is not enough information.
+        </h2>
+
+        <p>
+            A fish can be peaceful toward its own species and still hunt shrimp,
+            nip long fins, outcompete slower fish for food or become territorial
+            when breeding. Compatibility should be judged by behaviour and
+            husbandry, not by one label on a shop tank.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Think in combinations, not species lists.</strong>
+            The same fish may work well in one aquarium and fail badly in
+            another because tank size, group size, layout and individual
+            temperament all change the result.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Adult size
+        </p>
+
+        <h2>
+            Compare the animals they will become, not the juveniles you are buying.
+        </h2>
+
+        <p>
+            Many fish are sold young. A species that looks harmless at three
+            centimetres may become large enough to eat smaller tank mates later.
+            Adult body size also affects waste production and the amount of
+            swimming space required.
+        </p>
+
+        <div class="guide-warning">
+            <strong>
+                If one animal can fit another in its mouth, predation is possible.
+            </strong>
+            This matters especially with fry, shrimp and very small schooling fish.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Temperament
+        </p>
+
+        <h2>
+            Watch for aggression, fin-nipping and territorial behaviour.
+        </h2>
+
+        <div class="compatibility-grid">
+
+            <article class="compatibility-card">
+                <h3>Territorial fish</h3>
+
+                <p>
+                    Some species defend caves, plants or sections of the tank,
+                    particularly when breeding.
+                </p>
+            </article>
+
+            <article class="compatibility-card">
+                <h3>Fin-nippers</h3>
+
+                <p>
+                    Active nipping species can be poor companions for long-finned
+                    fish such as many domestic bettas.
+                </p>
+            </article>
+
+            <article class="compatibility-card">
+                <h3>Predatory fish</h3>
+
+                <p>
+                    A fish does not need to be “aggressive” to eat smaller animals.
+                    Hunting can simply be normal feeding behaviour.
+                </p>
+            </article>
+
+            <article class="compatibility-card">
+                <h3>Very timid fish</h3>
+
+                <p>
+                    Shy species can be stressed by constantly sharing space with
+                    fast, boisterous tank mates.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Social needs
+        </p>
+
+        <h2>
+            Some species need a group; others need personal space.
+        </h2>
+
+        <p>
+            Schooling and shoaling fish may become stressed or behave poorly
+            when kept in insufficient numbers. At the opposite end, territorial
+            species may become aggressive when too many individuals are forced
+            into a small space.
+        </p>
+
+        <p>
+            Stocking a community tank means providing the correct social setup
+            for every species, not simply fitting one of each into the aquarium.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Water requirements
+        </p>
+
+        <h2>
+            Tank mates need overlapping conditions.
+        </h2>
+
+        <p>
+            Temperature, pH, GH and KH should be suitable for all species in the
+            aquarium. A fish that prefers warm, soft water is not an ideal match
+            for a species that requires cooler, hard water just because both are
+            labelled freshwater.
+        </p>
+
+        <p>
+            Aim for a stable range that suits everyone rather than constantly
+            adjusting parameters in an attempt to compromise between animals
+            with fundamentally different needs.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Swimming space
+        </p>
+
+        <h2>
+            Different fish use different parts of the aquarium.
+        </h2>
+
+        <p>
+            Surface, mid-water and bottom-dwelling species can sometimes share
+            space efficiently, but the tank still needs enough horizontal room,
+            hiding places and open swimming area for each group.
+        </p>
+
+        <div class="compatibility-grid">
+
+            <article class="compatibility-card">
+                <h3>Surface dwellers</h3>
+
+                <p>
+                    Need unobstructed access to the surface and enough room above
+                    other active fish.
+                </p>
+            </article>
+
+            <article class="compatibility-card">
+                <h3>Mid-water swimmers</h3>
+
+                <p>
+                    Active schooling species often need meaningful horizontal
+                    swimming length.
+                </p>
+            </article>
+
+            <article class="compatibility-card">
+                <h3>Bottom dwellers</h3>
+
+                <p>
+                    Need usable floor area, appropriate substrate and food that
+                    actually reaches them.
+                </p>
+            </article>
+
+            <article class="compatibility-card">
+                <h3>Territory users</h3>
+
+                <p>
+                    Caves, wood and planting can help break sight lines and define
+                    separate spaces.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            Feeding competition
+        </p>
+
+        <h2>
+            A compatible fish that never gets food is not actually compatible.
+        </h2>
+
+        <p>
+            Fast, confident fish can dominate feeding time while timid or
+            bottom-dwelling fish miss meals. This is especially common in busy
+            community aquariums.
+        </p>
+
+        <ul>
+            <li>Use foods that reach different levels of the tank.</li>
+            <li>Feed in more than one area when necessary.</li>
+            <li>Watch shy individuals during feeding.</li>
+            <li>Avoid using extra food as the only solution to competition.</li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Bettas
+        </p>
+
+        <h2>
+            Betta tank mates depend heavily on the individual fish.
+        </h2>
+
+        <p>
+            Some bettas tolerate carefully selected tank mates; others do not.
+            Avoid assuming a community setup will work simply because another
+            aquarist succeeded with the same species.
+        </p>
+
+        <p>
+            Long-finned, brightly coloured or fin-nipping fish are poor choices.
+            The aquarium also needs enough space and cover to prevent constant
+            interaction.
+        </p>
+
+        <div class="guide-callout">
+            <strong>Always have a separation plan.</strong>
+            If chasing, torn fins, hiding or stress becomes persistent, the setup
+            needs to change.
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Shrimp
+        </p>
+
+        <h2>
+            Adult shrimp and baby shrimp are two different compatibility questions.
+        </h2>
+
+        <p>
+            Some small fish may largely ignore adult Neocaridina while still
+            eating shrimplets. If your aim is to build a breeding colony, a
+            shrimp-only tank offers much better survival.
+        </p>
+
+        <p>
+            Dense moss, plants and hardscape can increase cover, but they do not
+            make predation impossible.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Snails
+        </p>
+
+        <h2>
+            Often easy companions, but still part of the bioload.
+        </h2>
+
+        <p>
+            Many common freshwater snails coexist peacefully with fish and
+            shrimp. They still produce waste, however, and some species can
+            reproduce rapidly when excess food is available.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Stocking
+        </p>
+
+        <h2>
+            Compatibility does not override space and filtration.
+        </h2>
+
+        <p>
+            Even perfectly peaceful species can be a poor combination if the
+            aquarium is overcrowded. More animals mean more waste, more feeding
+            competition and less usable territory.
+        </p>
+
+        <p>
+            There is no universal “fish per litre” rule that works across all
+            species. Adult size, body shape, activity, social behaviour and
+            filtration matter too much.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Adding new tank mates
+        </p>
+
+        <h2>
+            Slow down and watch what happens.
+        </h2>
+
+        <p>
+            Add new livestock only after confirming the aquarium is stable and
+            suitable for the increased bioload. Quarantine new fish when
+            practical.
+        </p>
+
+        <p>
+            Watch closely after introduction. Some aggression appears
+            immediately; other problems only become obvious at feeding time or
+            once territories are established.
+        </p>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Warning signs
+        </p>
+
+        <h2>
+            Compatibility problems usually leave clues.
+        </h2>
+
+        <ul>
+            <li>Persistent chasing.</li>
+            <li>Torn or nipped fins.</li>
+            <li>One fish hiding constantly.</li>
+            <li>A fish being blocked from food.</li>
+            <li>Rapid breathing without a water-quality explanation.</li>
+            <li>Animals being forced into one corner or level of the tank.</li>
+            <li>Repeated predation on shrimp or fry.</li>
+        </ul>
+
+    </section>
+    <section class="guide-section">
+
+        <p class="section-label">
+            Common mistakes
+        </p>
+
+        <h2>
+            What goes wrong most often.
+        </h2>
+
+        <ul>
+            <li>
+                Choosing tank mates based only on similar
+                temperature ranges.
+            </li>
+
+            <li>
+                Ignoring adult size.
+            </li>
+
+            <li>
+                Keeping schooling fish in groups that are too small.
+            </li>
+
+            <li>
+                Mixing slow fish with persistent fin-nippers.
+            </li>
+
+            <li>
+                Assuming “peaceful” means shrimp-safe.
+            </li>
+
+            <li>
+                Overstocking because every species is individually
+                compatible.
+            </li>
+
+            <li>
+                Having no backup tank or separation plan.
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            A simple checklist
+        </p>
+
+        <h2>
+            Ask these questions before buying anything.
+        </h2>
+
+        <ul>
+            <li>
+                How large will each species become?
+            </li>
+
+            <li>
+                Do their temperature and water requirements overlap?
+            </li>
+
+            <li>
+                Are they territorial, predatory or known fin-nippers?
+            </li>
+
+            <li>
+                Does each species have the correct group size?
+            </li>
+
+            <li>
+                Is there enough swimming and floor space?
+            </li>
+
+            <li>
+                Can every animal reach appropriate food?
+            </li>
+
+            <li>
+                What happens if the combination does not work?
+            </li>
+        </ul>
+
+        <div class="guide-callout">
+
+            <strong>
+                Research every species before bringing it home.
+            </strong>
+
+            A few minutes spent checking adult size, behaviour and
+            water requirements can prevent years of compatibility
+            problems later.
+
+        </div>
+
+    </section>
+
+    <section class="guide-section">
+
+        <p class="section-label">
+            Keep reading
+        </p>
+
+        <h2>
+            Useful next guides.
+        </h2>
+
+        <div class="guide-links">
+
+            <a
+                class="guide-link-card"
+                href="choosing-an-aquarium.html"
+            >
+                <strong>
+                    Choosing an Aquarium
+                </strong>
+
+                <span>
+                    Plan tank size, shape and equipment around the
+                    animals you want to keep.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="feeding-aquarium-fish.html"
+            >
+                <strong>
+                    Feeding Aquarium Fish
+                </strong>
+
+                <span>
+                    Learn about portion size, diet variety and feeding
+                    different levels of a community aquarium.
+                </span>
+            </a>
+
+            <a
+                class="guide-link-card"
+                href="betta-care-guide.html"
+            >
+                <strong>
+                    Betta Care Guide
+                </strong>
+
+                <span>
+                    Housing, behaviour and community considerations
+                    for Betta splendens.
+                </span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+<script src="script.js?v=20"></script>
+
+</body>
+
+</html>
