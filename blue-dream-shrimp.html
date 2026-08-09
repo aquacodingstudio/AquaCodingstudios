@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -11,16 +17,30 @@
 
     <meta name="theme-color" content="#04131d">
 
-    <title>Blue Dream Shrimp | AquaCoding Studios</title>
+    <title>
+        Blue Dream Shrimp | AquaCoding Studios
+    </title>
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=16">
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=18"
+    >
 
     <style>
+
         .product-page {
             width: min(92%, 1180px);
             margin: 0 auto;
         }
+
+
+        /* BACK TO SHOP */
 
         .product-breadcrumb {
             display: inline-flex;
@@ -28,6 +48,9 @@
             color: var(--accent);
             font-weight: 700;
         }
+
+
+        /* PRODUCT HERO */
 
         .product-hero {
             display: grid;
@@ -40,17 +63,26 @@
             display: grid;
             place-items: center;
             padding: 24px;
+
             border: 1px solid var(--border);
             border-radius: 24px;
+
             background:
                 radial-gradient(
                     circle at top right,
                     rgba(80, 170, 255, 0.34),
                     transparent 42%
                 ),
-                linear-gradient(145deg, #153b68, #08192d);
+                linear-gradient(
+                    145deg,
+                    #153b68,
+                    #08192d
+                );
+
             box-shadow: var(--shadow);
+
             color: var(--text);
+
             font-weight: 800;
             letter-spacing: 0.05em;
             text-align: center;
@@ -72,34 +104,54 @@
             font-size: 1.1rem;
         }
 
+
+        /* STOCK STATUS */
+
         .stock-badge {
             display: inline-flex;
             width: fit-content;
+
             padding: 8px 12px;
-            border: 1px solid rgba(220, 53, 69, 0.35);
+
+            border: 1px solid
+                rgba(220, 53, 69, 0.35);
+
             border-radius: 999px;
-            background: rgba(220, 53, 69, 0.15);
+
+            background:
+                rgba(220, 53, 69, 0.15);
+
             color: #ff7b7b;
+
             font-size: 0.78rem;
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
+
+        /* PURCHASE PANEL */
+
         .purchase-panel {
             display: grid;
-            gap: 22px;
+            gap: 18px;
+
             margin-top: 26px;
             padding: 24px;
+
             background: var(--panel);
+
             border: 1px solid var(--border);
             border-radius: 20px;
+
             box-shadow: var(--shadow);
         }
 
         .purchase-price {
             margin: 0;
+
             color: var(--muted);
+
             font-size: 1rem;
             font-weight: 700;
         }
@@ -109,54 +161,77 @@
             gap: 12px;
         }
 
-        .quantity-selector {
-            display: grid;
-            grid-template-columns: 48px 70px 48px;
-            gap: 10px;
-        }
-
-        .quantity-selector button,
-        .quantity-selector input,
-        .add-to-cart-button {
+        .add-to-cart-button,
+        .wishlist-button {
+            width: 100%;
             min-height: 48px;
+
             border-radius: 12px;
-        }
 
-        .quantity-selector button,
-        .quantity-selector input {
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text);
-            text-align: center;
-        }
-
-        .quantity-selector input {
-            width: 100%;
             font: inherit;
             font-weight: 800;
+
+            letter-spacing: 0.04em;
         }
 
         .add-to-cart-button {
-            width: 100%;
             border: 0;
-            background: rgba(255, 255, 255, 0.08);
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
             color: var(--muted);
-            font: inherit;
-            font-weight: 800;
-            letter-spacing: 0.06em;
+
             text-transform: uppercase;
         }
 
-        .quantity-selector button:disabled,
-        .quantity-selector input:disabled,
         .add-to-cart-button:disabled {
             cursor: not-allowed;
             opacity: 0.6;
         }
 
+        .wishlist-button {
+            border: 1px solid var(--border);
+
+            background:
+                rgba(110, 217, 234, 0.08);
+
+            color: var(--accent);
+
+            cursor: pointer;
+
+            transition:
+                background 180ms ease,
+                border-color 180ms ease,
+                transform 180ms ease;
+        }
+
+        .wishlist-button:hover {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(110, 217, 234, 0.5);
+
+            background:
+                rgba(110, 217, 234, 0.14);
+        }
+
+        .wishlist-button.in-wishlist {
+            background:
+                rgba(110, 217, 234, 0.18);
+
+            border-color:
+                rgba(110, 217, 234, 0.55);
+        }
+
+
+        /* PRODUCT SECTIONS */
+
         .product-section {
             padding: 74px 0;
-            border-top: 1px solid var(--border);
+
+            border-top:
+                1px solid var(--border);
         }
 
         .product-section h2 {
@@ -168,18 +243,28 @@
             color: var(--muted);
         }
 
+
+        /* QUICK FACTS */
+
         .quick-facts {
             display: grid;
             gap: 14px;
+
             margin-top: 28px;
         }
 
         .quick-facts div {
             display: flex;
-            justify-content: space-between;
+
+            justify-content:
+                space-between;
+
             gap: 18px;
+
             padding: 14px 0;
-            border-top: 1px solid var(--border);
+
+            border-top:
+                1px solid var(--border);
         }
 
         .quick-facts dt {
@@ -188,22 +273,33 @@
 
         .quick-facts dd {
             margin: 0;
+
             color: var(--text);
+
             font-weight: 800;
             text-align: right;
         }
 
+
+        /* CARE CARDS */
+
         .info-grid {
             display: grid;
             gap: 18px;
+
             margin-top: 30px;
         }
 
         .info-card {
             padding: 24px;
+
             background: var(--panel);
-            border: 1px solid var(--border);
+
+            border:
+                1px solid var(--border);
+
             border-radius: 20px;
+
             box-shadow: var(--shadow);
         }
 
@@ -220,6 +316,7 @@
             margin: 14px 0 0;
             padding-left: 20px;
         }
+        /* FAQ */
 
         .faq-list {
             display: grid;
@@ -243,6 +340,9 @@
             color: var(--muted);
         }
 
+
+        /* RELATED PRODUCTS */
+
         .related-grid {
             display: grid;
             gap: 18px;
@@ -255,6 +355,7 @@
             background: var(--panel);
             border: 1px solid var(--border);
             border-radius: 18px;
+
             transition:
                 transform 180ms ease,
                 border-color 180ms ease;
@@ -269,34 +370,46 @@
             color: var(--muted);
         }
 
+
+        /* TABLET / DESKTOP */
+
         @media (min-width: 760px) {
+
             .product-hero {
-                grid-template-columns: 1.15fr 0.85fr;
+                grid-template-columns:
+                    1.15fr 0.85fr;
+
                 align-items: stretch;
             }
 
-            .purchase-panel {
-                grid-template-columns: 1fr;
-            }
-
             .info-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
 
             .related-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
 
         @media (min-width: 1050px) {
+
             .info-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
         }
+
     </style>
+
 </head>
 
+
 <body>
+
+
+<!-- HEADER -->
 
 <header class="site-header">
 
@@ -305,12 +418,15 @@
         href="index.html"
         aria-label="AquaCoding Studios homepage"
     >
+
         <img
             src="logo-dark.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
+
     </a>
+
 
     <button
         class="menu-button"
@@ -318,54 +434,139 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
+
         <span></span>
         <span></span>
         <span></span>
+
     </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="guides.html">Learn</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="guides.html">
+            Learn
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
     </nav>
 
 </header>
 
+
+<!-- PRODUCT PAGE -->
+
 <main class="product-page">
 
-    <a class="product-breadcrumb" href="shop.html">
+
+    <a
+        class="product-breadcrumb"
+        href="shop.html"
+    >
         ← Back to Shop
     </a>
 
+
+    <!-- PRODUCT HERO -->
+
     <section class="product-hero">
 
+
         <div class="product-image">
+
             Blue Dream Shrimp
+
         </div>
 
+
         <div class="product-summary">
+
 
             <p class="eyebrow">
                 Freshwater shrimp
             </p>
 
+
             <h1>
                 Blue Dream Shrimp
             </h1>
 
+
             <p class="scientific-name">
+
                 <em>Neocaridina davidi</em>
+
             </p>
 
+
             <span class="stock-badge">
-                Out of stock
+
+                Out of Stock
+
             </span>
+
 
             <div class="purchase-panel">
 
+
                 <div>
+
                     <p class="section-label">
                         Price
                     </p>
@@ -373,131 +574,145 @@
                     <p class="purchase-price">
                         Currently unavailable
                     </p>
+
                 </div>
+
 
                 <div class="purchase-row">
 
-                    <label for="blue-dream-quantity">
-                        Quantity
-                    </label>
-
-                    <div class="quantity-selector">
-
-                        <button
-                            type="button"
-                            aria-label="Decrease quantity"
-                            disabled
-                        >
-                            −
-                        </button>
-
-                        <input
-                            id="blue-dream-quantity"
-                            type="number"
-                            value="1"
-                            min="1"
-                            readonly
-                            disabled
-                        >
-
-                        <button
-                            type="button"
-                            aria-label="Increase quantity"
-                            disabled
-                        >
-                            +
-                        </button>
-
-                    </div>
 
                     <button
                         class="add-to-cart-button"
                         type="button"
                         disabled
                     >
-                        Out of stock
+                        Out of Stock
                     </button>
+
+
+                    <button
+                        class="wishlist-button"
+                        type="button"
+                        data-wishlist-button
+                        data-product-id="blue-dream-shrimp"
+                        data-product-name="Blue Dream Shrimp"
+                        data-product-price="0"
+                        data-product-image=""
+                        data-product-url="blue-dream-shrimp.html"
+                    >
+                        ♡ Add to Wishlist
+                    </button>
+
 
                 </div>
 
+
             </div>
+
 
         </div>
 
+
     </section>
 
+
+    <!-- OVERVIEW -->
+
     <section class="product-section">
+
 
         <p class="section-label">
             Overview
         </p>
 
+
         <h2>
             A deep-blue freshwater favourite.
         </h2>
 
+
         <div class="product-copy">
 
-            <p>
-                Blue Dream Shrimp are a selectively bred colour variety of
-                <em>Neocaridina davidi</em>, known for their rich blue
-                colour and peaceful behaviour.
-            </p>
 
             <p>
-                They spend much of the day grazing on biofilm, algae and tiny
-                food particles found across plants, wood, rocks and other
-                aquarium surfaces.
+                Blue Dream Shrimp are a selectively bred
+                colour variety of
+                <em>Neocaridina davidi</em>, known for
+                their rich blue colour and peaceful
+                behaviour.
             </p>
 
+
             <p>
-                Their colour stands out especially well against green plants,
-                dark substrate and natural hardscape. Like other Neocaridina,
-                they do best in mature, stable aquariums.
+                They spend much of the day grazing on
+                biofilm, algae and tiny food particles
+                found across plants, wood, rocks and
+                other aquarium surfaces.
             </p>
+
+
+            <p>
+                Their colour stands out especially well
+                against green plants, dark substrate and
+                natural hardscape. Like other
+                Neocaridina, they do best in mature,
+                stable aquariums.
+            </p>
+
 
         </div>
 
+
         <dl class="quick-facts">
+
 
             <div>
                 <dt>Temperature</dt>
                 <dd>20–26°C</dd>
             </div>
 
+
             <div>
                 <dt>pH</dt>
                 <dd>6.5–7.8</dd>
             </div>
+
 
             <div>
                 <dt>Adult size</dt>
                 <dd>Up to 3 cm</dd>
             </div>
 
+
             <div>
                 <dt>Difficulty</dt>
                 <dd>Beginner</dd>
             </div>
+
 
             <div>
                 <dt>Temperament</dt>
                 <dd>Peaceful</dd>
             </div>
 
+
             <div>
                 <dt>Diet</dt>
                 <dd>Omnivore</dd>
             </div>
+
 
             <div>
                 <dt>Lifespan</dt>
                 <dd>About 1–2 years</dd>
             </div>
 
+
         </dl>
 
+
     </section>
+    <!-- CARE -->
 
     <section class="product-section">
 
@@ -511,8 +726,12 @@
 
         <div class="info-grid">
 
+
             <article class="info-card">
-                <h3>Water Parameters</h3>
+
+                <h3>
+                    Water Parameters
+                </h3>
 
                 <ul>
                     <li>Temperature: 20–26°C</li>
@@ -521,10 +740,15 @@
                     <li>Low to moderate KH</li>
                     <li>Ammonia and nitrite: 0 ppm</li>
                 </ul>
+
             </article>
 
+
             <article class="info-card">
-                <h3>Aquarium Setup</h3>
+
+                <h3>
+                    Aquarium Setup
+                </h3>
 
                 <ul>
                     <li>Mature planted aquarium</li>
@@ -533,49 +757,79 @@
                     <li>Driftwood or leaf litter</li>
                     <li>Plenty of grazing surfaces</li>
                 </ul>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Feeding</h3>
+
+                <h3>
+                    Feeding
+                </h3>
 
                 <p>
-                    Blue Dream Shrimp mainly graze on biofilm and algae.
-                    Supplement their diet with quality shrimp food, vegetables
-                    and occasional protein-based foods.
+                    Blue Dream Shrimp mainly graze on
+                    biofilm and algae. Supplement their
+                    diet with quality shrimp food,
+                    vegetables and occasional
+                    protein-based foods.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Behaviour</h3>
+
+                <h3>
+                    Behaviour
+                </h3>
 
                 <p>
-                    They are peaceful, social and active throughout the day.
-                    Most of their time is spent grazing and exploring.
+                    They are peaceful, social and active
+                    throughout the day. Most of their
+                    time is spent grazing and exploring.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Breeding</h3>
+
+                <h3>
+                    Breeding
+                </h3>
 
                 <p>
-                    Mature females carry eggs beneath the abdomen until they
-                    hatch as fully formed miniature shrimp.
+                    Mature females carry eggs beneath
+                    the abdomen until they hatch as
+                    fully formed miniature shrimp.
                 </p>
+
             </article>
+
 
             <article class="info-card">
-                <h3>Colour Line</h3>
+
+                <h3>
+                    Colour Line
+                </h3>
 
                 <p>
-                    Blue Dream Shrimp should ideally be kept separately from
-                    other Neocaridina colour varieties if you want to preserve
-                    the line.
+                    Blue Dream Shrimp should ideally be
+                    kept separately from other
+                    Neocaridina colour varieties if you
+                    want to preserve the line.
                 </p>
+
             </article>
+
 
         </div>
 
     </section>
+
+
+    <!-- FAQ -->
 
     <section class="product-section">
 
@@ -589,42 +843,76 @@
 
         <div class="faq-list">
 
+
             <details>
-                <summary>Are Blue Dream Shrimp suitable for beginners?</summary>
+
+                <summary>
+                    Are Blue Dream Shrimp suitable
+                    for beginners?
+                </summary>
+
                 <p>
-                    Yes. They are generally beginner-friendly when kept in a
+                    Yes. They are generally
+                    beginner-friendly when kept in a
                     mature, stable aquarium.
                 </p>
+
             </details>
 
-            <details>
-                <summary>Will they stay blue?</summary>
-                <p>
-                    Colour intensity varies between individuals and may also
-                    be influenced by genetics, diet, stress and aquarium
-                    conditions.
-                </p>
-            </details>
 
             <details>
-                <summary>Can they live with other shrimp colours?</summary>
+
+                <summary>
+                    Will they stay blue?
+                </summary>
+
                 <p>
-                    They can, but mixing Neocaridina colours may produce less
-                    predictable offspring and gradually weaken the colour line.
+                    Colour intensity varies between
+                    individuals and may also be
+                    influenced by genetics, diet,
+                    stress and aquarium conditions.
                 </p>
+
             </details>
 
+
             <details>
-                <summary>Do they need a heater?</summary>
+
+                <summary>
+                    Can they live with other
+                    shrimp colours?
+                </summary>
+
                 <p>
-                    That depends on room temperature. The aquarium should stay
-                    stable within their suitable temperature range.
+                    They can, but mixing Neocaridina
+                    colours may produce less predictable
+                    offspring and gradually weaken the
+                    colour line.
                 </p>
+
             </details>
+
+
+            <details>
+
+                <summary>
+                    Do they need a heater?
+                </summary>
+
+                <p>
+                    That depends on room temperature.
+                    The aquarium should stay stable
+                    within their suitable temperature
+                    range.
+                </p>
+
+            </details>
+
 
         </div>
 
     </section>
+    <!-- RELATED PRODUCTS -->
 
     <section class="product-section">
 
@@ -638,36 +926,103 @@
 
         <div class="related-grid">
 
-            <a class="related-card" href="red-cherry-shrimp.html">
-                <h3>Red Cherry Shrimp</h3>
-                <p>Bright red Neocaridina shrimp.</p>
+
+            <a
+                class="related-card"
+                href="bloody-mary-shrimp.html"
+            >
+
+                <h3>
+                    Bloody Mary Shrimp
+                </h3>
+
+                <p>
+                    Deep-red Neocaridina being
+                    home bred in Malta.
+                </p>
+
             </a>
 
-            <a class="related-card" href="yellow-goldenback-shrimp.html">
-                <h3>Yellow Goldenback Shrimp</h3>
-                <p>Bright yellow Neocaridina with a dorsal stripe.</p>
+
+            <a
+                class="related-card"
+                href="yellow-goldenback-shrimp.html"
+            >
+
+                <h3>
+                    Yellow Goldenback Shrimp
+                </h3>
+
+                <p>
+                    Bright yellow Neocaridina
+                    with a dorsal stripe.
+                </p>
+
             </a>
 
-            <a class="related-card" href="java-moss.html">
-                <h3>Java Moss</h3>
-                <p>A useful plant for grazing and shrimplet cover.</p>
+
+            <a
+                class="related-card"
+                href="java-moss.html"
+            >
+
+                <h3>
+                    Java Moss
+                </h3>
+
+                <p>
+                    A useful plant for grazing
+                    and shrimplet cover.
+                </p>
+
             </a>
+
 
         </div>
 
     </section>
 
+
 </main>
+
+
+<!-- FOOTER -->
 
 <footer>
 
     <div>
-        <strong>AquaCoding Studios</strong>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
 
         <p>
-            Aquatic livestock, plants, supplies and practical care.
+            Aquatic livestock, plants, supplies
+            and practical care.
         </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
     </div>
+
 
     <p>
         © 2026 AquaCoding Studios · Malta
@@ -675,7 +1030,10 @@
 
 </footer>
 
-<script src="script.js?v=16"></script>
+
+<script src="script.js?v=18"></script>
+
 
 </body>
+
 </html>
