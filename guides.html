@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,18 +12,163 @@
 
     <meta
         name="description"
-        content="Practical aquarium care guides from AquaCoding Studios."
+        content="Practical aquarium care guides from AquaCoding Studios covering cycling, shrimp, fish, plants and water chemistry."
     >
 
     <meta name="theme-color" content="#04131d">
 
     <title>Learn | AquaCoding Studios</title>
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=15">
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .guides-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .guides-hero {
+            padding: 72px 0 56px;
+        }
+
+        .guides-hero-content {
+            max-width: 760px;
+        }
+
+        .guides-section {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .guides-heading {
+            max-width: 760px;
+            margin-bottom: 30px;
+        }
+
+        .guides-heading h2 {
+            margin-bottom: 12px;
+        }
+
+        .guides-heading p:last-child {
+            color: var(--muted);
+        }
+
+        .guides-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .guide-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 220px;
+            padding: 24px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition:
+                transform 180ms ease,
+                border-color 180ms ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110, 217, 234, 0.45);
+        }
+
+        .guide-card h3 {
+            margin: 0 0 12px;
+        }
+
+        .guide-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .guide-link {
+            margin-top: auto;
+            padding-top: 22px;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .guide-tag {
+            display: inline-flex;
+            width: fit-content;
+            margin-bottom: 16px;
+            padding: 7px 10px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden] {
+            display: none;
+        }
+
+        @media (min-width: 760px) {
+
+            .guides-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (min-width: 1050px) {
+
+            .guides-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
 
 <header class="site-header">
 
@@ -31,12 +177,15 @@
         href="index.html"
         aria-label="AquaCoding Studios homepage"
     >
+
         <img
             src="logo-dark.png"
             alt="AquaCoding Studios"
             class="site-logo"
         >
+
     </a>
+
 
     <button
         class="menu-button"
@@ -44,438 +193,653 @@
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
+
         <span></span>
         <span></span>
         <span></span>
+
     </button>
 
-    <nav class="main-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="guides.html">Learn</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a
+            href="guides.html"
+            aria-current="page"
+        >
+            Learn
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
     </nav>
 
 </header>
 
-<main>
 
-    <section class="collection-hero">
+<main class="guides-page">
 
-        <p class="eyebrow">
-            Learn
-        </p>
 
-        <h1>
-            Aquarium care,
-            <span>made clearer.</span>
-        </h1>
+    <section class="guides-hero">
 
-        <p class="hero-text">
-            Straightforward guides for setting up, maintaining and
-            improving aquatic environments.
-        </p>
+        <div class="guides-hero-content">
+
+            <p class="eyebrow">
+                Learn
+            </p>
+
+            <h1>
+                Better aquariums start with
+                <span>understanding what is happening inside them.</span>
+            </h1>
+
+            <p class="hero-text">
+                Practical aquarium guides covering the things that actually
+                matter: stable water, suitable habitats, feeding, livestock
+                care and avoiding common mistakes.
+            </p>
+
+        </div>
 
     </section>
+    <section class="guides-section">
 
-    <section class="section">
-
-        <div class="section-heading">
+        <div class="guides-heading">
 
             <p class="section-label">
                 Getting started
             </p>
 
             <h2>
-                Build a strong foundation.
+                Get the basics right before livestock goes in.
             </h2>
+
+            <p>
+                A lot of aquarium problems start before the first fish or
+                shrimp is added. These guides cover the setup decisions that
+                make everything easier later.
+            </p>
 
         </div>
 
-        <div class="collection-grid">
+
+        <div class="guides-grid">
+
 
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="cycling-an-aquarium.html"
             >
-                <div class="collection-content">
 
-                    <h3>Cycling an Aquarium</h3>
+                <span class="guide-tag">
+                    Essential
+                </span>
 
-                    <p>
-                        Learn why the nitrogen cycle matters and how to
-                        prepare an aquarium safely before adding livestock.
-                    </p>
+                <h3>
+                    Cycling an Aquarium
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    What the nitrogen cycle actually does, why ammonia and
+                    nitrite matter, and how to know when a new aquarium is
+                    ready for livestock.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
 
+
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="choosing-an-aquarium.html"
             >
-                <div class="collection-content">
 
-                    <h3>Choosing an Aquarium</h3>
+                <span class="guide-tag">
+                    Setup
+                </span>
 
-                    <p>
-                        Understand tank size, placement, equipment and the
-                        needs of the animals you plan to keep.
-                    </p>
+                <h3>
+                    Choosing an Aquarium
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    Tank size, placement, filtration and why choosing the
+                    livestock first usually makes more sense than buying a
+                    tank and figuring it out afterwards.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
+
 
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="water-parameters.html"
             >
-                <div class="collection-content">
 
-                    <h3>Understanding Water Parameters</h3>
+                <span class="guide-tag">
+                    Water basics
+                </span>
 
-                    <p>
-                        A simple introduction to temperature, pH, hardness,
-                        ammonia, nitrite and nitrate.
-                    </p>
+                <h3>
+                    Understanding Water Parameters
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    A practical explanation of temperature, pH, GH, KH,
+                    ammonia, nitrite and nitrate without turning aquarium
+                    keeping into a chemistry exam.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
+
 
         </div>
 
     </section>
 
-    <section class="section">
 
-        <div class="section-heading">
+    <section class="guides-section">
+
+        <div class="guides-heading">
 
             <p class="section-label">
                 Shrimp care
             </p>
 
             <h2>
-                Healthy freshwater shrimp.
+                Small animals, very little room for sloppy water.
             </h2>
+
+            <p>
+                Neocaridina are hardy once settled, but sudden changes and
+                unstable conditions can still cause problems quickly.
+            </p>
 
         </div>
 
-        <div class="collection-grid">
+
+        <div class="guides-grid">
+
 
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="neocaridina-care-guide.html"
             >
-                <div class="collection-content">
 
-                    <h3>Neocaridina Care Guide</h3>
+                <span class="guide-tag">
+                    Care guide
+                </span>
 
-                    <p>
-                        Learn about aquarium setup, feeding, water stability
-                        and everyday care for Neocaridina shrimp.
-                    </p>
+                <h3>
+                    Neocaridina Care Guide
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    Tank setup, water stability, feeding, moulting and the
+                    day-to-day care that keeps a shrimp colony healthy.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
 
+
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="breeding-shrimp.html"
             >
-                <div class="collection-content">
 
-                    <h3>Breeding Shrimp</h3>
+                <span class="guide-tag">
+                    Breeding
+                </span>
 
-                    <p>
-                        Understand colony development, berried females,
-                        shrimplet survival and responsible breeding.
-                    </p>
+                <h3>
+                    Breeding Neocaridina Shrimp
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    Berried females, shrimplet survival, colony growth and
+                    what actually helps a breeding tank succeed long term.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
+
 
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="shrimp-health.html"
             >
-                <div class="collection-content">
 
-                    <h3>Shrimp Health</h3>
+                <span class="guide-tag">
+                    Health
+                </span>
 
-                    <p>
-                        Recognise common warning signs and learn how stable
-                        conditions support healthier shrimp.
-                    </p>
+                <h3>
+                    Shrimp Health &amp; Warning Signs
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    How to spot stress, failed moults, unusual behaviour and
+                    water-quality problems before they turn into a colony-wide
+                    issue.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
+
 
         </div>
 
     </section>
+    <section class="guides-section">
 
-    <section class="section">
-
-        <div class="section-heading">
+        <div class="guides-heading">
 
             <p class="section-label">
                 Fish care
             </p>
 
             <h2>
-                Better care for aquarium fish.
+                Good fishkeeping is more than feeding once a day.
             </h2>
+
+            <p>
+                Behaviour, diet, tank size, temperature and compatible
+                tank mates all matter. A fish surviving in an aquarium
+                is not the same thing as a fish thriving in one.
+            </p>
 
         </div>
 
-        <div class="collection-grid">
+
+        <div class="guides-grid">
+
 
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="betta-care-guide.html"
             >
-                <div class="collection-content">
 
-                    <h3>Betta Care Guide</h3>
+                <span class="guide-tag">
+                    Care guide
+                </span>
 
-                    <p>
-                        Explore suitable habitats, heating, filtration,
-                        feeding and enrichment for Betta splendens.
-                    </p>
+                <h3>
+                    Betta Care Guide
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    Heating, filtration, tank setup, feeding and enrichment
+                    for <em>Betta splendens</em>, plus some of the common
+                    myths that still follow this species around.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
 
+
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="feeding-aquarium-fish.html"
             >
-                <div class="collection-content">
 
-                    <h3>Feeding Aquarium Fish</h3>
+                <span class="guide-tag">
+                    Feeding
+                </span>
 
-                    <p>
-                        Learn how portion size, diet variety and feeding
-                        frequency affect fish health and water quality.
-                    </p>
+                <h3>
+                    Feeding Aquarium Fish
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    How much to feed, how often to feed and why the right
+                    diet depends on the species rather than whatever food
+                    happens to be labelled “tropical fish”.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
+
 
             <a
-                class="collection-card card-link"
+                class="guide-card"
                 href="choosing-tank-mates.html"
             >
-                <div class="collection-content">
 
-                    <h3>Choosing Tank Mates</h3>
+                <span class="guide-tag">
+                    Compatibility
+                </span>
 
-                    <p>
-                        Compare temperament, adult size, water requirements
-                        and compatibility before mixing species.
-                    </p>
+                <h3>
+                    Choosing Tank Mates
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    Compare temperament, adult size, swimming space,
+                    temperature and water requirements before deciding
+                    whether two species should actually share a tank.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
             </a>
+
 
         </div>
 
     </section>
-    <section class="section">
 
-        <div class="section-heading">
+
+    <section class="guides-section">
+
+        <div class="guides-heading">
 
             <p class="section-label">
                 Aquarium plants
             </p>
 
             <h2>
-                Grow a healthier planted aquarium.
+                Plants do better when you know what they are asking for.
             </h2>
+
+            <p>
+                You do not need a high-tech planted tank to grow healthy
+                plants. Start with sensible species, suitable lighting and
+                enough nutrients, then adjust from there.
+            </p>
 
         </div>
 
-        <div class="collection-grid">
 
-            <a class="collection-card card-link" href="beginner-plants.html">
+        <div class="guides-grid">
 
-                <div class="collection-content">
 
-                    <h3>Beginner Aquarium Plants</h3>
+            <a
+                class="guide-card"
+                href="beginner-plants.html"
+            >
 
-                    <p>
-                        Discover hardy species that thrive with minimal care.
-                    </p>
+                <span class="guide-tag">
+                    Getting started
+                </span>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <h3>
+                    Beginner Aquarium Plants
+                </h3>
 
-                </div>
+                <p>
+                    A starting point for choosing hardy plants without
+                    immediately needing powerful lighting, injected CO₂
+                    or a shelf full of fertilisers.
+                </p>
 
-            </a>
-
-            <a class="collection-card card-link" href="aquarium-lighting.html">
-
-                <div class="collection-content">
-
-                    <h3>Aquarium Lighting</h3>
-
-                    <p>
-                        Understand lighting intensity, duration and plant growth.
-                    </p>
-
-                    <span class="view-product">
-                        Read guide →
-                    </span>
-
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
 
             </a>
 
-            <a class="collection-card card-link" href="fertilisers.html">
 
-                <div class="collection-content">
+            <a
+                class="guide-card"
+                href="aquarium-lighting.html"
+            >
 
-                    <h3>Fertilisers</h3>
+                <span class="guide-tag">
+                    Lighting
+                </span>
 
-                    <p>
-                        Learn when and how to dose nutrients safely.
-                    </p>
+                <h3>
+                    Aquarium Lighting
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    Photoperiod, light intensity and the balancing act
+                    between giving plants enough light without turning
+                    the aquarium into an algae farm.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
 
             </a>
+
+
+            <a
+                class="guide-card"
+                href="fertilisers.html"
+            >
+
+                <span class="guide-tag">
+                    Plant nutrition
+                </span>
+
+                <h3>
+                    Aquarium Fertilisers
+                </h3>
+
+                <p>
+                    What aquarium plants actually use, the difference
+                    between water-column and root feeding, and when adding
+                    fertiliser is useful rather than just adding more stuff.
+                </p>
+
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
+            </a>
+
 
         </div>
 
     </section>
+    <section class="guides-section">
 
-    <section class="section">
-
-        <div class="section-heading">
+        <div class="guides-heading">
 
             <p class="section-label">
                 Water chemistry
             </p>
 
             <h2>
-                Keep your water stable.
+                Understand the numbers without chasing them.
             </h2>
+
+            <p>
+                Test results are useful when you know what they mean.
+                The goal is not to constantly adjust the water to hit
+                a perfect number — it is to keep conditions suitable
+                and, just as importantly, stable.
+            </p>
 
         </div>
 
-        <div class="collection-grid">
 
-            <a class="collection-card card-link" href="ph-guide.html">
+        <div class="guides-grid">
 
-                <div class="collection-content">
 
-                    <h3>Understanding pH</h3>
+            <a
+                class="guide-card"
+                href="ph-guide.html"
+            >
 
-                    <p>
-                        Learn what pH means and why stability is more important than chasing numbers.
-                    </p>
+                <span class="guide-tag">
+                    Water chemistry
+                </span>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <h3>
+                    Understanding pH
+                </h3>
 
-                </div>
+                <p>
+                    What pH measures, why it can change and why a stable
+                    suitable pH is usually more useful than constantly
+                    trying to force the aquarium towards a specific number.
+                </p>
 
-            </a>
-
-            <a class="collection-card card-link" href="gh-kh-guide.html">
-
-                <div class="collection-content">
-
-                    <h3>GH & KH Explained</h3>
-
-                    <p>
-                        Understand hardness and how it affects livestock and plants.
-                    </p>
-
-                    <span class="view-product">
-                        Read guide →
-                    </span>
-
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
 
             </a>
 
-            <a class="collection-card card-link" href="nitrogen-cycle.html">
 
-                <div class="collection-content">
+            <a
+                class="guide-card"
+                href="gh-kh-guide.html"
+            >
 
-                    <h3>Ammonia, Nitrite & Nitrate</h3>
+                <span class="guide-tag">
+                    Hardness
+                </span>
 
-                    <p>
-                        Learn how the nitrogen cycle keeps an aquarium healthy.
-                    </p>
+                <h3>
+                    GH &amp; KH Explained
+                </h3>
 
-                    <span class="view-product">
-                        Read guide →
-                    </span>
+                <p>
+                    GH and KH are easy to mix up. This guide covers what
+                    each one tells you, why they matter and how they relate
+                    to fish, shrimp, plants and pH stability.
+                </p>
 
-                </div>
+                <span class="guide-link">
+                    Read guide →
+                </span>
 
             </a>
+
+
+            <a
+                class="guide-card"
+                href="nitrogen-cycle.html"
+            >
+
+                <span class="guide-tag">
+                    Water quality
+                </span>
+
+                <h3>
+                    Ammonia, Nitrite &amp; Nitrate
+                </h3>
+
+                <p>
+                    Where these compounds come from, what beneficial
+                    bacteria have to do with them and what your test
+                    results can tell you about the aquarium.
+                </p>
+
+                <span class="guide-link">
+                    Read guide →
+                </span>
+
+            </a>
+
 
         </div>
 
     </section>
 
+
 </main>
+
 
 <footer>
 
     <div>
 
-        <strong>AquaCoding Studios</strong>
+        <strong>
+            AquaCoding Studios
+        </strong>
 
         <p>
-            Aquatic livestock, plants, supplies and practical care.
+            Aquatic livestock, plants, supplies
+            and practical care.
         </p>
 
         <p class="footer-links">
@@ -500,15 +864,16 @@
 
     </div>
 
+
     <p>
-
         © 2026 AquaCoding Studios · Malta
-
     </p>
 
 </footer>
 
-<script src="script.js?v=15"></script>
+
+<script src="script.js?v=20"></script>
+
 
 </body>
 
