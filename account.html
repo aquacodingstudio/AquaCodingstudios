@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Customer account | AquaCoding Studios"
+        content="Manage your AquaCoding Studios customer account."
     >
 
     <meta
@@ -41,13 +41,16 @@
         }
 
         .account-hero {
-            padding: 72px 0 48px;
+            padding: 72px 0 46px;
         }
 
-        .account-layout {
+        .account-shell {
+            padding-bottom: 84px;
+        }
+
+        .account-grid {
             display: grid;
             gap: 22px;
-            padding: 0 0 84px;
         }
 
         .account-card {
@@ -58,7 +61,8 @@
             box-shadow: var(--shadow);
         }
 
-        .account-card h2 {
+        .account-card h2,
+        .account-card h3 {
             margin-top: 0;
         }
 
@@ -66,19 +70,36 @@
             color: var(--muted);
         }
 
-        .account-status {
-            display: inline-flex;
-            width: fit-content;
-            padding: 8px 12px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(255, 193, 7, 0.35);
-            border-radius: 999px;
-            background: rgba(255, 193, 7, 0.12);
-            color: #ffd166;
-            font-size: 0.78rem;
+        .account-form {
+            display: grid;
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .account-field {
+            display: grid;
+            gap: 7px;
+        }
+
+        .account-field label {
+            font-size: 0.84rem;
             font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+        }
+
+        .account-field input {
+            width: 100%;
+            min-height: 50px;
+            padding: 0 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.035);
+            color: var(--text);
+            font: inherit;
+        }
+
+        .account-field input:focus {
+            outline: 2px solid rgba(110, 217, 234, 0.25);
+            border-color: var(--accent);
         }
 
         .account-actions {
@@ -90,8 +111,10 @@
 
         .account-button {
             min-height: 48px;
-            display: inline-grid;
-            place-items: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
             padding: 0 18px;
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -100,6 +123,7 @@
             font: inherit;
             font-weight: 800;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .account-button.primary {
@@ -108,55 +132,166 @@
             color: var(--accent);
         }
 
+        .account-button.google {
+            width: 100%;
+            background: #ffffff;
+            border-color: #ffffff;
+            color: #202124;
+        }
+
+        .account-button.danger {
+            border-color: rgba(255, 100, 100, 0.35);
+            color: #ffaaaa;
+        }
+
         .account-button:disabled {
-            cursor: not-allowed;
-            opacity: 0.5;
+            cursor: wait;
+            opacity: 0.6;
         }
 
-        .order-card {
-            margin-top: 18px;
-            padding: 20px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .order-card h3 {
-            margin: 0 0 10px;
-        }
-
-        .order-grid {
+        .google-mark {
+            width: 20px;
+            height: 20px;
             display: grid;
-            gap: 10px;
+            place-items: center;
+            border-radius: 50%;
+            font-size: 0.92rem;
+            font-weight: 900;
         }
 
-        .order-row {
+        .auth-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .auth-tab {
+            min-height: 44px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .auth-tab.active {
+            border-color: rgba(110, 217, 234, 0.45);
+            background: rgba(110, 217, 234, 0.10);
+            color: var(--accent);
+        }
+
+        .account-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 22px 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .account-divider::before,
+        .account-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .account-link-button {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: var(--accent);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .account-message {
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+        }
+
+        .account-message.success {
+            border-color: rgba(70, 210, 140, 0.35);
+            background: rgba(70, 210, 140, 0.08);
+            color: #9ce6bc;
+        }
+
+        .account-message.error {
+            border-color: rgba(255, 100, 100, 0.35);
+            background: rgba(255, 100, 100, 0.08);
+            color: #ffb1b1;
+        }
+
+        .account-message[hidden] {
+            display: none;
+        }
+
+        .account-status {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 12px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(110, 217, 234, 0.30);
+            border-radius: 999px;
+            background: rgba(110, 217, 234, 0.09);
+            color: var(--accent);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .profile-summary {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .profile-row {
             display: flex;
             justify-content: space-between;
-            gap: 18px;
-            padding-top: 10px;
+            gap: 20px;
+            padding: 14px 0;
             border-top: 1px solid var(--border);
         }
 
-        .order-row span:first-child {
+        .profile-row span:first-child {
             color: var(--muted);
         }
 
         .security-note {
             margin-top: 18px;
             padding: 16px;
-            border: 1px solid rgba(110, 217, 234, 0.25);
+            border: 1px solid rgba(110, 217, 234, 0.22);
             border-radius: 14px;
-            background: rgba(110, 217, 234, 0.07);
+            background: rgba(110, 217, 234, 0.06);
         }
 
         .security-note strong {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .security-note p {
             margin: 0;
+        }
+
+        .loading-card {
+            text-align: center;
+            padding: 50px 24px;
+        }
+
+        [hidden] {
+            display: none !important;
         }
 
         .nav-utility {
@@ -187,12 +322,8 @@
 
         @media (min-width: 820px) {
 
-            .account-layout {
+            .account-grid.two-column {
                 grid-template-columns: 1fr 1fr;
-            }
-
-            .account-card.full-width {
-                grid-column: 1 / -1;
             }
 
         }
@@ -201,9 +332,7 @@
 
 </head>
 
-
 <body>
-
 
 <header class="site-header">
 
@@ -221,20 +350,16 @@
 
     </a>
 
-
     <button
         class="menu-button"
         type="button"
         aria-label="Open navigation menu"
         aria-expanded="false"
     >
-
         <span></span>
         <span></span>
         <span></span>
-
     </button>
-
 
     <nav
         class="main-nav"
@@ -242,13 +367,9 @@
     >
 
         <a href="index.html">Home</a>
-
         <a href="shop.html">Shop</a>
-
         <a href="guides.html">Learn</a>
-
         <a href="about.html">About</a>
-
         <a href="contact.html">Contact</a>
 
         <a
@@ -256,6 +377,7 @@
             class="nav-utility"
         >
             Wishlist
+
             <span
                 class="wishlist-count"
                 hidden
@@ -277,6 +399,7 @@
             class="nav-utility"
         >
             Cart
+
             <span
                 class="cart-count"
                 hidden
@@ -289,9 +412,7 @@
 
 </header>
 
-
 <main class="account-page">
-
 
     <section class="account-hero">
 
@@ -305,183 +426,520 @@
         </h1>
 
         <p class="hero-text">
-            View recent order information and access account features
-            as they become available.
+            Sign in to manage your AquaCoding Studios customer profile.
         </p>
 
     </section>
 
+    <section class="account-shell">
 
-    <section class="account-layout">
-
-
-        <article class="account-card">
-
-            <span class="account-status">
-                Guest checkout active
-            </span>
+        <article
+            id="account-loading"
+            class="account-card loading-card"
+        >
 
             <h2>
-                Shop without an account.
+                Loading your account…
             </h2>
-
-            <p>
-                You can currently browse, add products to your cart and
-                submit an order request without creating an account.
-            </p>
-
-            <div class="account-actions">
-
-                <a
-                    class="account-button primary"
-                    href="shop.html"
-                >
-                    Browse Shop
-                </a>
-
-                <a
-                    class="account-button"
-                    href="cart.html"
-                >
-                    View Cart
-                </a>
-
-            </div>
 
         </article>
+        <!-- Signed Out -->
+
+        <div
+            id="signed-out-view"
+            class="account-grid"
+            hidden
+        >
+
+            <article class="account-card">
+
+                <div class="auth-tabs">
+
+                    <button
+                        id="show-sign-in"
+                        class="auth-tab active"
+                        type="button"
+                    >
+                        Sign In
+                    </button>
+
+                    <button
+                        id="show-sign-up"
+                        class="auth-tab"
+                        type="button"
+                    >
+                        Create Account
+                    </button>
+
+                </div>
 
 
-        <article class="account-card">
+                <!-- Sign In -->
 
-            <span class="account-status">
-                Secure accounts coming later
-            </span>
+                <div id="sign-in-panel">
 
-            <h2>
-                Sign in &amp; registration
-            </h2>
+                    <h2>
+                        Welcome back.
+                    </h2>
 
-            <p>
-                A secure customer login requires a real authentication
-                service and server-side account storage. We are not storing
-                passwords in the browser.
-            </p>
+                    <p>
+                        Sign in to your AquaCoding Studios account.
+                    </p>
 
-            <div class="account-actions">
+                    <form
+                        id="sign-in-form"
+                        class="account-form"
+                    >
 
-                <button
-                    class="account-button"
-                    type="button"
-                    disabled
-                >
-                    Sign In
-                </button>
+                        <div class="account-field">
 
-                <button
-                    class="account-button"
-                    type="button"
-                    disabled
-                >
-                    Create Account
-                </button>
+                            <label for="sign-in-email">
+                                Email address
+                            </label>
 
-            </div>
+                            <input
+                                id="sign-in-email"
+                                type="email"
+                                autocomplete="email"
+                                required
+                            >
 
-            <div class="security-note">
+                        </div>
 
-                <strong>
-                    Why is this disabled?
-                </strong>
+                        <div class="account-field">
 
-                <p>
-                    Storing usernames or passwords in localStorage would not
-                    be secure. Account login will be enabled when a proper
-                    authentication backend is connected.
-                </p>
+                            <label for="sign-in-password">
+                                Password
+                            </label>
 
-            </div>
+                            <input
+                                id="sign-in-password"
+                                type="password"
+                                autocomplete="current-password"
+                                minlength="6"
+                                required
+                            >
 
-        </article>
+                        </div>
 
+                        <button
+                            class="account-button primary"
+                            type="submit"
+                        >
+                            Sign In
+                        </button>
 
-        <article class="account-card full-width">
+                    </form>
 
-            <p class="section-label">
-                Recent order
-            </p>
+                    <div class="account-actions">
 
-            <h2>
-                Last order on this device
-            </h2>
+                        <button
+                            id="forgot-password-button"
+                            class="account-link-button"
+                            type="button"
+                        >
+                            Forgot your password?
+                        </button>
 
-            <div
-                id="recent-order"
-                class="order-card"
-                hidden
-            >
-
-                <h3 id="recent-order-reference">
-                    Order
-                </h3>
-
-                <div class="order-grid">
-
-                    <div class="order-row">
-                        <span>Name</span>
-                        <span id="recent-order-name">—</span>
-                    </div>
-
-                    <div class="order-row">
-                        <span>Fulfilment</span>
-                        <span id="recent-order-fulfilment">—</span>
-                    </div>
-
-                    <div class="order-row">
-                        <span>Items</span>
-                        <span id="recent-order-items">—</span>
-                    </div>
-
-                    <div class="order-row">
-                        <span>Total</span>
-                        <strong id="recent-order-total">€0.00</strong>
                     </div>
 
                 </div>
+
+
+                <!-- Sign Up -->
+
+                <div
+                    id="sign-up-panel"
+                    hidden
+                >
+
+                    <h2>
+                        Create your account.
+                    </h2>
+
+                    <p>
+                        Register using your email address or continue with Google.
+                    </p>
+
+                    <form
+                        id="sign-up-form"
+                        class="account-form"
+                    >
+
+                        <div class="account-field">
+
+                            <label for="register-first-name">
+                                First name
+                            </label>
+
+                            <input
+                                id="register-first-name"
+                                type="text"
+                                autocomplete="given-name"
+                                maxlength="80"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="account-field">
+
+                            <label for="register-last-name">
+                                Last name
+                            </label>
+
+                            <input
+                                id="register-last-name"
+                                type="text"
+                                autocomplete="family-name"
+                                maxlength="80"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="account-field">
+
+                            <label for="register-email">
+                                Email address
+                            </label>
+
+                            <input
+                                id="register-email"
+                                type="email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="account-field">
+
+                            <label for="register-password">
+                                Password
+                            </label>
+
+                            <input
+                                id="register-password"
+                                type="password"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="account-field">
+
+                            <label for="register-password-confirm">
+                                Confirm password
+                            </label>
+
+                            <input
+                                id="register-password-confirm"
+                                type="password"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+                        <button
+                            class="account-button primary"
+                            type="submit"
+                        >
+                            Create Account
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="account-divider">
+                    or
+                </div>
+
+
+                <button
+                    id="google-login-button"
+                    class="account-button google"
+                    type="button"
+                >
+
+                    <span
+                        class="google-mark"
+                        aria-hidden="true"
+                    >
+                        G
+                    </span>
+
+                    Continue with Google
+
+                </button>
+
+
+                <div
+                    id="auth-message"
+                    class="account-message"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+            </article>
+
+        </div>
+        <!-- Password Recovery -->
+
+        <div
+            id="recovery-view"
+            class="account-grid"
+            hidden
+        >
+
+            <article class="account-card">
+
+                <span class="account-status">
+                    Password recovery
+                </span>
+
+                <h2>
+                    Choose a new password.
+                </h2>
+
+                <p>
+                    Enter your new password below.
+                </p>
+
+                <form
+                    id="recovery-form"
+                    class="account-form"
+                >
+
+                    <div class="account-field">
+
+                        <label for="new-password">
+                            New password
+                        </label>
+
+                        <input
+                            id="new-password"
+                            type="password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="account-field">
+
+                        <label for="new-password-confirm">
+                            Confirm new password
+                        </label>
+
+                        <input
+                            id="new-password-confirm"
+                            type="password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        class="account-button primary"
+                        type="submit"
+                    >
+                        Update Password
+                    </button>
+
+                </form>
+
+                <div
+                    id="recovery-message"
+                    class="account-message"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+            </article>
+
+        </div>
+
+
+        <!-- Signed In -->
+
+        <div
+            id="signed-in-view"
+            class="account-grid two-column"
+            hidden
+        >
+
+            <article class="account-card">
+
+                <span class="account-status">
+                    Signed in
+                </span>
+
+                <h2>
+                    Your profile
+                </h2>
+
+                <div class="profile-summary">
+
+                    <div class="profile-row">
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong id="profile-email">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="profile-form"
+                    class="account-form"
+                >
+
+                    <div class="account-field">
+
+                        <label for="profile-first-name">
+                            First name
+                        </label>
+
+                        <input
+                            id="profile-first-name"
+                            type="text"
+                            autocomplete="given-name"
+                            maxlength="80"
+                        >
+
+                    </div>
+
+                    <div class="account-field">
+
+                        <label for="profile-last-name">
+                            Last name
+                        </label>
+
+                        <input
+                            id="profile-last-name"
+                            type="text"
+                            autocomplete="family-name"
+                            maxlength="80"
+                        >
+
+                    </div>
+
+                    <div class="account-field">
+
+                        <label for="profile-phone">
+                            Phone
+                        </label>
+
+                        <input
+                            id="profile-phone"
+                            type="tel"
+                            autocomplete="tel"
+                            maxlength="40"
+                            placeholder="+356"
+                        >
+
+                    </div>
+
+                    <button
+                        class="account-button primary"
+                        type="submit"
+                    >
+                        Save Profile
+                    </button>
+
+                </form>
+
+
+                <div
+                    id="profile-message"
+                    class="account-message"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+            </article>
+
+
+            <article class="account-card">
+
+                <span class="account-status">
+                    Security
+                </span>
+
+                <h2>
+                    Account security
+                </h2>
+
+                <p>
+                    Your login and password are handled securely through
+                    AquaCoding Studios' authentication provider.
+                </p>
+
+
+                <div class="security-note">
+
+                    <strong>
+                        Need to change your password?
+                    </strong>
+
+                    <p>
+                        We can send a secure password-reset link to the email
+                        address connected to your account.
+                    </p>
+
+                </div>
+
 
                 <div class="account-actions">
 
-                    <a
-                        class="account-button primary"
-                        href="order-confirmation.html"
+                    <button
+                        id="send-reset-button"
+                        class="account-button"
+                        type="button"
                     >
-                        View Order
-                    </a>
+                        Send Password Reset
+                    </button>
+
+                    <button
+                        id="sign-out-button"
+                        class="account-button danger"
+                        type="button"
+                    >
+                        Sign Out
+                    </button>
 
                 </div>
 
-            </div>
 
+                <div
+                    id="security-message"
+                    class="account-message"
+                    aria-live="polite"
+                    hidden
+                ></div>
 
-            <div
-                id="no-recent-order"
-                class="order-card"
-            >
+            </article>
 
-                <h3>
-                    No recent order found.
-                </h3>
-
-                <p>
-                    Orders submitted on this device will appear here.
-                </p>
-
-            </div>
-
-        </article>
+        </div>
 
 
     </section>
-
 
 </main>
 
@@ -528,139 +986,967 @@
 
 
 <script src="script.js?v=20"></script>
+<script type="module">
 
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const recentOrder =
-        document.getElementById("recent-order");
-
-    const noRecentOrder =
-        document.getElementById("no-recent-order");
+import { supabase } from "./supabase-client.js";
 
 
-    let order = null;
+const ACCOUNT_URL =
+    "https://aquacodingstudios.com/account.html";
 
 
-    try {
+const loadingView =
+    document.getElementById("account-loading");
 
-        const saved =
-            localStorage.getItem(
-                "aquacodingLastOrder"
-            );
+const signedOutView =
+    document.getElementById("signed-out-view");
 
-        order =
-            saved
-                ? JSON.parse(saved)
-                : null;
+const signedInView =
+    document.getElementById("signed-in-view");
 
-    } catch (error) {
+const recoveryView =
+    document.getElementById("recovery-view");
+
+
+const signInPanel =
+    document.getElementById("sign-in-panel");
+
+const signUpPanel =
+    document.getElementById("sign-up-panel");
+
+const showSignInButton =
+    document.getElementById("show-sign-in");
+
+const showSignUpButton =
+    document.getElementById("show-sign-up");
+
+
+const authMessage =
+    document.getElementById("auth-message");
+
+const profileMessage =
+    document.getElementById("profile-message");
+
+const recoveryMessage =
+    document.getElementById("recovery-message");
+
+const securityMessage =
+    document.getElementById("security-message");
+
+
+let recoveryMode = false;
+
+
+/* ---------------------------------
+   MESSAGE HELPERS
+--------------------------------- */
+
+function showMessage(
+    element,
+    text,
+    type = ""
+) {
+
+    element.textContent = text;
+
+    element.className =
+        `account-message ${type}`.trim();
+
+    element.hidden = false;
+
+}
+
+
+function hideMessage(element) {
+
+    element.textContent = "";
+    element.hidden = true;
+
+}
+
+
+/* ---------------------------------
+   ACCOUNT VIEWS
+--------------------------------- */
+
+function showSignedOut() {
+
+    loadingView.hidden = true;
+    signedInView.hidden = true;
+    recoveryView.hidden = true;
+    signedOutView.hidden = false;
+
+}
+
+
+function showRecovery() {
+
+    recoveryMode = true;
+
+    loadingView.hidden = true;
+    signedOutView.hidden = true;
+    signedInView.hidden = true;
+    recoveryView.hidden = false;
+
+}
+
+
+async function showSignedIn(user) {
+
+    if (recoveryMode) {
+        return;
+    }
+
+    loadingView.hidden = true;
+    signedOutView.hidden = true;
+    recoveryView.hidden = true;
+    signedInView.hidden = false;
+
+
+    document.getElementById(
+        "profile-email"
+    ).textContent =
+        user.email || "—";
+
+
+    hideMessage(profileMessage);
+
+
+    const {
+        data: profile,
+        error
+    } =
+        await supabase
+            .from("profiles")
+            .select(
+                "first_name, last_name, phone"
+            )
+            .eq(
+                "id",
+                user.id
+            )
+            .maybeSingle();
+
+
+    if (error) {
 
         console.error(
-            "Could not load recent order:",
+            "Profile load error:",
             error
         );
 
-    }
-
-
-    if (
-        !order ||
-        !Array.isArray(order.items) ||
-        order.items.length === 0
-    ) {
-
-        noRecentOrder.hidden = false;
+        showMessage(
+            profileMessage,
+            "Your account is signed in, but your profile could not be loaded.",
+            "error"
+        );
 
         return;
 
     }
 
 
-    noRecentOrder.hidden = true;
+    document.getElementById(
+        "profile-first-name"
+    ).value =
+        profile?.first_name || "";
 
-    recentOrder.hidden = false;
+
+    document.getElementById(
+        "profile-last-name"
+    ).value =
+        profile?.last_name || "";
 
 
-    const formatPrice = (value) => {
+    document.getElementById(
+        "profile-phone"
+    ).value =
+        profile?.phone || "";
 
-        return new Intl.NumberFormat(
-            "en-MT",
-            {
-                style: "currency",
-                currency: "EUR"
+}
+
+
+/* ---------------------------------
+   SIGN IN / SIGN UP TABS
+--------------------------------- */
+
+showSignInButton.addEventListener(
+    "click",
+    () => {
+
+        signInPanel.hidden = false;
+        signUpPanel.hidden = true;
+
+        showSignInButton.classList.add(
+            "active"
+        );
+
+        showSignUpButton.classList.remove(
+            "active"
+        );
+
+        hideMessage(authMessage);
+
+    }
+);
+
+
+showSignUpButton.addEventListener(
+    "click",
+    () => {
+
+        signInPanel.hidden = true;
+        signUpPanel.hidden = false;
+
+        showSignUpButton.classList.add(
+            "active"
+        );
+
+        showSignInButton.classList.remove(
+            "active"
+        );
+
+        hideMessage(authMessage);
+
+    }
+);
+
+
+/* ---------------------------------
+   EMAIL SIGN IN
+--------------------------------- */
+
+document.getElementById(
+    "sign-in-form"
+).addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+        hideMessage(authMessage);
+
+
+        const email =
+            document.getElementById(
+                "sign-in-email"
+            ).value.trim();
+
+
+        const password =
+            document.getElementById(
+                "sign-in-password"
+            ).value;
+
+
+        const {
+            error
+        } =
+            await supabase.auth
+                .signInWithPassword({
+                    email,
+                    password
+                });
+
+
+        if (error) {
+
+            showMessage(
+                authMessage,
+                error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            authMessage,
+            "Signed in successfully.",
+            "success"
+        );
+
+    }
+);
+
+
+/* ---------------------------------
+   EMAIL REGISTRATION
+--------------------------------- */
+
+document.getElementById(
+    "sign-up-form"
+).addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+        hideMessage(authMessage);
+
+
+        const firstName =
+            document.getElementById(
+                "register-first-name"
+            ).value.trim();
+
+
+        const lastName =
+            document.getElementById(
+                "register-last-name"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "register-email"
+            ).value.trim();
+
+
+        const password =
+            document.getElementById(
+                "register-password"
+            ).value;
+
+
+        const confirmPassword =
+            document.getElementById(
+                "register-password-confirm"
+            ).value;
+
+
+        if (
+            password !== confirmPassword
+        ) {
+
+            showMessage(
+                authMessage,
+                "The passwords do not match.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const {
+            data,
+            error
+        } =
+            await supabase.auth.signUp({
+
+                email,
+                password,
+
+                options: {
+
+                    emailRedirectTo:
+                        ACCOUNT_URL,
+
+                    data: {
+
+                        first_name:
+                            firstName,
+
+                        last_name:
+                            lastName
+
+                    }
+
+                }
+
+            });
+
+
+        if (error) {
+
+            showMessage(
+                authMessage,
+                error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (!data.session) {
+
+            showMessage(
+                authMessage,
+                "Account created. Check your email and verify your address before signing in.",
+                "success"
+            );
+
+        } else {
+
+            showMessage(
+                authMessage,
+                "Account created successfully.",
+                "success"
+            );
+
+        }
+
+    }
+);
+
+
+/* ---------------------------------
+   GOOGLE SIGN IN
+--------------------------------- */
+
+document.getElementById(
+    "google-login-button"
+).addEventListener(
+    "click",
+    async () => {
+
+        hideMessage(authMessage);
+
+
+        const {
+            error
+        } =
+            await supabase.auth
+                .signInWithOAuth({
+
+                    provider: "google",
+
+                    options: {
+
+                        redirectTo:
+                            ACCOUNT_URL
+
+                    }
+
+                });
+
+
+        if (error) {
+
+            showMessage(
+                authMessage,
+                error.message,
+                "error"
+            );
+
+        }
+
+    }
+);
+
+
+/* ---------------------------------
+   FORGOT PASSWORD
+--------------------------------- */
+
+document.getElementById(
+    "forgot-password-button"
+).addEventListener(
+    "click",
+    async () => {
+
+        hideMessage(authMessage);
+
+
+        const email =
+            document.getElementById(
+                "sign-in-email"
+            ).value.trim();
+
+
+        if (!email) {
+
+            showMessage(
+                authMessage,
+                "Enter your email address first, then press Forgot your password.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const {
+            error
+        } =
+            await supabase.auth
+                .resetPasswordForEmail(
+                    email,
+                    {
+                        redirectTo:
+                            ACCOUNT_URL
+                    }
+                );
+
+
+        if (error) {
+
+            showMessage(
+                authMessage,
+                error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            authMessage,
+            "Password reset email sent. Check your inbox.",
+            "success"
+        );
+
+    }
+);
+
+
+/* ---------------------------------
+   PASSWORD RECOVERY
+--------------------------------- */
+
+document.getElementById(
+    "recovery-form"
+).addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+        hideMessage(recoveryMessage);
+
+
+        const password =
+            document.getElementById(
+                "new-password"
+            ).value;
+
+
+        const confirmPassword =
+            document.getElementById(
+                "new-password-confirm"
+            ).value;
+
+
+        if (
+            password !== confirmPassword
+        ) {
+
+            showMessage(
+                recoveryMessage,
+                "The passwords do not match.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const {
+            error
+        } =
+            await supabase.auth
+                .updateUser({
+                    password
+                });
+
+
+        if (error) {
+
+            showMessage(
+                recoveryMessage,
+                error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            recoveryMessage,
+            "Password updated successfully.",
+            "success"
+        );
+
+
+        recoveryMode = false;
+
+
+        setTimeout(
+            async () => {
+
+                const {
+                    data: {
+                        user
+                    }
+                } =
+                    await supabase.auth
+                        .getUser();
+
+
+                if (user) {
+
+                    await showSignedIn(
+                        user
+                    );
+
+                } else {
+
+                    showSignedOut();
+
+                }
+
+            },
+            900
+        );
+
+    }
+);
+
+
+/* ---------------------------------
+   SAVE CUSTOMER PROFILE
+--------------------------------- */
+
+document.getElementById(
+    "profile-form"
+).addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+        hideMessage(profileMessage);
+
+
+        const {
+            data: {
+                user
+            },
+            error: userError
+        } =
+            await supabase.auth
+                .getUser();
+
+
+        if (
+            userError ||
+            !user
+        ) {
+
+            showMessage(
+                profileMessage,
+                "Your session has expired. Please sign in again.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const firstName =
+            document.getElementById(
+                "profile-first-name"
+            ).value.trim();
+
+
+        const lastName =
+            document.getElementById(
+                "profile-last-name"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "profile-phone"
+            ).value.trim();
+
+
+        const {
+            error
+        } =
+            await supabase
+                .from("profiles")
+                .update({
+
+                    first_name:
+                        firstName || null,
+
+                    last_name:
+                        lastName || null,
+
+                    phone:
+                        phone || null
+
+                })
+                .eq(
+                    "id",
+                    user.id
+                );
+
+
+        if (error) {
+
+            showMessage(
+                profileMessage,
+                error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            profileMessage,
+            "Profile saved.",
+            "success"
+        );
+
+    }
+);
+
+
+/* ---------------------------------
+   SEND PASSWORD RESET
+--------------------------------- */
+
+document.getElementById(
+    "send-reset-button"
+).addEventListener(
+    "click",
+    async () => {
+
+        hideMessage(securityMessage);
+
+
+        const {
+            data: {
+                user
             }
-        ).format(value);
-
-    };
-
-
-    const customerName =
-        [
-            order.customer?.firstName,
-            order.customer?.lastName
-        ]
-            .filter(Boolean)
-            .join(" ") || "—";
+        } =
+            await supabase.auth
+                .getUser();
 
 
-    const itemCount =
-        order.items.reduce(
-            (total, item) =>
-                total + Number(item.quantity || 0),
-            0
+        if (!user?.email) {
+
+            showMessage(
+                securityMessage,
+                "No email address was found for this account.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const {
+            error
+        } =
+            await supabase.auth
+                .resetPasswordForEmail(
+                    user.email,
+                    {
+                        redirectTo:
+                            ACCOUNT_URL
+                    }
+                );
+
+
+        if (error) {
+
+            showMessage(
+                securityMessage,
+                error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            securityMessage,
+            "Password reset email sent.",
+            "success"
         );
 
+    }
+);
 
-    const total =
-        order.items.reduce(
-            (sum, item) =>
-                sum +
-                (
-                    Number(item.price || 0) *
-                    Number(item.quantity || 0)
-                ),
-            0
+
+/* ---------------------------------
+   SIGN OUT
+--------------------------------- */
+
+document.getElementById(
+    "sign-out-button"
+).addEventListener(
+    "click",
+    async () => {
+
+        hideMessage(securityMessage);
+
+
+        const {
+            error
+        } =
+            await supabase.auth
+                .signOut();
+
+
+        if (error) {
+
+            showMessage(
+                securityMessage,
+                error.message,
+                "error"
+            );
+
+        }
+
+    }
+);
+
+
+/* ---------------------------------
+   AUTH STATE CHANGES
+--------------------------------- */
+
+supabase.auth.onAuthStateChange(
+    (
+        event,
+        session
+    ) => {
+
+        /*
+            PASSWORD_RECOVERY needs its own screen.
+        */
+
+        if (
+            event ===
+            "PASSWORD_RECOVERY"
+        ) {
+
+            showRecovery();
+
+            return;
+
+        }
+
+
+        if (
+            event ===
+            "SIGNED_OUT"
+        ) {
+
+            recoveryMode = false;
+
+            showSignedOut();
+
+            return;
+
+        }
+
+
+        /*
+            Run the profile-loading code just after
+            Supabase finishes the auth event itself.
+        */
+
+        if (
+            session?.user &&
+            !recoveryMode
+        ) {
+
+            setTimeout(
+                () => {
+
+                    showSignedIn(
+                        session.user
+                    );
+
+                },
+                0
+            );
+
+        }
+
+    }
+);
+
+
+/* ---------------------------------
+   INITIAL PAGE LOAD
+--------------------------------- */
+
+async function initialiseAccount() {
+
+    const {
+        data: {
+            session
+        },
+        error
+    } =
+        await supabase.auth
+            .getSession();
+
+
+    if (error) {
+
+        console.error(
+            "Session error:",
+            error
         );
 
+        showSignedOut();
 
-    document.getElementById(
-        "recent-order-reference"
-    ).textContent =
-        order.id || "Recent order";
+        return;
 
-
-    document.getElementById(
-        "recent-order-name"
-    ).textContent =
-        customerName;
+    }
 
 
-    document.getElementById(
-        "recent-order-fulfilment"
-    ).textContent =
-        order.fulfilment === "delivery"
-            ? "Local delivery"
-            : "Local collection";
+    if (
+        session?.user &&
+        !recoveryMode
+    ) {
+
+        await showSignedIn(
+            session.user
+        );
+
+    } else if (
+        !recoveryMode
+    ) {
+
+        showSignedOut();
+
+    }
+
+}
 
 
-    document.getElementById(
-        "recent-order-items"
-    ).textContent =
-        `${itemCount} item${itemCount === 1 ? "" : "s"}`;
-
-
-    document.getElementById(
-        "recent-order-total"
-    ).textContent =
-        formatPrice(total);
-
-});
+await initialiseAccount();
 
 </script>
-
 
 </body>
 
 </html>
+
