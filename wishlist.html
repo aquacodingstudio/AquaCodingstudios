@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Wishlist | AquaCoding Studios"
+        content="View and manage your AquaCoding Studios wishlist."
     >
 
     <meta
@@ -41,7 +41,35 @@
         }
 
         .wishlist-hero {
-            padding: 72px 0 48px;
+            padding: 72px 0 42px;
+        }
+
+        .wishlist-sync {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 16px 18px;
+            margin-bottom: 26px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .wishlist-sync p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .wishlist-sync strong {
+            color: var(--text);
+        }
+
+        .wishlist-sync a {
+            color: var(--accent);
+            font-weight: 800;
+            text-decoration: none;
         }
 
         .wishlist-grid {
@@ -63,9 +91,14 @@
         .wishlist-image {
             width: 100%;
             aspect-ratio: 4 / 3;
+            display: grid;
+            place-items: center;
             overflow: hidden;
             border-radius: 16px;
             background: rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+            text-align: center;
+            padding: 16px;
         }
 
         .wishlist-image img {
@@ -90,6 +123,12 @@
             margin: 0;
             color: var(--accent);
             font-weight: 800;
+        }
+
+        .wishlist-status {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
         }
 
         .wishlist-actions {
@@ -126,7 +165,13 @@
             color: #ff8c8c;
         }
 
-        .empty-wishlist {
+        .wishlist-button:disabled {
+            cursor: wait;
+            opacity: 0.6;
+        }
+
+        .empty-wishlist,
+        .wishlist-loading {
             padding: 42px 24px;
             margin-bottom: 84px;
             text-align: center;
@@ -136,7 +181,8 @@
             box-shadow: var(--shadow);
         }
 
-        .empty-wishlist p {
+        .empty-wishlist p,
+        .wishlist-loading p {
             color: var(--muted);
         }
 
@@ -164,6 +210,10 @@
         .cart-count[hidden],
         .wishlist-count[hidden] {
             display: none;
+        }
+
+        [hidden] {
+            display: none !important;
         }
 
         @media (min-width: 700px) {
@@ -223,15 +273,25 @@
         aria-label="Main navigation"
     >
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="shop.html">Shop</a>
+        <a href="shop.html">
+            Shop
+        </a>
 
-        <a href="guides.html">Learn</a>
+        <a href="guides.html">
+            Learn
+        </a>
 
-        <a href="about.html">About</a>
+        <a href="about.html">
+            About
+        </a>
 
-        <a href="contact.html">Contact</a>
+        <a href="contact.html">
+            Contact
+        </a>
 
         <a
             href="wishlist.html"
@@ -239,6 +299,7 @@
             aria-current="page"
         >
             Wishlist
+
             <span
                 class="wishlist-count"
                 hidden
@@ -259,6 +320,7 @@
             class="nav-utility"
         >
             Cart
+
             <span
                 class="cart-count"
                 hidden
@@ -274,6 +336,7 @@
 
 <main class="wishlist-page">
 
+
     <section class="wishlist-hero">
 
         <p class="eyebrow">
@@ -286,7 +349,42 @@
         </h1>
 
         <p class="hero-text">
-            Save products you're interested in and come back to them later.
+            Keep track of livestock, plants and products you're interested in.
+        </p>
+
+    </section>
+
+
+    <section
+        id="wishlist-sync"
+        class="wishlist-sync"
+        hidden
+    >
+
+        <p id="wishlist-sync-message"></p>
+
+        <a
+            id="wishlist-account-link"
+            href="account.html"
+            hidden
+        >
+            Sign In
+        </a>
+
+    </section>
+
+
+    <section
+        id="wishlist-loading"
+        class="wishlist-loading"
+    >
+
+        <h2>
+            Loading your wishlist…
+        </h2>
+
+        <p>
+            Checking your saved products.
         </p>
 
     </section>
@@ -295,6 +393,7 @@
     <section
         id="wishlist-grid"
         class="wishlist-grid"
+        hidden
     ></section>
 
 
@@ -320,6 +419,7 @@
         </a>
 
     </section>
+
 
 </main>
 
@@ -365,321 +465,560 @@
 </footer>
 
 
-<script src="script.js?v=20"></script>
+<script src="script.js?v=21"></script>
+
 
 <script>
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    const WISHLIST_KEY =
-        "aquacodingWishlist";
-
-    const wishlistGrid =
-        document.getElementById(
-            "wishlist-grid"
-        );
-
-    const emptyWishlist =
-        document.getElementById(
-            "empty-wishlist"
-        );
-
-
-    function getWishlist() {
-
-        try {
-
-            const saved =
-                localStorage.getItem(
-                    WISHLIST_KEY
-                );
-
-            return saved
-                ? JSON.parse(saved)
-                : [];
-
-        } catch (error) {
-
-            console.error(
-                "Could not load wishlist:",
-                error
+        const wishlistGrid =
+            document.getElementById(
+                "wishlist-grid"
             );
 
-            return [];
-        }
+        const emptyWishlist =
+            document.getElementById(
+                "empty-wishlist"
+            );
 
-    }
+        const loadingWishlist =
+            document.getElementById(
+                "wishlist-loading"
+            );
+
+        const syncPanel =
+            document.getElementById(
+                "wishlist-sync"
+            );
+
+        const syncMessage =
+            document.getElementById(
+                "wishlist-sync-message"
+            );
+
+        const accountLink =
+            document.getElementById(
+                "wishlist-account-link"
+            );
 
 
-    function saveWishlist(items) {
+        function addToCart(
+            item,
+            button
+        ) {
 
-        localStorage.setItem(
-            WISHLIST_KEY,
-            JSON.stringify(items)
-        );
+            if (
+                !window.AquaCart ||
+                typeof window.AquaCart
+                    .addToCart !== "function"
+            ) {
 
-        updateWishlistCount();
+                console.error(
+                    "Cart system is unavailable."
+                );
 
-    }
+                return;
+
+            }
 
 
-    function updateWishlistCount() {
+            window.AquaCart.addToCart({
 
-        const count =
-            getWishlist().length;
+                id:
+                    item.id,
 
-        document
-            .querySelectorAll(
-                ".wishlist-count"
-            )
-            .forEach((element) => {
+                name:
+                    item.name,
 
-                element.textContent =
-                    count;
+                price:
+                    Number(
+                        item.price || 0
+                    ),
 
-                element.hidden =
-                    count === 0;
+                image:
+                    item.image || "",
+
+                url:
+                    item.url || "",
+
+                quantity:
+                    1
 
             });
 
-    }
+
+            const originalText =
+                button.textContent;
 
 
-    function removeFromWishlist(id) {
+            button.textContent =
+                "Added ✓";
 
-        const items =
-            getWishlist().filter(
-                (item) =>
-                    item.id !== id
+
+            setTimeout(
+                () => {
+
+                    button.textContent =
+                        originalText;
+
+                },
+                1200
             );
 
-        saveWishlist(items);
-
-        renderWishlist();
-
-    }
+        }
 
 
-    function addWishlistItemToCart(item) {
-
-        if (
-            !window.AquaCart ||
-            typeof window.AquaCart.addToCart
-                !== "function"
+        function createWishlistCard(
+            item
         ) {
-
-            return;
-        }
-
-
-        window.AquaCart.addToCart({
-
-            id: item.id,
-
-            name: item.name,
-
-            price:
-                Number(item.price || 0),
-
-            image:
-                item.image || "",
-
-            quantity: 1
-
-        });
-
-    }
-
-
-    function renderWishlist() {
-
-        const items =
-            getWishlist();
-
-
-        wishlistGrid.innerHTML = "";
-
-
-        if (items.length === 0) {
-
-            emptyWishlist.hidden =
-                false;
-
-            wishlistGrid.hidden =
-                true;
-
-            updateWishlistCount();
-
-            return;
-
-        }
-
-
-        emptyWishlist.hidden =
-            true;
-
-        wishlistGrid.hidden =
-            false;
-
-
-        items.forEach((item) => {
 
             const article =
                 document.createElement(
                     "article"
                 );
 
+
             article.className =
                 "wishlist-card";
 
 
-            article.innerHTML = `
-
-                <div class="wishlist-image">
-
-                    ${
-                        item.image
-                            ? `
-                                <img
-                                    src="${item.image}"
-                                    alt="${item.name}"
-                                >
-                            `
-                            : ""
-                    }
-
-                </div>
-
-
-                <div class="wishlist-content">
-
-                    <h2>
-                        ${item.name}
-                    </h2>
-
-                    ${
-                        item.price
-                            ? `
-                                <p class="wishlist-price">
-                                    €${Number(item.price).toFixed(2)}
-                                </p>
-                            `
-                            : ""
-                    }
-
-                    <div class="wishlist-actions">
-
-                        <a
-                            class="wishlist-button primary"
-                            href="${item.url || "shop.html"}"
-                        >
-                            View Product
-                        </a>
-
-                        ${
-                            item.available
-                                ? `
-                                    <button
-                                        class="wishlist-button add-wishlist-cart"
-                                        type="button"
-                                    >
-                                        Add to Cart
-                                    </button>
-                                `
-                                : ""
-                        }
-
-                        <button
-                            class="wishlist-button remove remove-wishlist-item"
-                            type="button"
-                        >
-                            Remove
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-
-            const removeButton =
-                article.querySelector(
-                    ".remove-wishlist-item"
+            const imageBox =
+                document.createElement(
+                    "div"
                 );
 
 
-            removeButton.addEventListener(
-                "click",
-                () => {
+            imageBox.className =
+                "wishlist-image";
 
-                    removeFromWishlist(
-                        item.id
+
+            if (item.image) {
+
+                const image =
+                    document.createElement(
+                        "img"
                     );
 
-                }
-            );
+
+                image.src =
+                    item.image;
 
 
-            const addButton =
-                article.querySelector(
-                    ".add-wishlist-cart"
+                image.alt =
+                    item.name;
+
+
+                image.loading =
+                    "lazy";
+
+
+                imageBox.appendChild(
+                    image
                 );
 
+            } else {
 
-            if (addButton) {
-
-                addButton.addEventListener(
-                    "click",
-                    () => {
-
-                        addWishlistItemToCart(
-                            item
-                        );
-
-                        addButton.textContent =
-                            "Added ✓";
+                const placeholder =
+                    document.createElement(
+                        "span"
+                    );
 
 
-                        setTimeout(() => {
+                placeholder.textContent =
+                    item.name;
 
-                            addButton.textContent =
-                                "Add to Cart";
 
-                        }, 1200);
-
-                    }
+                imageBox.appendChild(
+                    placeholder
                 );
 
             }
 
 
-            wishlistGrid.appendChild(
-                article
+            const content =
+                document.createElement(
+                    "div"
+                );
+
+
+            content.className =
+                "wishlist-content";
+
+
+            const title =
+                document.createElement(
+                    "h2"
+                );
+
+
+            title.textContent =
+                item.name;
+
+
+            content.appendChild(
+                title
             );
 
-        });
+
+            if (
+                Number(
+                    item.price || 0
+                ) > 0
+            ) {
+
+                const price =
+                    document.createElement(
+                        "p"
+                    );
 
 
-        updateWishlistCount();
+                price.className =
+                    "wishlist-price";
+
+
+                price.textContent =
+                    new Intl.NumberFormat(
+                        "en-MT",
+                        {
+                            style:
+                                "currency",
+
+                            currency:
+                                "EUR"
+                        }
+                    ).format(
+                        Number(
+                            item.price
+                        )
+                    );
+
+
+                content.appendChild(
+                    price
+                );
+
+            }
+
+
+            if (!item.available) {
+
+                const status =
+                    document.createElement(
+                        "p"
+                    );
+
+
+                status.className =
+                    "wishlist-status";
+
+
+                status.textContent =
+                    "Currently unavailable";
+
+
+                content.appendChild(
+                    status
+                );
+
+            }
+
+
+            const actions =
+                document.createElement(
+                    "div"
+                );
+
+
+            actions.className =
+                "wishlist-actions";
+
+
+            const productLink =
+                document.createElement(
+                    "a"
+                );
+
+
+            productLink.className =
+                "wishlist-button primary";
+
+
+            productLink.href =
+                item.url || "shop.html";
+
+
+            productLink.textContent =
+                "View Product";
+
+
+            actions.appendChild(
+                productLink
+            );
+
+
+            if (item.available) {
+
+                const cartButton =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                cartButton.className =
+                    "wishlist-button";
+
+
+                cartButton.type =
+                    "button";
+
+
+                cartButton.textContent =
+                    "Add to Cart";
+
+
+                cartButton.addEventListener(
+                    "click",
+                    () => {
+
+                        addToCart(
+                            item,
+                            cartButton
+                        );
+
+                    }
+                );
+
+
+                actions.appendChild(
+                    cartButton
+                );
+
+            }
+
+
+            const removeButton =
+                document.createElement(
+                    "button"
+                );
+
+
+            removeButton.className =
+                "wishlist-button remove";
+
+
+            removeButton.type =
+                "button";
+
+
+            removeButton.textContent =
+                "Remove";
+
+
+            removeButton.addEventListener(
+                "click",
+                async () => {
+
+                    if (
+                        !window.AquaWishlist
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    removeButton.disabled =
+                        true;
+
+
+                    const removed =
+                        await window
+                            .AquaWishlist
+                            .removeFromWishlist(
+                                item.id
+                            );
+
+
+                    if (!removed) {
+
+                        removeButton.disabled =
+                            false;
+
+                    }
+
+                }
+            );
+
+
+            actions.appendChild(
+                removeButton
+            );
+
+
+            content.appendChild(
+                actions
+            );
+
+
+            article.appendChild(
+                imageBox
+            );
+
+
+            article.appendChild(
+                content
+            );
+
+
+            return article;
+
+        }
+
+
+        function updateSyncMessage(
+            user
+        ) {
+
+            syncPanel.hidden =
+                false;
+
+
+            if (user) {
+
+                syncMessage.innerHTML =
+                    "<strong>Synced to your account.</strong> Your saved products follow you across devices.";
+
+
+                accountLink.hidden =
+                    true;
+
+            } else {
+
+                syncMessage.innerHTML =
+                    "<strong>Saved on this device.</strong> Sign in to keep your wishlist across devices.";
+
+
+                accountLink.hidden =
+                    false;
+
+            }
+
+        }
+
+
+        function renderWishlist(
+            items,
+            user
+        ) {
+
+            loadingWishlist.hidden =
+                true;
+
+
+            wishlistGrid.innerHTML =
+                "";
+
+
+            updateSyncMessage(
+                user
+            );
+
+
+            if (
+                !Array.isArray(items) ||
+                items.length === 0
+            ) {
+
+                wishlistGrid.hidden =
+                    true;
+
+
+                emptyWishlist.hidden =
+                    false;
+
+
+                return;
+
+            }
+
+
+            emptyWishlist.hidden =
+                true;
+
+
+            wishlistGrid.hidden =
+                false;
+
+
+            items.forEach(
+                (item) => {
+
+                    wishlistGrid.appendChild(
+                        createWishlistCard(
+                            item
+                        )
+                    );
+
+                }
+            );
+
+        }
+
+
+        document.addEventListener(
+            "aquacoding:wishlist-ready",
+            (event) => {
+
+                renderWishlist(
+                    event.detail?.items || [],
+                    event.detail?.user || null
+                );
+
+            }
+        );
+
+
+        document.addEventListener(
+            "aquacoding:wishlist-updated",
+            (event) => {
+
+                renderWishlist(
+                    event.detail?.items || [],
+                    event.detail?.user || null
+                );
+
+            }
+        );
+
+
+        /*
+            If the shared wishlist finished
+            loading before this listener ran,
+            render it immediately.
+        */
+
+        if (
+            window.AquaWishlist &&
+            window.AquaWishlist.isReady()
+        ) {
+
+            renderWishlist(
+
+                window.AquaWishlist
+                    .getWishlist(),
+
+                window.AquaWishlist
+                    .getCurrentUser()
+
+            );
+
+        }
 
     }
-
-
-    window.AquaWishlist = {
-
-        getWishlist,
-
-        saveWishlist,
-
-        removeFromWishlist
-
-    };
-
-
-    renderWishlist();
-
-});
+);
 
 </script>
 
