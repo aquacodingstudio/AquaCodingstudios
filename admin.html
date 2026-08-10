@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AquaCoding Studios administration dashboard."
+    >
+
+    <meta
+        name="theme-color"
+        content="#04131d"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>Admin | AquaCoding Studios</title>
+
+    <link
+        rel="icon"
+        href="favicon.svg"
+        type="image/svg+xml"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20"
+    >
+
+    <style>
+
+        .admin-page {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .admin-hero {
+            padding: 72px 0 46px;
+        }
+
+        .admin-shell {
+            padding-bottom: 84px;
+        }
+
+        .admin-card {
+            padding: 24px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .admin-card h2,
+        .admin-card h3 {
+            margin-top: 0;
+        }
+
+        .admin-card p {
+            color: var(--muted);
+        }
+
+        .admin-loading,
+        .admin-access {
+            max-width: 680px;
+            padding: 36px 28px;
+        }
+
+        .admin-status {
+            display: inline-flex;
+            width: fit-content;
+            padding: 8px 12px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(110, 217, 234, 0.3);
+            border-radius: 999px;
+            background: rgba(110, 217, 234, 0.09);
+            color: var(--accent);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .admin-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .admin-toolbar h2 {
+            margin: 0;
+        }
+
+        .admin-button {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            font: inherit;
+            font-weight: 800;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .admin-button.primary {
+            border-color: rgba(110, 217, 234, 0.45);
+            background: rgba(110, 217, 234, 0.12);
+            color: var(--accent);
+        }
+
+        .admin-button:disabled {
+            cursor: wait;
+            opacity: 0.6;
+        }
+
+        .admin-stats {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .admin-stat {
+            padding: 22px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .admin-stat span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .admin-stat strong {
+            display: block;
+            margin-top: 8px;
+            color: var(--text);
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+        }
+
+        .demand-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .demand-row {
+            display: grid;
+            gap: 14px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .demand-info h3 {
+            margin: 0 0 6px;
+            font-size: 1.05rem;
+        }
+
+        .demand-info p {
+            margin: 0;
+        }
+
+        .demand-count {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demand-count strong {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
+        .demand-count span {
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .demand-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .admin-empty {
+            padding: 28px;
+            text-align: center;
+            border: 1px dashed var(--border);
+            border-radius: 16px;
+        }
+
+        .admin-message {
+            margin-top: 18px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255, 100, 100, 0.35);
+            border-radius: 12px;
+            background: rgba(255, 100, 100, 0.08);
+            color: #ffb1b1;
+        }
+
+        .nav-utility {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cart-count,
+        .wishlist-count {
+            min-width: 20px;
+            height: 20px;
+            display: inline-grid;
+            place-items: center;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #04131d;
+            font-size: 0.72rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .cart-count[hidden],
+        .wishlist-count[hidden],
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (min-width: 700px) {
+
+            .admin-stats {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+            .demand-row {
+                grid-template-columns:
+                    minmax(0, 1fr) auto auto;
+
+                align-items: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <a
+        class="brand"
+        href="index.html"
+        aria-label="AquaCoding Studios homepage"
+    >
+
+        <img
+            src="logo-dark.png"
+            alt="AquaCoding Studios"
+            class="site-logo"
+        >
+
+    </a>
+
+
+    <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+
+    <nav
+        class="main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="guides.html">Learn</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a
+            href="wishlist.html"
+            class="nav-utility"
+        >
+            Wishlist
+
+            <span
+                class="wishlist-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+        <a
+            href="account.html"
+            class="nav-utility"
+        >
+            Account
+        </a>
+
+        <a
+            href="cart.html"
+            class="nav-utility"
+        >
+            Cart
+
+            <span
+                class="cart-count"
+                hidden
+            >
+                0
+            </span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="admin-page">
+
+    <section class="admin-hero">
+
+        <p class="eyebrow">
+            AquaCoding Studios
+        </p>
+
+        <h1>
+            Admin
+            <span>Dashboard.</span>
+        </h1>
+
+        <p class="hero-text">
+            Monitor customer interest and product demand.
+        </p>
+
+    </section>
+
+
+    <section class="admin-shell">
+
+        <article
+            id="admin-loading"
+            class="admin-card admin-loading"
+        >
+
+            <h2>
+                Checking admin access…
+            </h2>
+
+            <p>
+                Verifying your AquaCoding Studios account.
+            </p>
+
+        </article>
+
+
+        <article
+            id="admin-signed-out"
+            class="admin-card admin-access"
+            hidden
+        >
+
+            <h2>
+                Sign in required.
+            </h2>
+
+            <p>
+                Sign in with your authorised AquaCoding Studios
+                administrator account to continue.
+            </p>
+
+            <a
+                class="admin-button primary"
+                href="account.html"
+            >
+                Go to Account
+            </a>
+
+        </article>
+
+
+        <article
+            id="admin-denied"
+            class="admin-card admin-access"
+            hidden
+        >
+
+            <h2>
+                Access denied.
+            </h2>
+
+            <p>
+                This account does not have administrator access.
+            </p>
+
+            <a
+                class="admin-button"
+                href="index.html"
+            >
+                Return Home
+            </a>
+
+        </article>
+        <div
+            id="admin-dashboard"
+            hidden
+        >
+
+            <div class="admin-toolbar">
+
+                <div>
+
+                    <span class="admin-status">
+                        Administrator
+                    </span>
+
+                    <h2>
+                        Wishlist Demand
+                    </h2>
+
+                </div>
+
+                <button
+                    id="refresh-admin"
+                    class="admin-button"
+                    type="button"
+                >
+                    Refresh Data
+                </button>
+
+            </div>
+
+
+            <div class="admin-stats">
+
+                <article class="admin-stat">
+
+                    <span>
+                        Total Wishlist Saves
+                    </span>
+
+                    <strong id="stat-total-saves">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat">
+
+                    <span>
+                        Interested Customers
+                    </span>
+
+                    <strong id="stat-customers">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="admin-stat">
+
+                    <span>
+                        Products Watched
+                    </span>
+
+                    <strong id="stat-products">
+                        0
+                    </strong>
+
+                </article>
+
+            </div>
+
+
+            <article class="admin-card">
+
+                <div class="admin-toolbar">
+
+                    <div>
+
+                        <p class="section-label">
+                            Customer Interest
+                        </p>
+
+                        <h2>
+                            Most Wanted Products
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="demand-list"
+                    class="demand-list"
+                ></div>
+
+
+                <div
+                    id="admin-empty"
+                    class="admin-empty"
+                    hidden
+                >
+
+                    <h3>
+                        No wishlist activity yet.
+                    </h3>
+
+                    <p>
+                        Products saved by signed-in customers will appear here.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="admin-message"
+                    class="admin-message"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <strong>
+            AquaCoding Studios
+        </strong>
+
+        <p>
+            Aquatic livestock, plants, supplies and practical care.
+        </p>
+
+        <p class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            ·
+
+            <a href="terms-and-conditions.html">
+                Terms &amp; Conditions
+            </a>
+
+            ·
+
+            <a href="shipping-and-returns.html">
+                Shipping &amp; Returns
+            </a>
+
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 AquaCoding Studios · Malta
+    </p>
+
+</footer>
+
+
+<script src="script.js?v=21"></script>
+<script type="module">
+
+import { supabase } from "./supabase-client.js";
+
+
+const adminLoading =
+    document.getElementById(
+        "admin-loading"
+    );
+
+const adminSignedOut =
+    document.getElementById(
+        "admin-signed-out"
+    );
+
+const adminDenied =
+    document.getElementById(
+        "admin-denied"
+    );
+
+const adminDashboard =
+    document.getElementById(
+        "admin-dashboard"
+    );
+
+const demandList =
+    document.getElementById(
+        "demand-list"
+    );
+
+const adminEmpty =
+    document.getElementById(
+        "admin-empty"
+    );
+
+const adminMessage =
+    document.getElementById(
+        "admin-message"
+    );
+
+const refreshButton =
+    document.getElementById(
+        "refresh-admin"
+    );
+
+
+const totalSavesElement =
+    document.getElementById(
+        "stat-total-saves"
+    );
+
+const customersElement =
+    document.getElementById(
+        "stat-customers"
+    );
+
+const productsElement =
+    document.getElementById(
+        "stat-products"
+    );
+
+
+let adminVerified = false;
+
+
+/* =========================
+   VIEW HELPERS
+========================= */
+
+function hideAllViews() {
+
+    adminLoading.hidden =
+        true;
+
+    adminSignedOut.hidden =
+        true;
+
+    adminDenied.hidden =
+        true;
+
+    adminDashboard.hidden =
+        true;
+
+}
+
+
+function showLoading() {
+
+    hideAllViews();
+
+    adminLoading.hidden =
+        false;
+
+}
+
+
+function showSignedOut() {
+
+    adminVerified =
+        false;
+
+    hideAllViews();
+
+    adminSignedOut.hidden =
+        false;
+
+}
+
+
+function showDenied() {
+
+    adminVerified =
+        false;
+
+    hideAllViews();
+
+    adminDenied.hidden =
+        false;
+
+}
+
+
+function showDashboard() {
+
+    adminVerified =
+        true;
+
+    hideAllViews();
+
+    adminDashboard.hidden =
+        false;
+
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+function showError(
+    message
+) {
+
+    adminMessage.textContent =
+        message;
+
+    adminMessage.hidden =
+        false;
+
+}
+
+
+function clearError() {
+
+    adminMessage.textContent =
+        "";
+
+    adminMessage.hidden =
+        true;
+
+}
+
+
+/* =========================
+   RENDER DEMAND DATA
+========================= */
+
+function renderDemand(
+    rows
+) {
+
+    demandList.innerHTML =
+        "";
+
+    clearError();
+
+
+    const wishlistRows =
+        Array.isArray(rows)
+            ? rows
+            : [];
+
+
+    /* -------------------------
+       TOTAL SAVES
+    ------------------------- */
+
+    totalSavesElement.textContent =
+        wishlistRows.length;
+
+
+    /* -------------------------
+       UNIQUE CUSTOMERS
+    ------------------------- */
+
+    const customerIds =
+        new Set();
+
+
+    wishlistRows.forEach(
+        (row) => {
+
+            if (row.user_id) {
+
+                customerIds.add(
+                    row.user_id
+                );
+
+            }
+
+        }
+    );
+
+
+    customersElement.textContent =
+        customerIds.size;
+
+
+    /* -------------------------
+       GROUP BY PRODUCT
+    ------------------------- */
+
+    const products =
+        new Map();
+
+
+    wishlistRows.forEach(
+        (row) => {
+
+            const productId =
+                row.product_id;
+
+
+            if (!productId) {
+                return;
+            }
+
+
+            if (
+                !products.has(
+                    productId
+                )
+            ) {
+
+                products.set(
+                    productId,
+                    {
+
+                        id:
+                            productId,
+
+                        name:
+                            row.product_name
+                            || productId,
+
+                        url:
+                            row.product_url
+                            || "",
+
+                        customers:
+                            new Set(),
+
+                        latestSave:
+                            row.created_at
+                            || null
+
+                    }
+                );
+
+            }
+
+
+            const product =
+                products.get(
+                    productId
+                );
+
+
+            if (row.user_id) {
+
+                product.customers.add(
+                    row.user_id
+                );
+
+            }
+
+
+            /*
+                Keep a usable product URL
+                if one row has it.
+            */
+
+            if (
+                !product.url &&
+                row.product_url
+            ) {
+
+                product.url =
+                    row.product_url;
+
+            }
+
+
+            /*
+                Keep the newest save date.
+            */
+
+            if (
+                row.created_at &&
+                (
+                    !product.latestSave ||
+                    new Date(
+                        row.created_at
+                    ) >
+                    new Date(
+                        product.latestSave
+                    )
+                )
+            ) {
+
+                product.latestSave =
+                    row.created_at;
+
+            }
+
+        }
+    );
+
+
+    const rankedProducts =
+        Array.from(
+            products.values()
+        )
+            .map(
+                (product) => ({
+
+                    ...product,
+
+                    interestCount:
+                        product.customers
+                            .size
+
+                })
+            )
+            .sort(
+                (a, b) => {
+
+                    if (
+                        b.interestCount !==
+                        a.interestCount
+                    ) {
+
+                        return (
+                            b.interestCount -
+                            a.interestCount
+                        );
+
+                    }
+
+
+                    return a.name
+                        .localeCompare(
+                            b.name
+                        );
+
+                }
+            );
+
+
+    productsElement.textContent =
+        rankedProducts.length;
+
+
+    /* -------------------------
+       EMPTY STATE
+    ------------------------- */
+
+    if (
+        rankedProducts.length === 0
+    ) {
+
+        adminEmpty.hidden =
+            false;
+
+        return;
+
+    }
+
+
+    adminEmpty.hidden =
+        true;
+
+
+    /* -------------------------
+       PRODUCT ROWS
+    ------------------------- */
+
+    rankedProducts.forEach(
+        (
+            product,
+            index
+        ) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "demand-row";
+
+
+            /* PRODUCT INFO */
+
+            const info =
+                document.createElement(
+                    "div"
+                );
+
+
+            info.className =
+                "demand-info";
+
+
+            const title =
+                document.createElement(
+                    "h3"
+                );
+
+
+            title.textContent =
+                `${index + 1}. ${product.name}`;
+
+
+            const description =
+                document.createElement(
+                    "p"
+                );
+
+
+            description.textContent =
+                product.interestCount === 1
+                    ? "1 customer has saved this product."
+                    : `${product.interestCount} customers have saved this product.`;
+
+
+            info.appendChild(
+                title
+            );
+
+
+            info.appendChild(
+                description
+            );
+
+
+            /* DEMAND COUNT */
+
+            const count =
+                document.createElement(
+                    "div"
+                );
+
+
+            count.className =
+                "demand-count";
+
+
+            const countNumber =
+                document.createElement(
+                    "strong"
+                );
+
+
+            countNumber.textContent =
+                product.interestCount;
+
+
+            const countLabel =
+                document.createElement(
+                    "span"
+                );
+
+
+            countLabel.textContent =
+                product.interestCount === 1
+                    ? "interested customer"
+                    : "interested customers";
+
+
+            count.appendChild(
+                countNumber
+            );
+
+
+            count.appendChild(
+                countLabel
+            );
+
+
+            /* ACTIONS */
+
+            const actions =
+                document.createElement(
+                    "div"
+                );
+
+
+            actions.className =
+                "demand-actions";
+
+
+            if (product.url) {
+
+                const productLink =
+                    document.createElement(
+                        "a"
+                    );
+
+
+                productLink.className =
+                    "admin-button";
+
+
+                productLink.href =
+                    product.url;
+
+
+                productLink.textContent =
+                    "View Product";
+
+
+                actions.appendChild(
+                    productLink
+                );
+
+            }
+
+
+            row.appendChild(
+                info
+            );
+
+
+            row.appendChild(
+                count
+            );
+
+
+            row.appendChild(
+                actions
+            );
+
+
+            demandList.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   LOAD WISHLIST DATA
+========================= */
+
+async function loadAdminData() {
+
+    if (!adminVerified) {
+        return;
+    }
+
+
+    clearError();
+
+
+    refreshButton.disabled =
+        true;
+
+    refreshButton.textContent =
+        "Refreshing…";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabase
+            .from("wishlists")
+            .select(
+                "user_id, " +
+                "product_id, " +
+                "product_name, " +
+                "product_url, " +
+                "created_at"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending:
+                        false
+                }
+            );
+
+
+    refreshButton.disabled =
+        false;
+
+    refreshButton.textContent =
+        "Refresh Data";
+
+
+    if (error) {
+
+        console.error(
+            "Admin wishlist load error:",
+            error
+        );
+
+
+        showError(
+            "Wishlist data could not be loaded. Please try again."
+        );
+
+
+        return;
+
+    }
+
+
+    renderDemand(
+        data || []
+    );
+
+}
+
+
+/* =========================
+   VERIFY ADMIN ACCOUNT
+========================= */
+
+async function verifyAdmin() {
+
+    showLoading();
+
+
+    /*
+        Ask Supabase Auth for the
+        authenticated user.
+    */
+
+    const {
+        data: {
+            user
+        },
+        error: userError
+    } =
+        await supabase.auth
+            .getUser();
+
+
+    if (
+        userError ||
+        !user
+    ) {
+
+        showSignedOut();
+
+        return;
+
+    }
+
+
+    /*
+        Load this user's protected
+        profile role.
+    */
+
+    const {
+        data: profile,
+        error: profileError
+    } =
+        await supabase
+            .from("profiles")
+            .select("role")
+            .eq(
+                "id",
+                user.id
+            )
+            .maybeSingle();
+
+
+    if (profileError) {
+
+        console.error(
+            "Admin role check error:",
+            profileError
+        );
+
+
+        showDenied();
+
+        return;
+
+    }
+
+
+    if (
+        profile?.role !==
+        "admin"
+    ) {
+
+        showDenied();
+
+        return;
+
+    }
+
+
+    /*
+        The account passed our
+        admin check.
+
+        The database RLS policy
+        still decides what rows
+        this request can actually read.
+    */
+
+    showDashboard();
+
+
+    await loadAdminData();
+
+}
+
+
+/* =========================
+   REFRESH BUTTON
+========================= */
+
+refreshButton.addEventListener(
+    "click",
+    async () => {
+
+        await loadAdminData();
+
+    }
+);
+
+
+/* =========================
+   AUTH STATE CHANGES
+========================= */
+
+supabase.auth
+    .onAuthStateChange(
+        (
+            event,
+            session
+        ) => {
+
+            setTimeout(
+                async () => {
+
+                    if (
+                        event ===
+                        "SIGNED_OUT"
+                    ) {
+
+                        showSignedOut();
+
+                        return;
+
+                    }
+
+
+                    if (
+                        session?.user
+                    ) {
+
+                        await verifyAdmin();
+
+                    }
+
+                },
+                0
+            );
+
+        }
+    );
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+await verifyAdmin();
+
+</script>
+
+
+</body>
+
+</html>
