@@ -1,48 +1,73 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     // =========================
     // CONSTANTS
     // =========================
 
-    const CART_KEY = "aquacodingCart";
-    const WISHLIST_KEY = "aquacodingWishlist";
+    const CART_KEY =
+        "aquacodingCart";
+
+    const WISHLIST_KEY =
+        "aquacodingWishlist";
 
 
     // =========================
     // MOBILE NAVIGATION
     // =========================
 
-    const menuButton = document.querySelector(".menu-button");
-    const navigation = document.querySelector(".main-nav");
+    const menuButton =
+        document.querySelector(
+            ".menu-button"
+        );
 
-    if (menuButton && navigation) {
+    const navigation =
+        document.querySelector(
+            ".main-nav"
+        );
 
-        menuButton.addEventListener("click", () => {
 
-            const isOpen =
-                navigation.classList.toggle("open");
+    if (
+        menuButton &&
+        navigation
+    ) {
 
-            menuButton.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
+        menuButton.addEventListener(
+            "click",
+            () => {
 
-        });
+                const isOpen =
+                    navigation.classList
+                        .toggle("open");
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+            }
+        );
+
 
         navigation
             .querySelectorAll("a")
             .forEach((link) => {
 
-                link.addEventListener("click", () => {
+                link.addEventListener(
+                    "click",
+                    () => {
 
-                    navigation.classList.remove("open");
+                        navigation.classList
+                            .remove("open");
 
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
 
-                });
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
 
             });
 
@@ -61,23 +86,42 @@ document.addEventListener("DOMContentLoaded", () => {
             ".trust-card, .info-card"
         );
 
-    if ("IntersectionObserver" in window) {
+
+    if (
+        "IntersectionObserver"
+        in window
+    ) {
 
         const revealObserver =
             new IntersectionObserver(
-                (entries, observer) => {
+                (
+                    entries,
+                    observer
+                ) => {
 
-                    entries.forEach((entry) => {
+                    entries.forEach(
+                        (entry) => {
 
-                        if (entry.isIntersecting) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                            entry.target.classList.add("visible");
+                                entry.target
+                                    .classList
+                                    .add(
+                                        "visible"
+                                    );
 
-                            observer.unobserve(entry.target);
+
+                                observer
+                                    .unobserve(
+                                        entry.target
+                                    );
+
+                            }
 
                         }
-
-                    });
+                    );
 
                 },
                 {
@@ -85,13 +129,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
-        revealElements.forEach((element) => {
 
-            element.classList.add("reveal");
+        revealElements.forEach(
+            (element) => {
 
-            revealObserver.observe(element);
+                element.classList
+                    .add("reveal");
 
-        });
+
+                revealObserver
+                    .observe(element);
+
+            }
+        );
 
     }
 
@@ -101,73 +151,113 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
 
     const searchInput =
-        document.querySelector(".shop-search-input");
+        document.querySelector(
+            ".shop-search-input"
+        );
+
 
     const filterButtons =
         document.querySelectorAll(
             ".filter-button[data-filter]"
         );
 
-    const products =
-        document.querySelectorAll(".shop-product");
 
-    let activeFilter = "all";
+    const products =
+        document.querySelectorAll(
+            ".shop-product"
+        );
+
+
+    let activeFilter =
+        "all";
 
 
     function updateProducts() {
 
         const searchTerm =
             searchInput
-                ? searchInput.value.trim().toLowerCase()
+                ? searchInput.value
+                    .trim()
+                    .toLowerCase()
                 : "";
 
-        products.forEach((product) => {
 
-            const category =
-                product.dataset.category || "";
+        products.forEach(
+            (product) => {
 
-            const name =
-                (product.dataset.name || "")
-                    .toLowerCase();
+                const category =
+                    product.dataset.category
+                    || "";
 
-            const matchesCategory =
-                activeFilter === "all" ||
-                category === activeFilter;
 
-            const matchesSearch =
-                searchTerm === "" ||
-                name.includes(searchTerm);
+                const name =
+                    (
+                        product.dataset.name
+                        || ""
+                    )
+                        .toLowerCase();
 
-            product.style.display =
-                matchesCategory && matchesSearch
-                    ? ""
-                    : "none";
 
-        });
+                const matchesCategory =
+                    activeFilter === "all" ||
+                    category ===
+                        activeFilter;
+
+
+                const matchesSearch =
+                    searchTerm === "" ||
+                    name.includes(
+                        searchTerm
+                    );
+
+
+                product.style.display =
+                    matchesCategory &&
+                    matchesSearch
+                        ? ""
+                        : "none";
+
+            }
+        );
 
     }
 
 
-    filterButtons.forEach((button) => {
+    filterButtons.forEach(
+        (button) => {
 
-        button.addEventListener("click", () => {
+            button.addEventListener(
+                "click",
+                () => {
 
-            activeFilter =
-                button.dataset.filter || "all";
+                    activeFilter =
+                        button.dataset.filter
+                        || "all";
 
-            filterButtons.forEach((item) => {
 
-                item.classList.remove("active");
+                    filterButtons.forEach(
+                        (item) => {
 
-            });
+                            item.classList
+                                .remove(
+                                    "active"
+                                );
 
-            button.classList.add("active");
+                        }
+                    );
 
-            updateProducts();
 
-        });
+                    button.classList
+                        .add("active");
 
-    });
+
+                    updateProducts();
+
+                }
+            );
+
+        }
+    );
 
 
     if (searchInput) {
@@ -178,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
+
 
     updateProducts();
 
@@ -191,7 +282,10 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const saved =
-                localStorage.getItem(CART_KEY);
+                localStorage.getItem(
+                    CART_KEY
+                );
+
 
             return saved
                 ? JSON.parse(saved)
@@ -203,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Could not load cart:",
                 error
             );
+
 
             return [];
 
@@ -218,6 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
             JSON.stringify(cart)
         );
 
+
         updateCartCount();
 
     }
@@ -225,41 +321,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function addToCart(product) {
 
-        const cart = getCart();
+        const cart =
+            getCart();
+
 
         const existingProduct =
             cart.find(
                 (item) =>
-                    item.id === product.id
+                    item.id ===
+                    product.id
             );
+
 
         if (existingProduct) {
 
             existingProduct.quantity +=
-                Number(product.quantity || 1);
+                Number(
+                    product.quantity
+                    || 1
+                );
 
         } else {
 
             cart.push({
+
                 ...product,
+
                 quantity:
-                    Number(product.quantity || 1)
+                    Number(
+                        product.quantity
+                        || 1
+                    )
+
             });
 
         }
+
 
         saveCart(cart);
 
     }
 
 
-    function removeFromCart(productId) {
+    function removeFromCart(
+        productId
+    ) {
 
         const cart =
             getCart().filter(
                 (item) =>
-                    item.id !== productId
+                    item.id !==
+                    productId
             );
+
 
         saveCart(cart);
 
@@ -271,27 +385,37 @@ document.addEventListener("DOMContentLoaded", () => {
         quantity
     ) {
 
-        const cart = getCart();
+        const cart =
+            getCart();
+
 
         const item =
             cart.find(
                 (product) =>
-                    product.id === productId
+                    product.id ===
+                    productId
             );
+
 
         if (!item) {
             return;
         }
 
+
         if (quantity <= 0) {
 
-            removeFromCart(productId);
+            removeFromCart(
+                productId
+            );
 
             return;
 
         }
 
-        item.quantity = quantity;
+
+        item.quantity =
+            quantity;
+
 
         saveCart(cart);
 
@@ -300,27 +424,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCartCount() {
 
-        const cart = getCart();
+        const cart =
+            getCart();
+
 
         const totalItems =
             cart.reduce(
-                (total, item) =>
+                (
+                    total,
+                    item
+                ) =>
                     total +
-                    Number(item.quantity || 0),
+                    Number(
+                        item.quantity
+                        || 0
+                    ),
                 0
             );
 
+
         document
-            .querySelectorAll(".cart-count")
-            .forEach((counter) => {
+            .querySelectorAll(
+                ".cart-count"
+            )
+            .forEach(
+                (counter) => {
 
-                counter.textContent =
-                    totalItems;
+                    counter.textContent =
+                        totalItems;
 
-                counter.hidden =
-                    totalItems === 0;
 
-            });
+                    counter.hidden =
+                        totalItems === 0;
+
+                }
+            );
 
     }
 
@@ -330,108 +468,157 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
 
     document
-        .querySelectorAll("[data-add-to-cart]")
-        .forEach((button) => {
+        .querySelectorAll(
+            "[data-add-to-cart]"
+        )
+        .forEach(
+            (button) => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    if (button.disabled) {
-                        return;
-                    }
+                        if (
+                            button.disabled
+                        ) {
+                            return;
+                        }
 
-                    const productId =
-                        button.dataset.productId;
 
-                    const productName =
-                        button.dataset.productName;
+                        const productId =
+                            button.dataset
+                                .productId;
 
-                    const productPrice =
-                        Number(
-                            button.dataset.productPrice
-                        );
 
-                    const productImage =
-                        button.dataset.productImage || "";
+                        const productName =
+                            button.dataset
+                                .productName;
 
-                    const productUrl =
-                        button.dataset.productUrl || "";
 
-                    const quantityTarget =
-                        button.dataset.quantityTarget;
+                        const productPrice =
+                            Number(
+                                button.dataset
+                                    .productPrice
+                            );
 
-                    const quantityInput =
-                        quantityTarget
-                            ? document.querySelector(
-                                quantityTarget
+
+                        const productImage =
+                            button.dataset
+                                .productImage
+                            || "";
+
+
+                        const productUrl =
+                            button.dataset
+                                .productUrl
+                            || "";
+
+
+                        const quantityTarget =
+                            button.dataset
+                                .quantityTarget;
+
+
+                        const quantityInput =
+                            quantityTarget
+                                ? document
+                                    .querySelector(
+                                        quantityTarget
+                                    )
+                                : null;
+
+
+                        const quantity =
+                            quantityInput
+                                ? Math.max(
+                                    1,
+                                    Number(
+                                        quantityInput
+                                            .value
+                                    ) || 1
+                                )
+                                : 1;
+
+
+                        if (
+                            !productId ||
+                            !productName ||
+                            Number.isNaN(
+                                productPrice
                             )
-                            : null;
+                        ) {
 
-                    const quantity =
-                        quantityInput
-                            ? Math.max(
-                                1,
-                                Number(
-                                    quantityInput.value
-                                ) || 1
-                            )
-                            : 1;
+                            console.error(
+                                "Missing product information."
+                            );
 
-                    if (
-                        !productId ||
-                        !productName ||
-                        Number.isNaN(productPrice)
-                    ) {
+                            return;
 
-                        console.error(
-                            "Missing product information."
-                        );
+                        }
 
-                        return;
 
-                    }
+                        addToCart({
 
-                    addToCart({
+                            id:
+                                productId,
 
-                        id: productId,
+                            name:
+                                productName,
 
-                        name: productName,
+                            price:
+                                productPrice,
 
-                        price: productPrice,
+                            image:
+                                productImage,
 
-                        image: productImage,
+                            url:
+                                productUrl,
 
-                        url: productUrl,
+                            quantity:
+                                quantity
 
-                        quantity: quantity
+                        });
 
-                    });
 
-                    const originalText =
-                        button.textContent;
+                        const originalText =
+                            button.textContent;
 
-                    button.textContent =
-                        "Added to Cart ✓";
-
-                    setTimeout(() => {
 
                         button.textContent =
-                            originalText;
+                            "Added to Cart ✓";
 
-                    }, 1400);
 
-                }
-            );
+                        setTimeout(
+                            () => {
 
-        });
+                                button.textContent =
+                                    originalText;
+
+                            },
+                            1400
+                        );
+
+                    }
+                );
+
+            }
+        );
+    // =========================
+    // WISHLIST STATE
+    // =========================
+
+    let wishlistItems = [];
+
+    let currentUser = null;
+
+    let wishlistReady = false;
 
 
     // =========================
-    // WISHLIST
+    // LOCAL WISHLIST HELPERS
     // =========================
 
-    function getWishlist() {
+    function getLocalWishlist() {
 
         try {
 
@@ -440,6 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     WISHLIST_KEY
                 );
 
+
             return saved
                 ? JSON.parse(saved)
                 : [];
@@ -447,9 +635,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
 
             console.error(
-                "Could not load wishlist:",
+                "Could not load local wishlist:",
                 error
             );
+
 
             return [];
 
@@ -458,76 +647,278 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function saveWishlist(items) {
+    function saveLocalWishlist(
+        items
+    ) {
 
         localStorage.setItem(
             WISHLIST_KEY,
             JSON.stringify(items)
         );
 
-        updateWishlistCount();
+    }
 
-        updateWishlistButtons();
+
+    // =========================
+    // SUPABASE WISHLIST HELPERS
+    // =========================
+
+    function databaseRowToItem(
+        row
+    ) {
+
+        return {
+
+            id:
+                row.product_id,
+
+            name:
+                row.product_name,
+
+            price:
+                Number(
+                    row.product_price
+                    || 0
+                ),
+
+            image:
+                row.product_image
+                || "",
+
+            url:
+                row.product_url
+                || "",
+
+            available:
+                Boolean(
+                    row.product_available
+                )
+
+        };
 
     }
 
 
-    function isWishlisted(productId) {
+    function itemToDatabaseRow(
+        item,
+        userId
+    ) {
 
-        return getWishlist().some(
-            (item) =>
-                item.id === productId
+        return {
+
+            user_id:
+                userId,
+
+            product_id:
+                item.id,
+
+            product_name:
+                item.name,
+
+            product_price:
+                Number(
+                    item.price
+                    || 0
+                ),
+
+            product_image:
+                item.image
+                || null,
+
+            product_url:
+                item.url
+                || null,
+
+            product_available:
+                Boolean(
+                    item.available
+                )
+
+        };
+
+    }
+
+
+    async function loadDatabaseWishlist() {
+
+        if (
+            !window.AquaSupabase ||
+            !currentUser
+        ) {
+
+            return [];
+
+        }
+
+
+        const {
+            data,
+            error
+        } =
+            await window.AquaSupabase
+                .from("wishlists")
+                .select(
+                    "product_id, " +
+                    "product_name, " +
+                    "product_price, " +
+                    "product_image, " +
+                    "product_url, " +
+                    "product_available"
+                )
+                .eq(
+                    "user_id",
+                    currentUser.id
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending:
+                            false
+                    }
+                );
+
+
+        if (error) {
+
+            console.error(
+                "Could not load database wishlist:",
+                error
+            );
+
+
+            return [];
+
+        }
+
+
+        return (
+            data || []
+        ).map(
+            databaseRowToItem
         );
 
     }
 
 
-    function addToWishlist(product) {
-
-        const items = getWishlist();
+    async function saveItemToDatabase(
+        item
+    ) {
 
         if (
-            !items.some(
-                (item) =>
-                    item.id === product.id
-            )
+            !window.AquaSupabase ||
+            !currentUser
         ) {
-
-            items.push(product);
-
-        }
-
-        saveWishlist(items);
-
-    }
-
-
-    function removeFromWishlist(productId) {
-
-        const items =
-            getWishlist().filter(
-                (item) =>
-                    item.id !== productId
-            );
-
-        saveWishlist(items);
-
-    }
-
-
-    function toggleWishlist(product) {
-
-        if (isWishlisted(product.id)) {
-
-            removeFromWishlist(product.id);
 
             return false;
 
         }
 
-        addToWishlist(product);
+
+        const {
+            error
+        } =
+            await window.AquaSupabase
+                .from("wishlists")
+                .upsert(
+                    itemToDatabaseRow(
+                        item,
+                        currentUser.id
+                    ),
+                    {
+                        onConflict:
+                            "user_id,product_id"
+                    }
+                );
+
+
+        if (error) {
+
+            console.error(
+                "Could not save wishlist item:",
+                error
+            );
+
+
+            return false;
+
+        }
+
 
         return true;
+
+    }
+
+
+    async function removeItemFromDatabase(
+        productId
+    ) {
+
+        if (
+            !window.AquaSupabase ||
+            !currentUser
+        ) {
+
+            return false;
+
+        }
+
+
+        const {
+            error
+        } =
+            await window.AquaSupabase
+                .from("wishlists")
+                .delete()
+                .eq(
+                    "user_id",
+                    currentUser.id
+                )
+                .eq(
+                    "product_id",
+                    productId
+                );
+
+
+        if (error) {
+
+            console.error(
+                "Could not remove wishlist item:",
+                error
+            );
+
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
+
+
+    // =========================
+    // WISHLIST UI HELPERS
+    // =========================
+
+    function getWishlist() {
+
+        return [
+            ...wishlistItems
+        ];
+
+    }
+
+
+    function isWishlisted(
+        productId
+    ) {
+
+        return wishlistItems.some(
+            (item) =>
+                item.id ===
+                productId
+        );
 
     }
 
@@ -535,21 +926,25 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateWishlistCount() {
 
         const count =
-            getWishlist().length;
+            wishlistItems.length;
+
 
         document
             .querySelectorAll(
                 ".wishlist-count"
             )
-            .forEach((counter) => {
+            .forEach(
+                (counter) => {
 
-                counter.textContent =
-                    count;
+                    counter.textContent =
+                        count;
 
-                counter.hidden =
-                    count === 0;
 
-            });
+                    counter.hidden =
+                        count === 0;
+
+                }
+            );
 
     }
 
@@ -560,30 +955,528 @@ document.addEventListener("DOMContentLoaded", () => {
             .querySelectorAll(
                 "[data-add-to-wishlist]"
             )
-            .forEach((button) => {
+            .forEach(
+                (button) => {
 
-                const productId =
-                    button.dataset.productId;
+                    const productId =
+                        button.dataset
+                            .productId;
 
-                const saved =
-                    isWishlisted(productId);
 
-                button.classList.toggle(
-                    "saved",
-                    saved
+                    const saved =
+                        isWishlisted(
+                            productId
+                        );
+
+
+                    button.classList
+                        .toggle(
+                            "saved",
+                            saved
+                        );
+
+
+                    button.setAttribute(
+                        "aria-pressed",
+                        String(saved)
+                    );
+
+
+                    button.textContent =
+                        saved
+                            ? "Saved to Wishlist ✓"
+                            : "Add to Wishlist";
+
+                }
+            );
+
+    }
+
+
+    function refreshWishlistUI() {
+
+        updateWishlistCount();
+
+        updateWishlistButtons();
+
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "aquacoding:wishlist-updated",
+                {
+                    detail: {
+                        items:
+                            getWishlist(),
+
+                        user:
+                            currentUser
+                    }
+                }
+            )
+        );
+
+    }
+
+
+    // =========================
+    // GUEST → ACCOUNT MIGRATION
+    // =========================
+
+    async function migrateLocalWishlist() {
+
+        if (
+            !currentUser ||
+            !window.AquaSupabase
+        ) {
+
+            return;
+
+        }
+
+
+        const localItems =
+            getLocalWishlist();
+
+
+        if (
+            localItems.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const rows =
+            localItems.map(
+                (item) =>
+                    itemToDatabaseRow(
+                        item,
+                        currentUser.id
+                    )
+            );
+
+
+        const {
+            error
+        } =
+            await window.AquaSupabase
+                .from("wishlists")
+                .upsert(
+                    rows,
+                    {
+                        onConflict:
+                            "user_id,product_id"
+                    }
                 );
 
-                button.setAttribute(
-                    "aria-pressed",
-                    String(saved)
+
+        if (error) {
+
+            console.error(
+                "Could not migrate guest wishlist:",
+                error
+            );
+
+            return;
+
+        }
+
+
+        localStorage.removeItem(
+            WISHLIST_KEY
+        );
+
+    }
+
+
+    // =========================
+    // WISHLIST ACTIONS
+    // =========================
+
+    async function addToWishlist(
+        product
+    ) {
+
+        if (
+            !product?.id ||
+            !product?.name
+        ) {
+
+            return false;
+
+        }
+
+
+        if (
+            isWishlisted(
+                product.id
+            )
+        ) {
+
+            return true;
+
+        }
+
+
+        if (currentUser) {
+
+            const saved =
+                await saveItemToDatabase(
+                    product
                 );
 
-                button.textContent =
-                    saved
-                        ? "Saved to Wishlist ✓"
-                        : "Add to Wishlist";
 
-            });
+            if (!saved) {
+
+                return false;
+
+            }
+
+        } else {
+
+            const localItems =
+                getLocalWishlist();
+
+
+            if (
+                !localItems.some(
+                    (item) =>
+                        item.id ===
+                        product.id
+                )
+            ) {
+
+                localItems.push(
+                    product
+                );
+
+
+                saveLocalWishlist(
+                    localItems
+                );
+
+            }
+
+        }
+
+
+        wishlistItems.push(
+            product
+        );
+
+
+        refreshWishlistUI();
+
+
+        return true;
+
+    }
+
+
+    async function removeFromWishlist(
+        productId
+    ) {
+
+        if (
+            currentUser
+        ) {
+
+            const removed =
+                await removeItemFromDatabase(
+                    productId
+                );
+
+
+            if (!removed) {
+
+                return false;
+
+            }
+
+        } else {
+
+            const localItems =
+                getLocalWishlist()
+                    .filter(
+                        (item) =>
+                            item.id !==
+                            productId
+                    );
+
+
+            saveLocalWishlist(
+                localItems
+            );
+
+        }
+
+
+        wishlistItems =
+            wishlistItems.filter(
+                (item) =>
+                    item.id !==
+                    productId
+            );
+
+
+        refreshWishlistUI();
+
+
+        return true;
+
+    }
+
+
+    async function toggleWishlist(
+        product
+    ) {
+
+        if (
+            isWishlisted(
+                product.id
+            )
+        ) {
+
+            await removeFromWishlist(
+                product.id
+            );
+
+
+            return false;
+
+        }
+
+
+        const added =
+            await addToWishlist(
+                product
+            );
+
+
+        return added;
+
+    }
+    // =========================
+    // SUPABASE CONNECTION
+    // =========================
+
+    let supabase = null;
+
+
+    try {
+
+        const module =
+            await import(
+                "./supabase-client.js"
+            );
+
+
+        supabase =
+            module.supabase;
+
+
+        window.AquaSupabase =
+            supabase;
+
+    } catch (error) {
+
+        console.error(
+            "Could not load Supabase:",
+            error
+        );
+
+    }
+
+
+    // =========================
+    // INITIALISE WISHLIST
+    // =========================
+
+    async function initialiseWishlist() {
+
+        wishlistReady =
+            false;
+
+
+        /*
+            No Supabase connection:
+            keep the guest/local wishlist working.
+        */
+
+        if (!supabase) {
+
+            currentUser =
+                null;
+
+
+            wishlistItems =
+                getLocalWishlist();
+
+
+            wishlistReady =
+                true;
+
+
+            refreshWishlistUI();
+
+
+            return;
+
+        }
+
+
+        const {
+            data: {
+                session
+            },
+            error
+        } =
+            await supabase.auth
+                .getSession();
+
+
+        if (error) {
+
+            console.error(
+                "Could not check account session:",
+                error
+            );
+
+
+            currentUser =
+                null;
+
+
+            wishlistItems =
+                getLocalWishlist();
+
+
+            wishlistReady =
+                true;
+
+
+            refreshWishlistUI();
+
+
+            return;
+
+        }
+
+
+        currentUser =
+            session?.user
+                || null;
+
+
+        /*
+            Signed-in customer:
+            move any guest wishlist items
+            into their account first.
+        */
+
+        if (currentUser) {
+
+            await migrateLocalWishlist();
+
+
+            wishlistItems =
+                await loadDatabaseWishlist();
+
+        } else {
+
+            wishlistItems =
+                getLocalWishlist();
+
+        }
+
+
+        wishlistReady =
+            true;
+
+
+        refreshWishlistUI();
+
+    }
+
+
+    // =========================
+    // AUTH CHANGES
+    // =========================
+
+    if (supabase) {
+
+        supabase.auth
+            .onAuthStateChange(
+                (
+                    event,
+                    session
+                ) => {
+
+                    /*
+                        Run outside the auth callback
+                        itself so database calls happen
+                        after Supabase finishes processing
+                        the auth event.
+                    */
+
+                    setTimeout(
+                        async () => {
+
+                            if (
+                                event ===
+                                "SIGNED_OUT"
+                            ) {
+
+                                currentUser =
+                                    null;
+
+
+                                wishlistItems =
+                                    getLocalWishlist();
+
+
+                                wishlistReady =
+                                    true;
+
+
+                                refreshWishlistUI();
+
+
+                                return;
+
+                            }
+
+
+                            if (
+                                session?.user
+                            ) {
+
+                                currentUser =
+                                    session.user;
+
+
+                                await migrateLocalWishlist();
+
+
+                                wishlistItems =
+                                    await loadDatabaseWishlist();
+
+
+                                wishlistReady =
+                                    true;
+
+
+                                refreshWishlistUI();
+
+                            }
+
+                        },
+                        0
+                    );
+
+                }
+            );
 
     }
 
@@ -596,68 +1489,138 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(
             "[data-add-to-wishlist]"
         )
-        .forEach((button) => {
+        .forEach(
+            (button) => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    async () => {
 
-                    const productId =
-                        button.dataset.productId;
+                        if (
+                            !wishlistReady
+                        ) {
 
-                    const productName =
-                        button.dataset.productName;
+                            return;
 
-                    const productPrice =
-                        Number(
-                            button.dataset.productPrice || 0
-                        );
+                        }
 
-                    const productImage =
-                        button.dataset.productImage || "";
 
-                    const productUrl =
-                        button.dataset.productUrl || "";
+                        const productId =
+                            button.dataset
+                                .productId;
 
-                    const available =
-                        button.dataset.productAvailable ===
-                        "true";
 
-                    if (
-                        !productId ||
-                        !productName
-                    ) {
+                        const productName =
+                            button.dataset
+                                .productName;
 
-                        console.error(
-                            "Missing wishlist product information."
-                        );
 
-                        return;
+                        const productPrice =
+                            Number(
+                                button.dataset
+                                    .productPrice
+                                || 0
+                            );
+
+
+                        const productImage =
+                            button.dataset
+                                .productImage
+                            || "";
+
+
+                        const productUrl =
+                            button.dataset
+                                .productUrl
+                            || "";
+
+
+                        const available =
+                            button.dataset
+                                .productAvailable ===
+                            "true";
+
+
+                        if (
+                            !productId ||
+                            !productName
+                        ) {
+
+                            console.error(
+                                "Missing wishlist product information."
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        button.disabled =
+                            true;
+
+
+                        const wasSaved =
+                            isWishlisted(
+                                productId
+                            );
+
+
+                        const result =
+                            await toggleWishlist({
+
+                                id:
+                                    productId,
+
+                                name:
+                                    productName,
+
+                                price:
+                                    productPrice,
+
+                                image:
+                                    productImage,
+
+                                url:
+                                    productUrl,
+
+                                available:
+                                    available
+
+                            });
+
+
+                        /*
+                            If database saving failed,
+                            restore the visual state.
+                        */
+
+                        if (
+                            !result &&
+                            !wasSaved &&
+                            !isWishlisted(
+                                productId
+                            )
+                        ) {
+
+                            console.error(
+                                "Wishlist item could not be saved."
+                            );
+
+                        }
+
+
+                        button.disabled =
+                            false;
+
+
+                        updateWishlistButtons();
 
                     }
+                );
 
-                    toggleWishlist({
-
-                        id: productId,
-
-                        name: productName,
-
-                        price: productPrice,
-
-                        image: productImage,
-
-                        url: productUrl,
-
-                        available: available
-
-                    });
-
-                }
-            );
-
-        });
-
-
+            }
+        );
     // =========================
     // QUANTITY MINUS
     // =========================
@@ -666,32 +1629,44 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(
             "[data-quantity-decrease]"
         )
-        .forEach((button) => {
+        .forEach(
+            (button) => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const target =
-                        button.dataset.quantityDecrease;
+                        const target =
+                            button.dataset
+                                .quantityDecrease;
 
-                    const input =
-                        document.querySelector(target);
 
-                    if (!input) {
-                        return;
+                        const input =
+                            document.querySelector(
+                                target
+                            );
+
+
+                        if (!input) {
+                            return;
+                        }
+
+
+                        input.value =
+                            Math.max(
+                                Number(
+                                    input.min || 1
+                                ),
+                                Number(
+                                    input.value || 1
+                                ) - 1
+                            );
+
                     }
+                );
 
-                    input.value =
-                        Math.max(
-                            Number(input.min || 1),
-                            Number(input.value || 1) - 1
-                        );
-
-                }
-            );
-
-        });
+            }
+        );
 
 
     // =========================
@@ -702,37 +1677,50 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(
             "[data-quantity-increase]"
         )
-        .forEach((button) => {
+        .forEach(
+            (button) => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const target =
-                        button.dataset.quantityIncrease;
+                        const target =
+                            button.dataset
+                                .quantityIncrease;
 
-                    const input =
-                        document.querySelector(target);
 
-                    if (!input) {
-                        return;
+                        const input =
+                            document.querySelector(
+                                target
+                            );
+
+
+                        if (!input) {
+                            return;
+                        }
+
+
+                        const max =
+                            input.max
+                                ? Number(
+                                    input.max
+                                )
+                                : Infinity;
+
+
+                        input.value =
+                            Math.min(
+                                max,
+                                Number(
+                                    input.value || 1
+                                ) + 1
+                            );
+
                     }
+                );
 
-                    const max =
-                        input.max
-                            ? Number(input.max)
-                            : Infinity;
-
-                    input.value =
-                        Math.min(
-                            max,
-                            Number(input.value || 1) + 1
-                        );
-
-                }
-            );
-
-        });
+            }
+        );
 
 
     // =========================
@@ -762,15 +1750,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         getWishlist,
 
+        isWishlisted,
+
         addToWishlist,
 
         removeFromWishlist,
 
         toggleWishlist,
 
-        saveWishlist,
+        refreshWishlistUI,
 
-        isWishlisted
+        getCurrentUser() {
+
+            return currentUser;
+
+        },
+
+        isReady() {
+
+            return wishlistReady;
+
+        }
 
     };
 
@@ -781,8 +1781,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateCartCount();
 
-    updateWishlistCount();
 
-    updateWishlistButtons();
+    /*
+        initialiseWishlist() decides whether
+        this visitor should use:
+
+        - localStorage as a guest
+        - Supabase as a signed-in customer
+
+        It also migrates any existing guest
+        wishlist after the customer signs in.
+    */
+
+    await initialiseWishlist();
+
+
+    // =========================
+    // READY EVENT
+    // =========================
+
+    document.dispatchEvent(
+        new CustomEvent(
+            "aquacoding:wishlist-ready",
+            {
+                detail: {
+
+                    items:
+                        getWishlist(),
+
+                    user:
+                        currentUser
+
+                }
+            }
+        )
+    );
 
 });
