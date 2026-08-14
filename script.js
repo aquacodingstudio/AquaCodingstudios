@@ -2830,3 +2830,684 @@ document.addEventListener(
             }
 
         };
+        // =========================
+        // PRODUCT DATA HELPERS
+        // =========================
+
+        function getProductQuantity(
+            button
+        ) {
+
+            const scope =
+                button.closest(
+                    "[data-product], " +
+                    ".product-purchase, " +
+                    ".product-actions, " +
+                    ".product-info, " +
+                    ".shop-product, " +
+                    ".product-card"
+                )
+                || button.parentElement;
+
+
+            const input =
+                scope?.querySelector(
+                    "[data-quantity-input], " +
+                    ".quantity-input"
+                );
+
+
+            if (!input) {
+
+                return 1;
+
+            }
+
+
+            const requested =
+                Number(
+                    input.value
+                );
+
+
+            if (
+                !Number.isFinite(
+                    requested
+                )
+            ) {
+
+                return 1;
+
+            }
+
+
+            return Math.min(
+                MAX_CART_QUANTITY,
+                Math.max(
+                    1,
+                    Math.floor(
+                        requested
+                    )
+                )
+            );
+
+        }
+
+
+        function getProductFromButton(
+            button,
+            includeQuantity = false
+        ) {
+
+            const product = {
+
+                id:
+                    String(
+                        button.dataset
+                            .productId || ""
+                    ).trim(),
+
+                name:
+                    String(
+                        button.dataset
+                            .productName || ""
+                    ).trim(),
+
+                price:
+                    Number(
+                        button.dataset
+                            .productPrice
+                        || 0
+                    ),
+
+                image:
+                    button.dataset
+                        .productImage
+                    || "",
+
+                url:
+                    button.dataset
+                        .productUrl
+                    || window.location
+                        .pathname,
+
+                available:
+                    button.dataset
+                        .productAvailable !==
+                        "false"
+
+            };
+
+
+            if (includeQuantity) {
+
+                product.quantity =
+                    getProductQuantity(
+                        button
+                    );
+
+            }
+
+
+            return product;
+
+        }
+
+
+        // =========================
+        // PRODUCT QUANTITY CONTROLS
+        // =========================
+
+        document
+            .querySelectorAll(
+                "[data-quantity-change], " +
+                ".quantity-button[data-action]"
+            )
+            .forEach(
+                (button) => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            const scope =
+                                button.closest(
+                                    "[data-product], " +
+                                    ".product-purchase, " +
+                                    ".product-actions, " +
+                                    ".product-info, " +
+                                    ".shop-product, " +
+                                    ".product-card"
+                                )
+                                || button.parentElement;
+
+
+                            const input =
+                                scope?.querySelector(
+                                    "[data-quantity-input], " +
+                                    ".quantity-input"
+                                );
+
+
+                            if (!input) {
+
+                                return;
+
+                            }
+
+
+                            let change =
+                                Number(
+                                    button.dataset
+                                        .quantityChange
+                                );
+
+
+                            if (
+                                !Number.isFinite(
+                                    change
+                                )
+                            ) {
+
+                                const action =
+                                    button.dataset
+                                        .action;
+
+
+                                if (
+                                    action ===
+                                    "increase"
+                                ) {
+
+                                    change = 1;
+
+                                } else if (
+                                    action ===
+                                    "decrease"
+                                ) {
+
+                                    change = -1;
+
+                                } else {
+
+                                    return;
+
+                                }
+
+                            }
+
+
+                            const current =
+                                Number(
+                                    input.value
+                                );
+
+
+                            const safeCurrent =
+                                Number.isFinite(
+                                    current
+                                )
+                                    ? current
+                                    : 1;
+
+
+                            input.value =
+                                String(
+                                    Math.min(
+                                        MAX_CART_QUANTITY,
+                                        Math.max(
+                                            1,
+                                            Math.floor(
+                                                safeCurrent +
+                                                change
+                                            )
+                                        )
+                                    )
+                                );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        document
+            .querySelectorAll(
+                "[data-quantity-input], " +
+                ".quantity-input"
+            )
+            .forEach(
+                (input) => {
+
+                    input.addEventListener(
+                        "change",
+                        () => {
+
+                            const requested =
+                                Number(
+                                    input.value
+                                );
+
+
+                            input.value =
+                                String(
+                                    Math.min(
+                                        MAX_CART_QUANTITY,
+                                        Math.max(
+                                            1,
+                                            Math.floor(
+                                                Number.isFinite(
+                                                    requested
+                                                )
+                                                    ? requested
+                                                    : 1
+                                            )
+                                        )
+                                    )
+                                );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =========================
+        // ADD TO CART BUTTONS
+        // =========================
+
+        document
+            .querySelectorAll(
+                "[data-add-to-cart]"
+            )
+            .forEach(
+                (button) => {
+
+                    button.addEventListener(
+                        "click",
+                        async () => {
+
+                            if (
+                                button.disabled
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            const product =
+                                getProductFromButton(
+                                    button,
+                                    true
+                                );
+
+
+                            if (
+                                !product.id ||
+                                !product.name
+                            ) {
+
+                                console.error(
+                                    "Add to Cart button is missing product data."
+                                );
+
+
+                                return;
+
+                            }
+
+
+                            const originalText =
+                                button.textContent;
+
+
+                            button.disabled =
+                                true;
+
+
+                            const added =
+                                await addToCart(
+                                    product
+                                );
+
+
+                            if (added) {
+
+                                button.textContent =
+                                    "Added ✓";
+
+
+                                window.setTimeout(
+                                    () => {
+
+                                        if (
+                                            button
+                                                .isConnected
+                                        ) {
+
+                                            button
+                                                .textContent =
+                                                originalText;
+
+
+                                            button
+                                                .disabled =
+                                                false;
+
+                                        }
+
+                                    },
+                                    900
+                                );
+
+                            } else {
+
+                                button.disabled =
+                                    false;
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =========================
+        // WISHLIST BUTTONS
+        // =========================
+
+        document
+            .querySelectorAll(
+                "[data-add-to-wishlist]"
+            )
+            .forEach(
+                (button) => {
+
+                    button.addEventListener(
+                        "click",
+                        async () => {
+
+                            if (
+                                button.disabled
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            const product =
+                                getProductFromButton(
+                                    button,
+                                    false
+                                );
+
+
+                            if (
+                                !product.id ||
+                                !product.name
+                            ) {
+
+                                console.error(
+                                    "Wishlist button is missing product data."
+                                );
+
+
+                                return;
+
+                            }
+
+
+                            button.disabled =
+                                true;
+
+
+                            await toggleWishlist(
+                                product
+                            );
+
+
+                            button.disabled =
+                                false;
+
+                        }
+                    );
+
+                }
+            );
+
+
+        // =========================
+        // READY EVENTS
+        // =========================
+
+        function dispatchCartReady() {
+
+            document.dispatchEvent(
+                new CustomEvent(
+                    "aquacoding:cart-ready",
+                    {
+                        detail: {
+
+                            items:
+                                getCart(),
+
+                            user:
+                                currentUser
+
+                        }
+                    }
+                )
+            );
+
+        }
+
+
+        function dispatchWishlistReady() {
+
+            document.dispatchEvent(
+                new CustomEvent(
+                    "aquacoding:wishlist-ready",
+                    {
+                        detail: {
+
+                            items:
+                                getWishlist(),
+
+                            user:
+                                currentUser
+
+                        }
+                    }
+                )
+            );
+
+        }
+
+
+        // =========================
+        // INITIAL LOAD
+        // =========================
+
+        await Promise.all([
+
+            initialiseCart(),
+
+            initialiseWishlist()
+
+        ]);
+
+
+        dispatchCartReady();
+
+        dispatchWishlistReady();
+
+
+        // =========================
+        // ACCOUNT SESSION CHANGES
+        // =========================
+
+        if (supabase) {
+
+            supabase.auth
+                .onAuthStateChange(
+                    async (
+                        event,
+                        session
+                    ) => {
+
+                        /*
+                            We already loaded the
+                            initial session above.
+                        */
+
+                        if (
+                            event ===
+                            "INITIAL_SESSION"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            event !==
+                                "SIGNED_IN" &&
+                            event !==
+                                "SIGNED_OUT"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const previousUserId =
+                            currentUser?.id
+                            || null;
+
+
+                        const nextUser =
+                            session?.user
+                            || null;
+
+
+                        const nextUserId =
+                            nextUser?.id
+                            || null;
+
+
+                        /*
+                            Ignore duplicate
+                            SIGNED_IN notifications
+                            for the same account.
+                        */
+
+                        if (
+                            event ===
+                                "SIGNED_IN" &&
+                            previousUserId ===
+                                nextUserId
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        currentUser =
+                            nextUser;
+
+
+                        activeCartId =
+                            null;
+
+
+                        cartReady =
+                            false;
+
+
+                        wishlistReady =
+                            false;
+
+
+                        await Promise.all([
+
+                            initialiseCart(),
+
+                            initialiseWishlist()
+
+                        ]);
+
+
+                        dispatchCartReady();
+
+                        dispatchWishlistReady();
+
+                    }
+                );
+
+        }
+
+
+        // =========================
+        // GUEST MULTI-TAB SYNC
+        // =========================
+
+        window.addEventListener(
+            "storage",
+            (event) => {
+
+                /*
+                    Signed-in carts/wishlists
+                    come from Supabase.
+
+                    This listener is specifically
+                    for guest localStorage tabs.
+                */
+
+                if (currentUser) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key ===
+                    CART_KEY
+                ) {
+
+                    cartItems =
+                        getLocalCart();
+
+
+                    refreshCartUI();
+
+                }
+
+
+                if (
+                    event.key ===
+                    WISHLIST_KEY
+                ) {
+
+                    wishlistItems =
+                        getLocalWishlist();
+
+
+                    refreshWishlistUI();
+
+                }
+
+            }
+        );
+
+    }
+);
