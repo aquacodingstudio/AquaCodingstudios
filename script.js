@@ -1,355 +1,661 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
 
-    // =========================
-    // CONSTANTS
-    // =========================
+        // =========================
+        // CONSTANTS
+        // =========================
 
-    const CART_KEY =
-        "aquacodingCart";
+        const CART_KEY =
+            "aquacodingCart";
 
-    const WISHLIST_KEY =
-        "aquacodingWishlist";
+        const WISHLIST_KEY =
+            "aquacodingWishlist";
 
-
-    // =========================
-    // MOBILE NAVIGATION
-    // =========================
-
-    const menuButton =
-        document.querySelector(
-            ".menu-button"
-        );
-
-    const navigation =
-        document.querySelector(
-            ".main-nav"
-        );
+        const MAX_CART_QUANTITY =
+            99;
 
 
-    if (
-        menuButton &&
-        navigation
-    ) {
+        // =========================
+        // SHARED ACCOUNT STATE
+        // =========================
 
-        menuButton.addEventListener(
-            "click",
-            () => {
+        let supabase = null;
 
-                const isOpen =
-                    navigation.classList
-                        .toggle("open");
+        let currentUser = null;
 
 
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    String(isOpen)
+        // =========================
+        // CART STATE
+        // =========================
+
+        let cartItems = [];
+
+        let cartReady = false;
+
+        let activeCartId = null;
+
+
+        // =========================
+        // WISHLIST STATE
+        // =========================
+
+        let wishlistItems = [];
+
+        let wishlistReady = false;
+
+
+        // =========================
+        // LOAD SUPABASE
+        // =========================
+
+        try {
+
+            const module =
+                await import(
+                    "./supabase-client.js"
                 );
 
+
+            supabase =
+                module.supabase;
+
+
+            window.AquaSupabase =
+                supabase;
+
+        } catch (error) {
+
+            console.error(
+                "Could not load Supabase:",
+                error
+            );
+
+        }
+
+
+        // =========================
+        // CURRENT SESSION
+        // =========================
+
+        if (supabase) {
+
+            const {
+                data: {
+                    session
+                },
+                error
+            } =
+                await supabase.auth
+                    .getSession();
+
+
+            if (error) {
+
+                console.error(
+                    "Could not load account session:",
+                    error
+                );
+
+            } else {
+
+                currentUser =
+                    session?.user || null;
+
             }
-        );
+
+        }
 
 
-        navigation
-            .querySelectorAll("a")
-            .forEach((link) => {
+        // =========================
+        // MOBILE NAVIGATION
+        // =========================
 
-                link.addEventListener(
-                    "click",
-                    () => {
+        const menuButton =
+            document.querySelector(
+                ".menu-button"
+            );
 
+        const navigation =
+            document.querySelector(
+                ".main-nav"
+            );
+
+
+        if (
+            menuButton &&
+            navigation
+        ) {
+
+            menuButton.addEventListener(
+                "click",
+                () => {
+
+                    const isOpen =
                         navigation.classList
-                            .remove("open");
+                            .toggle("open");
 
 
-                        menuButton.setAttribute(
-                            "aria-expanded",
-                            "false"
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        String(isOpen)
+                    );
+
+                }
+            );
+
+
+            navigation
+                .querySelectorAll("a")
+                .forEach(
+                    (link) => {
+
+                        link.addEventListener(
+                            "click",
+                            () => {
+
+                                navigation
+                                    .classList
+                                    .remove(
+                                        "open"
+                                    );
+
+
+                                menuButton
+                                    .setAttribute(
+                                        "aria-expanded",
+                                        "false"
+                                    );
+
+                            }
                         );
 
                     }
                 );
 
-            });
-
-    }
+        }
 
 
-    // =========================
-    // SCROLL ANIMATIONS
-    // =========================
+        // =========================
+        // SCROLL ANIMATIONS
+        // =========================
 
-    const revealElements =
-        document.querySelectorAll(
-            ".hero-content, .hero-card, .section-heading, " +
-            ".two-column, .timeline-item, .standard-card, " +
-            ".contact-section, .featured-card, .guide-card, " +
-            ".trust-card, .info-card"
-        );
-
-
-    if (
-        "IntersectionObserver"
-        in window
-    ) {
-
-        const revealObserver =
-            new IntersectionObserver(
-                (
-                    entries,
-                    observer
-                ) => {
-
-                    entries.forEach(
-                        (entry) => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target
-                                    .classList
-                                    .add(
-                                        "visible"
-                                    );
-
-
-                                observer
-                                    .unobserve(
-                                        entry.target
-                                    );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.12
-                }
+        const revealElements =
+            document.querySelectorAll(
+                ".hero-content, " +
+                ".hero-card, " +
+                ".section-heading, " +
+                ".two-column, " +
+                ".timeline-item, " +
+                ".standard-card, " +
+                ".contact-section, " +
+                ".featured-card, " +
+                ".guide-card, " +
+                ".trust-card, " +
+                ".info-card"
             );
 
 
-        revealElements.forEach(
-            (element) => {
+        if (
+            "IntersectionObserver"
+            in window
+        ) {
 
-                element.classList
-                    .add("reveal");
-
-
-                revealObserver
-                    .observe(element);
-
-            }
-        );
-
-    }
-
-
-    // =========================
-    // SHOP SEARCH + FILTERS
-    // =========================
-
-    const searchInput =
-        document.querySelector(
-            ".shop-search-input"
-        );
-
-
-    const filterButtons =
-        document.querySelectorAll(
-            ".filter-button[data-filter]"
-        );
-
-
-    const products =
-        document.querySelectorAll(
-            ".shop-product"
-        );
-
-
-    let activeFilter =
-        "all";
-
-
-    function updateProducts() {
-
-        const searchTerm =
-            searchInput
-                ? searchInput.value
-                    .trim()
-                    .toLowerCase()
-                : "";
-
-
-        products.forEach(
-            (product) => {
-
-                const category =
-                    product.dataset.category
-                    || "";
-
-
-                const name =
+            const revealObserver =
+                new IntersectionObserver(
                     (
-                        product.dataset.name
-                        || ""
-                    )
-                        .toLowerCase();
+                        entries,
+                        observer
+                    ) => {
+
+                        entries.forEach(
+                            (entry) => {
+
+                                if (
+                                    entry
+                                        .isIntersecting
+                                ) {
+
+                                    entry.target
+                                        .classList
+                                        .add(
+                                            "visible"
+                                        );
 
 
-                const matchesCategory =
-                    activeFilter === "all" ||
-                    category ===
-                        activeFilter;
+                                    observer
+                                        .unobserve(
+                                            entry.target
+                                        );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold:
+                            0.12
+                    }
+                );
 
 
-                const matchesSearch =
-                    searchTerm === "" ||
-                    name.includes(
-                        searchTerm
-                    );
+            revealElements
+                .forEach(
+                    (element) => {
+
+                        element
+                            .classList
+                            .add(
+                                "reveal"
+                            );
 
 
-                product.style.display =
-                    matchesCategory &&
-                    matchesSearch
-                        ? ""
-                        : "none";
+                        revealObserver
+                            .observe(
+                                element
+                            );
 
-            }
-        );
+                    }
+                );
 
-    }
-
-
-    filterButtons.forEach(
-        (button) => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    activeFilter =
-                        button.dataset.filter
-                        || "all";
+        }
 
 
-                    filterButtons.forEach(
-                        (item) => {
+        // =========================
+        // SHOP SEARCH + FILTERS
+        // =========================
 
-                            item.classList
-                                .remove(
+        const searchInput =
+            document.querySelector(
+                ".shop-search-input"
+            );
+
+
+        const filterButtons =
+            document.querySelectorAll(
+                ".filter-button[data-filter]"
+            );
+
+
+        const products =
+            document.querySelectorAll(
+                ".shop-product"
+            );
+
+
+        let activeFilter =
+            "all";
+
+
+        function updateProducts() {
+
+            const searchTerm =
+                searchInput
+                    ? searchInput
+                        .value
+                        .trim()
+                        .toLowerCase()
+                    : "";
+
+
+            products.forEach(
+                (product) => {
+
+                    const category =
+                        product.dataset
+                            .category || "";
+
+
+                    const name =
+                        (
+                            product.dataset
+                                .name || ""
+                        )
+                            .toLowerCase();
+
+
+                    const matchesCategory =
+                        activeFilter ===
+                            "all" ||
+                        category ===
+                            activeFilter;
+
+
+                    const matchesSearch =
+                        searchTerm === "" ||
+                        name.includes(
+                            searchTerm
+                        );
+
+
+                    product.style.display =
+                        matchesCategory &&
+                        matchesSearch
+                            ? ""
+                            : "none";
+
+                }
+            );
+
+        }
+
+
+        filterButtons
+            .forEach(
+                (button) => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            activeFilter =
+                                button.dataset
+                                    .filter
+                                || "all";
+
+
+                            filterButtons
+                                .forEach(
+                                    (item) => {
+
+                                        item
+                                            .classList
+                                            .remove(
+                                                "active"
+                                            );
+
+                                    }
+                                );
+
+
+                            button
+                                .classList
+                                .add(
                                     "active"
                                 );
 
+
+                            updateProducts();
+
                         }
                     );
-
-
-                    button.classList
-                        .add("active");
-
-
-                    updateProducts();
 
                 }
             );
 
-        }
-    );
 
+        if (searchInput) {
 
-    if (searchInput) {
-
-        searchInput.addEventListener(
-            "input",
-            updateProducts
-        );
-
-    }
-
-
-    updateProducts();
-
-
-    // =========================
-    // CART
-    // =========================
-
-    function getCart() {
-
-        try {
-
-            const saved =
-                localStorage.getItem(
-                    CART_KEY
+            searchInput
+                .addEventListener(
+                    "input",
+                    updateProducts
                 );
 
-
-            return saved
-                ? JSON.parse(saved)
-                : [];
-
-        } catch (error) {
-
-            console.error(
-                "Could not load cart:",
-                error
-            );
-
-
-            return [];
-
         }
 
-    }
+
+        updateProducts();
 
 
-    function saveCart(cart) {
+        // =========================
+        // CART DATA SANITISING
+        // =========================
 
-        localStorage.setItem(
-            CART_KEY,
-            JSON.stringify(cart)
-        );
+        function normaliseCartItem(
+            item
+        ) {
 
+            if (
+                !item ||
+                typeof item !== "object"
+            ) {
 
-        updateCartCount();
+                return null;
 
-    }
-
-
-    function addToCart(product) {
-
-        const cart =
-            getCart();
-
-
-        const existingProduct =
-            cart.find(
-                (item) =>
-                    item.id ===
-                    product.id
-            );
+            }
 
 
-        if (existingProduct) {
+            const id =
+                String(
+                    item.id || ""
+                ).trim();
 
-            existingProduct.quantity +=
+
+            const name =
+                String(
+                    item.name || ""
+                ).trim();
+
+
+            const rawPrice =
                 Number(
-                    product.quantity
-                    || 1
+                    item.price
                 );
 
-        } else {
 
-            cart.push({
+            const rawQuantity =
+                Number(
+                    item.quantity
+                );
 
-                ...product,
+
+            if (
+                !id ||
+                !name ||
+                !Number.isFinite(
+                    rawPrice
+                ) ||
+                rawPrice < 0
+            ) {
+
+                return null;
+
+            }
+
+
+            const quantity =
+                Math.min(
+                    MAX_CART_QUANTITY,
+                    Math.max(
+                        1,
+                        Math.floor(
+                            Number.isFinite(
+                                rawQuantity
+                            )
+                                ? rawQuantity
+                                : 1
+                        )
+                    )
+                );
+
+
+            return {
+
+                id,
+
+                name,
+
+                price:
+                    rawPrice,
+
+                image:
+                    typeof item.image ===
+                        "string"
+                        ? item.image
+                        : "",
+
+                url:
+                    typeof item.url ===
+                        "string"
+                        ? item.url
+                        : "",
+
+                quantity
+
+            };
+
+        }
+
+
+        function normaliseCart(
+            items
+        ) {
+
+            if (
+                !Array.isArray(items)
+            ) {
+
+                return [];
+
+            }
+
+
+            const merged =
+                new Map();
+
+
+            items.forEach(
+                (item) => {
+
+                    const cleanItem =
+                        normaliseCartItem(
+                            item
+                        );
+
+
+                    if (!cleanItem) {
+                        return;
+                    }
+
+
+                    const existing =
+                        merged.get(
+                            cleanItem.id
+                        );
+
+
+                    if (existing) {
+
+                        existing.quantity =
+                            Math.min(
+                                MAX_CART_QUANTITY,
+                                existing.quantity +
+                                cleanItem.quantity
+                            );
+
+                    } else {
+
+                        merged.set(
+                            cleanItem.id,
+                            cleanItem
+                        );
+
+                    }
+
+                }
+            );
+
+
+            return Array.from(
+                merged.values()
+            );
+
+        }
+        // =========================
+        // LOCAL CART STORAGE
+        // =========================
+
+        function getLocalCart() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        CART_KEY
+                    );
+
+
+                const parsed =
+                    saved
+                        ? JSON.parse(saved)
+                        : [];
+
+
+                return normaliseCart(
+                    parsed
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Could not load local cart:",
+                    error
+                );
+
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveLocalCart(
+            items
+        ) {
+
+            const cleanCart =
+                normaliseCart(
+                    items
+                );
+
+
+            localStorage.setItem(
+                CART_KEY,
+                JSON.stringify(
+                    cleanCart
+                )
+            );
+
+        }
+
+
+        // =========================
+        // DATABASE CART CONVERSION
+        // =========================
+
+        function databaseRowToCartItem(
+            row
+        ) {
+
+            return normaliseCartItem({
+
+                id:
+                    row.product_id,
+
+                name:
+                    row.product_name,
+
+                price:
+                    Number(
+                        row.unit_price_snapshot
+                        || 0
+                    ),
+
+                image:
+                    row.product_image
+                    || "",
+
+                url:
+                    row.product_url
+                    || "",
 
                 quantity:
                     Number(
-                        product.quantity
+                        row.quantity
                         || 1
                     )
 
@@ -358,798 +664,2034 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
 
-        saveCart(cart);
+        function cartItemToDatabaseRow(
+            item,
+            cartId
+        ) {
 
-    }
-
-
-    function removeFromCart(
-        productId
-    ) {
-
-        const cart =
-            getCart().filter(
-                (item) =>
-                    item.id !==
-                    productId
-            );
-
-
-        saveCart(cart);
-
-    }
-
-
-    function updateCartQuantity(
-        productId,
-        quantity
-    ) {
-
-        const cart =
-            getCart();
-
-
-        const item =
-            cart.find(
-                (product) =>
-                    product.id ===
-                    productId
-            );
-
-
-        if (!item) {
-            return;
-        }
-
-
-        if (quantity <= 0) {
-
-            removeFromCart(
-                productId
-            );
-
-            return;
-
-        }
-
-
-        item.quantity =
-            quantity;
-
-
-        saveCart(cart);
-
-    }
-
-
-    function updateCartCount() {
-
-        const cart =
-            getCart();
-
-
-        const totalItems =
-            cart.reduce(
-                (
-                    total,
+            const cleanItem =
+                normaliseCartItem(
                     item
-                ) =>
-                    total +
-                    Number(
-                        item.quantity
-                        || 0
-                    ),
-                0
-            );
-
-
-        document
-            .querySelectorAll(
-                ".cart-count"
-            )
-            .forEach(
-                (counter) => {
-
-                    counter.textContent =
-                        totalItems;
-
-
-                    counter.hidden =
-                        totalItems === 0;
-
-                }
-            );
-
-    }
-
-
-    // =========================
-    // ADD TO CART BUTTONS
-    // =========================
-
-    document
-        .querySelectorAll(
-            "[data-add-to-cart]"
-        )
-        .forEach(
-            (button) => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        if (
-                            button.disabled
-                        ) {
-                            return;
-                        }
-
-
-                        const productId =
-                            button.dataset
-                                .productId;
-
-
-                        const productName =
-                            button.dataset
-                                .productName;
-
-
-                        const productPrice =
-                            Number(
-                                button.dataset
-                                    .productPrice
-                            );
-
-
-                        const productImage =
-                            button.dataset
-                                .productImage
-                            || "";
-
-
-                        const productUrl =
-                            button.dataset
-                                .productUrl
-                            || "";
-
-
-                        const quantityTarget =
-                            button.dataset
-                                .quantityTarget;
-
-
-                        const quantityInput =
-                            quantityTarget
-                                ? document
-                                    .querySelector(
-                                        quantityTarget
-                                    )
-                                : null;
-
-
-                        const quantity =
-                            quantityInput
-                                ? Math.max(
-                                    1,
-                                    Number(
-                                        quantityInput
-                                            .value
-                                    ) || 1
-                                )
-                                : 1;
-
-
-                        if (
-                            !productId ||
-                            !productName ||
-                            Number.isNaN(
-                                productPrice
-                            )
-                        ) {
-
-                            console.error(
-                                "Missing product information."
-                            );
-
-                            return;
-
-                        }
-
-
-                        addToCart({
-
-                            id:
-                                productId,
-
-                            name:
-                                productName,
-
-                            price:
-                                productPrice,
-
-                            image:
-                                productImage,
-
-                            url:
-                                productUrl,
-
-                            quantity:
-                                quantity
-
-                        });
-
-
-                        const originalText =
-                            button.textContent;
-
-
-                        button.textContent =
-                            "Added to Cart ✓";
-
-
-                        setTimeout(
-                            () => {
-
-                                button.textContent =
-                                    originalText;
-
-                            },
-                            1400
-                        );
-
-                    }
                 );
+
+
+            if (!cleanItem) {
+
+                return null;
 
             }
-        );
-    // =========================
-    // WISHLIST STATE
-    // =========================
-
-    let wishlistItems = [];
-
-    let currentUser = null;
-
-    let wishlistReady = false;
 
 
-    // =========================
-    // LOCAL WISHLIST HELPERS
-    // =========================
+            return {
 
-    function getLocalWishlist() {
+                cart_id:
+                    cartId,
 
-        try {
+                product_id:
+                    cleanItem.id,
 
-            const saved =
-                localStorage.getItem(
-                    WISHLIST_KEY
-                );
+                product_name:
+                    cleanItem.name,
 
+                unit_price_snapshot:
+                    cleanItem.price,
 
-            return saved
-                ? JSON.parse(saved)
-                : [];
+                currency:
+                    "EUR",
 
-        } catch (error) {
+                product_image:
+                    cleanItem.image
+                        || null,
 
-            console.error(
-                "Could not load local wishlist:",
-                error
-            );
+                product_url:
+                    cleanItem.url
+                        || null,
 
+                quantity:
+                    cleanItem.quantity
 
-            return [];
-
-        }
-
-    }
-
-
-    function saveLocalWishlist(
-        items
-    ) {
-
-        localStorage.setItem(
-            WISHLIST_KEY,
-            JSON.stringify(items)
-        );
-
-    }
-
-
-    // =========================
-    // SUPABASE WISHLIST HELPERS
-    // =========================
-
-    function databaseRowToItem(
-        row
-    ) {
-
-        return {
-
-            id:
-                row.product_id,
-
-            name:
-                row.product_name,
-
-            price:
-                Number(
-                    row.product_price
-                    || 0
-                ),
-
-            image:
-                row.product_image
-                || "",
-
-            url:
-                row.product_url
-                || "",
-
-            available:
-                Boolean(
-                    row.product_available
-                )
-
-        };
-
-    }
-
-
-    function itemToDatabaseRow(
-        item,
-        userId
-    ) {
-
-        return {
-
-            user_id:
-                userId,
-
-            product_id:
-                item.id,
-
-            product_name:
-                item.name,
-
-            product_price:
-                Number(
-                    item.price
-                    || 0
-                ),
-
-            product_image:
-                item.image
-                || null,
-
-            product_url:
-                item.url
-                || null,
-
-            product_available:
-                Boolean(
-                    item.available
-                )
-
-        };
-
-    }
-
-
-    async function loadDatabaseWishlist() {
-
-        if (
-            !window.AquaSupabase ||
-            !currentUser
-        ) {
-
-            return [];
+            };
 
         }
 
 
-        const {
-            data,
-            error
-        } =
-            await window.AquaSupabase
-                .from("wishlists")
-                .select(
-                    "product_id, " +
-                    "product_name, " +
-                    "product_price, " +
-                    "product_image, " +
-                    "product_url, " +
-                    "product_available"
-                )
-                .eq(
-                    "user_id",
-                    currentUser.id
-                )
-                .order(
-                    "created_at",
-                    {
-                        ascending:
-                            false
-                    }
-                );
+        // =========================
+        // GET / CREATE CUSTOMER CART
+        // =========================
+
+        async function ensureDatabaseCart() {
+
+            if (
+                !supabase ||
+                !currentUser
+            ) {
+
+                return null;
+
+            }
 
 
-        if (error) {
+            if (activeCartId) {
 
-            console.error(
-                "Could not load database wishlist:",
-                error
-            );
+                return activeCartId;
 
-
-            return [];
-
-        }
+            }
 
 
-        return (
-            data || []
-        ).map(
-            databaseRowToItem
-        );
-
-    }
-
-
-    async function saveItemToDatabase(
-        item
-    ) {
-
-        if (
-            !window.AquaSupabase ||
-            !currentUser
-        ) {
-
-            return false;
-
-        }
-
-
-        const {
-            error
-        } =
-            await window.AquaSupabase
-                .from("wishlists")
-                .upsert(
-                    itemToDatabaseRow(
-                        item,
+            const {
+                data: existingCart,
+                error: selectError
+            } =
+                await supabase
+                    .from("carts")
+                    .select("id")
+                    .eq(
+                        "user_id",
                         currentUser.id
-                    ),
-                    {
-                        onConflict:
-                            "user_id,product_id"
-                    }
+                    )
+                    .maybeSingle();
+
+
+            if (selectError) {
+
+                console.error(
+                    "Could not find customer cart:",
+                    selectError
                 );
 
 
-        if (error) {
+                return null;
 
-            console.error(
-                "Could not save wishlist item:",
-                error
-            );
+            }
 
 
-            return false;
+            if (existingCart?.id) {
 
-        }
-
-
-        return true;
-
-    }
+                activeCartId =
+                    existingCart.id;
 
 
-    async function removeItemFromDatabase(
-        productId
-    ) {
+                return activeCartId;
 
-        if (
-            !window.AquaSupabase ||
-            !currentUser
-        ) {
-
-            return false;
-
-        }
+            }
 
 
-        const {
-            error
-        } =
-            await window.AquaSupabase
-                .from("wishlists")
-                .delete()
-                .eq(
-                    "user_id",
-                    currentUser.id
-                )
-                .eq(
-                    "product_id",
-                    productId
-                );
+            const {
+                data: createdCart,
+                error: insertError
+            } =
+                await supabase
+                    .from("carts")
+                    .insert({
+
+                        user_id:
+                            currentUser.id
+
+                    })
+                    .select("id")
+                    .single();
 
 
-        if (error) {
+            if (insertError) {
 
-            console.error(
-                "Could not remove wishlist item:",
-                error
-            );
+                /*
+                    In the unlikely event that
+                    another tab created the cart
+                    between our SELECT and INSERT,
+                    try loading it once more.
+                */
 
-
-            return false;
-
-        }
-
-
-        return true;
-
-    }
-
-
-    // =========================
-    // WISHLIST UI HELPERS
-    // =========================
-
-    function getWishlist() {
-
-        return [
-            ...wishlistItems
-        ];
-
-    }
+                const {
+                    data: retryCart,
+                    error: retryError
+                } =
+                    await supabase
+                        .from("carts")
+                        .select("id")
+                        .eq(
+                            "user_id",
+                            currentUser.id
+                        )
+                        .maybeSingle();
 
 
-    function isWishlisted(
-        productId
-    ) {
+                if (
+                    retryError ||
+                    !retryCart?.id
+                ) {
 
-        return wishlistItems.some(
-            (item) =>
-                item.id ===
-                productId
-        );
-
-    }
-
-
-    function updateWishlistCount() {
-
-        const count =
-            wishlistItems.length;
-
-
-        document
-            .querySelectorAll(
-                ".wishlist-count"
-            )
-            .forEach(
-                (counter) => {
-
-                    counter.textContent =
-                        count;
-
-
-                    counter.hidden =
-                        count === 0;
-
-                }
-            );
-
-    }
-
-
-    function updateWishlistButtons() {
-
-        document
-            .querySelectorAll(
-                "[data-add-to-wishlist]"
-            )
-            .forEach(
-                (button) => {
-
-                    const productId =
-                        button.dataset
-                            .productId;
-
-
-                    const saved =
-                        isWishlisted(
-                            productId
-                        );
-
-
-                    button.classList
-                        .toggle(
-                            "saved",
-                            saved
-                        );
-
-
-                    button.setAttribute(
-                        "aria-pressed",
-                        String(saved)
+                    console.error(
+                        "Could not create customer cart:",
+                        insertError
                     );
 
 
-                    button.textContent =
-                        saved
-                            ? "Saved to Wishlist ✓"
-                            : "Add to Wishlist";
+                    return null;
 
                 }
-            );
-
-    }
 
 
-    function refreshWishlistUI() {
-
-        updateWishlistCount();
-
-        updateWishlistButtons();
+                activeCartId =
+                    retryCart.id;
 
 
-        document.dispatchEvent(
-            new CustomEvent(
-                "aquacoding:wishlist-updated",
-                {
-                    detail: {
-                        items:
-                            getWishlist(),
+                return activeCartId;
 
-                        user:
-                            currentUser
-                    }
-                }
-            )
-        );
-
-    }
+            }
 
 
-    // =========================
-    // GUEST → ACCOUNT MIGRATION
-    // =========================
+            activeCartId =
+                createdCart.id;
 
-    async function migrateLocalWishlist() {
 
-        if (
-            !currentUser ||
-            !window.AquaSupabase
-        ) {
-
-            return;
+            return activeCartId;
 
         }
 
 
-        const localItems =
-            getLocalWishlist();
+        // =========================
+        // LOAD DATABASE CART
+        // =========================
+
+        async function loadDatabaseCart() {
+
+            const cartId =
+                await ensureDatabaseCart();
 
 
-        if (
-            localItems.length === 0
-        ) {
+            if (!cartId) {
 
-            return;
+                return [];
 
-        }
+            }
 
 
-        const rows =
-            localItems.map(
-                (item) =>
-                    itemToDatabaseRow(
-                        item,
-                        currentUser.id
+            const {
+                data,
+                error
+            } =
+                await supabase
+                    .from("cart_items")
+                    .select(
+                        "product_id, " +
+                        "product_name, " +
+                        "unit_price_snapshot, " +
+                        "product_image, " +
+                        "product_url, " +
+                        "quantity, " +
+                        "created_at"
                     )
-            );
+                    .eq(
+                        "cart_id",
+                        cartId
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending:
+                                true
+                        }
+                    );
 
 
-        const {
-            error
-        } =
-            await window.AquaSupabase
-                .from("wishlists")
-                .upsert(
-                    rows,
-                    {
-                        onConflict:
-                            "user_id,product_id"
-                    }
+            if (error) {
+
+                console.error(
+                    "Could not load customer cart:",
+                    error
                 );
 
 
-        if (error) {
+                return [];
 
-            console.error(
-                "Could not migrate guest wishlist:",
-                error
+            }
+
+
+            return normaliseCart(
+                (data || [])
+                    .map(
+                        databaseRowToCartItem
+                    )
+                    .filter(Boolean)
             );
 
-            return;
-
         }
 
 
-        localStorage.removeItem(
-            WISHLIST_KEY
-        );
+        // =========================
+        // SAVE DATABASE CART ITEM
+        // =========================
 
-    }
-
-
-    // =========================
-    // WISHLIST ACTIONS
-    // =========================
-
-    async function addToWishlist(
-        product
-    ) {
-
-        if (
-            !product?.id ||
-            !product?.name
+        async function saveCartItemToDatabase(
+            item
         ) {
 
-            return false;
+            const cartId =
+                await ensureDatabaseCart();
 
-        }
+
+            if (!cartId) {
+
+                return false;
+
+            }
 
 
-        if (
-            isWishlisted(
-                product.id
-            )
-        ) {
+            const row =
+                cartItemToDatabaseRow(
+                    item,
+                    cartId
+                );
+
+
+            if (!row) {
+
+                return false;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("cart_items")
+                    .upsert(
+                        row,
+                        {
+                            onConflict:
+                                "cart_id,product_id"
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not save cart item:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
 
             return true;
 
         }
 
 
-        if (currentUser) {
+        // =========================
+        // REMOVE DATABASE CART ITEM
+        // =========================
 
-            const saved =
-                await saveItemToDatabase(
-                    product
-                );
+        async function removeCartItemFromDatabase(
+            productId
+        ) {
+
+            const cartId =
+                await ensureDatabaseCart();
 
 
-            if (!saved) {
+            if (!cartId) {
 
                 return false;
 
             }
 
-        } else {
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("cart_items")
+                    .delete()
+                    .eq(
+                        "cart_id",
+                        cartId
+                    )
+                    .eq(
+                        "product_id",
+                        productId
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not remove cart item:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // CLEAR DATABASE CART
+        // =========================
+
+        async function clearDatabaseCart() {
+
+            const cartId =
+                await ensureDatabaseCart();
+
+
+            if (!cartId) {
+
+                return false;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("cart_items")
+                    .delete()
+                    .eq(
+                        "cart_id",
+                        cartId
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not clear customer cart:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // MERGE TWO CARTS
+        // =========================
+
+        function mergeCarts(
+            firstCart,
+            secondCart
+        ) {
+
+            return normaliseCart([
+                ...firstCart,
+                ...secondCart
+            ]);
+
+        }
+
+
+        // =========================
+        // GUEST → ACCOUNT CART
+        // =========================
+
+        async function migrateLocalCart() {
+
+            if (
+                !supabase ||
+                !currentUser
+            ) {
+
+                return true;
+
+            }
+
+
+            const localCart =
+                getLocalCart();
+
+
+            if (
+                localCart.length === 0
+            ) {
+
+                return true;
+
+            }
+
+
+            const databaseCart =
+                await loadDatabaseCart();
+
+
+            /*
+                Quantities are combined if the
+                same product exists in both carts.
+            */
+
+            const mergedCart =
+                mergeCarts(
+                    databaseCart,
+                    localCart
+                );
+
+
+            const cartId =
+                await ensureDatabaseCart();
+
+
+            if (!cartId) {
+
+                return false;
+
+            }
+
+
+            const rows =
+                mergedCart
+                    .map(
+                        (item) =>
+                            cartItemToDatabaseRow(
+                                item,
+                                cartId
+                            )
+                    )
+                    .filter(Boolean);
+
+
+            if (
+                rows.length === 0
+            ) {
+
+                return true;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("cart_items")
+                    .upsert(
+                        rows,
+                        {
+                            onConflict:
+                                "cart_id,product_id"
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not migrate guest cart:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
+
+            /*
+                Only erase the guest copy after
+                Supabase confirms the save.
+            */
+
+            localStorage.removeItem(
+                CART_KEY
+            );
+
+
+            return true;
+
+        }
+        // =========================
+        // CART UI HELPERS
+        // =========================
+
+        function getCart() {
+
+            return cartItems.map(
+                (item) => ({
+                    ...item
+                })
+            );
+
+        }
+
+
+        function updateCartCount() {
+
+            const totalItems =
+                cartItems.reduce(
+                    (
+                        total,
+                        item
+                    ) => {
+
+                        return (
+                            total +
+                            Number(
+                                item.quantity || 0
+                            )
+                        );
+
+                    },
+                    0
+                );
+
+
+            document
+                .querySelectorAll(
+                    ".cart-count"
+                )
+                .forEach(
+                    (counter) => {
+
+                        counter.textContent =
+                            totalItems;
+
+
+                        counter.hidden =
+                            totalItems === 0;
+
+                    }
+                );
+
+        }
+
+
+        function refreshCartUI() {
+
+            updateCartCount();
+
+
+            document.dispatchEvent(
+                new CustomEvent(
+                    "aquacoding:cart-updated",
+                    {
+                        detail: {
+
+                            items:
+                                getCart(),
+
+                            user:
+                                currentUser
+
+                        }
+                    }
+                )
+            );
+
+        }
+
+
+        // =========================
+        // ADD TO CART
+        // =========================
+
+        async function addToCart(
+            product
+        ) {
+
+            const cleanProduct =
+                normaliseCartItem(
+                    product
+                );
+
+
+            if (!cleanProduct) {
+
+                console.error(
+                    "Invalid cart product."
+                );
+
+
+                return false;
+
+            }
+
+
+            const existingItem =
+                cartItems.find(
+                    (item) =>
+                        item.id ===
+                        cleanProduct.id
+                );
+
+
+            let nextItem;
+
+
+            if (existingItem) {
+
+                nextItem = {
+
+                    ...existingItem,
+
+                    /*
+                        Keep the newest display
+                        information from the product
+                        page while combining quantity.
+                    */
+
+                    name:
+                        cleanProduct.name,
+
+                    price:
+                        cleanProduct.price,
+
+                    image:
+                        cleanProduct.image,
+
+                    url:
+                        cleanProduct.url,
+
+                    quantity:
+                        Math.min(
+                            MAX_CART_QUANTITY,
+                            existingItem.quantity +
+                            cleanProduct.quantity
+                        )
+
+                };
+
+            } else {
+
+                nextItem =
+                    cleanProduct;
+
+            }
+
+
+            if (currentUser) {
+
+                const saved =
+                    await saveCartItemToDatabase(
+                        nextItem
+                    );
+
+
+                if (!saved) {
+
+                    return false;
+
+                }
+
+            } else {
+
+                const localCart =
+                    cartItems.filter(
+                        (item) =>
+                            item.id !==
+                            nextItem.id
+                    );
+
+
+                localCart.push(
+                    nextItem
+                );
+
+
+                saveLocalCart(
+                    localCart
+                );
+
+            }
+
+
+            if (existingItem) {
+
+                cartItems =
+                    cartItems.map(
+                        (item) => {
+
+                            return item.id ===
+                                nextItem.id
+                                ? nextItem
+                                : item;
+
+                        }
+                    );
+
+            } else {
+
+                cartItems.push(
+                    nextItem
+                );
+
+            }
+
+
+            refreshCartUI();
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // REMOVE FROM CART
+        // =========================
+
+        async function removeFromCart(
+            productId
+        ) {
+
+            const cleanId =
+                String(
+                    productId || ""
+                ).trim();
+
+
+            if (!cleanId) {
+
+                return false;
+
+            }
+
+
+            if (currentUser) {
+
+                const removed =
+                    await removeCartItemFromDatabase(
+                        cleanId
+                    );
+
+
+                if (!removed) {
+
+                    return false;
+
+                }
+
+            } else {
+
+                const localCart =
+                    cartItems.filter(
+                        (item) =>
+                            item.id !==
+                            cleanId
+                    );
+
+
+                saveLocalCart(
+                    localCart
+                );
+
+            }
+
+
+            cartItems =
+                cartItems.filter(
+                    (item) =>
+                        item.id !==
+                        cleanId
+                );
+
+
+            refreshCartUI();
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // UPDATE CART QUANTITY
+        // =========================
+
+        async function updateCartQuantity(
+            productId,
+            quantity
+        ) {
+
+            const cleanId =
+                String(
+                    productId || ""
+                ).trim();
+
+
+            const requestedQuantity =
+                Number(
+                    quantity
+                );
+
+
+            if (
+                !cleanId ||
+                !Number.isFinite(
+                    requestedQuantity
+                )
+            ) {
+
+                return false;
+
+            }
+
+
+            const item =
+                cartItems.find(
+                    (product) =>
+                        product.id ===
+                        cleanId
+                );
+
+
+            if (!item) {
+
+                return false;
+
+            }
+
+
+            /*
+                Zero or below means remove.
+            */
+
+            if (
+                requestedQuantity <= 0
+            ) {
+
+                return await removeFromCart(
+                    cleanId
+                );
+
+            }
+
+
+            const safeQuantity =
+                Math.min(
+                    MAX_CART_QUANTITY,
+                    Math.max(
+                        1,
+                        Math.floor(
+                            requestedQuantity
+                        )
+                    )
+                );
+
+
+            const updatedItem = {
+
+                ...item,
+
+                quantity:
+                    safeQuantity
+
+            };
+
+
+            if (currentUser) {
+
+                const saved =
+                    await saveCartItemToDatabase(
+                        updatedItem
+                    );
+
+
+                if (!saved) {
+
+                    return false;
+
+                }
+
+            } else {
+
+                const localCart =
+                    cartItems.map(
+                        (product) => {
+
+                            return product.id ===
+                                cleanId
+                                ? updatedItem
+                                : product;
+
+                        }
+                    );
+
+
+                saveLocalCart(
+                    localCart
+                );
+
+            }
+
+
+            cartItems =
+                cartItems.map(
+                    (product) => {
+
+                        return product.id ===
+                            cleanId
+                            ? updatedItem
+                            : product;
+
+                    }
+                );
+
+
+            refreshCartUI();
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // CLEAR CART
+        // =========================
+
+        async function clearCart() {
+
+            if (
+                cartItems.length === 0
+            ) {
+
+                return true;
+
+            }
+
+
+            if (currentUser) {
+
+                const cleared =
+                    await clearDatabaseCart();
+
+
+                if (!cleared) {
+
+                    return false;
+
+                }
+
+            } else {
+
+                localStorage.removeItem(
+                    CART_KEY
+                );
+
+            }
+
+
+            cartItems = [];
+
+
+            refreshCartUI();
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // REPLACE CART
+        // =========================
+
+        async function replaceCart(
+            items
+        ) {
+
+            const cleanCart =
+                normaliseCart(
+                    items
+                );
+
+
+            /*
+                Mainly useful later after
+                successful checkout.
+
+                Emptying the cart should use
+                clearCart() rather than trusting
+                arbitrary browser data.
+            */
+
+            if (
+                cleanCart.length === 0
+            ) {
+
+                return await clearCart();
+
+            }
+
+
+            if (!currentUser) {
+
+                saveLocalCart(
+                    cleanCart
+                );
+
+
+                cartItems =
+                    cleanCart;
+
+
+                refreshCartUI();
+
+
+                return true;
+
+            }
+
+
+            const cartId =
+                await ensureDatabaseCart();
+
+
+            if (!cartId) {
+
+                return false;
+
+            }
+
+
+            const currentProductIds =
+                cartItems.map(
+                    (item) =>
+                        item.id
+                );
+
+
+            const nextProductIds =
+                new Set(
+                    cleanCart.map(
+                        (item) =>
+                            item.id
+                    )
+                );
+
+
+            /*
+                Remove products that no longer
+                exist in the replacement cart.
+            */
+
+            const removedProductIds =
+                currentProductIds.filter(
+                    (productId) =>
+                        !nextProductIds.has(
+                            productId
+                        )
+                );
+
+
+            for (
+                const productId
+                of removedProductIds
+            ) {
+
+                const removed =
+                    await removeCartItemFromDatabase(
+                        productId
+                    );
+
+
+                if (!removed) {
+
+                    return false;
+
+                }
+
+            }
+
+
+            const rows =
+                cleanCart
+                    .map(
+                        (item) =>
+                            cartItemToDatabaseRow(
+                                item,
+                                cartId
+                            )
+                    )
+                    .filter(Boolean);
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("cart_items")
+                    .upsert(
+                        rows,
+                        {
+                            onConflict:
+                                "cart_id,product_id"
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not replace customer cart:",
+                    error
+                );
+
+
+                /*
+                    Reload the database version
+                    so our browser state does not
+                    pretend the failed operation
+                    succeeded.
+                */
+
+                cartItems =
+                    await loadDatabaseCart();
+
+
+                refreshCartUI();
+
+
+                return false;
+
+            }
+
+
+            cartItems =
+                cleanCart;
+
+
+            refreshCartUI();
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // INITIALISE CART
+        // =========================
+
+        async function initialiseCart() {
+
+            cartReady =
+                false;
+
+
+            /*
+                Signed-in customer.
+            */
+
+            if (
+                supabase &&
+                currentUser
+            ) {
+
+                const migrated =
+                    await migrateLocalCart();
+
+
+                if (!migrated) {
+
+                    console.warn(
+                        "Guest cart could not be migrated."
+                    );
+
+                }
+
+
+                cartItems =
+                    await loadDatabaseCart();
+
+            } else {
+
+                /*
+                    Guest visitor or Supabase
+                    temporarily unavailable.
+                */
+
+                cartItems =
+                    getLocalCart();
+
+            }
+
+
+            cartItems =
+                normaliseCart(
+                    cartItems
+                );
+
+
+            cartReady =
+                true;
+
+
+            refreshCartUI();
+
+        }
+
+
+        // =========================
+        // GLOBAL CART API
+        // =========================
+
+        window.AquaCart = {
+
+            getCart,
+
+            addToCart,
+
+            removeFromCart,
+
+            updateCartQuantity,
+
+            clearCart,
+
+            replaceCart,
+
+            getCurrentUser() {
+
+                return currentUser;
+
+            },
+
+            isReady() {
+
+                return cartReady;
+
+            }
+
+        };
+        // =========================
+        // LOCAL WISHLIST STORAGE
+        // =========================
+
+        function getLocalWishlist() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        WISHLIST_KEY
+                    );
+
+
+                const parsed =
+                    saved
+                        ? JSON.parse(saved)
+                        : [];
+
+
+                return Array.isArray(
+                    parsed
+                )
+                    ? parsed
+                    : [];
+
+            } catch (error) {
+
+                console.error(
+                    "Could not load local wishlist:",
+                    error
+                );
+
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveLocalWishlist(
+            items
+        ) {
+
+            localStorage.setItem(
+                WISHLIST_KEY,
+                JSON.stringify(
+                    items
+                )
+            );
+
+        }
+
+
+        // =========================
+        // WISHLIST DATABASE
+        // CONVERSION
+        // =========================
+
+        function databaseRowToWishlistItem(
+            row
+        ) {
+
+            return {
+
+                id:
+                    row.product_id,
+
+                name:
+                    row.product_name,
+
+                price:
+                    Number(
+                        row.product_price
+                        || 0
+                    ),
+
+                image:
+                    row.product_image
+                    || "",
+
+                url:
+                    row.product_url
+                    || "",
+
+                available:
+                    Boolean(
+                        row.product_available
+                    )
+
+            };
+
+        }
+
+
+        function wishlistItemToDatabaseRow(
+            item,
+            userId
+        ) {
+
+            return {
+
+                user_id:
+                    userId,
+
+                product_id:
+                    item.id,
+
+                product_name:
+                    item.name,
+
+                product_price:
+                    Number(
+                        item.price
+                        || 0
+                    ),
+
+                product_image:
+                    item.image
+                        || null,
+
+                product_url:
+                    item.url
+                        || null,
+
+                product_available:
+                    Boolean(
+                        item.available
+                    )
+
+            };
+
+        }
+
+
+        // =========================
+        // LOAD DATABASE WISHLIST
+        // =========================
+
+        async function loadDatabaseWishlist() {
+
+            if (
+                !supabase ||
+                !currentUser
+            ) {
+
+                return [];
+
+            }
+
+
+            const {
+                data,
+                error
+            } =
+                await supabase
+                    .from("wishlists")
+                    .select(
+                        "product_id, " +
+                        "product_name, " +
+                        "product_price, " +
+                        "product_image, " +
+                        "product_url, " +
+                        "product_available, " +
+                        "created_at"
+                    )
+                    .eq(
+                        "user_id",
+                        currentUser.id
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending:
+                                false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not load customer wishlist:",
+                    error
+                );
+
+
+                return [];
+
+            }
+
+
+            return (
+                data || []
+            ).map(
+                databaseRowToWishlistItem
+            );
+
+        }
+
+
+        // =========================
+        // SAVE DATABASE
+        // WISHLIST ITEM
+        // =========================
+
+        async function saveWishlistItemToDatabase(
+            item
+        ) {
+
+            if (
+                !supabase ||
+                !currentUser
+            ) {
+
+                return false;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("wishlists")
+                    .upsert(
+                        wishlistItemToDatabaseRow(
+                            item,
+                            currentUser.id
+                        ),
+                        {
+                            onConflict:
+                                "user_id,product_id"
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not save wishlist item:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // REMOVE DATABASE
+        // WISHLIST ITEM
+        // =========================
+
+        async function removeWishlistItemFromDatabase(
+            productId
+        ) {
+
+            if (
+                !supabase ||
+                !currentUser
+            ) {
+
+                return false;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("wishlists")
+                    .delete()
+                    .eq(
+                        "user_id",
+                        currentUser.id
+                    )
+                    .eq(
+                        "product_id",
+                        productId
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not remove wishlist item:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // GUEST → ACCOUNT
+        // WISHLIST
+        // =========================
+
+        async function migrateLocalWishlist() {
+
+            if (
+                !supabase ||
+                !currentUser
+            ) {
+
+                return true;
+
+            }
+
 
             const localItems =
                 getLocalWishlist();
 
 
             if (
-                !localItems.some(
+                localItems.length === 0
+            ) {
+
+                return true;
+
+            }
+
+
+            const validItems =
+                localItems.filter(
                     (item) =>
-                        item.id ===
-                        product.id
+                        item &&
+                        item.id &&
+                        item.name
+                );
+
+
+            if (
+                validItems.length === 0
+            ) {
+
+                localStorage.removeItem(
+                    WISHLIST_KEY
+                );
+
+
+                return true;
+
+            }
+
+
+            const rows =
+                validItems.map(
+                    (item) =>
+                        wishlistItemToDatabaseRow(
+                            item,
+                            currentUser.id
+                        )
+                );
+
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("wishlists")
+                    .upsert(
+                        rows,
+                        {
+                            onConflict:
+                                "user_id,product_id"
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Could not migrate guest wishlist:",
+                    error
+                );
+
+
+                return false;
+
+            }
+
+
+            /*
+                Only erase the guest copy
+                after Supabase confirms
+                the database save.
+            */
+
+            localStorage.removeItem(
+                WISHLIST_KEY
+            );
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // WISHLIST UI
+        // =========================
+
+        function getWishlist() {
+
+            return wishlistItems.map(
+                (item) => ({
+                    ...item
+                })
+            );
+
+        }
+
+
+        function isWishlisted(
+            productId
+        ) {
+
+            return wishlistItems.some(
+                (item) =>
+                    item.id ===
+                    productId
+            );
+
+        }
+
+
+        function updateWishlistCount() {
+
+            const count =
+                wishlistItems.length;
+
+
+            document
+                .querySelectorAll(
+                    ".wishlist-count"
+                )
+                .forEach(
+                    (counter) => {
+
+                        counter.textContent =
+                            count;
+
+
+                        counter.hidden =
+                            count === 0;
+
+                    }
+                );
+
+        }
+
+
+        function updateWishlistButtons() {
+
+            document
+                .querySelectorAll(
+                    "[data-add-to-wishlist]"
+                )
+                .forEach(
+                    (button) => {
+
+                        const productId =
+                            button.dataset
+                                .productId;
+
+
+                        const saved =
+                            isWishlisted(
+                                productId
+                            );
+
+
+                        button.classList.toggle(
+                            "saved",
+                            saved
+                        );
+
+
+                        button.setAttribute(
+                            "aria-pressed",
+                            String(saved)
+                        );
+
+
+                        button.textContent =
+                            saved
+                                ? "Saved to Wishlist ✓"
+                                : "Add to Wishlist";
+
+                    }
+                );
+
+        }
+
+
+        function refreshWishlistUI() {
+
+            updateWishlistCount();
+
+            updateWishlistButtons();
+
+
+            document.dispatchEvent(
+                new CustomEvent(
+                    "aquacoding:wishlist-updated",
+                    {
+                        detail: {
+
+                            items:
+                                getWishlist(),
+
+                            user:
+                                currentUser
+
+                        }
+                    }
+                )
+            );
+
+        }
+
+
+        // =========================
+        // ADD TO WISHLIST
+        // =========================
+
+        async function addToWishlist(
+            product
+        ) {
+
+            if (
+                !product ||
+                !product.id ||
+                !product.name
+            ) {
+
+                console.error(
+                    "Invalid wishlist product."
+                );
+
+
+                return false;
+
+            }
+
+
+            if (
+                isWishlisted(
+                    product.id
                 )
             ) {
 
-                localItems.push(
-                    product
-                );
+                return true;
+
+            }
+
+
+            const cleanProduct = {
+
+                id:
+                    String(
+                        product.id
+                    ).trim(),
+
+                name:
+                    String(
+                        product.name
+                    ).trim(),
+
+                price:
+                    Number(
+                        product.price
+                        || 0
+                    ),
+
+                image:
+                    typeof product.image ===
+                        "string"
+                        ? product.image
+                        : "",
+
+                url:
+                    typeof product.url ===
+                        "string"
+                        ? product.url
+                        : "",
+
+                available:
+                    Boolean(
+                        product.available
+                    )
+
+            };
+
+
+            if (
+                !cleanProduct.id ||
+                !cleanProduct.name
+            ) {
+
+                return false;
+
+            }
+
+
+            if (currentUser) {
+
+                const saved =
+                    await saveWishlistItemToDatabase(
+                        cleanProduct
+                    );
+
+
+                if (!saved) {
+
+                    return false;
+
+                }
+
+            } else {
+
+                const localItems =
+                    getLocalWishlist();
+
+
+                if (
+                    !localItems.some(
+                        (item) =>
+                            item.id ===
+                            cleanProduct.id
+                    )
+                ) {
+
+                    localItems.push(
+                        cleanProduct
+                    );
+
+
+                    saveLocalWishlist(
+                        localItems
+                    );
+
+                }
+
+            }
+
+
+            wishlistItems.push(
+                cleanProduct
+            );
+
+
+            refreshWishlistUI();
+
+
+            return true;
+
+        }
+
+
+        // =========================
+        // REMOVE FROM WISHLIST
+        // =========================
+
+        async function removeFromWishlist(
+            productId
+        ) {
+
+            const cleanId =
+                String(
+                    productId || ""
+                ).trim();
+
+
+            if (!cleanId) {
+
+                return false;
+
+            }
+
+
+            if (currentUser) {
+
+                const removed =
+                    await removeWishlistItemFromDatabase(
+                        cleanId
+                    );
+
+
+                if (!removed) {
+
+                    return false;
+
+                }
+
+            } else {
+
+                const localItems =
+                    getLocalWishlist()
+                        .filter(
+                            (item) =>
+                                item.id !==
+                                cleanId
+                        );
 
 
                 saveLocalWishlist(
@@ -1158,663 +2700,133 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             }
 
-        }
 
-
-        wishlistItems.push(
-            product
-        );
-
-
-        refreshWishlistUI();
-
-
-        return true;
-
-    }
-
-
-    async function removeFromWishlist(
-        productId
-    ) {
-
-        if (
-            currentUser
-        ) {
-
-            const removed =
-                await removeItemFromDatabase(
-                    productId
+            wishlistItems =
+                wishlistItems.filter(
+                    (item) =>
+                        item.id !==
+                        cleanId
                 );
 
 
-            if (!removed) {
+            refreshWishlistUI();
 
-                return false;
 
-            }
+            return true;
 
-        } else {
+        }
 
-            const localItems =
-                getLocalWishlist()
-                    .filter(
-                        (item) =>
-                            item.id !==
-                            productId
+
+        // =========================
+        // TOGGLE WISHLIST
+        // =========================
+
+        async function toggleWishlist(
+            product
+        ) {
+
+            if (
+                isWishlisted(
+                    product.id
+                )
+            ) {
+
+                const removed =
+                    await removeFromWishlist(
+                        product.id
                     );
 
 
-            saveLocalWishlist(
-                localItems
-            );
+                return removed
+                    ? false
+                    : true;
 
-        }
-
-
-        wishlistItems =
-            wishlistItems.filter(
-                (item) =>
-                    item.id !==
-                    productId
-            );
+            }
 
 
-        refreshWishlistUI();
-
-
-        return true;
-
-    }
-
-
-    async function toggleWishlist(
-        product
-    ) {
-
-        if (
-            isWishlisted(
-                product.id
-            )
-        ) {
-
-            await removeFromWishlist(
-                product.id
-            );
-
-
-            return false;
-
-        }
-
-
-        const added =
-            await addToWishlist(
+            return await addToWishlist(
                 product
             );
 
-
-        return added;
-
-    }
-    // =========================
-    // SUPABASE CONNECTION
-    // =========================
-
-    let supabase = null;
+        }
 
 
-    try {
+        // =========================
+        // INITIALISE WISHLIST
+        // =========================
 
-        const module =
-            await import(
-                "./supabase-client.js"
-            );
-
-
-        supabase =
-            module.supabase;
-
-
-        window.AquaSupabase =
-            supabase;
-
-    } catch (error) {
-
-        console.error(
-            "Could not load Supabase:",
-            error
-        );
-
-    }
-
-
-    // =========================
-    // INITIALISE WISHLIST
-    // =========================
-
-    async function initialiseWishlist() {
-
-        wishlistReady =
-            false;
-
-
-        /*
-            No Supabase connection:
-            keep the guest/local wishlist working.
-        */
-
-        if (!supabase) {
-
-            currentUser =
-                null;
-
-
-            wishlistItems =
-                getLocalWishlist();
-
+        async function initialiseWishlist() {
 
             wishlistReady =
-                true;
+                false;
 
 
-            refreshWishlistUI();
+            if (
+                supabase &&
+                currentUser
+            ) {
 
+                const migrated =
+                    await migrateLocalWishlist();
 
-            return;
 
-        }
+                if (!migrated) {
 
-
-        const {
-            data: {
-                session
-            },
-            error
-        } =
-            await supabase.auth
-                .getSession();
-
-
-        if (error) {
-
-            console.error(
-                "Could not check account session:",
-                error
-            );
-
-
-            currentUser =
-                null;
-
-
-            wishlistItems =
-                getLocalWishlist();
-
-
-            wishlistReady =
-                true;
-
-
-            refreshWishlistUI();
-
-
-            return;
-
-        }
-
-
-        currentUser =
-            session?.user
-                || null;
-
-
-        /*
-            Signed-in customer:
-            move any guest wishlist items
-            into their account first.
-        */
-
-        if (currentUser) {
-
-            await migrateLocalWishlist();
-
-
-            wishlistItems =
-                await loadDatabaseWishlist();
-
-        } else {
-
-            wishlistItems =
-                getLocalWishlist();
-
-        }
-
-
-        wishlistReady =
-            true;
-
-
-        refreshWishlistUI();
-
-    }
-
-
-    // =========================
-    // AUTH CHANGES
-    // =========================
-
-    if (supabase) {
-
-        supabase.auth
-            .onAuthStateChange(
-                (
-                    event,
-                    session
-                ) => {
-
-                    /*
-                        Run outside the auth callback
-                        itself so database calls happen
-                        after Supabase finishes processing
-                        the auth event.
-                    */
-
-                    setTimeout(
-                        async () => {
-
-                            if (
-                                event ===
-                                "SIGNED_OUT"
-                            ) {
-
-                                currentUser =
-                                    null;
-
-
-                                wishlistItems =
-                                    getLocalWishlist();
-
-
-                                wishlistReady =
-                                    true;
-
-
-                                refreshWishlistUI();
-
-
-                                return;
-
-                            }
-
-
-                            if (
-                                session?.user
-                            ) {
-
-                                currentUser =
-                                    session.user;
-
-
-                                await migrateLocalWishlist();
-
-
-                                wishlistItems =
-                                    await loadDatabaseWishlist();
-
-
-                                wishlistReady =
-                                    true;
-
-
-                                refreshWishlistUI();
-
-                            }
-
-                        },
-                        0
+                    console.warn(
+                        "Guest wishlist could not be migrated."
                     );
 
                 }
-            );
-
-    }
 
 
-    // =========================
-    // WISHLIST BUTTONS
-    // =========================
+                wishlistItems =
+                    await loadDatabaseWishlist();
 
-    document
-        .querySelectorAll(
-            "[data-add-to-wishlist]"
-        )
-        .forEach(
-            (button) => {
+            } else {
 
-                button.addEventListener(
-                    "click",
-                    async () => {
-
-                        if (
-                            !wishlistReady
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const productId =
-                            button.dataset
-                                .productId;
-
-
-                        const productName =
-                            button.dataset
-                                .productName;
-
-
-                        const productPrice =
-                            Number(
-                                button.dataset
-                                    .productPrice
-                                || 0
-                            );
-
-
-                        const productImage =
-                            button.dataset
-                                .productImage
-                            || "";
-
-
-                        const productUrl =
-                            button.dataset
-                                .productUrl
-                            || "";
-
-
-                        const available =
-                            button.dataset
-                                .productAvailable ===
-                            "true";
-
-
-                        if (
-                            !productId ||
-                            !productName
-                        ) {
-
-                            console.error(
-                                "Missing wishlist product information."
-                            );
-
-
-                            return;
-
-                        }
-
-
-                        button.disabled =
-                            true;
-
-
-                        const wasSaved =
-                            isWishlisted(
-                                productId
-                            );
-
-
-                        const result =
-                            await toggleWishlist({
-
-                                id:
-                                    productId,
-
-                                name:
-                                    productName,
-
-                                price:
-                                    productPrice,
-
-                                image:
-                                    productImage,
-
-                                url:
-                                    productUrl,
-
-                                available:
-                                    available
-
-                            });
-
-
-                        /*
-                            If database saving failed,
-                            restore the visual state.
-                        */
-
-                        if (
-                            !result &&
-                            !wasSaved &&
-                            !isWishlisted(
-                                productId
-                            )
-                        ) {
-
-                            console.error(
-                                "Wishlist item could not be saved."
-                            );
-
-                        }
-
-
-                        button.disabled =
-                            false;
-
-
-                        updateWishlistButtons();
-
-                    }
-                );
+                wishlistItems =
+                    getLocalWishlist();
 
             }
-        );
-    // =========================
-    // QUANTITY MINUS
-    // =========================
-
-    document
-        .querySelectorAll(
-            "[data-quantity-decrease]"
-        )
-        .forEach(
-            (button) => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        const target =
-                            button.dataset
-                                .quantityDecrease;
 
 
-                        const input =
-                            document.querySelector(
-                                target
-                            );
+            wishlistReady =
+                true;
 
 
-                        if (!input) {
-                            return;
-                        }
-
-
-                        input.value =
-                            Math.max(
-                                Number(
-                                    input.min || 1
-                                ),
-                                Number(
-                                    input.value || 1
-                                ) - 1
-                            );
-
-                    }
-                );
-
-            }
-        );
-
-
-    // =========================
-    // QUANTITY PLUS
-    // =========================
-
-    document
-        .querySelectorAll(
-            "[data-quantity-increase]"
-        )
-        .forEach(
-            (button) => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        const target =
-                            button.dataset
-                                .quantityIncrease;
-
-
-                        const input =
-                            document.querySelector(
-                                target
-                            );
-
-
-                        if (!input) {
-                            return;
-                        }
-
-
-                        const max =
-                            input.max
-                                ? Number(
-                                    input.max
-                                )
-                                : Infinity;
-
-
-                        input.value =
-                            Math.min(
-                                max,
-                                Number(
-                                    input.value || 1
-                                ) + 1
-                            );
-
-                    }
-                );
-
-            }
-        );
-
-
-    // =========================
-    // GLOBAL CART FUNCTIONS
-    // =========================
-
-    window.AquaCart = {
-
-        getCart,
-
-        addToCart,
-
-        removeFromCart,
-
-        updateCartQuantity,
-
-        saveCart
-
-    };
-
-
-    // =========================
-    // GLOBAL WISHLIST FUNCTIONS
-    // =========================
-
-    window.AquaWishlist = {
-
-        getWishlist,
-
-        isWishlisted,
-
-        addToWishlist,
-
-        removeFromWishlist,
-
-        toggleWishlist,
-
-        refreshWishlistUI,
-
-        getCurrentUser() {
-
-            return currentUser;
-
-        },
-
-        isReady() {
-
-            return wishlistReady;
+            refreshWishlistUI();
 
         }
 
-    };
 
+        // =========================
+        // GLOBAL WISHLIST API
+        // =========================
 
-    // =========================
-    // INITIAL STATE
-    // =========================
+        window.AquaWishlist = {
 
-    updateCartCount();
+            getWishlist,
 
+            isWishlisted,
 
-    /*
-        initialiseWishlist() decides whether
-        this visitor should use:
+            addToWishlist,
 
-        - localStorage as a guest
-        - Supabase as a signed-in customer
+            removeFromWishlist,
 
-        It also migrates any existing guest
-        wishlist after the customer signs in.
-    */
+            toggleWishlist,
 
-    await initialiseWishlist();
+            refreshWishlistUI,
 
+            getCurrentUser() {
 
-    // =========================
-    // READY EVENT
-    // =========================
+                return currentUser;
 
-    document.dispatchEvent(
-        new CustomEvent(
-            "aquacoding:wishlist-ready",
-            {
-                detail: {
+            },
 
-                    items:
-                        getWishlist(),
+            isReady() {
 
-                    user:
-                        currentUser
+                return wishlistReady;
 
-                }
             }
-        )
-    );
 
-});
+        };
