@@ -1544,3 +1544,43 @@
     }
 
 }
+/* =========================================================
+   FINAL SHOP THUMBNAIL OVERRIDES
+   ========================================================= */
+
+/* Bloody Mary Shrimp */
+.shop-product[data-name="bloody mary shrimp neocaridina davidi"]
+.store-card-image {
+    object-fit: cover;
+    object-position: center 60%;
+    transform: scale(1.12);
+}
+
+/* Platinum Polar Parrot Cichlid */
+.shop-product[data-name="platinum polar parrot cichlid"]
+.store-card-image {
+    object-fit: cover;
+    object-position: center 78%;
+    transform: scale(1.04);
+}
+
+/* Green Cobra Guppy */
+.shop-product[data-name="green cobra guppy poecilia reticulata"]
+.store-card-image {
+    object-fit: cover;
+    object-position: center 58%;
+    transform: scale(1.03);
+}
+
+/* Hover behaviour */
+.shop-product[data-name="bloody mary shrimp neocaridina davidi"]:hover
+.store-card-image {
+    transform: scale(1.16);
+}
+
+.shop-product[data-name="platinum polar parrot cichlid"]:hover
+.store-card-image,
+.shop-product[data-name="green cobra guppy poecilia reticulata"]:hover
+.store-card-image {
+    transform: scale(1.07);
+}
