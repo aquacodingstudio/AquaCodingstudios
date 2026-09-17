@@ -12,7 +12,7 @@
 
     <meta
         name="description"
-        content="Browse freshwater shrimp, fish, aquatic plants and aquarium supplies from AquaCoding Studios in Malta."
+        content="Shop freshwater shrimp, fish, aquatic plants and aquarium supplies from AquaCoding Studios in Malta."
     >
 
     <meta
@@ -32,7 +32,12 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=20"
+        href="style.css?v=23"
+    >
+
+    <link
+        rel="stylesheet"
+        href="store.css?v=1"
     >
 
     <style>
@@ -47,12 +52,17 @@
         .wishlist-count {
             min-width: 20px;
             height: 20px;
+
             display: inline-grid;
             place-items: center;
+
             padding: 0 6px;
+
             border-radius: 999px;
+
             background: var(--accent);
             color: #04131d;
+
             font-size: 0.72rem;
             font-weight: 900;
             line-height: 1;
@@ -63,46 +73,6 @@
             display: none;
         }
 
-        .shop-search {
-            width: min(92%, 1180px);
-            margin: 0 auto 20px;
-        }
-
-        .shop-search-input {
-            width: 100%;
-            min-height: 48px;
-            padding: 0 16px;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: var(--panel);
-            color: var(--text);
-            font: inherit;
-        }
-
-        .shop-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .filter-button {
-            min-height: 42px;
-            padding: 0 16px;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            background: var(--panel);
-            color: var(--muted);
-            font: inherit;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .filter-button.active {
-            background: var(--accent);
-            color: #04131d;
-            border-color: var(--accent);
-        }
-
     </style>
 
 </head>
@@ -110,6 +80,10 @@
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="site-header">
 
@@ -182,6 +156,7 @@
             >
                 0
             </span>
+
         </a>
 
         <a
@@ -203,11 +178,13 @@
             >
                 0
             </span>
+
         </a>
 
     </nav>
 
 </header>
+
 
 
 <main>
@@ -217,91 +194,30 @@
          SHOP HERO
     ========================== -->
 
-    <section class="collection-hero">
+    <section class="store-hero">
 
-        <p class="eyebrow">
-            AquaCoding Shop
-        </p>
+        <div class="store-shell">
 
-        <h1>
-            Browse Products
-        </h1>
+            <div class="store-hero-inner">
 
-        <p class="hero-text">
-            Explore freshwater livestock, aquatic plants,
-            aquarium equipment and more from AquaCoding Studios.
-            Each livestock listing includes practical care
-            information and clear availability.
-        </p>
+                <p class="store-eyebrow">
+                    AquaCoding Shop
+                </p>
 
-    </section>
+                <h1>
+                    Aquatics,
+                    carefully chosen.
+                </h1>
 
+                <p>
+                    Browse freshwater livestock, aquatic plants and
+                    aquarium supplies from AquaCoding Studios. Our
+                    livestock listings include practical care information,
+                    transparent availability and responsible stocking
+                    guidance.
+                </p>
 
-
-    <!-- =========================
-         SEARCH
-    ========================== -->
-
-    <div class="shop-search">
-
-        <input
-            type="search"
-            placeholder="Search products..."
-            class="shop-search-input"
-            aria-label="Search products"
-        >
-
-    </div>
-
-
-
-    <!-- =========================
-         FILTERS
-    ========================== -->
-
-    <section class="section">
-
-        <div class="shop-filters">
-
-            <button
-                class="filter-button active"
-                type="button"
-                data-filter="all"
-            >
-                All
-            </button>
-
-            <button
-                class="filter-button"
-                type="button"
-                data-filter="shrimp"
-            >
-                Shrimp
-            </button>
-
-            <button
-                class="filter-button"
-                type="button"
-                data-filter="fish"
-            >
-                Fish
-            </button>
-
-            <button
-                class="filter-button"
-                type="button"
-                data-filter="plants"
-            >
-                Plants
-            </button>
-
-            <button
-                class="filter-button"
-                type="button"
-                data-filter="equipment"
-            >
-                Equipment
-            </button>
+            </div>
 
         </div>
 
@@ -310,492 +226,643 @@
 
 
     <!-- =========================
-         PRODUCTS
+         PRODUCT BROWSER
     ========================== -->
 
-    <section class="section">
+    <section class="store-section">
 
-        <div class="collection-grid">
-
-
-            <!-- =====================
-                 BLOODY MARY SHRIMP
-            ====================== -->
-
-            <a
-                class="collection-card card-link shop-product"
-                href="bloody-mary-shrimp.html"
-                data-category="shrimp"
-                data-name="bloody mary shrimp neocaridina davidi"
-            >
-
-                <div class="collection-image">
-
-                    <img
-                        src="bloody-mary-shrimp.jpg"
-                        alt="Bloody Mary Shrimp"
-                        loading="lazy"
-                    >
-
-                </div>
+        <div class="store-shell">
 
 
-                <div class="collection-content">
+            <!-- SEARCH -->
 
-                    <span class="availability-badge">
-                        Breeding - Available Soon
-                    </span>
+            <div class="store-search">
 
-                    <h3>
-                        Bloody Mary Shrimp
-                    </h3>
-
-                    <p class="product-price">
-                        €4.90
-                    </p>
-
-                    <p>
-                        <em>Neocaridina davidi</em>
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- =====================
-                 BLUE DREAM SHRIMP
-            ====================== -->
-
-            <a
-                class="collection-card card-link shop-product"
-                href="blue-dream-shrimp.html"
-                data-category="shrimp"
-                data-name="blue dream shrimp neocaridina davidi"
-            >
-
-                <div
-                    class="collection-image placeholder-image blue-product"
+                <input
+                    type="search"
+                    class="shop-search-input"
+                    placeholder="Search livestock, plants and products..."
+                    aria-label="Search AquaCoding Studios products"
+                    autocomplete="off"
                 >
 
-                    <span>
-                        Blue Dream Shrimp
-                    </span>
-
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge out-of-stock">
-                        Out of Stock
-                    </span>
-
-                    <h3>
-                        Blue Dream Shrimp
-                    </h3>
-
-                    <p class="product-price">
-                        Currently unavailable
-                    </p>
-
-                    <p>
-                        <em>Neocaridina davidi</em>
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </a>
+            </div>
 
 
 
-            <!-- =====================
-                 BLUE DIAMOND SHRIMP
-            ====================== -->
+            <!-- FILTERS -->
 
-            <a
-                class="collection-card card-link shop-product"
-                href="blue-diamond-shrimp.html"
-                data-category="shrimp"
-                data-name="blue diamond shrimp neocaridina davidi"
+            <div
+                class="store-filters"
+                aria-label="Product filters"
             >
 
-                <div
-                    class="collection-image placeholder-image blue-product"
+                <button
+                    type="button"
+                    class="store-filter filter-button active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="store-filter filter-button"
+                    data-filter="shrimp"
+                >
+                    Shrimp
+                </button>
+
+                <button
+                    type="button"
+                    class="store-filter filter-button"
+                    data-filter="fish"
+                >
+                    Fish
+                </button>
+
+                <button
+                    type="button"
+                    class="store-filter filter-button"
+                    data-filter="plants"
+                >
+                    Plants
+                </button>
+
+                <button
+                    type="button"
+                    class="store-filter filter-button"
+                    data-filter="equipment"
+                >
+                    Equipment
+                </button>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PRODUCT GRID
+            ========================== -->
+
+            <div class="store-grid">
+
+
+                <!-- =====================
+                     BLOODY MARY SHRIMP
+                ====================== -->
+
+                <a
+                    class="store-card shop-product"
+                    href="bloody-mary-shrimp.html"
+                    data-category="shrimp"
+                    data-name="bloody mary shrimp neocaridina davidi"
                 >
 
-                    <span>
-                        Blue Diamond Shrimp
-                    </span>
+                    <div class="store-card-media has-photo">
 
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge">
-                        Breeding - Available Soon
-                    </span>
-
-                    <h3>
-                        Blue Diamond Shrimp
-                    </h3>
-
-                    <p class="product-price">
-                        €3.90
-                    </p>
-
-                    <p>
-                        <em>Neocaridina davidi</em>
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
+                        <img
+                            src="bloody-mary-shrimp.jpg"
+                            alt="Bloody Mary Shrimp"
+                            class="store-card-image"
+                            loading="lazy"
+                        >
 
                     </div>
 
-                </div>
 
-            </a>
-            <!-- =====================
-                 YELLOW GOLDENBACK SHRIMP
-            ====================== -->
+                    <div class="store-card-body">
 
-            <a
-                class="collection-card card-link shop-product"
-                href="yellow-goldenback-shrimp.html"
-                data-category="shrimp"
-                data-name="yellow goldenback shrimp neocaridina davidi"
-            >
+                        <span class="store-badge">
+                            Breeding · Available Soon
+                        </span>
 
-                <div
-                    class="collection-image placeholder-image yellow-product"
+                        <h2>
+                            Bloody Mary Shrimp
+                        </h2>
+
+                        <p class="store-card-species">
+                            <em>Neocaridina davidi</em>
+                        </p>
+
+                        <p class="store-card-price">
+                            €4.90
+                        </p>
+
+                        <p class="store-card-description">
+                            Deep red freshwater dwarf shrimp suited to
+                            established planted aquariums and dedicated
+                            shrimp setups.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Shrimp →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =====================
+                     BLUE DREAM SHRIMP
+                ====================== -->
+
+                <a
+                    class="
+                        store-card
+                        shop-product
+                        is-unavailable
+                    "
+                    href="blue-dream-shrimp.html"
+                    data-category="shrimp"
+                    data-name="blue dream shrimp neocaridina davidi"
                 >
 
-                    <span>
-                        Yellow Goldenback Shrimp
-                    </span>
+                    <div class="store-card-media">
 
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge out-of-stock">
-                        Out of Stock
-                    </span>
-
-                    <h3>
-                        Yellow Goldenback Shrimp
-                    </h3>
-
-                    <p class="product-price">
-                        Currently unavailable
-                    </p>
-
-                    <p>
-                        <em>Neocaridina davidi</em>
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
+                        <div class="store-card-placeholder">
+                            Blue Dream Shrimp
+                        </div>
 
                     </div>
 
-                </div>
 
-            </a>
+                    <div class="store-card-body">
+
+                        <span class="store-badge out-of-stock">
+                            Out of Stock
+                        </span>
+
+                        <h2>
+                            Blue Dream Shrimp
+                        </h2>
+
+                        <p class="store-card-species">
+                            <em>Neocaridina davidi</em>
+                        </p>
+
+                        <p class="store-card-price">
+                            Currently unavailable
+                        </p>
+
+                        <p class="store-card-description">
+                            Rich blue Neocaridina with striking colour
+                            against planted and darker aquascapes.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Shrimp →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
 
 
 
-            <!-- =====================
-                 BETTA SPLENDENS
-            ====================== -->
+                <!-- =====================
+                     BLUE DIAMOND SHRIMP
+                ====================== -->
 
-            <a
-                class="collection-card card-link shop-product"
-                href="betta-splendens.html"
-                data-category="fish"
-                data-name="betta splendens siamese fighting fish"
-            >
-
-                <div
-                    class="collection-image placeholder-image betta-product"
+                <a
+                    class="store-card shop-product"
+                    href="blue-diamond-shrimp.html"
+                    data-category="shrimp"
+                    data-name="blue diamond shrimp neocaridina davidi"
                 >
 
-                    <span>
-                        Betta splendens
-                    </span>
+                    <div class="store-card-media">
 
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge out-of-stock">
-                        Out of Stock
-                    </span>
-
-                    <h3>
-                        Betta splendens
-                    </h3>
-
-                    <p class="product-price">
-                        Currently unavailable
-                    </p>
-
-                    <p>
-                        Siamese Fighting Fish
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
+                        <div class="store-card-placeholder">
+                            Blue Diamond Shrimp
+                        </div>
 
                     </div>
 
-                </div>
 
-            </a>
+                    <div class="store-card-body">
 
-
-
-            <!-- =====================
-                 PLATINUM POLAR PARROT
-                 CICHLID
-            ====================== -->
-
-            <a
-                class="collection-card card-link shop-product"
-                href="platinum-polar-parrot-cichlid.html"
-                data-category="fish"
-                data-name="platinum polar parrot cichlid"
-            >
-
-                <div class="collection-image">
-
-                    <img
-                        src="platinum-polar-parrot-cichlid.jpg"
-                        alt="Platinum Polar Parrot Cichlid"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge">
-                        Breeding - Available Soon
-                    </span>
-
-                    <h3>
-                        Platinum Polar Parrot Cichlid
-                    </h3>
-
-                    <p class="product-price">
-                        €6.50
-                    </p>
-
-                    <p>
-                        Captive-bred freshwater cichlid
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
+                        <span class="store-badge">
+                            Breeding · Available Soon
                         </span>
+
+                        <h2>
+                            Blue Diamond Shrimp
+                        </h2>
+
+                        <p class="store-card-species">
+                            <em>Neocaridina davidi</em>
+                        </p>
+
+                        <p class="store-card-price">
+                            €3.90
+                        </p>
+
+                        <p class="store-card-description">
+                            Dark blue freshwater dwarf shrimp with
+                            attractive colouration and classic
+                            Neocaridina behaviour.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Shrimp →
+                            </span>
+
+                        </div>
 
                     </div>
 
-                </div>
+                </a>
+                <!-- =====================
+                     YELLOW GOLDENBACK SHRIMP
+                ====================== -->
 
-            </a>
-
-
-
-            <!-- =====================
-                 GREEN COBRA GUPPY
-            ====================== -->
-
-            <a
-                class="collection-card card-link shop-product"
-                href="green-cobra-guppy.html"
-                data-category="fish"
-                data-name="green cobra guppy poecilia reticulata"
-            >
-
-                <div
-                    class="collection-image placeholder-image"
+                <a
+                    class="
+                        store-card
+                        shop-product
+                        is-unavailable
+                    "
+                    href="yellow-goldenback-shrimp.html"
+                    data-category="shrimp"
+                    data-name="yellow goldenback shrimp neocaridina davidi"
                 >
 
-                    <span>
-                        Green Cobra Guppy
-                    </span>
+                    <div class="store-card-media">
 
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge">
-                        Breeding - Available Soon
-                    </span>
-
-                    <h3>
-                        Green Cobra Guppy
-                    </h3>
-
-                    <p class="product-price">
-                        €5.50
-                    </p>
-
-                    <p>
-                        <em>Poecilia reticulata</em>
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
+                        <div class="store-card-placeholder">
+                            Yellow Goldenback Shrimp
+                        </div>
 
                     </div>
 
-                </div>
 
-            </a>
-            <!-- =====================
-                 JAVA MOSS
-            ====================== -->
+                    <div class="store-card-body">
 
-            <a
-                class="collection-card card-link shop-product"
-                href="java-moss.html"
-                data-category="plants"
-                data-name="java moss taxiphyllum barbieri aquarium plant"
-            >
+                        <span class="store-badge out-of-stock">
+                            Out of Stock
+                        </span>
 
-                <div
-                    class="collection-image placeholder-image plant-product"
+                        <h2>
+                            Yellow Goldenback Shrimp
+                        </h2>
+
+                        <p class="store-card-species">
+                            <em>Neocaridina davidi</em>
+                        </p>
+
+                        <p class="store-card-price">
+                            Currently unavailable
+                        </p>
+
+                        <p class="store-card-description">
+                            Bright yellow freshwater dwarf shrimp with
+                            a distinctive dorsal stripe and active
+                            grazing behaviour.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Shrimp →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =====================
+                     BETTA SPLENDENS
+                ====================== -->
+
+                <a
+                    class="
+                        store-card
+                        shop-product
+                        is-unavailable
+                    "
+                    href="betta-splendens.html"
+                    data-category="fish"
+                    data-name="betta splendens siamese fighting fish"
                 >
 
-                    <span>
-                        Java Moss
-                    </span>
+                    <div class="store-card-media">
 
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge out-of-stock">
-                        Out of Stock
-                    </span>
-
-                    <h3>
-                        Java Moss
-                    </h3>
-
-                    <p class="product-price">
-                        Currently unavailable
-                    </p>
-
-                    <p>
-                        <em>Taxiphyllum barbieri</em>
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
+                        <div class="store-card-placeholder">
+                            Betta splendens
+                        </div>
 
                     </div>
 
-                </div>
 
-            </a>
+                    <div class="store-card-body">
+
+                        <span class="store-badge out-of-stock">
+                            Out of Stock
+                        </span>
+
+                        <h2>
+                            Betta splendens
+                        </h2>
+
+                        <p class="store-card-species">
+                            Siamese Fighting Fish
+                        </p>
+
+                        <p class="store-card-price">
+                            Currently unavailable
+                        </p>
+
+                        <p class="store-card-description">
+                            A striking freshwater labyrinth fish known
+                            for its personality, colour and flowing fins.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Fish →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
 
 
 
-            <!-- =====================
-                 SALVINIA
-            ====================== -->
+                <!-- =====================
+                     PLATINUM POLAR PARROT
+                     CICHLID
+                ====================== -->
 
-            <a
-                class="collection-card card-link shop-product"
-                href="salvinia.html"
-                data-category="plants"
-                data-name="salvinia minima floating aquarium plant"
-            >
-
-                <div
-                    class="collection-image placeholder-image plant-product"
+                <a
+                    class="store-card shop-product"
+                    href="platinum-polar-parrot-cichlid.html"
+                    data-category="fish"
+                    data-name="platinum polar parrot cichlid"
                 >
 
-                    <span>
-                        Salvinia
-                    </span>
+                    <div class="store-card-media has-photo">
 
-                </div>
-
-
-                <div class="collection-content">
-
-                    <span class="availability-badge out-of-stock">
-                        Out of Stock
-                    </span>
-
-                    <h3>
-                        Salvinia
-                    </h3>
-
-                    <p class="product-price">
-                        Currently unavailable
-                    </p>
-
-                    <p>
-                        <em>Salvinia minima</em>
-                    </p>
-
-                    <div class="product-footer">
-
-                        <span class="view-product">
-                            View Product →
-                        </span>
+                        <img
+                            src="platinum-polar-parrot-cichlid.jpg"
+                            alt="Platinum Polar Parrot Cichlid"
+                            class="store-card-image"
+                            loading="lazy"
+                        >
 
                     </div>
 
-                </div>
 
-            </a>
+                    <div class="store-card-body">
+
+                        <span class="store-badge">
+                            Breeding · Available Soon
+                        </span>
+
+                        <h2>
+                            Platinum Polar Parrot Cichlid
+                        </h2>
+
+                        <p class="store-card-species">
+                            Freshwater Cichlid
+                        </p>
+
+                        <p class="store-card-price">
+                            €6.50
+                        </p>
+
+                        <p class="store-card-description">
+                            A pale platinum cichlid with a compact body,
+                            confident behaviour and distinctive appearance.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Fish →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =====================
+                     GREEN COBRA GUPPY
+                ====================== -->
+
+                <a
+                    class="store-card shop-product"
+                    href="green-cobra-guppy.html"
+                    data-category="fish"
+                    data-name="green cobra guppy poecilia reticulata"
+                >
+
+                    <div class="store-card-media has-photo">
+
+                        <img
+                            src="green-cobra-guppy.jpg"
+                            alt="Green Cobra Guppy"
+                            class="store-card-image"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="store-card-body">
+
+                        <span class="store-badge">
+                            Breeding · Available Soon
+                        </span>
+
+                        <h2>
+                            Green Cobra Guppy
+                        </h2>
+
+                        <p class="store-card-species">
+                            <em>Poecilia reticulata</em>
+                        </p>
+
+                        <p class="store-card-price">
+                            €5.50
+                        </p>
+
+                        <p class="store-card-description">
+                            An active livebearer with bold cobra-style
+                            patterning, bright colour and lively
+                            community-tank behaviour.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Fish →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+                <!-- =====================
+                     JAVA MOSS
+                ====================== -->
+
+                <a
+                    class="
+                        store-card
+                        shop-product
+                        is-unavailable
+                    "
+                    href="java-moss.html"
+                    data-category="plants"
+                    data-name="java moss taxiphyllum barbieri aquarium plant"
+                >
+
+                    <div class="store-card-media">
+
+                        <div class="store-card-placeholder">
+                            Java Moss
+                        </div>
+
+                    </div>
+
+
+                    <div class="store-card-body">
+
+                        <span class="store-badge out-of-stock">
+                            Out of Stock
+                        </span>
+
+                        <h2>
+                            Java Moss
+                        </h2>
+
+                        <p class="store-card-species">
+                            <em>Taxiphyllum barbieri</em>
+                        </p>
+
+                        <p class="store-card-price">
+                            Currently unavailable
+                        </p>
+
+                        <p class="store-card-description">
+                            A versatile aquatic moss ideal for shrimp tanks,
+                            planted aquariums and creating natural cover.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Plant →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =====================
+                     SALVINIA
+                ====================== -->
+
+                <a
+                    class="
+                        store-card
+                        shop-product
+                        is-unavailable
+                    "
+                    href="salvinia.html"
+                    data-category="plants"
+                    data-name="salvinia minima floating aquarium plant"
+                >
+
+                    <div class="store-card-media">
+
+                        <div class="store-card-placeholder">
+                            Salvinia
+                        </div>
+
+                    </div>
+
+
+                    <div class="store-card-body">
+
+                        <span class="store-badge out-of-stock">
+                            Out of Stock
+                        </span>
+
+                        <h2>
+                            Salvinia
+                        </h2>
+
+                        <p class="store-card-species">
+                            <em>Salvinia minima</em>
+                        </p>
+
+                        <p class="store-card-price">
+                            Currently unavailable
+                        </p>
+
+                        <p class="store-card-description">
+                            A floating aquatic plant that provides shade,
+                            surface cover and useful shelter for livestock.
+                        </p>
+
+                        <div class="store-card-footer">
+
+                            <span class="store-card-link">
+                                View Plant →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+            <!-- EMPTY SEARCH STATE -->
+
+            <div
+                class="store-empty"
+                id="store-empty"
+                hidden
+            >
+
+                No products match your current search or filter.
+
+            </div>
+
 
         </div>
 
@@ -804,105 +871,131 @@
 
 
     <!-- =========================
-         SHOPPING WITH CONFIDENCE
+         WHY SHOP WITH US
     ========================== -->
 
-    <section class="section">
+    <section class="store-section">
 
-        <div class="section-heading">
+        <div class="store-shell">
 
-            <p class="section-label">
-                Shopping with confidence
-            </p>
+            <div class="product-section-heading">
 
-            <h2>
-                Every product includes more than a price.
-            </h2>
-
-        </div>
-
-
-        <div class="standards-grid">
-
-
-            <article class="standard-card">
-
-                <span>
-                    01
-                </span>
-
-                <h3>
-                    Care Information
-                </h3>
-
-                <p>
-                    Livestock listings include practical care information
-                    to help you understand an animal's needs before
-                    bringing it home.
+                <p class="store-eyebrow">
+                    Shopping with confidence
                 </p>
 
-            </article>
-
-
-            <article class="standard-card">
-
-                <span>
-                    02
-                </span>
-
-                <h3>
-                    Water Parameters
-                </h3>
+                <h2>
+                    More than just a product listing.
+                </h2>
 
                 <p>
-                    Suitable temperature, pH and other important care
-                    requirements are provided where relevant.
+                    AquaCoding Studios is built around responsible
+                    livestock care, clear information and helping
+                    customers choose animals and products that suit
+                    their aquariums.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="standard-card">
-
-                <span>
-                    03
-                </span>
-
-                <h3>
-                    Clear Availability
-                </h3>
-
-                <p>
-                    Product status is shown clearly so you can see what is
-                    in stock, breeding, available soon or currently
-                    unavailable.
-                </p>
-
-            </article>
+            <div class="product-care-grid">
 
 
-            <article class="standard-card">
+                <article class="product-care-card">
 
-                <span>
-                    04
-                </span>
+                    <h3>
+                        Care Information
+                    </h3>
 
-                <h3>
-                    Responsible Animal Care
-                </h3>
+                    <p>
+                        Livestock listings include practical husbandry
+                        information before you buy.
+                    </p>
 
-                <p>
-                    Animal welfare comes before making a sale. Suitable care,
-                    responsible stocking and informed purchasing matter.
-                </p>
+                </article>
 
-            </article>
+
+                <article class="product-care-card">
+
+                    <h3>
+                        Water Requirements
+                    </h3>
+
+                    <p>
+                        Relevant temperature, pH and other important
+                        care requirements are shown clearly.
+                    </p>
+
+                </article>
+
+
+                <article class="product-care-card">
+
+                    <h3>
+                        Clear Availability
+                    </h3>
+
+                    <p>
+                        Products are marked as in stock, breeding,
+                        available soon or unavailable.
+                    </p>
+
+                </article>
+
+
+                <article class="product-care-card">
+
+                    <h3>
+                        Responsible Stocking
+                    </h3>
+
+                    <p>
+                        Animal welfare and suitable homes take priority
+                        over making a quick sale.
+                    </p>
+
+                </article>
+
+
+                <article class="product-care-card">
+
+                    <h3>
+                        Malta Based
+                    </h3>
+
+                    <p>
+                        AquaCoding Studios serves local aquarists with
+                        a focus on reliable livestock and customer care.
+                    </p>
+
+                </article>
+
+
+                <article class="product-care-card">
+
+                    <h3>
+                        Support Before Purchase
+                    </h3>
+
+                    <p>
+                        Unsure whether something suits your aquarium?
+                        Contact us before ordering and we can help.
+                    </p>
+
+                </article>
+
+
+            </div>
 
         </div>
 
     </section>
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -945,9 +1038,103 @@
 </footer>
 
 
+
 <script src="script.js?v=22"></script>
+
+
+<script>
+    document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+
+            const searchInput =
+                document.querySelector(
+                    ".shop-search-input"
+                );
+
+            const filterButtons =
+                document.querySelectorAll(
+                    ".filter-button[data-filter]"
+                );
+
+            const products =
+                document.querySelectorAll(
+                    ".shop-product"
+                );
+
+            const emptyState =
+                document.getElementById(
+                    "store-empty"
+                );
+
+
+            function updateEmptyState() {
+
+                if (!emptyState) {
+                    return;
+                }
+
+
+                const visibleProducts =
+                    Array.from(
+                        products
+                    ).filter(
+                        (product) =>
+                            product.style.display !==
+                            "none"
+                    );
+
+
+                emptyState.hidden =
+                    visibleProducts.length > 0;
+
+            }
+
+
+            if (searchInput) {
+
+                searchInput.addEventListener(
+                    "input",
+                    () => {
+
+                        window.setTimeout(
+                            updateEmptyState,
+                            0
+                        );
+
+                    }
+                );
+
+            }
+
+
+            filterButtons.forEach(
+                (button) => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            window.setTimeout(
+                                updateEmptyState,
+                                0
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            updateEmptyState();
+
+        }
+    );
+</script>
 
 
 </body>
 
 </html>
+
