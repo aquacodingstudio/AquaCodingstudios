@@ -1053,3 +1053,243 @@ footer p {
 .footer-links a:hover {
     color: var(--accent);
 }
+/* ==========================================
+   PRODUCT IMAGES + PRODUCT DETAIL PAGES
+========================================== */
+
+
+/* =========================
+   SHOP CARD IMAGES
+========================= */
+
+.collection-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(110, 217, 234, 0.12),
+            transparent 40%
+        ),
+        #071d29;
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================
+   PRODUCT DETAIL PAGE
+========================= */
+
+.product-detail-section {
+    padding: 60px 0 80px;
+}
+
+.product-detail-grid {
+    display: grid;
+    gap: 34px;
+    align-items: start;
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.product-detail-media {
+    min-width: 0;
+}
+
+.product-image-frame {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(110, 217, 234, 0.12),
+            transparent 40%
+        ),
+        var(--panel);
+    box-shadow: var(--shadow);
+}
+
+.product-detail-image {
+    width: 100%;
+    height: auto;
+    max-height: 680px;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+
+/* =========================
+   PRODUCT INFORMATION
+========================= */
+
+.product-detail-content {
+    min-width: 0;
+}
+
+.product-detail-content h1 {
+    margin-bottom: 14px;
+    font-size: clamp(
+        2.5rem,
+        8vw,
+        4.6rem
+    );
+}
+
+.product-detail-content > p {
+    color: var(--muted);
+}
+
+.product-detail-content .product-price {
+    margin: 14px 0 6px;
+    color: var(--accent);
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+.product-detail-content .product-status {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 700;
+}
+
+
+/* =========================
+   QUICK FACTS
+========================= */
+
+.product-info-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.product-info-grid .info-card {
+    min-width: 0;
+    padding: 18px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: none;
+}
+
+.product-info-grid .info-card strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.product-info-grid .info-card span {
+    display: block;
+    color: var(--text);
+    font-weight: 700;
+}
+
+
+/* =========================
+   PRODUCT BUTTONS
+========================= */
+
+.product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.product-actions .button {
+    width: 100%;
+}
+
+.product-actions .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.62;
+}
+
+.product-note {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   TABLET / DESKTOP
+========================= */
+
+@media (min-width: 760px) {
+
+    .product-detail-section {
+        padding: 90px 0 105px;
+    }
+
+    .product-detail-grid {
+        grid-template-columns:
+            minmax(0, 1.05fr)
+            minmax(340px, 0.95fr);
+
+        gap: 55px;
+        align-items: center;
+    }
+
+    .product-image-frame {
+        max-height: 680px;
+    }
+
+    .product-detail-image {
+        max-height: 680px;
+    }
+
+    .product-actions .button {
+        width: auto;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 520px) {
+
+    .product-detail-section {
+        padding: 42px 0 65px;
+    }
+
+    .product-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-detail-content h1 {
+        font-size: clamp(
+            2.35rem,
+            12vw,
+            3.5rem
+        );
+    }
+
+}
